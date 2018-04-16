@@ -12,8 +12,8 @@
 * <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 **SAML Components**
-<ul>Relay State</ul>: a token to reference state information maintained by the Service Provider (SP).
-<ul>SAMLResponse</ul>: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
+<u>Relay State</u>: a token to reference state information maintained by the Service Provider (SP).
+<u>SAMLResponse</u>: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Generic PoC (COMP6843)**
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
