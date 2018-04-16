@@ -37,8 +37,10 @@
 **XML Components**  
 * XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements. 
 
-...Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
-...Allows creation of Entities.  
+And another item.
+
+⋅⋅⋅Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
+⋅⋅⋅Allows creation of Entities.
 
 **Exploits**
 * Local File Inclusion
