@@ -15,10 +15,10 @@
 * Relay State: [insert notes]
 * SAMLResponse: [insert notes]
 
-**PoC (COMP6843)**
-1.	Intercept a SAML request between the Service Provider (SP) and Identity Provider (IDP)
-2.	Decode the base64 encoded SAML response.
-3.	View the SAML response and change the values accordingly.
+**Generic PoC (COMP6843)**
+1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
+2.	Decode the base64 encoded SAML Assertion.
+3.	View SAML Assertion and change the values accordingly.
 4.	Encode base to base64 and send through the payload.
 5.	Profit
 
