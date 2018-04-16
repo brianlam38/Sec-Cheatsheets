@@ -8,12 +8,12 @@
 ---
 
 **Reference Text**  
-* <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
-* <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
+<a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>  
+<a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 **SAML Components**  
-* Relay State: a token to reference state information maintained by the Service Provider (SP).
-* SAMLResponse: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
+Relay State: a token to reference state information maintained by the Service Provider (SP).  
+SAMLResponse: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Generic PoC (COMP6843)**  
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
@@ -21,8 +21,8 @@
 3.	Forward the payload and profit.
 
 **Remediation**  
-* <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
-* <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
+<a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>  
+<a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 ### XML – XML External Entities
 ---
@@ -57,10 +57,10 @@ XXE Out of Bounds attack (XXE OOB)
 
 ### Advanced XSS - Content Security Policy (CSP)
 ---
-* CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.
-* It allows website owners to declare approved origins of content that browsers should allow to load on that website.
-* Example: `script-src userscripts.example.com`  
-Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
+CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.  
+It allows website owners to declare approved origins of content that browsers should allow to load on that website.
+Example: `script-src userscripts.example.com`  
+* Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
 
 **CSP Components**  
 `none`: matches nothing  
@@ -68,9 +68,9 @@ Means only `userscripts.example.com` can provide scripts to be executed. INLINE 
 `unsafe-inline`: allows inline JavaScript and CSS.  
 `unsafe-eval`: allows text-to-JavaScript mechanisms like eval  
 
-**CSP Bypass / Exploits**
-* Misconfigurations: example write-up on Twitter CSP Bypass (misconfiguration)
-* JSONP: including controlled JavaScript on the domain.
-* Polyglots: CSP Bypass using Polyglot jpeg/javascript
+**CSP Bypass / Exploits**  
+Misconfigurations: example write-up on Twitter CSP Bypass (misconfiguration)  
+JSONP: including controlled JavaScript on the domain.  
+Polyglots: CSP Bypass using Polyglot jpeg/javascript
 
 
