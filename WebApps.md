@@ -8,24 +8,29 @@
 ---
 
 **Reference Text**
+
 * <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
 * <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 **SAML Components**
+
 Relay State: a token to reference state information maintained by the Service Provider (SP).
 SAMLResponse: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Generic PoC (COMP6843)**
+
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
 2.	View SAML Assertion and change the values accordingly.
 3.	Forward the payload and profit.
 
 **Remediation**
+
 * <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
 * <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 ### XML – XML External Entities
 ---
+
 **Basic XXE Test**
 ```xml
 <!DOCTYPE test [<!ENTITY example "Hello World"> ]>
