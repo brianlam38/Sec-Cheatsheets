@@ -1,7 +1,7 @@
 # Table of Contents
 
-[Advanced XSS: Single Origin Policy (SOP)](# Advanced-XSS:-Same-Origin-Policy-(SOP))  
-[Advanced XSS: Content Security Policy (CSP)](# Advanced-XSS:-Content-Security-Policy-(CSP))
+[Advanced XSS: Single Origin Policy (SOP)](#advanced-xss-same-origin-policy-(sop))  
+[Advanced XSS: Content Security Policy (CSP)](#advanced-xss-content-security-policy-(csp))
 
 
 ### Session Management
@@ -58,10 +58,10 @@ XXE Out of Bounds attack (XXE OOB)
 ### PHP Un-serialize
 ---
 
-### Advanced XSS: Same Origin Policy (SOP)
+### Advanced XSS - Same Origin Policy (SOP)
 ---
 
-### Advanced XSS: Content Security Policy (CSP)
+### Advanced XSS - Content Security Policy (CSP)
 ---  
 
 **CSP Summary**  
