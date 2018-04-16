@@ -1,6 +1,6 @@
 # Table of Contents
 
-[Advanced XSS: Single Origin Policy (SOP)](#Advanced-XSS:-Same-Origin-Policy-(SOP))
+[Advanced XSS: Single Origin Policy (SOP)](#Advanced-XSS:-Same-Origin-Policy-(SOP))  
 [Advanced XSS: Content Security Policy (CSP)](#Advanced-XSS:-Content-Security-Policy-(CSP))
 
 
