@@ -1,8 +1,11 @@
 ### Session Management
+---
 
 ### Authentication - OAuth
+---
 
 ### Authentication - SAML
+---
 
 ##### Reference Text
 * <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
@@ -24,3 +27,4 @@
 * <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 ### XML – XML External Entities
+---
