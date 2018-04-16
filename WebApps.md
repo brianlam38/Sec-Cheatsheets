@@ -56,19 +56,26 @@ XXE Out of Bounds attack (XXE OOB)
 ---
 
 ### Advanced XSS - Content Security Policy (CSP)
----
+---  
+
+**CSP Summary**  
+
 CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.    
+
 It allows website owners to declare approved origins of content that browsers should allow to load on that website.    
+
 Example: `script-src userscripts.example.com`  
 * Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
 
 **CSP Components**  
+
 `none`: matches nothing  
 `self`: matches the current origin, but NOT its subdomains  
 `unsafe-inline`: allows inline JavaScript and CSS.  
 `unsafe-eval`: allows text-to-JavaScript mechanisms like eval  
 
 **CSP Bypass / Exploits**  
+
 _Misconfigurations_: example write-up on Twitter CSP Bypass (misconfiguration)  
 _JSONP_: including controlled JavaScript on the domain.  
 _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
