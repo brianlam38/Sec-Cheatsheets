@@ -12,15 +12,13 @@
 * <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 **SAML Components**
-* Relay State: [insert notes]
-* SAMLResponse: [insert notes]
+__Relay State__: a token to reference state information maintained by the Service Provider (SP).
+__SAMLResponse__: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Generic PoC (COMP6843)**
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
-2.	Decode the base64 encoded SAML Assertion.
-3.	View SAML Assertion and change the values accordingly.
-4.	Encode base to base64 and send through the payload.
-5.	Profit
+2.	View SAML Assertion and change the values accordingly.
+3.	Forward the payload and profit.
 
 **Remediation**
 * <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
@@ -30,15 +28,15 @@
 ---
 **Basic XXE Test**
 ```xml
-<!DOCTYPE test [<!ENTITY example "Doe"> ]>
- <userInfo>
-  <firstName>John</firstName>
-  <lastName>&example;</lastName>
- </userInfo>
+<!DOCTYPE test [<!ENTITY example "Hello World"> ]>
+<test>
+  <hello>&example;</hello>
+</userInfo>
 ```
 **XML Components**
-* XML
-* XML DTD
+XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements.
+* Provides a way for applications to share data using a common structure, to verify that the data received is valid.
+* Allows creation of Entities
 
 **Exploits**
 * Local File Inclusion
@@ -56,7 +54,7 @@
 * CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.
 * It allows website owners to declare approved origins of content that browsers should allow to load on that website.
 * Example: `script-src userscripts.example.com`
-Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK
+- Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
 
 **CSP Components**
 * `none`: matches nothing
