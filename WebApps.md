@@ -5,6 +5,10 @@ Web Application Security Cheatsheet
 
 _Published 16th April 2018_
 
+- [Session Management](#session-management)  
+- [Authentication - OAuth](#authentication-oath) 
+- [Authentication - SAML](#authentication-saml)  
+- [XML - XML External Entities (XXE)](#xml---xml-external-entities)  
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
 
