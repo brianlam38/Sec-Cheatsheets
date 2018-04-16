@@ -7,41 +7,37 @@
 ### Authentication - SAML
 ---
 
-**Reference Text**
-
+**Reference Text**  
 * <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
 * <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
-**SAML Components**
-
+**SAML Components**  
 * Relay State: a token to reference state information maintained by the Service Provider (SP).
 * SAMLResponse: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
-**Generic PoC (COMP6843)**
-
+**Generic PoC (COMP6843)**  
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
 2.	View SAML Assertion and change the values accordingly.
 3.	Forward the payload and profit.
 
-**Remediation**
-
+**Remediation**  
 * <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
 * <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 ### XML – XML External Entities
 ---
 
-**Basic XXE Test**
+**Basic XXE Test**  
 ```xml
 <!DOCTYPE test [<!ENTITY example "Hello World"> ]>
 <test>
   <hello>&example;</hello>
 </userInfo>
 ```
-**XML Components**
+**XML Components**  
 * XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements.
-...* Provides a way for applications to share data using a common structure, to verify that the data received is valid.
-...* Allows creation of Entities
+... Provides a way for applications to share data using a common structure, to verify that the data received is valid.
+... Allows creation of Entities
 
 **Exploits**
 * Local File Inclusion
