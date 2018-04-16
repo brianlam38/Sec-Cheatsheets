@@ -5,8 +5,8 @@ Web Application Security Cheatsheet
 
 _Published 16th April 2018_
 
-- [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss:-same-origin-policy)  
-- [Advanced XSS - Content Security Policy (CSP)](#advanced-xss:-content-security-policy)
+- [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
+- [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
 
 
 ### Session Management
@@ -63,10 +63,10 @@ XXE Out of Bounds attack (XXE OOB)
 ### PHP Un-serialize
 ---
 
-### Advanced XSS: Same Origin Policy
+### Advanced XSS - Same Origin Policy
 ---
 
-### Advanced XSS: Content Security Policy
+### Advanced XSS - Content Security Policy
 ---  
 
 **CSP Summary**  
