@@ -43,7 +43,7 @@ _SAMLResponse_: the response from the Identity Provider (IDP) containing the bas
 ### XML – XML External Entities
 ---
 
-**Basic XXE Test**  
+**Basic XXE Test**
 ```xml
 <!DOCTYPE test [<!ENTITY example "Hello World"> ]>
 <test>
