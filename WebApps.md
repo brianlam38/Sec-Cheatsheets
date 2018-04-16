@@ -12,8 +12,8 @@
 <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 **SAML Components**  
-Relay State: a token to reference state information maintained by the Service Provider (SP).  
-SAMLResponse: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
+_Relay State_: a token to reference state information maintained by the Service Provider (SP).  
+_SAMLResponse_: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Generic PoC (COMP6843)**  
 1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
@@ -35,7 +35,7 @@ SAMLResponse: the response from the Identity Provider (IDP) containing the base6
 </userInfo>
 ```
 **XML Components**  
-XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements.  
+_XML DTD (XML Document Type Declaration)_ is used to define the structure of the XML document, with a list of legal elements.  
 * Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
 * Allows creation of Entities.  
 
@@ -57,8 +57,8 @@ XXE Out of Bounds attack (XXE OOB)
 
 ### Advanced XSS - Content Security Policy (CSP)
 ---
-CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.  
-It allows website owners to declare approved origins of content that browsers should allow to load on that website.
+CSP is a security standard introduced to prevent attacks resulting from execution of malicious content in a trusted page.    
+It allows website owners to declare approved origins of content that browsers should allow to load on that website.    
 Example: `script-src userscripts.example.com`  
 * Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
 
@@ -69,8 +69,8 @@ Example: `script-src userscripts.example.com`
 `unsafe-eval`: allows text-to-JavaScript mechanisms like eval  
 
 **CSP Bypass / Exploits**  
-Misconfigurations: example write-up on Twitter CSP Bypass (misconfiguration)  
-JSONP: including controlled JavaScript on the domain.  
-Polyglots: CSP Bypass using Polyglot jpeg/javascript
+_Misconfigurations_: example write-up on Twitter CSP Bypass (misconfiguration)  
+_JSONP_: including controlled JavaScript on the domain.  
+_Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 
 
