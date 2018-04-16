@@ -35,14 +35,19 @@
 </userInfo>
 ```
 **XML Components**  
-* XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements.  
-    * Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
-    * Allows creation of Entities.  
+XML DTD (XML Document Type Declaration) is used to define the structure of the XML document, with a list of legal elements.  
+* Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
+* Allows creation of Entities.  
 
-**Exploits**
-* Local File Inclusion
-* External File Inclusion
-* XXE Out of Bounds attack (XXE OOB)
+**Exploits**  
+Local File Inclusion  
+* subtext  
+
+External File Inclusion  
+* subtext  
+
+XXE Out of Bounds attack (XXE OOB)  
+* subtext
 
 ### PHP Un-serialize
 ---
@@ -57,11 +62,11 @@
 * Example: `script-src userscripts.example.com`  
 Means only `userscripts.example.com` can provide scripts to be executed. INLINE SCRIPTS WON’T WORK.
 
-**CSP Components**
-* `none`: matches nothing
-* `self`: matches the current origin, but NOT its subdomains
-* `unsafe-inline`: allows inline JavaScript and CSS.
-* `unsafe-eval`: allows text-to-JavaScript mechanisms like eval
+**CSP Components**  
+`none`: matches nothing  
+`self`: matches the current origin, but NOT its subdomains  
+`unsafe-inline`: allows inline JavaScript and CSS.  
+`unsafe-eval`: allows text-to-JavaScript mechanisms like eval  
 
 **CSP Bypass / Exploits**
 * Misconfigurations: example write-up on Twitter CSP Bypass (misconfiguration)
