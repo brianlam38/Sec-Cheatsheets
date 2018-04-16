@@ -1,7 +1,7 @@
 # Table of Contents
 
-[Advanced XSS: Single Origin Policy (SOP)](#advanced-xss-same-origin-policy-(sop))  
-[Advanced XSS: Content Security Policy (CSP)](#advanced-xss-content-security-policy-(csp))
+[Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy-(sop))  
+[Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy-(csp))
 
 
 ### Session Management
