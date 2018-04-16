@@ -1,4 +1,4 @@
-### <font color="#d84e1c">Session Management</font>
+<font color="#d84e1c">Session Management</font>
 ---
 
 ### Authentication - OAuth
