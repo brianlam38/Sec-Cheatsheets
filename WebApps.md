@@ -28,10 +28,13 @@
 
 ### XML – XML External Entities
 ---
+**Basic XXE Test**
 ```xml
-<!DOCTYPE lolTest [
-  <!ENTITY xxe SYSTEM "file:///etc/passwd">
-]>
+<!DOCTYPE test [<!ENTITY example "Doe"> ]>
+ <userInfo>
+  <firstName>John</firstName>
+  <lastName>&example;</lastName>
+ </userInfo>
 ```
 **XML Components**
 * XML
