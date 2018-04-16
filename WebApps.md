@@ -5,12 +5,12 @@
 ## Authentication - SAML
 
 #### Reference Text
-<a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
-<a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
+* <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>
+* <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
 #### SAML Components
-•	Relay State: [insert notes]
-•	SAMLResponse: [insert notes]
+* Relay State: [insert notes]
+* SAMLResponse: [insert notes]
 
 #### PoC (COMP6843)
 1.	Intercept a SAML request between the Service Provider (SP) and Identity Provider (IDP)
@@ -20,7 +20,7 @@
 5.	Profit
 
 #### Remediation
-<a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a>
-<a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
+* <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
+* <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 ## XML – XML External Entities
