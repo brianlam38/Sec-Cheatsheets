@@ -8,6 +8,7 @@ _Published 16th April 2018_
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
 
+## Content
 
 ### Session Management
 ---
