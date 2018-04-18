@@ -41,7 +41,7 @@ Modifying `NotBefore` or `NotOnOrAfter` values.
 Modifying SAML Attributes
 * Some attributes may exist such as `userType`, which you may change to perform privilege escalation.
 
-**Remediation**  
+**Mitigation**
 
 <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
 <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
@@ -140,7 +140,12 @@ _WAF_: Use `PUBLIC` if `SYSTEM` is blocked.
 _Encoding_: Change encoding e.g. UTF-8 -> UTF-16 `<?xml version="1.0" encoding="UTF-16"?>`.  
 ^Use `cat file.xml | iconv -f UTF-8 -t UTF-16 > file_utf16.xml` to convert to UTF-16.  
 
-**Remediation**
+**Mitigation**
+
+IF POSSIBLE: Disable DTD's (`<!DOCTYPE x [ ]>`).  
+ELSE :Disallow loading XML external entities.  
+
+
 
 ### PHP Un-serialize
 ---
@@ -202,7 +207,7 @@ echo urlencode(serialize(new PHPObjectInjection));
 //'O:18:"PHPObjectInjection":1:{s:6:"inject";s:26:"system(\'cat+/etc/passwd\');";}'
 ```
 
-**Remediation**
+**Mitigation**
 
 Do not use unserialize() function with user-supplied input, use JSON functions instead i.e. `json_encode()` / `json_decode()`.
 
@@ -231,6 +236,6 @@ _Misconfigurations_: example write-up on Twitter CSP Bypass (misconfiguration)
 _JSONP_: including controlled JavaScript on the domain.  
 _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 
-**Remediation**  
+**Mitigation**
 
 
