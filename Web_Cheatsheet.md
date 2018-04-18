@@ -16,6 +16,35 @@ Web Application Security Cheatsheet
 ### Session Management
 ---
 
+**Summary**  
+
+Anatomy of a session cookie:
+
+[ image ]
+
+**Exploitation**  
+
+Session Creation:  
+* Attack the PRNG (pseudo-number-generator) and generate my own token?
+* Hijack a valid user session by stealing their token after they log in.  
+
+Session Handling / Transfer / Usage:  
+* Steal the user cookie via. XSS.
+  * Mitigated by `HttpOnly` flag: instructs web browsers not to allow scripts (e.g. JavaScript or VBscript) an ability to access the cookies via the DOM document.cookie object)
+* Steal the user cookie via. redirection to an external page.  
+
+Session Clean-Up:
+* Check / change cookie expiration.
+
+
+**Mitigation**  
+
+Perform server-side validation of a user's session.  
+New tokens should be issued on login / privilege change.  
+Don't reveal session tokens in a URL parameter.  
+Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
+
+
 ### Authentication - OAuth
 ---
 
@@ -28,10 +57,9 @@ XML input containing a reference to an external entity which is processed by a w
 
 <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a> 
 
-**SAML Components**  
-
-_Relay State_: a token to reference state information maintained by the Service Provider (SP).  
-_SAMLResponse_: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
+SAML Components:
+* _Relay State_: a token to reference state information maintained by the Service Provider (SP).  
+* _SAMLResponse_: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
 **Exploitation**  
 
