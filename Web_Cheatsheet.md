@@ -20,7 +20,13 @@ Web Application Security Cheatsheet
 
 Anatomy of a session cookie:
 
-[ image ]
+_REQUEST: Server -> Client_
+![Server -> Client](Resources/Cookie1.png)  
+
+_REQUEST: Client -> Server_  
+![Client -> Server](Resources/Cookie2.png)  
+
+
 
 **Exploitation**  
 
