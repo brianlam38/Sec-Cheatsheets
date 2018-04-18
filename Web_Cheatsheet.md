@@ -28,8 +28,7 @@ _Published 16th April 2018_
 
 XML input containing a reference to an external entity which is processed by a weakly configured XML parser, enabling disclosure of confidential data, denial of service, server side request forgery, port scanning from the perspective of the machine where the parser is located, and other system impacts. (OWASP)
 
-<a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>  
-<a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
+<a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a> 
 
 **SAML Components**  
 _Relay State_: a token to reference state information maintained by the Service Provider (SP).  
@@ -37,6 +36,14 @@ _SAMLResponse_: the response from the Identity Provider (IDP) containing the bas
 
 **Attack Vectors**  
 
+Modifying `NotBefore` or `NotOnOrAfter` values.
+* Change values to a datetime which is valid within the time you want to make the malicious request.
+
+Modifying SAML Attributes
+* Some attributes may exist such as `userType`, which you may change to perform privilege escalation.
+
+Signature Attacks
+* [ need more info ]
 
 **Remediation**  
 <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>  
