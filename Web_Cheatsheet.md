@@ -30,7 +30,7 @@ Session Creation:
 
 Session Handling / Transfer / Usage:  
 * Steal the user cookie via. XSS.
-  * Mitigated by `HttpOnly` flag: instructs web browsers not to allow scripts (e.g. JavaScript or VBscript) an ability to access the cookies via the DOM document.cookie object)
+  * Mitigated by `HttpOnly` flag: instructs web browsers not to allow scripts to access cookies. via the DOM document.cookie object.
 * Steal the user cookie via. redirection to an external page.  
 
 Session Clean-Up:
