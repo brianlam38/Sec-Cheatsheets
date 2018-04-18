@@ -6,7 +6,7 @@ Web Application Security Cheatsheet
 - [Session Management](#session-management)  
 - [Authentication - OAuth](#authentication-oath) 
 - [Authentication - SAML](#authentication-saml)  
-- [XML - XML External Entities (XXE)](#xml---xml-external-entities)  
+- [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
 - [PHP Un-serialization](#php-un-serialize)  
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
