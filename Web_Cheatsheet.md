@@ -4,6 +4,7 @@ Web Application Security Cheatsheet
 ## Table of Contents
 
 - [Session Management](#session-management)  
+- [Access Controls](#access-controls)  
 - [Authentication - OAuth](#authentication-oath) 
 - [Authentication - SAML](#authentication-saml)  
 - [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
@@ -12,6 +13,9 @@ Web Application Security Cheatsheet
 - [Advanced XSS - Sandbox Escapes](#advanced-xss---sandbox-escapes)  
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy-bypass)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy-bypass)
+- [SQL Injection](#sql-injection)
+- [Advanced Injection](#advanced-injection)
+- [AWS and Cloud](#amazon-web-services-and-cloud)
 
 ## Content
 
@@ -62,6 +66,18 @@ Destroy sessions tokens appropriately: implement token expiration, avoid token r
 Disable web-browser cross-tab sessions.  
 Force session logout on web browser window close events.  
 
+### Access Controls
+---
+
+**Summary**  
+
+
+**Exploitation**  
+
+
+**Mitigation**  
+
+
 
 ### Authentication - OAuth
 ---
@@ -69,9 +85,7 @@ Force session logout on web browser window close events.
 **Summary**  
 
 
-
 **Exploitation**  
-
 
 
 **Mitigation**  
@@ -318,6 +332,18 @@ _JSONP_: including controlled JavaScript on the domain.
 _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 
 **Mitigation**
+
+
+### Server-Side Request Forgery
+---
+
+**Summary**  
+
+
+**Exploitation**  
+
+
+**Mitigation**  
 
 
 ### SQL Injection
