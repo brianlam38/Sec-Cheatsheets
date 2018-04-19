@@ -60,18 +60,18 @@ Modifying SAML Attributes
 
 **Summary**
 
-Entity Types:
-* _General entities_ - can be used in XML content like &name;  
-  `<!ENTITY name "Hello World">`  
-* _Parameter entities_ - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;.  
-  `<!ENTITY % name "Hello World">`  
-  `<!ENTITY % name "Hello %myEntity;">`  
-* _External entities_ - entities with query to external (not declared in current XML document) resource (can be used both: general entities and parameter entities)  
-  `<!ENTITY name SYSTEM "URI/URL">`  
-  `<!ENTITY name PUBLIC "any_text" "URI/URL">`  
-* _External entities_ - can be used for doctypes too:  
-  `<!DOCTYPE name SYSTEM "address.dtd" [...]>`  
-  `<!DOCTYPE name PUBLIC "any text" "http://evil.com/evil.dtd">`  
+
+_General entities_ - can be used in XML content like &name;  
+`<!ENTITY name "Hello World">`  
+_Parameter entities_ - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;.  
+`<!ENTITY % name "Hello World">`  
+`<!ENTITY % name "Hello %myEntity;">`  
+_External entities_ - entities with query to external (not declared in current XML document) resource (can be used both: general entities and parameter entities)  
+`<!ENTITY name SYSTEM "URI/URL">`  
+`<!ENTITY name PUBLIC "any_text" "URI/URL">`  
+_External entities_ - can be used for doctypes too:  
+`<!DOCTYPE name SYSTEM "address.dtd" [...]>`  
+`<!DOCTYPE name PUBLIC "any text" "http://evil.com/evil.dtd">`  
 
 _XML DTD (XML Document Type Declaration)_ is used to define the structure of the XML document, with a list of legal elements.  
 * Provides a way for applications to share data using a common structure, to verify that the data received is valid.  
