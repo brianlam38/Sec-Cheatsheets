@@ -17,9 +17,7 @@ Web Application Security Cheatsheet
 - [Advanced Injection](#advanced-injection)
 - [AWS and Cloud](#amazon-web-services-and-cloud)
 
-## Content
-
-### Session Management
+## Session Management
 ---
 
 **Summary**  
@@ -67,7 +65,7 @@ Session Clean-up:
 * Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
 * Force session logout on web browser window close events.  
 
-### Access Controls
+## Access Controls
 ---
 
 **Summary**  
@@ -80,7 +78,7 @@ Session Clean-up:
 
 
 
-### Authentication - OAuth
+## Authentication - OAuth
 ---
 
 **Summary**  
@@ -93,7 +91,7 @@ Session Clean-up:
 
 
 
-### Authentication - SAML
+## Authentication - SAML
 ---
 
 **Summary**  
@@ -108,6 +106,8 @@ SAML Components:
 
 **Exploitation**  
 
+_Make sure to try [XXE attack vectors](#xml--xml-external-entities)_  
+
 Modifying `NotBefore` or `NotOnOrAfter` values.
 * Change values to a datetime which is valid within the time you want to make the malicious request.
 
@@ -120,7 +120,7 @@ Modifying SAML Attributes
 <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
 
 
-### XML – XML External Entities
+## XML – XML External Entities
 ---
 
 **Summary**
@@ -216,7 +216,7 @@ IF POSSIBLE: Disable DTD's (`<!DOCTYPE x [ ]>`).
 ELSE: Disallow loading XML external entities (entities with queries to external resources).  
 
 
-### PHP Un-serialize
+## PHP Un-serialize
 ---
 
 **Summary**  
@@ -280,7 +280,7 @@ echo urlencode(serialize(new PHPObjectInjection));
 
 Do not use unserialize() function with user-supplied input, use JSON functions instead i.e. `json_encode()` / `json_decode()`.
 
-### Cross-Site Scripting
+## Cross-Site Scripting
 ---
 
 **Summary**
@@ -290,7 +290,7 @@ Do not use unserialize() function with user-supplied input, use JSON functions i
 **Mitigation**
 
 
-### Advanced XSS - Sandbox Escapes
+## Advanced XSS - Sandbox Escapes
 ---
 
 **Summary**  
@@ -300,7 +300,7 @@ Do not use unserialize() function with user-supplied input, use JSON functions i
 **Mitigation**
 
 
-### Advanced XSS - Same Origin Policy Bypass
+## Advanced XSS - Same Origin Policy Bypass
 ---
 
 **Summary**  
@@ -310,7 +310,7 @@ Do not use unserialize() function with user-supplied input, use JSON functions i
 **Mitigation**
 
 
-### Advanced XSS - Content Security Policy Bypass
+## Advanced XSS - Content Security Policy Bypass
 ---  
 
 **Summary**  
@@ -335,7 +335,7 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 **Mitigation**
 
 
-### Server-Side Request Forgery
+## Server-Side Request Forgery
 ---
 
 **Summary**  
@@ -347,7 +347,7 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 **Mitigation**  
 
 
-### SQL Injection
+## SQL Injection
 ---  
 
 **Summary**  
@@ -357,7 +357,7 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 **Mitigation**
 
 
-### Advanced Injection
+## Advanced Injection
 ---  
 
 **Summary**  
