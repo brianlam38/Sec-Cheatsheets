@@ -55,16 +55,17 @@ XXS via. cookies:
 
 Session Creation:
 * New tokens should be issued on login / privilege change.  
+* Don't use persistent cookies or cacheable cookies.
+* Set `HttpOnly` flag.  
+
+Session Handling / Transfer / Usage:  
+* Perform server-side validation of a user's session.  
+* Don't reveal session tokens in a URL parameter.  
+* Disable web-browser cross-tab sessions.  
 
 Session Clean-up:
-* 
-
-Perform server-side validation of a user's session.  
-  
-Don't reveal session tokens in a URL parameter.  
-Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
-Disable web-browser cross-tab sessions.  
-Force session logout on web browser window close events.  
+* Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
+* Force session logout on web browser window close events.  
 
 ### Access Controls
 ---
