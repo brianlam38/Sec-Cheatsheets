@@ -65,7 +65,9 @@ _XML DTD (XML Document Type Declaration)_ is used to define the structure of the
 * Allows creation of Entities.  
 
 _General entities_ - can be used in XML content like &name;  
-`<!ENTITY name "Hello World">`  
+```xml
+<!ENTITY name "Hello World">
+```
 
 _Parameter entities_ - can be used inside doctype definition like %name; (parameter entities can insert new entities) and inside entities values like %name;  
 `<!ENTITY % name "Hello World">`  
