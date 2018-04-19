@@ -3,17 +3,13 @@ Web Application Security Cheatsheet
 
 ## Table of Contents
 
-- [Session Management](#session-management)  
-- [Access Controls](#access-controls)  
 - [Authentication - OAuth](#authentication-oath) 
 - [Authentication - SAML](#authentication-saml)  
 - [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
-- [PHP Un-serialization](#php-un-serialize)  
-- [Cross-Site Scripting (XSS)](#cross-site-scripting)  
+- [PHP Un-serialization](#php-un-serialize)   
 - [Advanced XSS - Sandbox Escapes](#advanced-xss---sandbox-escapes)  
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy-bypass)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy-bypass)
-- [SQL Injection](#sql-injection)
 - [Advanced Injection](#advanced-injection)
 - [AWS and Cloud](#amazon-web-services-and-cloud)
 
