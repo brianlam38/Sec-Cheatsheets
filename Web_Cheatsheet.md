@@ -8,6 +8,7 @@ Web Application Security Cheatsheet
 - [Authentication - SAML](#authentication-saml)  
 - [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
 - [PHP Un-serialization](#php-un-serialize)  
+- [Cross-Site Scripting (XSS)](#cross-site-scripting)  
 - [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
 - [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
 
@@ -32,7 +33,8 @@ _REQUEST: Client -> Server_
 
 Session Creation:  
 * Attack the PRNG (pseudo-number-generator) and generate my own token?
-* Hijack a valid user session by stealing their token after they log in.  
+  * Perform a brute force attack if PRNG is weak / patterns can be inferred.
+* Hijack a valid user session by stealing their token after they log in. 
 
 Session Handling / Transfer / Usage:  
 * Steal the user cookie via. XSS.
@@ -42,6 +44,9 @@ Session Handling / Transfer / Usage:
 Session Clean-Up:
 * Check / change cookie expiration.
 
+XXS via. cookies:
+* 
+
 
 **Mitigation**  
 
@@ -49,6 +54,9 @@ Perform server-side validation of a user's session.
 New tokens should be issued on login / privilege change.  
 Don't reveal session tokens in a URL parameter.  
 Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
+Disable web-browser cross-tab sessions.  
+Force session logout on web browser window close events.  
+
 
 
 ### Authentication - OAuth
@@ -244,6 +252,9 @@ echo urlencode(serialize(new PHPObjectInjection));
 **Mitigation**
 
 Do not use unserialize() function with user-supplied input, use JSON functions instead i.e. `json_encode()` / `json_decode()`.
+
+### Cross-Site Scripting
+---
 
 ### Advanced XSS - Same Origin Policy
 ---
