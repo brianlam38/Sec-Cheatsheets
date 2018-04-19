@@ -3,7 +3,7 @@ Web Application Security Cheatsheet - ADVANCED
 
 ## Table of Contents
 
-- [Authentication - OAuth](#authentication---oath) 
+- [Authentication - OAuth](#authentication---oauth) 
 - [Authentication - SAML](#authentication---saml)  
 - [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
 - [PHP Un-serialization](#php-un-serialize)   
