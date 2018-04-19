@@ -22,21 +22,18 @@ Web Application Security Cheatsheet
 
 **Summary**  
 
-Anatomy of a session cookie:
-
+Anatomy of a session cookie:  
 _REQUEST: Server -> Client_
 ![Server -> Client](Resources/Cookie1.png)  
-
 _REQUEST: Client -> Server_  
 ![Client -> Server](Resources/Cookie2.png)  
-
 
 **Exploitation**  
 
 Session Creation:  
 * Attack the PRNG (pseudo-number-generator) and generate my own token?
   * Perform a brute force attack if PRNG is weak / patterns can be inferred.
-* Hijack a valid user session by stealing their token after they log in. 
+* Hijack a valid user session by stealing their token after they log in.  
 
 Session Handling / Transfer / Usage:  
 * Steal the user cookie via. XSS.
@@ -44,10 +41,10 @@ Session Handling / Transfer / Usage:
 * Steal the user cookie via. redirection to an external page.  
 
 Session Clean-Up:
-* Check / change cookie expiration.
+* Check / change cookie expiration.  
 
 XXS via. cookies:
-* Insert XSS payload into cookie content.
+* Insert XSS payload into cookie content.  
 
 **Mitigation**  
 
@@ -88,7 +85,6 @@ Session Clean-up:
 
 
 **Mitigation**  
-
 
 
 ## Authentication - SAML
@@ -367,7 +363,7 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 **Mitigation**
 
 
-### Amazon Web Services and Cloud
+## Amazon Web Services and Cloud
 ---  
 
 **Summary**  
