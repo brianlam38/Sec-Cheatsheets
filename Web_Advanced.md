@@ -166,6 +166,10 @@ Since PHP allows object serialisation, attackers can pass in a malicious string 
 _See more_: <a href="https://www.owasp.org/index.php/PHP_Object_Injection">PHP Object Injection</a>  
 _PHP Magic Methods_: http://php.net/manual/en/language.oop5.magic.php  
 
+Anatomy of a PHP Object:
+![PHP Object Unserialized](Resources/PHP_Unserialize.png)
+
+
 **Exploitation**
 
 Example: Deleting an arbitrary file via. Path Traversal
