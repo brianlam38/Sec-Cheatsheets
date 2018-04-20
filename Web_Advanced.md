@@ -19,12 +19,48 @@ Web Application Security Cheatsheet - ADVANCED
 
 **Summary**  
 
+_Open Authentication_ is where you give access to a 3rd party to use your account.
+
+![OAuth Diagram](Resources/OAuth.png) 
+
+_OAuth1 (Transport-independent)_: Security is delegated to cryptographically signing each message. If a message within the communication is signed improperly, the entire transaction will be invalidated.  
+
+_OAuth2 (Transport-dependent)_: Security is delegated to HTTPS/TLS encryption. Improper TLS configuration or failure to properly validate a certificate can lead to a MiTM attack.  
+
+Four types of OAuth grants:
+1. _Authorisation Grant_: shown above, a redirection-based flow.
+  * The most commonly used type of grant.
+2. _Implicit Grant_: used with mobile apps or web apps.
+  * Is a redirection-based flow except ACCESS_TOKEN is given to the USER to forward to the CLIENT, rather than given to the CLIENT directly.
+3. _Resource Owner Password Credentials Grant_: used with trusted applications, such as those owned by the service itself.
+  * The USER provides user/password directly to the CLIENT, which uses the creds to obtain an ACCESS_TOKEN from the SERVICE. This should only be used if the user can trust the application. (e.g. Snap -> Bitmoji access)
+4. _Client Credentials Grant_: used with application’s API access.
+  * CLIENT requests ACCESS_TOKEN by sending its creds, its CLIENT_ID and CLIENT_SECRET to the AUTH_SERVER.  
 
 **Exploitation**  
 
+_Eavesdropping or leaking Authorisation codes_: referrer header leakage, logs, open redirect, browser history.  
+
+_Open Redirect_: victim can receive a URL which looks legit but will redirect them to a malicious URL.  
+
+_Obtaining Authorisation codes from Auth Server DB_  
+
+_CSRF against OAuth v2_:
+* (CSRF: Forces user to execute unwanted actions on a site that they are currently authenticated in)
+* (Cause: App does not verify if an action was intended to be initiated by the user and not a malicious 3rd party)
+* (Defence: CSRF Token / “State” token in OAuth)
+1.	Attacker assumes Victim is logged in on consumer site. Attacker logins and triggers an OAuth workflow.
+2.	Attacker places their Authorisation Grant redirect URL(http://consumer-site.example/auth?code=12345”) on a web page (https://evil.com)
+3.	Attacker phishes victim to visit the site, which will request the Authorisation grant URL.
+4.	By visiting the Authorisation grant URL, the victim has authorised the attacker to have full access to the victim’s account on the consumer site.  
 
 **Mitigation**  
 
+Open Redirect defences:
+* TLS encryption, strong authentication between client/server, allow only one-use token, reduce scope of tokens, flush browser cache.
+
+Defences against obtaining Authorisation codes from Auth Server DB:
+* Parameterize your queries, store access tokens with a one-way method, good DB security.  
 
 ## Authentication - SAML
 ---
