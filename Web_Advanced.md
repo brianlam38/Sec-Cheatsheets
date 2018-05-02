@@ -356,8 +356,9 @@ OR
 <?php passthru(['w']); ?>
 ```
 
-Examples:
+Writeups:
 * https://roguecod3r.wordpress.com/2014/03/17/lfi-to-shell-exploiting-apache-access-log/
+* http://resources.infosecinstitute.com/local-file-inclusion-code-execution/#gref
 
 **Mitigation**
 
