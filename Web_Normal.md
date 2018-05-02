@@ -104,6 +104,10 @@ Dump everything + level 4 tests + 10 threads.
 Dump a specific table within a database  
 `python sqlmap.py -u https://example.com/?id=1 --dump -D DATABASE -T TABLENAME`  
 
+Enumerate information inside `information_schema.tables`:
+* This is a standard MySQL table which will contain metadata for every table within a database.
+
+
 
 
 **Mitigation**
