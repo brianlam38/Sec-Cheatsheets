@@ -331,9 +331,7 @@ STEP #2: Figure out where the logfiles are. Example locations:
 /etc/php5/cli/php.ini
 /usr/local/lib/php.ini
 /etc/php.ini
-```
-  Also check Apache logs:
-```
+  
 /var/log/apache2/access.log
 /var/log/httpd/error_log
 /var/log/apache2/error.log
