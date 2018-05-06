@@ -359,6 +359,7 @@ OR
 Writeups:
 * https://roguecod3r.wordpress.com/2014/03/17/lfi-to-shell-exploiting-apache-access-log/
 * http://resources.infosecinstitute.com/local-file-inclusion-code-execution/#gref
+* https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601
 
 **Mitigation**
 
