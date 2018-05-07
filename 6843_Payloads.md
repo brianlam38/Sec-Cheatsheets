@@ -18,6 +18,11 @@ cd /home/ec2-user/sec_tools/RECON/aquatone          // go to aquatone
 aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
 cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
 ```
+**GoBuster DNS Mode**
+```
+See below instructions @ dir bruteforcing.
+go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
+```
 
 ### Recon: Directory Bruteforcing
 ---
