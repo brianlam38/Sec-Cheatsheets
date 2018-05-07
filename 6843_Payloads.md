@@ -1,6 +1,14 @@
 # 6843 CMDS + PAYLOADS
 Copy pasta some quick access commands + payloads for CTF challenges + exam.
 
+### Common 6843 words
+---
+```
+noone
+sketch
+sketchy
+```
+
 ### Recon: Subdomain Bruteforcing
 ---
 **Aquatone**
