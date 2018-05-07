@@ -32,4 +32,14 @@ cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
 go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
 ```
 
+### XSS
+---
+
+### SQLi
+---
+
+### Advanced Injection
+---
+
+
 
