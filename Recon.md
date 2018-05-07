@@ -14,6 +14,11 @@ Recon will help you prioritise what you should focus on for penetration testing.
   * `host [domain name]` to quickly check if a domain exists by performing DNS lookups.
 4. Use a tool such as `AltDNS` to discover additional sub-subdomains using subdomains you have found already.
 
+## Directory Bruteforcing
+
+Use https://github.com/OJ/gobuster.
+* `go run main.go -u [ https://example.com ] -w [ wordlist.txt ]`
+
 ## Network Mapping
 
 **Port Scanning**  
