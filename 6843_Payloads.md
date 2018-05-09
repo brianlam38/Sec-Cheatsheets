@@ -1,10 +1,16 @@
 # 6843 CMDS + PAYLOADS
 Copy pasta some quick access commands + payloads for CTF challenges + exam.
 
-### Setup: EC2 Web Server
+### Security Setup:
+---
+**EC2 Web Server**
 1. Log in to EC2 instance.
 2. Launch HTTP server `python -m SimpleHTTPServer 80`
 3. Hit it with requests / capture some admin cookies :)
+
+**Alternatives to capture requests**
+* https://requestbin.fullcontact.com/
+* http://webhookinbox.com/
 
 ### Common 6843 words
 ---
