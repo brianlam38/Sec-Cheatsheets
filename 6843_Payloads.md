@@ -1,7 +1,9 @@
-# 6843 CMDS + PAYLOADS
-Copy pasta some quick access commands + payloads for CTF challenges + exam.
+# 6843 CMDS + PAYLOADS  
+Copy pasta some quick access commands + payloads for CTF challenges + exam.  
+
 ---
-### Security Setup:
+### Security Setup
+---
 
 **EC2 Web Server**
 1. Log in to EC2 instance.
@@ -11,8 +13,10 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 **Alternatives to capture requests**
 * https://requestbin.fullcontact.com/
 * http://webhookinbox.com/
+
 ---
 ### Common 6843 words
+---
 
 ```
 noone
@@ -21,6 +25,7 @@ sketchy
 ```
 ---
 ### Recon: Subdomain Bruteforcing
+---
 
 **Aquatone**
 ```
@@ -36,17 +41,23 @@ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run 
 ```
 ---
 ### Recon: Directory Bruteforcing
+---
 
 **GoBuster**
 ```
 cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
 go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
 ```
+
+
 ---
 ### XSS
+---
+
 
 ---
 ### SQLi
+---
 
 **Authentication Bypass
 ```
@@ -56,6 +67,7 @@ admin' --
 ' or '1'='1 --
 ```
 
+---
 ### Advanced Injection
 ---
 
