@@ -1,8 +1,8 @@
 # 6843 CMDS + PAYLOADS
 Copy pasta some quick access commands + payloads for CTF challenges + exam.
-
-### Security Setup:
 ---
+### Security Setup:
+
 **EC2 Web Server**
 1. Log in to EC2 instance.
 2. Launch HTTP server `python -m SimpleHTTPServer 80`
@@ -11,17 +11,17 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 **Alternatives to capture requests**
 * https://requestbin.fullcontact.com/
 * http://webhookinbox.com/
-
-### Common 6843 words
 ---
+### Common 6843 words
+
 ```
 noone
 sketch
 sketchy
 ```
-
-### Recon: Subdomain Bruteforcing
 ---
+### Recon: Subdomain Bruteforcing
+
 **Aquatone**
 ```
 ssh ec2-user@tehec2instanceidduh.aws.etc.etc        // get in
@@ -34,20 +34,20 @@ cat ~/aquatone/example.com/hosts.txt                // show discovered subdomain
 See below instructions @ dir bruteforcing.
 go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
 ```
-
-### Recon: Directory Bruteforcing
 ---
+### Recon: Directory Bruteforcing
+
 **GoBuster**
 ```
 cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
 go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
 ```
-
+---
 ### XSS
----
 
-### SQLi
 ---
+### SQLi
+
 **Authentication Bypass
 ```
 admin' --
