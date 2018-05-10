@@ -69,6 +69,16 @@ admin' --
 ---
 ### XSS Normal + Advanced
 ---
+**Useful JS web API methods for XSS**  
+Redirect a user/admin to your url to steal their cookies.
+```
+fetch()
+window.onload()
+document.location()
+window.location.replace()
+window.location.reload()
+window.location.assign()
+```
 
 **CSP Bypass**  
 Bypass via. JSONP API callback param:
