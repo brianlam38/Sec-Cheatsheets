@@ -40,8 +40,8 @@ nmap -p- [ hostname/ip ]
 Scan most common ports (fast):
 nmap -F [ hostname/ip ]
 
-
-
+Increase Verbosity / Debugging:
+nmap -vv OR -dd [ hostname/ip ]
 ```
 
 
