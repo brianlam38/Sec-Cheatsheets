@@ -17,11 +17,14 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 ---
 ### Common 6843 words
 ---
-
+Port Numbers, Directories, Subdomains... be imaginative.
 ```
 noone
 sketch
 sketchy
+9447
+6841
+6441
 ```
 ---
 ### Recon: Subdomain Bruteforcing
