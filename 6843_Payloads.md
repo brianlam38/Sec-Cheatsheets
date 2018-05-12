@@ -6,9 +6,8 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 ---
 
 **EC2 Web Server**
-1. Log in to EC2 instance.
-2. Launch HTTP server `python -m SimpleHTTPServer 80`
-3. Hit it with requests / capture some admin cookies :)
+1. Launch HTTP server `python -m SimpleHTTPServer 80`
+2. Hit it with requests / capture some admin cookies :)
 
 **Alternatives to capture requests**
 * https://requestbin.fullcontact.com/
@@ -17,15 +16,35 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 ---
 ### Common 6843 words
 ---
-Port Numbers, Directories, Subdomains... be imaginative.
+Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
 noone
 sketch
 sketchy
-9447
-6841
-6441
+9447 / 6841 / 6441
+robots.txt
 ```
+
+---
+### Recon: Network Mapping
+---
+
+**Nmap**
+```
+Aggressive service/OS detection:
+nmap -sV --version-intensity 5 [ hostname/ip ]
+
+Scan all ports:
+nmap -p- [ hostname/ip ]
+
+Scan most common ports (fast):
+nmap -F [ hostname/ip ]
+
+
+
+```
+
+
 ---
 ### Recon: Subdomain Bruteforcing
 ---
