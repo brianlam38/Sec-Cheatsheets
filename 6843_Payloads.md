@@ -29,6 +29,12 @@ robots.txt
 ### Recon: Network Mapping
 ---
 
+**Nslookup**
+```
+Reverse DNS query:
+nslookup [ hostname/ip ]
+```
+
 **Nmap**
 ```
 Aggressive service/OS detection:
@@ -138,5 +144,6 @@ Note:
 ---
 ### Server-Side Request Forgery
 ---
+Summary: Make a server perform a request to another
 
 
