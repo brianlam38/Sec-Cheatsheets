@@ -25,6 +25,10 @@ sketchy
 robots.txt
 flag
 ```
+Common /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passwd")  
+`https://www.tldp.org/LDP/sag/html/etc-fs.html`
+
+
 
 ---
 ### Recon: Network Mapping
