@@ -61,12 +61,22 @@ nmap -vv OR -dd [ hostname/ip ]
 ### Recon: Subdomain Bruteforcing
 ---
 
-**Aquatone**
+**LEVEL 1: Aquatone**
 ```
 aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
 cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
 ```
-**GoBuster DNS Mode**
+
+**LEVEL 2: AltDNS**
+```
+./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
+
+-i input.txt  => list of known subdomains.
+-o output.txt => contain list of altered/permuted subdomains that have been tested.
+-r            => resolves each subdomain
+-w wordlist.txt => list of words that you would like to permute your current subdomains with.
+```
+**ALTERNATIVE: GoBuster DNS Mode**
 ```
 See below instructions @ dir bruteforcing.
 go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
