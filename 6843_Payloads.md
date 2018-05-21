@@ -7,8 +7,8 @@ Automate your shit as much as possible because time is important + you dont have
 
 - [Security Setup](#Security-Setup) 
 - [Common 6843 words](#Common-6843-words)  
-- [Recon: Network Mapping](#Recon:-Network-Mapping)
-- [Recon: Subdomain + File/Dir Bruteforcing](#Recon:-Subdomain-+-File/Dir-Bruteforcing)
+- [Recon: Network Mapping](#Recon---Network-Mapping)
+- [Recon: Subdomain + File/Dir Bruteforcing](#Recon---Subdomain-+-File/Dir-Bruteforcing)
 - [Authentication / Session Management](#Authentication-/-Session-Management)
 
 ---
@@ -40,7 +40,7 @@ List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passw
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
 
 ---
-### Recon: Network Mapping
+### Recon - Network Mapping
 ---
 
 **Nslookup**
@@ -65,7 +65,7 @@ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 ---
-### Recon: Subdomain + File/Directory Bruteforcing
+### Recon - Subdomain + File/Directory Bruteforcing
 ---
 
 **LEVEL 1: Aquatone**
