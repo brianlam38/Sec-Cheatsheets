@@ -310,7 +310,7 @@ More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tr
 ### REST APIs
 ---
 
-Common Findings / Things to look out for:
+**Common Findings / Things to look out for:**
 
 Cookie / Session Token:
 * Decode base64, may reveal sensitive information
