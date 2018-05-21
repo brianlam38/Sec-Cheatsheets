@@ -41,7 +41,7 @@ Reverse DNS query:
 nslookup [ hostname/ip ]
 ```
 
-**Nmap**
+**Nmap**  
 ```
 Aggressive service/OS detection:
 nmap -sV --version-intensity 5 [ hostname/ip ]
@@ -56,12 +56,8 @@ Increase Verbosity / Debugging:
 nmap -vv OR -dd [ hostname/ip ]
 ```
 
-**Common Ports**
-
-
-
 ---
-### Recon: Subdomain Bruteforcing
+### Recon: Subdomain + File/Directory Bruteforcing
 ---
 
 **LEVEL 1: Aquatone**
@@ -69,7 +65,6 @@ nmap -vv OR -dd [ hostname/ip ]
 aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
 cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
 ```
-
 **LEVEL 2: AltDNS**
 ```
 ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
@@ -79,16 +74,12 @@ cat ~/aquatone/example.com/hosts.txt                // show discovered subdomain
 -r            => resolves each subdomain
 -w wordlist.txt => list of words that you would like to permute your current subdomains with.
 ```
-**ALTERNATIVE: GoBuster DNS Mode**
+**GoBuster DNS Mode**
 ```
 See below instructions @ dir bruteforcing.
 go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
 ```
----
-### Recon: Directory Bruteforcing
----
-
-**GoBuster**
+**GoBuster Directory Mode**
 ```
 cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
 go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
@@ -284,9 +275,7 @@ Common Findings / Things to look out for:
 
 Rest API fuzzer (Fuzzapi):  
 https://github.com/Fuzzapi/fuzzapi
-```
 
-```
 
 
 
