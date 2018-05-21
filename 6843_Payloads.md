@@ -5,11 +5,11 @@ Automate your shit as much as possible because time is important + you dont have
 
 # Index
 
-- [Security Setup](#Security-Setup) 
-- [Common 6843 words](#Common-6843-words)  
-- [Recon: Network Mapping](#Recon---Network-Mapping)
-- [Recon: Subdomain + File/Dir Bruteforcing](#Recon---Subdomain-+-File/Dir-Bruteforcing)
-- [Authentication / Session Management](#Authentication-/-Session-Management)
+- [Security Setup](#security-setup) 
+- [Common 6843 words](#common-6843-words)  
+- [Recon: Network Mapping](#recon---network-mapping)
+- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-+-file/dir-bruteforcing)
+- [Authentication / Session Management](#authentication-/-session-management)
 
 ---
 ### Security Setup
