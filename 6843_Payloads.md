@@ -1,6 +1,8 @@
 # 6843 CMDS + PAYLOADS  
 Copy pasta some commands + payloads for CTF-style challenges + COMP6843 final exam.
 
+Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
+
 ---
 ### Security Setup
 ---
@@ -26,10 +28,8 @@ carey / cry
 robots.txt
 flag
 ```
-Common /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passwd")  
+List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passwd")  
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
-
-
 
 ---
 ### Recon: Network Mapping
@@ -55,6 +55,9 @@ nmap -F [ hostname/ip ]
 Increase Verbosity / Debugging:
 nmap -vv OR -dd [ hostname/ip ]
 ```
+
+**Common Ports**
+
 
 
 ---
@@ -252,6 +255,36 @@ Note:
 ---
 Summary: Attacker can make requests from a server to target its internal systems (i.e intranet) by bypassing its firewalls.
 
+
+---
+### Amazon Web Services
+---
+
+
+
+---
+### REST APIs
+---
+
+Common Findings / Things to look out for:
+* Cookie / Session Token
+  * Decode base64, may reveal sensitive information
+  * Check expiry, re-use, predictability.
+* Insecure Direct Object Referencing
+  * Changing ID / param values in the request to access/change/delete unintended resources.
+  * E.g. FB API vulnerability: `DELETE /<commend id>` to remove any user's comments.
+* SQL injection / XSS
+  * Injection queries/javascript into requests to API endpoints.
+* Test `Accept` header
+  * The media type(s) that the client tells the server it can understand.
+* Test `Content-Type` header
+  * The media type(s) that the server tells the client what the response content actually is.
+
+Rest API fuzzer (Fuzzapi):  
+https://github.com/Fuzzapi/fuzzapi
+```
+
+```
 
 
 
