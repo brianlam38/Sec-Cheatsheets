@@ -86,6 +86,16 @@ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.w
 ```
 
 ---
+### Authentication / Session Management
+---  
+
+Observe:
+* Cookie / Session Token values.
+  * Base64 decode -> change values to admin etc. -> Base64 encode -> Profit.
+* Page Source Code.
+  * View Source -> Look for suspicious comments / sections in code -> Profit.
+
+---
 ### Local/Remote File Inclusion
 ---  
 
