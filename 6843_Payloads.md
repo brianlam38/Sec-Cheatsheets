@@ -11,6 +11,8 @@ Automate your shit as much as possible because time is important + you dont have
 - [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-&-directory-bruteforcing)
 - [Authentication / Session Management](#authentication-&-session-management)
 
+# Content
+
 ---
 ### Security Setup
 ---
