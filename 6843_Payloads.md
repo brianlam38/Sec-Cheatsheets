@@ -269,10 +269,12 @@ Summary: Attacker can make requests from a server to target its internal systems
 Common Findings / Things to look out for:
 * Cookie / Session Token
   * Decode base64, may reveal sensitive information
-  * Check expiry, re-use, predictability.
+  * Check token expiry, token re-use, predictability.
 * Insecure Direct Object Referencing
   * Changing ID / param values in the request to access/change/delete unintended resources.
   * E.g. FB API vulnerability: `DELETE /<commend id>` to remove any user's comments.
+* Check for Privilege Escalation:
+  * Check Access Controls DELETE / PUT methods.
 * SQL injection / XSS
   * Injection queries/javascript into requests to API endpoints.
 * Test `Accept` header
