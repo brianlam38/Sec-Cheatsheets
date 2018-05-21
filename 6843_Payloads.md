@@ -311,20 +311,21 @@ More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tr
 ---
 
 Common Findings / Things to look out for:
-* Cookie / Session Token
-  * Decode base64, may reveal sensitive information
-  * Check token expiry, token re-use, predictability.
-* Insecure Direct Object Referencing
-  * Changing ID / param values in the request to access/change/delete unintended resources.
-  * E.g. FB API vulnerability: `DELETE /<commend id>` to remove any user's comments.
-* Check for Privilege Escalation:
-  * Check Access Controls DELETE / PUT methods.
-* SQL injection / XSS
-  * Injection queries/javascript into requests to API endpoints.
-* Test `Accept` header
-  * The media type(s) that the client tells the server it can understand.
-* Test `Content-Type` header
-  * The media type(s) that the server tells the client what the response content actually is.
+
+Cookie / Session Token:
+* Decode base64, may reveal sensitive information
+* Check token expiry, token re-use, predictability.
+Insecure Direct Object Referencing
+* Changing ID / param values in the request to access/change/delete unintended resources.
+* E.g. FB API vulnerability: `DELETE /<commend id>` to remove any user's comments.
+Check for Privilege Escalation:
+* Check Access Controls DELETE / PUT methods.
+SQL injection / XSS
+* Injection queries/javascript into requests to API endpoints.
+Test `Accept` header
+* The media type(s) that the client tells the server it can understand.
+Test `Content-Type` header
+* The media type(s) that the server tells the client what the response content actually is.
 
 Rest API fuzzer (Fuzzapi):  
 https://github.com/Fuzzapi/fuzzapi
