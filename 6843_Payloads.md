@@ -300,8 +300,14 @@ aws_session_token = {really long access token string}
 
 6. Dump a flag or file content to stdout or download it
 ```
-aws s3 cp s3://ns.agency/flag -    // dump to stdout
-aws s3 cp s3://ns.agency/flag .    // download to current working dir
+$ aws s3 cp s3://ns.agency/flag -    // dump to stdout
+$ aws s3 cp s3://ns.agency/flag .    // download to current working dir
+```
+
+Alternatively, leak AWS Access Keys via. Local File Disclosure or similar vuln:
+```
+LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
+    OR $ cat ~/.aws/credentials
 ```
 
 More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
