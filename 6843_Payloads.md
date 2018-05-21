@@ -8,8 +8,8 @@ Automate your shit as much as possible because time is important + you dont have
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
 - [Recon: Network Mapping](#recon---network-mapping)
-- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-+-file/dir-bruteforcing)
-- [Authentication / Session Management](#authentication-/-session-management)
+- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-+-file-+-dir-bruteforcing)
+- [Authentication / Session Management](#authentication-+-session-management)
 
 ---
 ### Security Setup
@@ -65,7 +65,7 @@ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 ---
-### Recon - Subdomain + File/Directory Bruteforcing
+### Recon - Subdomain + File + Directory Bruteforcing
 ---
 
 **LEVEL 1: Aquatone**
@@ -94,7 +94,7 @@ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.w
 ```
 
 ---
-### Authentication / Session Management
+### Authentication + Session Management
 ---  
 
 Observe:
