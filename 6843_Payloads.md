@@ -173,6 +173,16 @@ page.asp?id=1 and 1=2 -- false
 company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 ```
 
+**Select/Union: Exfiltrating data**
+```
+
+```
+
+**Insert**
+```
+
+```
+
 **Sqlmap Commands**
 ```
 Enumerate everything:
