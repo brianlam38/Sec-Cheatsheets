@@ -86,12 +86,12 @@ $ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ val
 ```
 **GoBuster DNS Mode**  
 ```
-$ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist      // run subdomain bruteforcing
+$ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist
 ```
 
 **GoBuster Directory Mode**  
 ```
-$ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist    // run dir bruteforcing
+$ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist
 ````  
 
 ---
