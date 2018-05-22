@@ -278,7 +278,11 @@ Note:
 ---
 ### Server-Side Request Forgery
 ---
-Summary: Attacker can make requests from a server to target its internal systems (i.e intranet) by bypassing its firewalls.
+Summary: Attacker can make requests from a server to target a system's internals (i.e intranet) by bypassing its firewalls.
+
+SSRF indicators:
+* Network requests that may reference a localhost address: `https://ns.agency/static?r=http://127.0.0.1:[port]/flag.html` (inspect->network)
+* Callback functions
 
 File Protocol:
 ```
@@ -300,9 +304,11 @@ Elastic Search (default port:9200/9300:
 add more
 ```
 
-AWS:
+PHP:
 ```
-add more
+file_get_contents()
+fsockopen()
+curl_exec()
 ```
 
 ---
