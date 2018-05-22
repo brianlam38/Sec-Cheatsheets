@@ -84,12 +84,12 @@ $ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ val
 -r            => resolves each subdomain
 -w wordlist.txt => list of words that you would like to permute your current subdomains with.
 ```
-**GoBuster DNS Mode**  
+**GoBuster DNS Mode**
 ```
 $ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist
 ```
 
-**GoBuster Directory Mode**  
+**GoBuster Directory Mode**
 ```
 $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist
 ````  
