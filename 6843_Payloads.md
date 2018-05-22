@@ -175,12 +175,17 @@ company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 
 **Select/Union: Exfiltrating data**
 ```
-
+add stuff here
 ```
 
 **Insert**
 ```
+add stuff here
+```
 
+**Chained Queries**
+```
+add stuff here
 ```
 
 **Sqlmap Commands**
