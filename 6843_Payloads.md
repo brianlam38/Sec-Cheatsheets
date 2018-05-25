@@ -298,6 +298,7 @@ SSRF indicators:
 * Callback functions.
 * Look for params that may reference internal services.
 * Look for a search input box / any form input that may reference internal services.
+* Look for redirects
 
 File Protocol (port::
 ```
