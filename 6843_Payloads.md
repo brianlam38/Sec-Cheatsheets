@@ -14,7 +14,7 @@ Automate your shit as much as possible because time is important + you dont have
 - [SQL Injection](#SQLi)
 - [Other / Advanced Injections](#Other and Advanced Injections)
 - [XML External Entities](#XXE)
-- [Cross-Site Scripting (Normal and Advanced)](#XSS Normal and Advanced)
+- [Cross-Site Scripting - Normal and Advanced](#XSS Normal and Advanced)
 - [Server-Side Request Forgery](#Server-Side-Request-Forgery)
 - [Amazon Web Services SSRF](#Amazon-Web-Services-SSRF)
 - [REST APIs](#REST-APIs)
