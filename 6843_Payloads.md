@@ -8,8 +8,16 @@ Automate your shit as much as possible because time is important + you dont have
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
 - [Recon: Network Mapping](#recon---network-mapping)
-- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-&-directory-bruteforcing)
-- [Authentication / Session Management](#authentication-&-session-management)
+- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-and-directory-bruteforcing)
+- [Authentication / Session Management](#authentication-and-session-management)
+- [Local / Remote File Inclusion](#Local and Remote File Inclusion)
+- [SQL Injection](#SQLi)
+- [Other / Advanced Injections](#Other and Advanced Injections)
+- [XML External Entities](#XXE)
+- [Cross-Site Scripting (Normal and Advanced)](#XSS Normal and Advanced)
+- [Server-Side Request Forgery](#Server-Side-Request-Forgery)
+- [Amazon Web Services SSRF](#Amazon-Web-Services-SSRF)
+- [REST APIs](#REST-APIs)
 
 # Content
 
@@ -67,7 +75,7 @@ $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 ---
-### Recon - Subdomain & Directory Bruteforcing
+### Recon - Subdomain and Directory Bruteforcing
 ---
 
 **LEVEL 1: Aquatone**
@@ -95,7 +103,7 @@ $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common
 ````  
 
 ---
-### Authentication & Session Management
+### Authentication and Session Management
 ---  
 
 Observe:
@@ -105,7 +113,7 @@ Observe:
   * View Source -> Look for suspicious comments / sections in code -> Profit.
 
 ---
-### Local/Remote File Inclusion
+### Local and Remote File Inclusion
 ---  
 
 STEP #1: Verify existence of LFI/LFD vulnerability.
@@ -203,7 +211,7 @@ $ python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --lev
 ```
 
 ---
-### Other/Advanced Injection
+### Other and Advanced Injections
 ---
 
 **Command Injection**
@@ -229,7 +237,7 @@ original_cmd_by_server $(cat /etc/passwd)
 
 
 ---
-### XXE (XML External Entities)
+### XXE
 ---  
 
 XXE standard:  
@@ -248,7 +256,7 @@ XXE Out-of-Bounds attack:
 
 ```
 ---
-### XSS Normal + Advanced
+### XSS Normal and Advanced
 ---
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
