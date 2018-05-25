@@ -300,7 +300,7 @@ SSRF indicators:
 * Look for a search input box / any form input that may reference internal services.
 * Look for redirects
 
-File Protocol (port::
+File Protocol (access a server's file system)
 ```
 file:///etc/passwd
 file:///proc/self/cmdline
