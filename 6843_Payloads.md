@@ -405,9 +405,5 @@ Test request/response media types:
 * `Accept` header: The media type(s) that the client tells the server it can understand.  
 * `Content-Type` header: The media type(s) that the server tells the client what the response content actually is.
 
-Rest API fuzzer (Fuzzapi):  
-https://github.com/Fuzzapi/fuzzapi
-
-
 
 
