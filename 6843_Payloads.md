@@ -69,7 +69,7 @@ $ nmap -sV --version-intensity 5 [ hostname/ip ]
 
 Scan all ports for the lolz:
 $ nmap -p- [ hostname/ip ]
-# nmap -sT -vv -p 1-65535 192.168.187.145
+$ nmap -sT -vv -p 1-65535 [ hostname/ip ]
 
 Scan most common ports (fast):
 $ nmap -F [ hostname/ip ]
