@@ -200,7 +200,9 @@ SELECT * FROM INFORMATION_SCHEMA.TABLES
 ```
 
 Read files:
-`SELECT LOAD_FILE('/etc/passwd');`
+```
+SELECT LOAD_FILE('/etc/passwd');
+```
 
 
 Logic Alternatives:
