@@ -67,8 +67,9 @@ $ nslookup [ hostname/ip ]
 Aggressive service/OS detection:
 $ nmap -sV --version-intensity 5 [ hostname/ip ]
 
-Scan all ports:
+Scan all ports for the lolz:
 $ nmap -p- [ hostname/ip ]
+# nmap -sT -vv -p 1-65535 192.168.187.145
 
 Scan most common ports (fast):
 $ nmap -F [ hostname/ip ]
