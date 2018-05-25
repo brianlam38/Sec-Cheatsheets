@@ -306,7 +306,17 @@ add more
 
 Elastic Search (default port:9200/9300:
 ```
-add more
+Localhost:
+  http://127.0.0.1:9200 | http://127.0.0.1:9300/
+
+ElasticSearch APIs:
+  http://0:9200/_cluster/settings
+  http://0:9200/_cluster/state
+  http://0:9200/phrack/article/14
+  http://0:9200/_tasks/
+  http://0:9200/_nodes?pretty=true
+  http://0:9200/_mapping
+  http://0:9200/_cat&?pretty=true
 ```
 
 PHP:
