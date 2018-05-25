@@ -315,6 +315,7 @@ gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
 ftp://127.0.0.1:20/21
 telnet://127.0.0.1:23
 smtp://127.0.0.1:25
+jar://
 ```
 
 Elastic Search APIs (default port:9200/9300):
@@ -344,6 +345,9 @@ http://{localhost_variation}
 Localhost
 lOcAlHoSt
 0
+http://0177.1/
+http://0x7f.1/
+http://127.000.000.1
 ```
 
 CLRF injection in HTTP header:
