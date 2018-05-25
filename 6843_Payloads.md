@@ -192,17 +192,13 @@ Another LFI / LFI->RCE Cheatsheet:
 
 SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
 
-**Enumerate DB Metadata**
+**Enumerate DB Metadata**  
 via. 'INFORMATION_SCHEMA' view
 ```
 information_schema
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 ```
-
-
-ADD SHIT ABOUT INFORMATION_SCHEMA / ENUMERATING METADATA TO GET TABLENAMES IN THE DB.
-^Rather than bruteforcing names lol
 
 **Logic Alternatives**
 ```
