@@ -9,7 +9,7 @@ Good cheat-sheets (if shit here doesn't work):
 # Index
 
 - [Security Setup](#security-setup) 
-- [Common 6843 words](#common-6843-words)  
+- [Common 6843 words](#common-6843-words-==========================================================)  
 - [Recon](#recon)
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
@@ -38,7 +38,7 @@ Good cheat-sheets (if shit here doesn't work):
 * http://webhookinbox.com/
 
 ---
-### Common 6843 words
+### Common 6843 words ==========================================================
 ---
 Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
@@ -55,7 +55,7 @@ List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passw
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
 
 ---
-### Recon
+### Recon ======================================================================
 ---
 
 **Nslookup**
