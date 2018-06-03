@@ -11,7 +11,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
 - [Recon: Network Mapping](#recon---network-mapping)
-- [Recon: Subdomain and Directory Bruteforcing](#Recon:-Subdomain-and-Directory-Bruteforcing)
+- [Recon: Subdomain and Directory Bruteforcing](#Recon---Subdomain-and-Directory-Bruteforcing)
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#Local-and-Remote-File-Inclusion)
 - [SQL Injection](#SQL-Injection)
@@ -80,7 +80,7 @@ $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 ---
-### Recon: Subdomain and Directory Bruteforcing
+### Recon - Subdomain and Directory Bruteforcing
 ---
 
 **LEVEL 1: Aquatone**
