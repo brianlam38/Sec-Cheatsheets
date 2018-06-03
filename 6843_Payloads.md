@@ -401,15 +401,8 @@ Note:
 ```
 
 ---
-### PHP Serialisation
+### Cross-Site Request Forgery
 ---
-
-PHP Magic Methods:
-* `construct()`: Object is called when new, but unserialize() is not called
-* `destruct()`: Called when the Object is destroyed
-* `wakeup()`: Called automatically when unserialize
-* `sleep()`: Called when serialize
-* `toString()`: When the object is called as a string
 
 ---
 ### Server-Side Request Forgery
@@ -488,6 +481,17 @@ Host:www.target.com
 GET http://example.com
 Referer:localhost
 ```
+
+---
+### PHP Serialisation
+---
+
+PHP Magic Methods:
+* `construct()`: Object is called when new, but unserialize() is not called
+* `destruct()`: Called when the Object is destroyed
+* `wakeup()`: Called automatically when unserialize
+* `sleep()`: Called when serialize
+* `toString()`: When the object is called as a string
 
 ---
 ### Amazon Web Services SSRF
