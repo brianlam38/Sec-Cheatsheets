@@ -14,7 +14,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
 - [SQL Injection](#sql-injection)
-- [Other / Advanced Injections](#other and advanced injections)
+- [Other / Advanced Injections](#other-and-advanced-injections)
 - [XML External Entities](#xxe)
 - [Cross-Site Scripting - Normal](#xss)
 - [Cross-Site Request Forgery](#cross---site-request-forgery)
