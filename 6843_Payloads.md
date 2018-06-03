@@ -9,7 +9,7 @@ Good cheat-sheets (if shit here doesn't work):
 # Index
 
 - [Security Setup](#security-setup) 
-- [Common 6843 words](#common-6843-words-==========================================================)  
+- [Common 6843 words](#common-6843-words)  
 - [Recon](#recon)
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
@@ -25,9 +25,9 @@ Good cheat-sheets (if shit here doesn't work):
 
 # Content
 
----
+### ==========================================================
 ### Security Setup
----
+### ==========================================================
 
 **EC2 Web Server**
 1. Launch HTTP server `python -m SimpleHTTPServer 80`
@@ -37,9 +37,9 @@ Good cheat-sheets (if shit here doesn't work):
 * https://requestbin.fullcontact.com/
 * http://webhookinbox.com/
 
----
-### Common 6843 words ==========================================================
----
+### ==========================================================
+### Common 6843 words
+### ==========================================================
 Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
 noone
@@ -54,9 +54,9 @@ flag
 List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passwd")  
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
 
----
-### Recon ======================================================================
----
+### ==========================================================
+### Recon
+### ==========================================================
 
 **Nslookup**
 ```
@@ -104,9 +104,9 @@ $ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist
 $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist
 ````  
 
----
+### ==========================================================
 ### Authentication and Session Management
----  
+### ========================================================== 
 
 Observe:
 * Cookie / Session Token values.
@@ -114,9 +114,9 @@ Observe:
 * Page Source Code.
   * View Source -> Look for suspicious comments / sections in code -> Profit.
 
----
+### ==========================================================
 ### Local and Remote File Inclusion
----  
+### ==========================================================
 
 STEP #1: Verify existence of LFI/LFD vulnerability.
 ```
@@ -185,9 +185,9 @@ C:/windows/system32/drivers/etc/hosts
 Another LFI / LFI->RCE Cheatsheet:  
 * https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
 
----
+### ==========================================================
 ### SQL Injection
----  
+### ==========================================================
 SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/  
 DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
@@ -297,9 +297,9 @@ Logic Altneratives (bypass filters etc.)
    != -> not like
 ```
 
----
+### ==========================================================
 ### Other and Advanced Injections
----
+### ==========================================================
 
 **Command Injection**
 Examples:
@@ -367,9 +367,9 @@ load config
   {{ config['RUNCMD']('cat flag',shell=True) }}
 ```
 
----
+### ==========================================================
 ### XXE
----  
+### ==========================================================
 
 XXE standard:  
 * NOTE: "FILe" upper/lowercase mix was to bypass firewalls
@@ -393,9 +393,9 @@ _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs i
 
 ```
 
----
+### ==========================================================
 ### XSS
----
+### ==========================================================
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
 ```javascript
@@ -433,13 +433,13 @@ Encoding needs to be performed twice as the initial POST request to the target s
 */
 ```
 
----
+### ==========================================================
 ### Cross-Site Request Forgery
----
+### ==========================================================
 
----
+### ==========================================================
 ### Server-Side Request Forgery
----
+### ==========================================================
 Summary: Attacker can make requests from a server to target a system's internals (i.e intranet) by bypassing its firewalls.
 
 SSRF indicators:
@@ -515,9 +515,9 @@ GET http://example.com
 Referer:localhost
 ```
 
----
+### ==========================================================
 ### PHP Serialisation
----
+### ==========================================================
 
 PHP Magic Methods:
 * `construct()`: Object is called when new, but unserialize() is not called
@@ -526,9 +526,9 @@ PHP Magic Methods:
 * `sleep()`: Called when serialize
 * `toString()`: When the object is called as a string
 
----
+### ==========================================================
 ### Amazon Web Services SSRF
----
+### ==========================================================
 
 Confirm SSRF with `http://169.254.169.254` as the payload.
 
@@ -575,9 +575,9 @@ LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
 More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
 More info on exploiting AWS post-compromise: https://danielgrzelak.com/exploring-an-aws-account-after-pwning-it-ff629c2aae39
 
----
+### ==========================================================
 ### REST APIs
----
+### ==========================================================
 
 **Common Findings / Things to look out for:**
 
