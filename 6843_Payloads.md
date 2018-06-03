@@ -13,13 +13,15 @@ Good cheat-sheets (if shit here doesn't work):
 - [Recon](#recon)
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
-- [SQL Injection](#SQL-Injection)
-- [Other / Advanced Injections](#Other and Advanced Injections)
-- [XML External Entities](#XXE)
-- [Cross-Site Scripting - Normal and Advanced](#XSS Normal and Advanced)
-- [Server-Side Request Forgery](#Server-Side-Request-Forgery)
-- [Amazon Web Services SSRF](#Amazon-Web-Services-SSRF)
-- [REST APIs](#REST-APIs)
+- [SQL Injection](#sql-injection)
+- [Other / Advanced Injections](#other and advanced injections)
+- [XML External Entities](#xxe)
+- [Cross-Site Scripting - Normal](#xss)
+- [Cross-Site Request Forgery](#cross---site-request-forgery)
+- [Server-Side Request Forgery](#server---side-request-forgery)
+- [PHP Serialisation](#php-serialization)
+- [Amazon Web Services SSRF](#amazon-web-services-ssrf)
+- [REST APIs](#rest-apis)
 
 # Content
 
@@ -360,7 +362,7 @@ _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs i
 ```
 
 ---
-### XSS Normal and Advanced
+### XSS
 ---
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
@@ -399,7 +401,7 @@ Note:
 ```
 
 ---
-### PHP Serialize() / Unserialize()
+### PHP Serialisation
 ---
 
 PHP Magic Methods:
