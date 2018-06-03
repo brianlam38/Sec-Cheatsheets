@@ -13,8 +13,8 @@ Good cheat-sheets (if shit here doesn't work):
 - [Recon: Network Mapping](#recon---network-mapping)
 - [Recon: Subdomain and File/Dir Bruteforcing](#Recon---Subdomain-and-Directory-Bruteforcing)
 - [Authentication / Session Management](#authentication-and-session-management)
-- [Local / Remote File Inclusion](#Local and Remote File Inclusion)
-- [SQL Injection](#SQLi)
+- [Local / Remote File Inclusion](#Local-and-Remote-File-Inclusion)
+- [SQL Injection](#SQL-Injection)
 - [Other / Advanced Injections](#Other and Advanced Injections)
 - [XML External Entities](#XXE)
 - [Cross-Site Scripting - Normal and Advanced](#XSS Normal and Advanced)
@@ -189,7 +189,7 @@ Another LFI / LFI->RCE Cheatsheet:
 * https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
 
 ---
-### SQLi
+### SQL Injection
 ---
 
 SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
