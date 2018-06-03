@@ -10,10 +10,9 @@ Good cheat-sheets (if shit here doesn't work):
 
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
-- [Recon: Network Mapping](#recon---network-mapping)
-- [Recon: Subdomain and Directory Bruteforcing](#Recon---Subdomain-and-Directory-Bruteforcing)
+- [Recon](#recon)
 - [Authentication / Session Management](#authentication-and-session-management)
-- [Local / Remote File Inclusion](#Local-and-Remote-File-Inclusion)
+- [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
 - [SQL Injection](#SQL-Injection)
 - [Other / Advanced Injections](#Other and Advanced Injections)
 - [XML External Entities](#XXE)
@@ -54,8 +53,10 @@ List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passw
 `https://www.tldp.org/LDP/sag/html/etc-fs.html`
 
 ---
-### Recon - Network Mapping
+### Recon
 ---
+
+## Networks
 
 **Nslookup**
 ```
@@ -79,9 +80,7 @@ Increase Verbosity / Debugging:
 $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
----
-### Recon - Subdomain and Directory Bruteforcing
----
+## Subdomain and Directory Bruteforcing
 
 **LEVEL 1: Aquatone**
 ```
