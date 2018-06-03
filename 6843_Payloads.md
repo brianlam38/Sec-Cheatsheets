@@ -56,8 +56,6 @@ List of /etc/{blah} files (in case some strings are blacklisted e.g. "/etc/passw
 ### Recon
 ---
 
-## Networks
-
 **Nslookup**
 ```
 Reverse DNS query:
@@ -79,8 +77,6 @@ $ nmap -F [ hostname/ip ]
 Increase Verbosity / Debugging:
 $ nmap -vv OR -dd [ hostname/ip ]
 ```
-
-## Subdomain and Directory Bruteforcing
 
 **LEVEL 1: Aquatone**
 ```
