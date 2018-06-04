@@ -144,6 +144,7 @@ domain.com/?class=something&function=another
 ```
 
 STEP #2: Figure out where the logfiles are. Example locations:
+* NOTE: If you can execute phpinfo(); then you can find out where access/error logs are stored on the server.
 ```
 // PHP Logfiles:
 /usr/local/etc/php
