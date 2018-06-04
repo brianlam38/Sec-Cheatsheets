@@ -303,6 +303,13 @@ Other things:
 Read Files (MySQL)
    SELECT LOAD_FILE('/etc/passwd');
 
+Load data into table (doesn't work on SQLite):
+   LOAD DATA INFILE 'data.txt' INTO TABLE db.my_table;
+
+Exfiltrate data into a file:
+   SELECT * FROM 'db.my_table' INTO OUTFILE 'data.txt'  // exfiltrate data into data.txt
+   show variables like 'datadir';                       // check for the file in MySQL data directory 'datadir'
+
 Logic Altneratives (bypass filters etc.)
    and -> &&
    or -> ||
