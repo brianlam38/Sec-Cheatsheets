@@ -192,6 +192,8 @@ SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
 DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
 
+**NOTE: SQL does not have 0th index for strings. Strings start at 1 e.g. SUBSTR('hello',1,1) not SUBSTR('hello',0,1)**
+
 DB fingerprinting techniques:
 ```sql
 /* MySQL */                                                        -- FINGERPRINTING:        
@@ -204,6 +206,9 @@ DB fingerprinting techniques:
    http://www.example.com/news.php? id=1 AND 'a'='a'||'a'          -- via. Postgres concat
    http://www.example.com/news.php? id=1
    SELECT version()                                                -- via. db version
+   
+/* SQL Server (Microsoft SQL Server / MSSQL) */
+   http://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet
 
 /* If !MySQL and !Postgres, most likely SQLite: */
    http://www.sqlitetutorial.net/sqlite-cheat-sheet   OR
