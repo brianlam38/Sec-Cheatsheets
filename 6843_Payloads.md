@@ -450,7 +450,11 @@ Finding Flask template injection:
 NOTE: URL ENCODE YOUR PAYLOADS (highlight payload in Burp -> right click -> convert selection -> url encode)
 ```
 {{4+4}}
-{{request}}
+/* Request object gives you request context: {{request.__dict__}} which tells you everything about your request.
+ * This is 'server-side disclosure of info' which is a vuln category itself.
+ * Can be used to bypass 'http-only' or 'secure-marked' cookies, which can't be disclosed via. Javascript. 
+ */
+{{request}}     
 {{config}}
 ```
 
