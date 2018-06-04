@@ -447,7 +447,6 @@ READ SOME SSTI writeups:
 * https://hackerone.com/reports/125980
 
 Finding Flask template injection:  
-NOTE: URL ENCODE YOUR PAYLOADS (highlight payload in Burp -> right click -> convert selection -> url encode)
 ```
 {{4+4}}
 /* Request object gives you request context: {{request.__dict__}} which tells you everything about your request.
