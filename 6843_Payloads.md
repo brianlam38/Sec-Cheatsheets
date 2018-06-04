@@ -158,6 +158,10 @@ STEP #2: Figure out where the logfiles are. Example locations:
 /var/log/httpd/error_log
 /var/log/apache2/error.log
 /var/log/httpd-error.log
+
+// Other default logfile locations:
+1. Look @ HTTP response 'Server' header to see what distribution they are using e.g. (Debian)
+2. Google 'default Debian apache log directory' etc.
 ```
 
 STEP #3: Inject a payload into the logfile:
