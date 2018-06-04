@@ -217,7 +217,8 @@ Enumerate DB metadata via. views:
   SELECT * FROM INFORMATION_SCHEMA.TABLES;
   
 /* Sqlite (db.sqlite_master) */
-  SELECT name FROM sqlite_master WHERE type='table';
+  SELECT name FROM sqlite_master WHERE type='table';  -- Step #1: Access table names from 'sqlite_master' table.
+  SELECT * FROM table_name LIMIT 1;                   -- Step #2: Enumerate column names from the specified table.
 ```
 
 Authentication Bypass:
