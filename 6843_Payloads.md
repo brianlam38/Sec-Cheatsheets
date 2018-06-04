@@ -118,6 +118,9 @@ Observe:
 ### Local and Remote File Inclusion
 ### ============================================================
 
+A more in-depth LFI / LFI->RCE Cheatsheet:  
+* https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
+
 STEP #1: Verify existence of LFI/LFD vulnerability.
 ```
 domain.com/?p=somepage.txt
@@ -209,9 +212,6 @@ Other things to try:
 /root/.ssh/id_rsa
 /root/.ssh/authorized_keys
 ```
-
-Another LFI / LFI->RCE Cheatsheet:  
-* https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal
 
 ### ============================================================
 ### SQL Injection
