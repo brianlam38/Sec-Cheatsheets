@@ -94,17 +94,18 @@ $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
 **LEVEL 1: Aquatone / Amass**  
-Aquatone
+Aquatone: https://github.com/michenriksen/aquatone
 ```shell
 $ aquatone-discover --domain [ ns.agency ]  # run subdomain bruteforcing
 $ cat ~/aquatone/example.com/hosts.txt      # show discovered subdomains
 ```  
-Amass
+Amass: https://github.com/caffix/amass
 ```
 $ cd /Go/amass
 $ ./amass -d ns.agency
 ```
-**LEVEL 2: AltDNS**
+**LEVEL 2: AltDNS**  
+AltDNS: https://github.com/infosec-au/altdns
 ```
 $ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
 
