@@ -15,7 +15,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
 - [SQL Injection](#sql-injection)
 - [Command Injection](#command-injection)
-- [Server-Side Template Injection](#server---side-template-injection)
+- [Server-Side Template Injection](#server-side-template-injection)
 - [XML External Entities](#xxe)
 - [Cross-Site Scripting (XSS)](#xss)
 - [Cross-Site Request Forgery (CSRF)](#cross---site-request-forgery)
@@ -483,12 +483,12 @@ original_cmd_by_server $(cat /etc/passwd)
 ```  
 
 ### ============================================================
-### Server-Side Template Injection
+### Server Side Template Injection
 ### ============================================================
 
-Tool: https://github.com/epinna/tplmap
+SSTI Exploit Tool: https://github.com/epinna/tplmap
 
-READ SOME SSTI writeups:
+**READ SOME SSTI writeups:**
 * https://nvisium.com/blog/2016/03/09/exploring-ssti-in-flask-jinja2/
 * https://nvisium.com/blog/2016/03/11/exploring-ssti-in-flask-jinja2-part-ii/
 * https://meem67.github.io/blog/2017-02-16/BSidesSF_writeups.html#Zumbo1 
