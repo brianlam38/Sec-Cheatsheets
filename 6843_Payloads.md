@@ -423,6 +423,10 @@ Other things:
    or -> ||
    = -> like
    != -> not like
+   
+/* NULL byte (%00) injection */
+   /sqli?id=1%00%22union%20select%20flag%20from%20flag;-- 
+=> /sqli?id=1%00"union select flag from flag;-- 
 ```
 
 ### ============================================================
