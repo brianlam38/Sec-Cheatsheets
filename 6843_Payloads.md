@@ -25,6 +25,17 @@ Good cheat-sheets (if shit here doesn't work):
 
 # Content
 
+
+### ============================================================
+### EXAM TIPS
+### ============================================================
+
+Suggested strategy:
+1. Subdomain bruteforce, but don't spend too much time on it.
+2. Keep Sublime open, one tab for each target that you found so you can write down all your notes.
+3. GO SPARSE: Break **as many targets as possible over 2 hours**.
+4. THEN GO SPECIFIC: For targets that you couldn't break, look into + research the vulns that the break is based upon.
+
 ### ============================================================
 ### Security Setup
 ### ============================================================
@@ -42,6 +53,7 @@ Good cheat-sheets (if shit here doesn't work):
 ### ============================================================
 Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
+[REFER TO YOUR LOCAL SECTOOLS->WORDLISTS DIR]
 noone
 sketch / sketchy
 sy
@@ -80,10 +92,16 @@ $ nmap -F [ hostname/ip ]
 $ nmap -vv OR -dd [ hostname/ip ]
 ```
 
-**LEVEL 1: Aquatone**
+**LEVEL 1: Aquatone / Amass**  
+Aquatone
 ```shell
 $ aquatone-discover --domain [ ns.agency ]  # run subdomain bruteforcing
 $ cat ~/aquatone/example.com/hosts.txt      # show discovered subdomains
+```  
+Amass
+```
+$ cd /Go/amass
+$ ./amass -d ns.agency
 ```
 **LEVEL 2: AltDNS**
 ```
