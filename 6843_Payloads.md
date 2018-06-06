@@ -423,7 +423,7 @@ http://www.sqlinjection.net/union
 **MySQL String Manipulation Trickery:**
 ```
 Mid(version(),1,1)
-Substr(version(),1,1)
+Substr(version(),1,1)    => 1' or substr('a',1,1)='a  [ working payload ]
 Substring(version(),1,1)
 Lpad(version(),1,1)
 Rpad(version(),1,1)
