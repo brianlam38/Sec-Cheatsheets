@@ -31,13 +31,19 @@ Exam notification
 
 **Authorisation/IDOR + Authentication**
 
+Authorisation: *Is the user who they claim to be?*  
+Session Management: *Is it still that user?*  
+Access Control: *Is the user allowed to access this thing?*  
+
 Consider:
 * Your IDOR brute force script: `~/Dropbox/_SECTOOLS/X_Scripts/login_bruteforce.py`
 * Cookies / base64 decode
 * View source code (flag or info can be hidden there)
+* LFI / LFD
 
 Access Control:
-* Intercept requests, inject your own info to perform an illegal request
+* Horizontal / Vertical
+
 
 **XSS**
 * Admin XSS focus means you will have to re-direct the admin offsite to steal their cookies.
