@@ -380,11 +380,6 @@ Encoding needs to be performed twice as the initial POST request to the target s
 */
 ```
 
-**Filter Evasion**
-```
-ADD SHIT HERE
-```
-
 ### ============================================================
 ### SQL Injection
 ### ============================================================
