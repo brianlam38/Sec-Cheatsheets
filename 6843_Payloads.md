@@ -19,7 +19,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [XML External Entities](#xxe)
 - [Cross-Site Scripting (XSS)](#xss)
 - [Cross-Site Request Forgery (CSRF)](#cross-site-request-forgery)
-- [Server-Side Request Forgery (SSRF)](##server-side-request-forgery)
+- [Server-Side Request Forgery (SSRF)](#server-side-request-forgery)
 - [PHP Serialization](#php-serialization)
 - [Amazon Web Services SSRF](#amazon-web-services-ssrf)
 - [REST APIs](#rest-apis)
