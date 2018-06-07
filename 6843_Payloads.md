@@ -316,6 +316,11 @@ TRY OTHER LFI METHODS:
 ### XSS
 ### ============================================================
 
+Attack Vectors:
+* HTTP Headers: `User-Agent:`, `Referer:`, `Cookie:`
+* Intentionally invalid requests: send 192.168.1.1/lol.php?<script></script> to an admin
+* XSS combined with CSRF: Bypass Single-Origin-Policy with XSS (see below)
+
 **Useful JS web API methods for XSS**  
 Redirect a user/admin to your url to steal their cookies.
 ```javascript
@@ -379,6 +384,21 @@ Bypass via. JSONP API callback param:
 Encoding needs to be performed twice as the initial POST request to the target server will decode it once, then another round of decoding will be performed upon the target's callback to your attacker url.
 */
 ```
+
+**XSS with CSRF**
+Any request made by XSS is from the same origin/domain, therefore bypassing SOP (which helps prevent CSRF)
+1. simply use a GET to pull the CSRF token from a form
+2. make the POST to the endpoint
+3. exfil the return - since SOP is bypassed!
+
+**WAF Bypass**
+Bypass a WAF by challenging assumptions.
+* Null bytes
+* Newlines
+* Case sensitivity
+* IPv6
+* Content-Length header  
+Consider this: WAF's are extremely complex systems defending extremely complex systems.
 
 ### ============================================================
 ### SQL Injection
