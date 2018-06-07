@@ -171,6 +171,19 @@ Observe:
   * Base64 decode -> change values to admin etc. -> Base64 encode -> Profit.
 * Page Source Code.
   * View Source -> Look for suspicious comments / sections in code -> Profit.
+  
+Things to try:
+```
+admin:admin
+admin:pass
+admin:password
+root:root
+user:user
+default:default
+[all the above + blank password]
+:     <================= Try to login with blank user/password field (has worked before in the past)
+```
+
 
 ### ============================================================
 ### Local and Remote File Inclusion
