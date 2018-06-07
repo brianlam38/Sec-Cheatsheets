@@ -161,17 +161,20 @@ Content-Length: 121
 ?name=Bob%0d%0a%0d%0a<script>alert(document.domain)</script>
 ```
 
-
 ### ============================================================
 ### Authentication. Session Management. Access Control
 ### ============================================================
+
+Authentication: Is the user who they claim to be?
+Session Management: Is it still that user? 
+Access Control: Is the user allowed to access this thing?
 
 Observe:
 * Cookie / Session Token values.
   * Base64 decode -> change values to admin etc. -> Base64 encode -> Profit.
 * Page Source Code.
   * View Source -> Look for suspicious comments / sections in code -> Profit.
-  
+
 Things to try:
 ```
 admin:admin
@@ -183,6 +186,12 @@ default:default
 [all the above + blank password]
 :     <================= BLANK USER/PASS (worked before in the past lol)
 ```
+
+IDOR the shit out of things:
+* Look at ID param values, cookie values, request data values etc.
+* Some IDORs are harder than others:
+   * Brute-force using your IDOR brute-force script.
+   * Think about pattern of the IDOR value and engineer a way to brute-force more effectively, rather than 1++
 
 
 ### ============================================================
