@@ -11,7 +11,7 @@ Good cheat-sheets (if shit here doesn't work):
 - [Security Setup](#security-setup) 
 - [Common 6843 words](#common-6843-words)  
 - [Recon](#recon)
-- [Authentication / Session Management](#authentication-and-session-management)
+- [Authentication / Session Management](#authentication,-session-management-and-access-control)
 - [Local / Remote File Inclusion](#local-and-remote-file-inclusion)
 - [SQL Injection](#sql-injection)
 - [Command Injection](#command-injection)
@@ -163,7 +163,7 @@ Content-Length: 121
 
 
 ### ============================================================
-### Authentication and Session Management
+### Authentication, Session Management and Access Control
 ### ============================================================
 
 Observe:
