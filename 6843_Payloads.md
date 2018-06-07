@@ -870,7 +870,7 @@ LFD => $ /docker-entrypoint.sh /init.sh ~/.aws/credentials.json
     OR $ cat ~/.aws/credentials
 ```
 
-More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3
+More info on AWS testing: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/AWS%20Amazon%20Bucket%20S3  
 More info on exploiting AWS post-compromise: https://danielgrzelak.com/exploring-an-aws-account-after-pwning-it-ff629c2aae39
 
 
