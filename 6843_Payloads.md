@@ -181,7 +181,7 @@ root:root
 user:user
 default:default
 [all the above + blank password]
-:     <================= Try to login with blank user/password field (has worked before in the past)
+:     <================= BLANK USER/PASS (worked before in the past lol)
 ```
 
 
