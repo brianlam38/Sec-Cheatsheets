@@ -1,15 +1,8 @@
 # Sec-Cheatsheets
 
-Notes on application security vulnerabilities and exploits compiled over the years.
+Cheatsheets for Bug Bounties and CTF challenges.
 
-### Web_Normal
+Author: Brian Lam
 
-"Normal" web application vulns and exploits.
-
-### Web_Advanced
-
-"Advanced" web application vulns and exploits.
-
-### Mobile
-
-Mobile application vulns and exploits.
+### Web_Payloads  
+Web application payloads.
