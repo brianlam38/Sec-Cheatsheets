@@ -1,4 +1,4 @@
-# 6843 CMDS + PAYLOADS  
+# WEB SECURITY PAYLOADS  
 Copy pasta some commands + payloads for CTF-style challenges + COMP6843 final exam.
 
 Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
