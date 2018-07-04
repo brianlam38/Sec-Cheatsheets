@@ -3,7 +3,7 @@
 ## PART 1: Software Security and Static Analysis
 
 Software Security Touchpoints:
-[Software Security Touchpoints](/brianlam38/Sec-Cheatsheets/raw/master/Resources/touchpoints.png)
+![Software Security Touchpoints](Resources/touchpoints.png)
 
 ## PART 2: Pervasive Problems
 
