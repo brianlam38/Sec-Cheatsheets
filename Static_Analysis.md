@@ -3,7 +3,7 @@
 ## PART 1: Software Security and Static Analysis
 
 Software Security Touchpoints:
-![Software Security Touchpoints](Resources/touchpoints.png)
+![Software Security Touchpoints](Resources/touchpoints.pn)
 
 ## PART 2: Pervasive Problems
 
