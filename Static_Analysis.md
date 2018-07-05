@@ -21,12 +21,13 @@ This guide will teach you what bugs to look for, how to find them with modern st
 
 
 ``` C
+// BAD (no defence)
 void printMsg(FILE* file, char* msg) {
   fprintf(file, msg);
 }
-```
 
-``` C
+// SLIGHTLY BETTER (defensive programming with basic error handling)
+// Still exploitable i.e. Format String Attack: AAA1_%08x.%08x.%08x.%08x.%08x.%n
 void printMsg(FILE* file, char* msg) {
   if (file == NULL) {
     logError("attempt to print message to null file");
@@ -36,9 +37,9 @@ void printMsg(FILE* file, char* msg) {
     fprintf(file, msg);
   }
 }
-```
 
-``` C
+// BETTER (more secure by enforcing a fixed format string)
+// "%.128s" = string of max len 128
 void printMsg(FILE* file, char* msg) {
   if (file == NULL) {
     logError("attempt to print message to null file");
