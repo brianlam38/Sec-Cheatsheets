@@ -17,8 +17,38 @@ This guide will teach you what bugs to look for, how to find them with modern st
 
 ---
 
+**Defensive programming is not enough**  
 
 
+``` C
+void printMsg(FILE* file, char* msg) {
+  fprintf(file, msg);
+}
+```
+
+``` C
+void printMsg(FILE* file, char* msg) {
+  if (file == NULL) {
+    logError("attempt to print message to null file");
+  } else if (msg == NULL) {
+    logError("attempt to print null message");
+  } else {
+    fprintf(file, msg);
+  }
+}
+```
+
+``` C
+void printMsg(FILE* file, char* msg) {
+  if (file == NULL) {
+    logError("attempt to print message to null file");
+  } else if (msg == NULL) {
+    logError("attempt to print null message");
+  } else {
+    fprintf(file, "%.128s", msg);
+  }
+}
+```
 
 
 
