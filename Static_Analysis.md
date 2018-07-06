@@ -57,12 +57,10 @@ Most software development methods can be outlined in the same four steps:
 3. *Test*: run tests, record results and determine the quality of code.
 4. *Field*: deploy the software, monitor its performance and maintain it.
 
-Historically, software security has been treated as a *Field* problem and was solved by Firewalls, Intrusion Detection Systems and Penetration Testing. This puts a focus on addressing the SYMPTOMS of security problems, which is the wrong approach.
-
 Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
 
 **Classifying Vulnerabilities**  
-*Common Weakness Enumeration (CWE)* focuses on a vulnerability, not an instance of a vulnerability within a product/system.
+*Common Weakness Enumeration (CWE)* focuses on a vulnerability, not an instance of a vulnerability within a product/system.  
 *Common Vulnerability Enumeration (CVE)* focuses on a specific instance of a vuln within a product/system, not the underlying flaw.
 
 "The Seven Pernicious Kingdoms" (as opposed to OWASP Top 10)
