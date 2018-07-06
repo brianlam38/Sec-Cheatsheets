@@ -18,8 +18,6 @@ This guide will teach you what bugs to look for, how to find them with modern st
 ---
 
 **Defensive programming is not enough**  
-
-
 ``` C
 // BAD (no defence)
 void printMsg(FILE* file, char* msg) {
@@ -50,6 +48,24 @@ void printMsg(FILE* file, char* msg) {
   }
 }
 ```
+
+**Static Analysis in the bigger picture**  
+
+Most software development methods can be outlined in the same four steps:
+1. *Plan*: gather requirements, create a design and plan testing.
+2. *Build*: write the code and the tests.
+3. *Test*: run tests, record results and determine the quality of code.
+4. *Field*: deploy the software, monitor its performance and maintain it.
+
+Historically, software security has been treated as a *Field* problem and was solved by Firewalls, Intrusion Detection Systems and Penetration Testing. This puts a focus on addressing the SYMPTOMS of security problems, which is the wrong approach.
+
+Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
+
+
+
+
+
+
 
 
 
