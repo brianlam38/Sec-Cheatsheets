@@ -59,30 +59,6 @@ Most software development methods can be outlined in the same four steps:
 
 Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
 
-**Classifying Vulnerabilities**  
-*Common Weakness Enumeration (CWE)* focuses on a vulnerability, not an instance of a vulnerability within a product/system.  
-*Common Vulnerability Enumeration (CVE)* focuses on a specific instance of a vuln within a product/system, not the underlying flaw.
-
-"The Seven Pernicious Kingdoms" (as opposed to OWASP Top 10)
-
-1. Input Validation and Representation: Handling of input.
-
-2. API Abuse: Contract between API caller / API callee being broken by either side. E.g. `java.util.Random` returning non-random values.
-
-3. Security Features: Authentication, access control, confidentiality, cryptography, privilege management. E.g. hard-coding passwords, leaking confidential data between users or writing to privileged programs etc.
-
-4. Time and State: Vulnerabilities related to shared-state among distributed systems. E.g. online multiplayer games and duplicating money to provide an unfair advantage. (**Race Conditions**)
-
-5. Error Handling: Producing errors that reveal too much info, or not enough at all.
-
-6. Code Quality: De-referencing NULL pointers, entering into infinite-loops could lead to a Denial-of-Service.
-
-7. Encapsulation: Drawing strong boundaries. E.g. between validated vs. un-validated data, between one user's data vs. another's, between data that users are allowed to see vs. data they are not allowed to.
-
-8. Environment: Environment (outside) related vulnerabilities. E.g. configuration files.
-
-
-
 
 
 
