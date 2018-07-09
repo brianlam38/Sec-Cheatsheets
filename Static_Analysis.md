@@ -59,32 +59,16 @@ Most software development methods can be outlined in the same four steps:
 
 Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
 
-**Solving Problems with Static Analysis**  
+**Static Analysis in practice**  
 
-*Type Checking*  
-* Type checking is typically not given much thought because types are usually defined by programming languages and enforced by the compiler (except for dynamically typed languages such as Python and Shell as opposed to statically typed such as C).
+Using static analysis tools involve a trade-off between *Time/Memory Resources* vs. *Analysis Scope*.
+* Larger scope (i.e. code base of a program) means more time and memory to perform the analysis.
+* Smaller scope (i.e. code in a single function) means less time and memory to perform the analysis.
 
-*Style Checking*
-* Style checking on an existing large codebase provides marginal benefit and the cost of great inconvenience.
-* Use a *Linter* e.g. ES-Lint for Javascript for performing style checks on large sets of code.
+Benchmark different static analysis tools against the same codebase to test their effectiveness.
+* Look for open-source, static analysis benchmarking tools and test it against known, vulnerable programs (i.e. hackerzon)
 
-*Program Understanding*  
-* Best to use the original design to understand a program e.g. UML diagram rather than reverse engineering the design based on implementation.
 
-*Program Verification and Property Checking*  
-* A program verification tool accepts a specification and a body of code then attempts to prove that code adheres to the specification.
-* Example of program that will cause errors in a Program Verification tool:
-```C
-// Specification: Allocated memory should always be free'd
-
-// Code: allocate memory for an input/output buffer
-inBuf = (char *) malloc(bufSz);
-if (inBuf = NULL)
-  return -1;
-outBuf = (char *) malloc(bufSz);
-if (outBuf == NULL)
-  return -1;
-```
 
 
 
