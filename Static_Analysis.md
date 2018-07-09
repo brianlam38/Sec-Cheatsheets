@@ -44,8 +44,8 @@ void printMsg(FILE* file, char* msg) {
   } else if (msg == NULL) {
     logError("attempt to print null message");
   } else {
-    fprintf(file, "%.128s", msg);
   }
+    fprintf(file, "%.128s", msg);
 }
 ```
 
@@ -59,8 +59,9 @@ Most software development methods can be outlined in the same four steps:
 
 Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
 
+**Solving Problems with Static Analysis**  
 
-
+*Type Checking*  
 
 
 
