@@ -68,11 +68,13 @@ Using static analysis tools involve a trade-off between *Time/Memory Resources* 
 Benchmark different static analysis tools against the same codebase to test their effectiveness.
 * Look for open-source, static analysis benchmarking tools and test it against known, vulnerable programs (i.e. hackerzon)
 
+**Challenges of Static Analysis**  
 
-
-
-
-
+* Making sense of the program (building an accurate program model / design)
+* Making good trade-offs between precision, depth and scalability.
+* Looking for the right set of defects.
+* Presenting easy-to-understand results and errors.
+* Integrating easily with the build system and integrated development environments.
 
 ## PART 2: Pervasive Problems
 *Pervasive security problems that impact software, regardless of functionality*
