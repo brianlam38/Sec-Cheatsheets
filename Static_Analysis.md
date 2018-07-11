@@ -15,40 +15,6 @@ This guide will teach you what bugs to look for, how to find them with modern st
 ## PART 1: Software Security and Static Analysis  
 *Integrating static analysis into the software development process*
 
-
-
-**Defensive programming is not enough**  
-``` C
-// BAD (no defence)
-void printMsg(FILE* file, char* msg) {
-  fprintf(file, msg);
-}
-
-// SLIGHTLY BETTER (defensive programming with basic error handling)
-// Still exploitable i.e. Format String Attack: AAA1_%08x.%08x.%08x.%08x.%08x.%n
-void printMsg(FILE* file, char* msg) {
-  if (file == NULL) {
-    logError("attempt to print message to null file");
-  } else if (msg == NULL) {
-    logError("attempt to print null message");
-  } else {
-    fprintf(file, msg);
-  }
-}
-
-// BETTER (more secure by enforcing a fixed format string)
-// "%.128s" = string of max len 128
-void printMsg(FILE* file, char* msg) {
-  if (file == NULL) {
-    logError("attempt to print message to null file");
-  } else if (msg == NULL) {
-    logError("attempt to print null message");
-  } else {
-  }
-    fprintf(file, "%.128s", msg);
-}
-```
-
 **Static Analysis in the bigger picture**  
 
 Most software development methods can be outlined in the same four steps:
@@ -68,13 +34,26 @@ Using static analysis tools involve a trade-off between *Time/Memory Resources* 
 Benchmark different static analysis tools against the same codebase to test their effectiveness.
 * Look for open-source, static analysis benchmarking tools and test it against known, vulnerable programs (i.e. hackerzon)
 
-**Challenges of Static Analysis**  
-
+Challenges of Static Analysis:
 * Making sense of the program (building an accurate program model / design)
 * Making good trade-offs between precision, depth and scalability.
 * Looking for the right set of defects.
 * Presenting easy-to-understand results and errors.
 * Integrating easily with the build system and integrated development environments.
+
+**Performing a Code Review**
+
+The Code Review Cycle:
+[ INSERT IMAGE HERE ]
+
+1. Establish Goals
+
+
+2. Run Tools
+
+3. Review Code
+
+4. Make Fixes
 
 ## PART 2: Pervasive Problems
 *Pervasive security problems that impact software, regardless of functionality*
