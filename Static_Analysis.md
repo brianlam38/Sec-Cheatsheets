@@ -5,7 +5,7 @@
 
 ## Introduction
 
-**Software Security Touchpoints**  
+### Software Security Touchpoints
 All software projects produce at least one artifact, CODE, making Code Review the most important touchpoint in software security. At the code level, focus is on _Implementation Bugs_.  
 ![Software Security Touchpoints](Resources/touchpoints.png)
 
@@ -15,7 +15,7 @@ This guide will teach you what bugs to look for, how to find them with modern st
 ## PART 1: Software Security and Static Analysis  
 *Integrating static analysis into the software development process*
 
-**Static Analysis in the bigger picture**  
+### Static Analysis in the bigger picture
 
 Most software development methods can be outlined in the same four steps:
 1. *Plan*: gather requirements, create a design and plan testing.
@@ -25,7 +25,7 @@ Most software development methods can be outlined in the same four steps:
 
 Focus should be put on addressing the ROOT CAUSE of security problems, done during the *Plan* and *Build* stages and solved by performing Static Analysis, Architectural Risk Assessments and writing Security Requirements.
 
-**Static Analysis in practice**  
+### Static Analysis in practice
 
 Using static analysis tools involve a trade-off between *Time/Memory Resources* vs. *Analysis Scope*.
 * Larger scope (i.e. code base of a program) means more time and memory to perform the analysis.
@@ -41,7 +41,7 @@ Challenges of Static Analysis:
 * Presenting easy-to-understand results and errors.
 * Integrating easily with the build system and integrated development environments.
 
-**Performing a Code Review**
+### Performing a Code Review
 
 The Code Review Cycle:
 [ INSERT IMAGE HERE ]
@@ -72,7 +72,7 @@ The Code Review Cycle:
 * The most long-term approach to fix issues is improve security training.
 * All fixes must be verified.
 
-**Steer clear of the Exploitability Trap**
+### Steer clear of the Exploitability Trap
 
 Review teams are often pulled down into exploit development. When a programmer says *"I won't fix that unless you can prove it's exploitable"*, that is an **Exploitability Trap**. This is bad because:
 * Developing exploits is time-consuming. This time is better spent looking for more problems.
@@ -83,7 +83,7 @@ Reasons to not get stuck in the Exploitability Trap:
 * Ignored vulnerabilities may lead to further vulnerabilities (chained) which could become more serious.
 * Vulnerabilities don't need to be exploitable to damage a company e.g. reputation damage from reporting the vuln.
 
-**Adding security review to an existing development process**
+### Adding security review to an existing development process
 
 
 
