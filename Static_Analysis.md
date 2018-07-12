@@ -47,13 +47,47 @@ The Code Review Cycle:
 [ INSERT IMAGE HERE ]
 
 1. Establish Goals
-
+* Have a set of security goals, coming from an assessment of the software risks that you face.
+* Use these goals to prioritise code that should be reviewed and the criteria used to review it.
+* Set review priorities down to the granularity of individual programs. Don't further subdivide the code.
+* For inspiration, look at results of previous code reviews for the same program / similar programs. Previously discovered errors often slip back in.
 
 2. Run Tools
+* Get the code into a compilable state before you begin analysing it.
+* Add custom rules to detect errors specific to your program.
+* Establish / refer to your organisation's set of secure coding guidelines.
+* Refer to previously identified errors and write a rule to detect similar situations.
 
 3. Review Code
+* *Neighbourhood Effect*: find more problems next to the tool-reported issue.
+* Reviewing an issue = verifying the assumptions that the tool made when it reported the issue.
+* If you discover an issue during code review, which the tool has missed, then write custom rules to detect instances of the same problem and re-run the tool.
+* Make sure to store the results of the code review properly so that they will be useful for future code reviews.
+* Also use the results for *Security Training*, focusing on real problems that are relevant to your company.
 
 4. Make Fixes
+* Results from a code review need a good explanation of the risk involved.
+* Is there enough time to make a fix?
+* Is there a large clump of issues around a particular module/feature? => Maybe step back and look for a design-related fix.
+* The most long-term approach to fix issues is improve security training.
+* All fixes must be verified.
+
+**Steer clear of the Exploitability Trap**
+
+Review teams are often pulled down into exploit development. When a programmer says *"I won't fix that unless you can prove it's exploitable"*, that is an **Exploitability Trap**. This is bad because:
+* Developing exploits is time-consuming. This time is better spent looking for more problems.
+* Developing exploits is a whole other skill itself. Can't develop an exploit != Defect is not exploitable.
+
+Reasons to not get stuck in the Exploitability Trap:
+* Risk from shipping vulnerabilities > Risk from introducing new bugs from the bug fix.
+* Ignored vulnerabilities may lead to further vulnerabilities (chained) which could become more serious.
+* Vulnerabilities don't need to be exploitable to damage a company e.g. reputation damage from reporting the vuln.
+
+**Adding security review to an existing development process**
+
+
+
+
 
 ## PART 2: Pervasive Problems
 *Pervasive security problems that impact software, regardless of functionality*
