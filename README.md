@@ -1,8 +1,7 @@
 # Sec-Cheatsheets
 
-Cheatsheets for Bug Bounties and CTF challenges.
+Security cheatsheets.
+
+Useful for bug bounties, CTF-style challenges, penetration testing.
 
 Author: Brian Lam
-
-### Web_Payloads  
-Web application payloads.
