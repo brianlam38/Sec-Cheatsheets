@@ -1,5 +1,5 @@
 # WEB SECURITY PAYLOADS  
-Copy pasta some commands + payloads for CTF-style challenges + COMP6843 final exam.
+Copy pasta some commands + payloads for CTFs, bug bounties etc.
 
 Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
 
