@@ -30,16 +30,13 @@ Good cheat-sheets (if shit here doesn't work):
 ### Security Setup
 ### ============================================================
 
-**EC2 Web Server**
-1. Launch HTTP server `python -m SimpleHTTPServer 80`
-2. Hit it with requests / capture some admin cookies :)
-
-**Alternatives to capture requests**
+**Capturing HTTP response/requests**
+* Do it the hard way: launch your own server that captures header/request/response info e.g. `python -m SimpleHTPServer 80`
 * https://requestbin.fullcontact.com/
 * http://webhookinbox.com/
 
 ### ============================================================
-### Common 6843 words
+### Wordlists
 ### ============================================================
 Port Numbers, Directories, Subdomains, Files... be imaginative.
 ```
