@@ -1,5 +1,5 @@
 # WEB SECURITY PAYLOADS  
-Copy pasta some commands + payloads for CTFs, bug bounties etc.
+Copy pasta these payloads for CTFs, bug bounties, penetration testing etc.
 
 Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
 
@@ -89,8 +89,12 @@ Amass: https://github.com/caffix/amass
 ```
 $ cd /Go/amass
 $ ./amass -d ns.agency
+```  
+GoBuster DNS Mode: https://github.com/OJ/gobuster  
 ```
-**LEVEL 2: AltDNS**  
+$ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist
+```
+**LEVEL 2: AltDNS (permutations, alterations and mutations of subdomains)**  
 AltDNS: https://github.com/infosec-au/altdns
 ```
 $ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ valid_subdomains.txt ]
@@ -100,12 +104,9 @@ $ ./altdns.py -i [ input.txt ] -o [ output.txt ] -w [ wordlist.txt ] -r -s [ val
 -r            => resolves each subdomain
 -w wordlist.txt => list of words that you would like to permute your current subdomains with.
 ```
-**GoBuster DNS Mode**
-```
-$ go run main.go -m dns -u [ https://ns.agency ] -w /path/to/wordlist
-```
 
-**GoBuster Directory Mode**
+**Directory Bruteforcing**  
+GoBuster Directory Mode: https://github.com/OJ/gobuster 
 ```
 $ go run main.go -u https://ns.agency -w ~/1_RECON/_WORDLISTS/Directories_Common.wordlist
 ````  
