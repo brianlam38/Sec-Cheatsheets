@@ -16,7 +16,7 @@ Cheatsheet for my OSCP labs / exam.
 ### Essential Tools
 ### ============================================================
 
-**Netcat** 
+**Netcat**  
 Basics
 ```bash
 nc -nlvp [port]          # set up listener
