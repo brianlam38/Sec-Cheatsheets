@@ -1,4 +1,4 @@
-# OSCP cheatsheet
+# OSCP
 Cheatsheet for my OSCP labs / exam.
 
 # Index
@@ -49,9 +49,9 @@ ncat -v 10.11.14.143 4444 --ssl                # Box B: connect to Box A, SSL-en
 
 **Tcpdump**
 
-Analyse traffic from file (.pcap etc.)
+Analyse traffic from file (.pcap etc.) + show data in hex and ASCII
 ```bash
-tcpdump -r filename.pcap
+tcpdump -nX -r filename.pcap
 ```
 
 Analyse and filter traffic:
@@ -60,9 +60,4 @@ tcpdump -n src host 172.16.40.10 -r password_cracking_filtered.pcap   # src filt
 tcpdump -n dst host 172.16.40.10 -r password_cracking_filtered.pcap   # dest filter
 tcpdump -n port 81 -r password_cracking_filtered.pcap                 # port filter
 ```
-
-
-
-
-
 
