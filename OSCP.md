@@ -47,6 +47,19 @@ ncat -lvp 4444 -e cmd.exe --allow [IP] --ssl   # Box A: set up listener, allow o
 ncat -v 10.11.14.143 4444 --ssl                # Box B: connect to Box A, SSL-encrypted.
 ```
 
+**Tcpdump**
+
+Analyse traffic from file (.pcap etc.)
+```bash
+tcpdump -r filename.pcap
+```
+
+Analyse and filter traffic:
+```bash
+tcpdump -n src host 172.16.40.10 -r password_cracking_filtered.pcap   # src filter
+tcpdump -n dst host 172.16.40.10 -r password_cracking_filtered.pcap   # dest filter
+tcpdump -n port 81 -r password_cracking_filtered.pcap                 # port filter
+```
 
 
 
