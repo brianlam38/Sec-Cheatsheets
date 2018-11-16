@@ -66,7 +66,9 @@ tcpdump -n port 81 -r password_cracking_filtered.pcap                 # port fil
 ### Passive Info Gathering
 ### ============================================================
 
-Google Hacking. More with Google Hacking Database https://www.exploit-db.com/google-hacking-database/
+**Google Hacking**
+
+More with Google Hacking Database https://www.exploit-db.com/google-hacking-database/
 
 ```bash
 site:"microsoft.com" -site:"www.microsoft.com"            # list subdomains of Microsoft.com
@@ -75,5 +77,28 @@ intitle:"VNC viewer for Java"                             # list pages with a op
 inurl:"/control/userimage.html"                           # list pages which contain file "/control/userimage.html"
 inurl:.php? intext:CHARACTER_SETS,COLLATIONS intitle:phpmyadmin # list pages with post-authenticated db admin page.
 ```
+
+**Recon-ng**
+
+Basic usage:
+```bash
+recon-ng                                # access recon-ng
+use recon/path/to/module                # use module
+set SOURCE uber.com                     # set source target
+run                                     # run module
+```
+
+Some useful modules:
+```bash
+recon/domains-contacts/whois_pocs       # find employee names and email addresses
+recon/domains-vulnerabilies/xssed       # find existing XSS vulnerabilities
+recon/domains-hosts/google_site_web     # find subdomains via. Google search
+```
+
+### ============================================================
+### Active Info Gathering
+### ============================================================
+
+**DNS Enumeration**
 
 
