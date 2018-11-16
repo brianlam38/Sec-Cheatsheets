@@ -61,3 +61,19 @@ tcpdump -n dst host 172.16.40.10 -r password_cracking_filtered.pcap   # dest fil
 tcpdump -n port 81 -r password_cracking_filtered.pcap                 # port filter
 ```
 
+
+### ============================================================
+### Passive Info Gathering
+### ============================================================
+
+Google Hacking. More with Google Hacking Database https://www.exploit-db.com/google-hacking-database/
+
+```bash
+site:"microsoft.com" -site:"www.microsoft.com"            # list subdomains of Microsoft.com
+site:"microsoft.com" filetype:ppt "penetration testing"   # list .ppt files with term "penetration testing"
+intitle:"VNC viewer for Java"                             # list pages with a open VNC access pages
+inurl:"/control/userimage.html"                           # list pages which contain file "/control/userimage.html"
+inurl:.php? intext:CHARACTER_SETS,COLLATIONS intitle:phpmyadmin # list pages with post-authenticated db admin page.
+```
+
+
