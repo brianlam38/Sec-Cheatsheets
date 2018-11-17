@@ -1,5 +1,6 @@
 # OSCP
-Cheatsheet for my OSCP labs / exam.
+Summary of the OSCP course material.
+See "OSCP-Cheatsheet" for lab/exam specific cheatsheet.
 
 # Index
 
@@ -124,4 +125,31 @@ done
 ```
 
 **Port Scanning**
+
+Three types of scans:
+1. TCP Connect: attempts to complete a 3-way handshake with the target.
+2. Stealth/SYN: sending only SYN packets without completing the 3-way handshake.
+3. UDP: empty UDP packet is sent to the target. No response = open. ICMP port unreachable response = closed.
+
+Port scanning pitfalls:
+* UDP scanning is unreliable. Firewalls/routers drop ICMP packets, leading to false positives saying UDP port is OPEN.
+* Don't forget to scan for UDP services.
+
+Nmap scanning:
+```bash
+nmap -sn 10.11.1.1-254                   # network sweep: identify live hosts in a network
+nmap -p 80 10.11.1.1-254                 # network sweep: identify hosts with OPEN port 80
+nmap -sT -A --top-ports=20 10.11.1.1-254 # network sweep: identify hosts with OPEN top 20 ports
+
+nmap -O 10.0.0.19                        # OS fingerprinting
+nmap -sV -sT 10.0.0.19                   # Service enumeration / banner grabbing
+
+nmap 10.0.0.19 --script smb-os-discovery.nse                # Connect to SMB service on a target + determine OS version
+nmap --script=dns-zone-transfer -p 53 ns2.megacorpone.com   # Perform a DNS zone transfer
+```
+
+
+
+
+
 
