@@ -101,4 +101,27 @@ recon/domains-hosts/google_site_web     # find subdomains via. Google search
 
 **DNS Enumeration**
 
+Forward DNS lookup:
+```bash
+for name in $(cat list.txt); do
+    host $name.megacorp.com | grep 'has address' | cut -d" " -f1,4
+done
+```
+
+Reverse DNS lookup:
+```bash
+for ip in $(seq 72 91); do
+    host 38.100.193.$ip | grep 'megacorp' | cut -d" " -f1,5
+done
+```
+
+Zone transfers: "database replication" between related DNS servers / copy the list of all dns names configured for one zone to a secondary DNS server
+```bash
+# For each nameserver of an input domain, perform a zone transfer
+for server in $(host -t ns $1 | cut -d" " -f4); do
+    host -l $1 server | grep 'has address'
+done
+```
+
+**Port Scanning**
 
