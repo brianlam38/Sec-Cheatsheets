@@ -8,6 +8,14 @@ OSCP Exam Cheatsheet.
 # Content
 
 ### ============================================================
+### Preparation
+### ============================================================
+
+Kali Wordlists: `/usr/share/wordlists` . 
+SecLists: https://github.com/danielmiessler/SecLists
+
+
+### ============================================================
 ### Recon
 ### ============================================================
 
@@ -21,12 +29,19 @@ do nslookup 10.11.1.$i 10.11.1.220 | grep -v "NXDOMAIN" | grep name
 done
 ```
 
-Top TCP ports scan on initial box:  
+Top 20 TCP ports scan on initial box:  
 ```bash
-$ nmap 10.11.1.71 --top-ports 50 --open
+$ nmap 10.11.1.71 --top-ports 20 --open
 ```
 
-Complete TCP port scan on each box:
+Complete TCP port scan + service banner grab on each box:
 ```bash
 $ nmap 10.11.1.71 -p- -sV
 ```
+
+Service Enum
+
+
+### ============================================================
+### Recon
+### ============================================================
