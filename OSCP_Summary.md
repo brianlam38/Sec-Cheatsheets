@@ -1,6 +1,6 @@
 # OSCP
 Summary of the OSCP course material.
-See "OSCP-Cheatsheet" for lab/exam specific cheatsheet.
+See "OSCP_Cheatsheet" for lab/exam specific cheatsheet.
 
 # Index
 
