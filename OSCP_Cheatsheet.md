@@ -22,7 +22,6 @@ SecLists: https://github.com/danielmiessler/SecLists
 Scan network range for valid IPs/hostnames:  
 ```bash
 i="0"
-
 while [ $i -lt "255" ]
 do nslookup 10.11.1.$i 10.11.1.220 | grep -v "NXDOMAIN" | grep name
 	i=$[ $i+1 ]
