@@ -7,18 +7,12 @@ OSCP Exam Cheatsheet.
 
 # Content
 
-### ============================================================
-### Preparation
-### ============================================================
-
+### PREPARATION . 
 Kali Wordlists: `/usr/share/wordlists`  
 SecLists: https://github.com/danielmiessler/SecLists
 
 
-### ============================================================
-### Recon
-### ============================================================
-
+### RECON
 Scan network range for valid IPs/hostnames:  
 ```bash
 i="0"
@@ -60,6 +54,4 @@ Summarise your recon findings on the target:
 	* Brute force SSH with common & weak credentials.
 
 
-### ============================================================
-### Recon
-### ============================================================
+### EXPLOIT #1
