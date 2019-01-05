@@ -23,9 +23,8 @@ done
 ```
 
 Nmap port scans:
+(NOTE: Heavy scanning may result in ports being filtered/closed - wait <15 minutes to be unbanned)
 ```bash
-# NOTE: Heavy scanning may result in ports being filtered/closed - wait <15 minutes to be unbanned.
-
 $ nmap 10.11.1.71 --top-ports 20 --open	# Top 20 TCP ports scan on initial box
 $ nmap 10.11.1.71 -p- -sV		# Complete TCP port scan + service banner grab on each box:
 ```
@@ -58,9 +57,11 @@ Summarise your recon findings on the target:
 
 Scripts:
 ```bash
-$ curl -i -L 10.11.1.71 	# Follow re-directs
-$ curl 10.11.1.71 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//' # Internal/external links
-$ gobuster -u http://10.11.1.71 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e # Directory brute-forcing
+$ curl -i -L 10.11.1.71 							# Follow re-directs
+$ curl 10.11.1.71 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//' 	# Internal/external links
+$ gobuster -u http://10.11.1.71 \						# Directory brute-forcing
+	-w /usr/share/seclists/Discovery/Web_Content/common.txt \
+	-s '200,204,301,302,307,403,500' -e
 ```
 
 Things to check:
