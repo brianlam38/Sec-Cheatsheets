@@ -34,11 +34,12 @@ $ nmap 10.11.1.71 --top-ports 20 --open	# Top 20 TCP ports scan on initial box
 $ nmap 10.11.1.71 -p- -sV		# Complete TCP port scan + service banner grab on each box:
 ```
 
-Service Enum
+Services enum:
+* SSH: Fingerprint server/OS, SSH key
+
+For each service, check available Nmap scripts:
 ```bash
-$
-$
-$
+$ ls -l /usr/share/nmap/scripts/*ssh*
 ```
 
 
