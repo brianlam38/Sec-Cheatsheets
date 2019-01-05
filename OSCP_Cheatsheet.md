@@ -47,7 +47,7 @@ Summarise your recon findings on the target:
 * Ports (TCP / UDP)?
 * Services / Applications?
 * Which is the best entry point so far?
-* Prioritised list of attack options:
+* Prioritised list of attack vectors:
 	* Explore the web application.
 	* Search for vulnerabilities in the known services & applications.
 	* Brute force SSH with common & weak credentials.
@@ -57,19 +57,40 @@ Summarise your recon findings on the target:
 
 Scripts:
 ```bash
-$ curl -i -L 10.11.1.71 							# Follow re-directs
-$ curl 10.11.1.71 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//' 	# Internal/external links
-$ gobuster -u http://10.11.1.71 \						# Directory brute-forcing
-	-w /usr/share/seclists/Discovery/Web_Content/common.txt \
-	-s '200,204,301,302,307,403,500' -e
+$ curl -i -L 10.11.1.71 						  # Follow re-directs
+$ curl 10.11.1.71 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//' # Internal/external links
+$ gobuster -u http://10.11.1.71/ \					  # Directory brute-force
+	   -w /usr/share/seclists/Discovery/Web_Content/common.txt \
+	   -s '200,204,301,302,307,403,500' -e
+$ gobuster -u http://10.11.1.71/cgi-bin/ \				  # 2nd directory brute-force
+	   -w /usr/share/seclists/Discovery/Web_Content/cgis.txt \
+	   -s '200,204,403,500' -e
 ```
 
-Things to check:
+Other things to check:
 * robots.txt
 * social media
 * source code (if app is based on open-source code)
 
+Re-evaluate attack surface:
+* Any new findings to add to our list of attack vectors?
 
+### EXPLOITATION - LOW PRIVILEGE USER
 
+Searchsploit
+```bash 
+$ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
+```
 
+Searchsploit (EXAMPLE - Apache 2.4.7):  
+(no results fit)
+```bash
+$ searchsploit apache 2.4 | grep -v '/dos/'
+$ searchsploit apache 2.x | grep -v '/dos/'
+```
 
+Searchsploit (EXAMPLE - Apache CGI):  
+(suitable result: Apache mod_cgi - Remote Exploit (Shellshock))
+```bash
+$ searchsploit apache cgi | grep -v '/dos/'
+```
