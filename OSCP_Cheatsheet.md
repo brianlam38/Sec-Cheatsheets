@@ -149,3 +149,69 @@ msf exploit(...) > run
 [*] Meterpreter session 1 opened (10.11.0.42:443 -> 10.11.1.71:34930) at 2018-12-18 13:53:55 +1100
 meterpreter >
 ```
+
+You will now have reverse shell.
+
+### PRIVILEGE ESCALATION - ENUM
+
+Get a proper shell:
+
+
+Linux privesc:
+* https://github.com/rebootuser/LinEnum (automated scan)
+* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (Kali tool)
+* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/  
+
+Windows privesc:
+* https://github.com/azmatt/windowsEnum (automated scan)
+* https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
+* http://www.fuzzysecurity.com/tutorials/16.html
+
+Questions to ask:
+* What user files do we have access to?
+* What configurations do we have access to?
+* Any incorrect file permissions?
+* What programs are custom? Any SUID? SGID?
+* What's scheduled to run?
+* Any hardcoded credentials? Where are credentials kept?
+
+Privesc Enum:
+```bash
+# OS? Version? Architecture?
+$ cat /etc/*-release
+$ uname -i
+$ lsb_release -a (Debian)
+ 
+# Who are we? Where are we? What are our sudo privileges?
+$ id
+$ pwd
+$ sudo -l
+ 
+# Other users? Which ones have a valid shell?
+$ cat /etc/passwd
+$ grep -vE "nologin|false" /etc/passwd
+ 
+# Services running on the box? Network services running?
+ps aux
+netstat -antup
+ 
+# Whats installed? Kernel?
+dpkg -l (Debian)
+rpm -qa (CentOS / openSUSE)
+uname -a
+```
+
+Summarise possible attack vectors / vulnerable services to escalate privileges.
+
+### PRIVILEGE ESCALATION - FINDING EXPLOIT
+
+Use information gathered from enumeration stage to find an exploit for vectors / vulnerable services in your list.
+
+
+
+
+
+
+
+
+
