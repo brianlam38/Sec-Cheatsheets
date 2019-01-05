@@ -7,7 +7,7 @@ OSCP Exam Cheatsheet.
 
 # Content
 
-### PREPARATION . 
+### PREPARATION
 Kali Wordlists: `/usr/share/wordlists`  
 SecLists: https://github.com/danielmiessler/SecLists
 
