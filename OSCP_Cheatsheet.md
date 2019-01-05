@@ -54,4 +54,21 @@ Summarise your recon findings on the target:
 	* Brute force SSH with common & weak credentials.
 
 
-### EXPLOIT #1
+### DEEPER RECON (SERVICE-LEVEL) - WEBAPP EXAMPLE
+
+Scripts:
+```bash
+$ curl -i -L 10.11.1.71 	# Follow re-directs
+$ curl 10.11.1.71 -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//' # Internal/external links
+$ gobuster -u http://10.11.1.71 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e # Directory brute-forcing
+```
+
+Things to check:
+* robots.txt
+* social media
+* source code (if app is based on open-source code)
+
+
+
+
+
