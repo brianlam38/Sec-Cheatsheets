@@ -35,7 +35,10 @@ $ nmap 10.11.1.71 -p- -sV		# Complete TCP port scan + service banner grab on eac
 ```
 
 Services enum:
-* SSH: Fingerprint server/OS, SSH key
+* SSH (22): Fingerprint server/OS, SSH key
+* Telnet (23):
+* SMTP (25):
+* Service (port):
 
 For each service, check available Nmap scripts:
 ```bash
