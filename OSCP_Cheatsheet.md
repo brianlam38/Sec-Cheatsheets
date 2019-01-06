@@ -11,6 +11,11 @@ OSCP Exam Cheatsheet.
 Kali Wordlists: `/usr/share/wordlists`  
 SecLists: https://github.com/danielmiessler/SecLists
 
+Useful Tools:
+```bash
+$ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
+
+```
 
 ### RECON
 Scan network range for valid IPs/hostnames:  
