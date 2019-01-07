@@ -12,11 +12,13 @@ Telnet (23)
 SMTP (25)
 * Stuff
 
-SMB / SAMBA (445)
-* Stuff
-
 NETBIOS (139)
 * Stuff
+
+SMB (445)
+* [MS08-067] NetAPI module in Windows SMB (
+
+SAMBA
 
 MSRPC (135)
 * Stuff
