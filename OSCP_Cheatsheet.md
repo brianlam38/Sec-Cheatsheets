@@ -3,7 +3,9 @@ OSCP Exam Cheatsheet.
 
 # Index
 
-- [Introduction](#introduction) 
+- [Preparation](#preparation)
+- [Recon](#recon) 
+- [Preparation](#preparation) 
 
 # Content
 
@@ -150,8 +152,11 @@ You will now have reverse shell.
 
 Get a proper shell:
 
+General privesc guide:
+* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
 
 Linux privesc:
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py
 * https://github.com/rebootuser/LinEnum (automated scan)
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check (Kali tool)
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/  
@@ -200,22 +205,6 @@ Summarise possible attack vectors / vulnerable services to escalate privileges.
 ### PRIVILEGE ESCALATION - FINDING EXPLOIT
 
 Use information gathered from enumeration stage to find an exploit for vectors / vulnerable services in your list.
-
-General Guide:
-* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
-
-Windows:
-* https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
-* https://github.com/azmatt/windowsEnum
-
-Linux:
-* `unix-privesc-check`
-* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py
-
-
-
-
-
 
 
 
