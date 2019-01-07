@@ -205,11 +205,17 @@ Summarise possible attack vectors / vulnerable services to escalate privileges.
 
 Use information gathered from enumeration stage to find an exploit for vectors / vulnerable services in your list.
 
+General Guide:
+* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
+
 Windows:
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
+* https://github.com/azmatt/windowsEnum
 
 Linux:
-* Link
+* `unix-privesc-check`
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py
+
 
 
 
