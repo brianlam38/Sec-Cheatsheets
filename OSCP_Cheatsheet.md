@@ -14,7 +14,6 @@ SecLists: https://github.com/danielmiessler/SecLists
 Useful Tools:
 ```bash
 $ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
-
 ```
 
 ### RECON
@@ -205,6 +204,12 @@ Summarise possible attack vectors / vulnerable services to escalate privileges.
 ### PRIVILEGE ESCALATION - FINDING EXPLOIT
 
 Use information gathered from enumeration stage to find an exploit for vectors / vulnerable services in your list.
+
+Windows:
+* https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
+
+Linux:
+* Link
 
 
 
