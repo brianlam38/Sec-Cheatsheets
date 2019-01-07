@@ -143,7 +143,7 @@ msf exploit(ms08_067_netapi) > sessions -i 0
 meterpreter >
 ```
 
-You will now have reverse shell.
+You have now established a Meterpreter session.
 
 ### PRIVILEGE ESCALATION - ENUM
 
