@@ -191,7 +191,7 @@ How to abuse PHP wrappers (ftp:// zip:// etc.) (RCE exploit)
 * https://www.securusglobal.com/community/2016/08/19/abusing-php-wrappers/
 * Write malicious PHP -> create .zip containing malicious PHP -> `https://target.com/param?=zip://uploads/image.png%23shell` -> `https://target.com/param?=zip://uploads/image.png%23shell&param1=system&param2=ls` => RCE 
 Other things:
-* Try URL paths without `.php` as source code may concat `.php` to the end of the user-input.
+* Some applications may concat `.php` to the end of your URL so you may need to use `%00` null-byte injection to stop the extension appending.
 
 **STEP #1: Verify existence of LFI/LFD vulnerability**
 ```http
