@@ -199,7 +199,7 @@ Use information gathered from enumeration stage to find an exploit for vectors /
 ### EXPLOITS - USING / COMPILING
 
 Compilation tips:
-* If running exploit results in errors, try compile on a different version of Kali
+* `./exploit` results in errors: compile in the host itself, Kali box or another machine.
 
 Useful compilation commands:
 ```bash
