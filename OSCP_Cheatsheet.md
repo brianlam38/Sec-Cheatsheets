@@ -196,5 +196,13 @@ Use information gathered from enumeration stage to find an exploit for vectors /
 
 
 
+### EXPLOITS - USING / COMPILING
 
+Compilation tips:
+* If running exploit results in errors, try compile on a different version of Kali
+
+Useful compilation commands:
+```bash
+$ gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
+```
 
