@@ -35,9 +35,6 @@ $ nmap 10.11.1.71 --top-ports 20 --open	# Top 20 TCP ports scan on initial box
 $ nmap 10.11.1.71 -p- -sV		# Complete TCP port scan + service banner grab on each box:
 ```
 
-Services enum:
-* See Services Cheatsheet @ https://github.com/brianlam38/Sec-Cheatsheets/blob/master/Services_Cheatsheet
-
 For each service, check available Nmap scripts:
 ```bash
 $ ls -l /usr/share/nmap/scripts/*ssh*
@@ -77,32 +74,18 @@ Other things to check:
 Re-evaluate attack surface:
 * Any new findings to add to our list of attack vectors?
 
-### FINDING AN EXPLOIT TO USE
+### FIND VULNS + EXPLOIT CODE
 
-Nikto webapp scanner:
+Tools:
 ```bash
+# Nikto webapp scanner:
 $ nikto -host 10.11.1.71
-```
 
-Searchsploit (exploit-db):
-```bash
-# BASE EXAMPLE
+# Searchsploit (exploit-db):
 $ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
 
-# APACHE 2.4.8 EXAMPLE
-$ searchsploit apache 2.4 | grep -v '/dos/'
-$ searchsploit apache 2.x | grep -v '/dos/'
-
-# APACHE | CGI
-$ searchsploit apache cgi | grep -v '/dos/'
-
-# WORKING EXPLOIT CODE FOUND IN:
-/usr/share/exploitdb/platforms/linux/remote/34900.py
-```
-
-Nmap:
-```bash
-$ ls -l /usr/share/nmap/scripts/*shellshock*
+# Nmap Scripting ENgine
+$ ls -l /usr/share/nmap/scripts/*service_name*
 ```
 
 Other areas to find exploit code:
@@ -144,7 +127,9 @@ msf exploit(ms08_067_netapi) > sessions -i 0
 meterpreter >
 ```
 
-You have now established a Meterpreter session.
+Meterpreter sometimes doesn't work.  
+Go back to using `nc -nvlp 80` and trigger reverse shell in vulnerable app/service.
+
 
 ### PRIVILEGE ESCALATION - ENUM
 
@@ -169,12 +154,13 @@ Windows privesc:
 * http://www.fuzzysecurity.com/tutorials/16.html
 
 Questions to ask:
-* What user files do we have access to?
-* What configurations do we have access to?
-* Any incorrect file permissions?
-* What programs are custom? Any SUID? SGID?
-* What's scheduled to run?
-* Any hardcoded credentials? Where are credentials kept?
+* User RWX permissions enabled on files/directories
+* Config.* files
+* Custom programs
+* SUID / SGID programs
+* Cron jobs / scheduled programs or scripts
+* Hardcoded credentials -> where are credentials kept?
+
 
 Privesc Enum:
 ```bash
