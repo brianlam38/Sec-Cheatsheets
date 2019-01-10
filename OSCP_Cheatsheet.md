@@ -149,6 +149,10 @@ You have now established a Meterpreter session.
 ### PRIVILEGE ESCALATION - ENUM
 
 Get a proper shell: https://netsec.ws/?p=337
+```bash
+# This shell mostly works
+python -c 'import pty; pty.spawn("/bin/sh")'
+```
 
 General privesc guide:
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
