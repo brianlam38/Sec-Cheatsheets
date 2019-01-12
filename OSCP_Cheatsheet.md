@@ -162,7 +162,7 @@ Questions to ask:
 * Hardcoded credentials -> where are credentials kept?
 
 
-Privesc Enum:
+Linux Privesc:
 ```bash
 # OS? Version? Architecture?
 $ cat /etc/*-release
@@ -186,6 +186,12 @@ netstat -antup
 dpkg -l (Debian)
 rpm -qa (CentOS / openSUSE)
 uname -a
+```
+
+Windows Privesc:
+```
+# Find a file recursively
+dir filename.exe /S /B
 ```
 
 Summarise possible attack vectors / vulnerable services to escalate privileges.
