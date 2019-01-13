@@ -150,6 +150,7 @@ Linux privesc:
 
 Windows privesc:
 * https://github.com/azmatt/windowsEnum (automated scan)
+* http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
 * http://www.fuzzysecurity.com/tutorials/16.html
 
