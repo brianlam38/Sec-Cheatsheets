@@ -25,6 +25,12 @@ SAMBA
 MSRPC (135)
 * Stuff
 
+## Web Stuff
+
+ColdFusion
+* https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
+
+
 ## Reverse Shell Tips
 
 If reverse shell hangs / dies, try a different port.
