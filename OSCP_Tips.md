@@ -30,6 +30,9 @@ MSRPC (135)
 ColdFusion
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 
+WEBDAV
+* `$ davtest -url 10.11.1.13`
+
 
 ## Reverse Shell Tips
 
