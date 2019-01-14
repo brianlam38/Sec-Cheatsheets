@@ -50,8 +50,7 @@ $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[
 
 ## Reverse Shell Tips
 
-Reverse shell cheatsheet:  
-http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
+Reverse shell cheatsheet: http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
 
 If reverse shell hangs / dies, try a different port.
 * A firewall may be blocking / disconnecting you on the port.
