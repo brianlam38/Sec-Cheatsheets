@@ -1,4 +1,4 @@
-# OSCP Tips
+# OSCP Services and Things-To-Try
 
 ## Services
 
