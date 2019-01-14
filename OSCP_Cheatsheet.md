@@ -40,17 +40,6 @@ For each service, check available Nmap scripts:
 $ ls -l /usr/share/nmap/scripts/*ssh*
 ```
 
-Summarise your recon findings on the target:
-* IP / DNS?
-* OS?
-* Ports (TCP / UDP)?
-* Services / Applications?
-* Which is the best entry point so far?
-* Prioritised list of attack vectors:
-	* Explore the web application.
-	* Search for vulnerabilities in the known services & applications.
-	* Brute force SSH with common & weak credentials.
-
 
 ### DEEPER RECON (SERVICE-LEVEL) - WEBAPP EXAMPLE
 
@@ -65,6 +54,9 @@ $ gobuster -u http://10.11.1.71/cgi-bin/ \				  # 2nd directory brute-force
 	   -w /usr/share/seclists/Discovery/Web_Content/cgis.txt \
 	   -s '200,204,403,500' -e
 ```
+
+LFI:
+* It can be a good idea to use file extensions or language codes (e.g. %00en, %00php) as exits in this configuration file.
 
 Other things to check:
 * robots.txt
