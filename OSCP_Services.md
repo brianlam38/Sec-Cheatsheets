@@ -30,7 +30,9 @@ MSRPC (135)
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 
-WEBDAV vulns - using tools
+WEBDAV vulns - using tools . 
+https://www.rapid7.com/db/modules/exploit/windows/iis/iis_webdav_upload_asp  
+http://carnal0wnage.attackresearch.com/2010/05/more-with-metasploit-and-webdav.html  
 ```bash
 $ davtest -url 10.11..113                                 # test for webdav vulns
 $ davtest -url http://10.11.1.13                          # upload file from local to remote dir (HTTP PUT)
