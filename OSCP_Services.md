@@ -18,7 +18,7 @@ NETBIOS (139)
 * Stuff
 
 SMB (445)
-* [MS08-067] NetAPI module in Windows SMB (
+* [MS08-067] NetAPI module in Windows SMB
 
 SAMBA
 
