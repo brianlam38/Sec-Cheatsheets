@@ -1,6 +1,6 @@
 # OSCP Tips
 
-## Services | Things to try
+## Services
 
 SSH (22)
 * Fingerprint server/OS, SSH key
@@ -25,7 +25,7 @@ SAMBA
 MSRPC (135)
 * Stuff
 
-## Web Stuff
+## Web
 
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
