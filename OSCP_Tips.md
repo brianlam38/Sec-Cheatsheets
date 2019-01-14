@@ -27,10 +27,10 @@ MSRPC (135)
 
 ## Web Stuff
 
-ColdFusion
+ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 
-WEBDAV
+WEBDAV vulns
 ```bash
 $ davtest -url 10.11..113                                 # test for webdav vulns
 $ davtest -url http://10.11.1.13                          # upload file from local to remote dir (HTTP PUT)
