@@ -29,6 +29,8 @@ MSRPC (135)
 
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
+* https://www.absolomb.com/2017-12-29-HackTheBox-Arctic-Writeup/
+* ColdFusion LFI: http://hatriot.github.io/blog/2014/04/02/lfi-to-stager-payload-in-coldfusion/
 
 WEBDAV vulns - using tools . 
 https://www.rapid7.com/db/modules/exploit/windows/iis/iis_webdav_upload_asp  
