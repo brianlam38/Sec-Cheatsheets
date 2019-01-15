@@ -19,14 +19,6 @@ $ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
 ```
 
 ### RECON
-Scan network range for valid IPs/hostnames:  
-```bash
-i="0"
-while [ $i -lt "255" ]
-do nslookup 10.11.1.$i 10.11.1.220 | grep -v "NXDOMAIN" | grep name
-	i=$[ $i+1 ]
-done
-```
 
 Nmap port scans:
 (NOTE: Heavy scanning may result in ports being filtered/closed - wait <15 minutes to be unbanned)
@@ -40,8 +32,7 @@ For each service, check available Nmap scripts:
 $ ls -l /usr/share/nmap/scripts/*ssh*
 ```
 
-!! Enumerate each service running on an open port !!
-
+!! FOLLOW A PROCESS !!
 
 ### DEEPER RECON (SERVICE-LEVEL) - WEBAPP EXAMPLE
 
