@@ -40,6 +40,8 @@ For each service, check available Nmap scripts:
 $ ls -l /usr/share/nmap/scripts/*ssh*
 ```
 
+!! Enumerate each service running on an open port !!
+
 
 ### DEEPER RECON (SERVICE-LEVEL) - WEBAPP EXAMPLE
 
