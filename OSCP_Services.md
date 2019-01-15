@@ -17,10 +17,17 @@ SMTP (25)
 NETBIOS (139)
 * Stuff
 
-SMB (445)
+SMB / SMBD (135-139 - 445)
 * [MS08-067] NetAPI module in Windows SMB
+```bash
+$ nmblookup -A target
+$ smbclient //MOUNT/share -I target -N
+$ rpcclient -U "" target
+$ enum4linux target
+```
 
-SAMBA
+SMBD / SAMBA (server to provide SMB service to clients) (139)
+* Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
 
 MSRPC (135)
 * Stuff
