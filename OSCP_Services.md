@@ -8,6 +8,7 @@
 
 SSH (22)
 * Fingerprint server/OS, SSH key
+* Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 HTTP (80|8080)
 * Curl for HTTP header
