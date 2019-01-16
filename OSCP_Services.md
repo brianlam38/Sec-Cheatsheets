@@ -23,13 +23,15 @@ NETBIOS (139)
 * Stuff
 
 SMB / SMBD (135-139 - 445)
-* [MS08-067] NetAPI module in Windows SMB
+* SMB enumeration
 ```bash
 $ nmblookup -A target
 $ smbclient //MOUNT/share -I target -N
 $ rpcclient -U "" target
 $ enum4linux target
 ```
+* [MS08-067] NetAPI module in Windows SMB
+* [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
 
 SMBD / SAMBA (server to provide SMB service to clients) (139)
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
