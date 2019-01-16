@@ -123,14 +123,12 @@ Windows privesc:
 * Accesschk.exe: http://www.fuzzysecurity.com/tutorials/16.html
 * https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
 
-Questions to ask:
-* User RWX permissions enabled on files/directories
-* Config.* files
-* Custom programs
-* SUID / SGID programs
-* Cron jobs / scheduled programs or scripts
-* Hardcoded credentials -> where are credentials kept?
-
+Quick Wins:
+```bash
+# THIS HAS WORKED BEFORE: Due to misconfiguration in /etc/sudoers
+$ sudo su	# execute su as root
+$ su root	# become root
+```
 
 Linux Privesc:
 ```bash
