@@ -20,6 +20,11 @@ For each service, check available Nmap scripts:
 $ ls -l /usr/share/nmap/scripts/*ssh*
 ```
 
+NSE script tests:
+```bash
+$ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
+```
+
 Linux SMB Enum
 ```bash
 $ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
