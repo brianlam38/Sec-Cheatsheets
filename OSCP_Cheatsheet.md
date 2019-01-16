@@ -3,20 +3,8 @@ OSCP Exam Cheatsheet.
 
 # Index
 
-- [Preparation](#preparation)
 - [Recon](#recon) 
 - [Preparation](#preparation) 
-
-# Content
-
-### PREPARATION
-Kali Wordlists: `/usr/share/wordlists`  
-SecLists: https://github.com/danielmiessler/SecLists
-
-Useful Tools:
-```bash
-$ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
-```
 
 ### RECON
 
@@ -30,6 +18,11 @@ $ nmap 10.11.1.71 -p- -sV		# Complete TCP port scan + service banner grab on eac
 For each service, check available Nmap scripts:
 ```bash
 $ ls -l /usr/share/nmap/scripts/*ssh*
+```
+
+Linux SMB Enum
+```bash
+$ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
 ```
 
 !! FOLLOW A PROCESS !!
@@ -47,9 +40,6 @@ $ gobuster -u http://10.11.1.71/cgi-bin/ \				  # 2nd directory brute-force
 	   -w /usr/share/seclists/Discovery/Web_Content/cgis.txt \
 	   -s '200,204,403,500' -e
 ```
-
-LFI:
-* It can be a good idea to use file extensions or language codes (e.g. %00en, %00php) as exits in this configuration file.
 
 Other things to check:
 * robots.txt
@@ -110,10 +100,10 @@ General privesc guide:
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
 
 Linux privesc:
-* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py
-* https://github.com/rebootuser/LinEnum (automated scan)
-* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (Kali tool)
-* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/  
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated)
+* https://github.com/rebootuser/LinEnum (automated)
+* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
+* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
 
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum
