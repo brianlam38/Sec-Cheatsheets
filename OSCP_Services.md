@@ -6,37 +6,40 @@
 
 ## Services
 
-SSH (22)
+__SSH (22)__
 * Fingerprint server/OS, SSH key
 * Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
-HTTP (80|8080)
+__HTTP (80|8080)__
 * Curl for HTTP header
 
-Telnet (23)
+__Telnet (23)__
 * Stuff
 
-SMTP (25)
+__SMTP (25)__
 * Stuff
 
-NETBIOS (139)
+__NETBIOS (139)__
 * Stuff
 
-SMB / SMBD (135-139 - 445)
-* SMB enumeration
+__SMB / SMBD (135-139 - 445)__
+
+SMB enumeration
 ```bash
 $ nmblookup -A target
 $ smbclient //MOUNT/share -I target -N
 $ rpcclient -U "" target
 $ enum4linux target
 ```
+
 * [MS08-067] NetAPI module in Windows SMB
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
 
-SMBD / SAMBA (server to provide SMB service to clients) (139)
+__SMBD / SAMBA (139)__
+* SMBD/Sambda is a server to provide SMB service to clients
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
 
-MSRPC (135)
+__MSRPC (135)__
 * Stuff
 
 ## Web
