@@ -19,10 +19,7 @@ __Telnet (23)__
 __SMTP (25)__
 * Stuff
 
-__NETBIOS (139)__
-* Stuff
-
-__SMB / SMBD (135-139 - 445)__
+__SMB / NETBIOS / SMBD (135-139 - 445)__
 
 SMB enumeration
 ```bash
@@ -32,6 +29,7 @@ $ rpcclient -U "" target
 $ enum4linux target
 ```
 
+Exploits:
 * [MS08-067] NetAPI module in Windows SMB
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
 
