@@ -67,6 +67,9 @@ $ curl -T '/path/to/local/file.txt' 'http://10.11.1.13/'                        
 $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[old]' # move .ext1 -> .ext2
 ```
 
+Apache
+* Log paths: https://wiki.apache.org/httpd/DistrosDefaultLayout
+
 LFI / RFI
 ```
 # Append NULL bytes (prevent .ext concat to the end by application)
