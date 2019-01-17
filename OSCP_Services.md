@@ -79,6 +79,22 @@ http://example.com/index.php?page=../../../etc/passwd%en
 http://example.com/index.php?page=../../../etc/passwd%00%en
 ```
 
+PHP
+* Check `phpinfo()`
+* RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
+
+## Privesc - LINUX
+
+UDEV
+* http://www.madirish.net/370
+
+## Privesc - WINDOWS
+
+Accesschk.exe:
+* http://www.fuzzysecurity.com/tutorials/16.html
+
+
+
 ## Reverse Shell Tips
 
 Reverse shell cheatsheet: http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
