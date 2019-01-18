@@ -176,7 +176,7 @@ $ use auxiliary/scanner/oracle/oracle_login	# Oracle Login Module
 Compilation tips:
 * `./exploit` results in errors: compile in the host itself, Kali box or another machine.
 
-Useful compilation commands:
+Compilation commands:
 ```bash
 # Linux
 $ gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
