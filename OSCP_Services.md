@@ -84,7 +84,8 @@ PHP
 ## Privesc - LINUX
 
 UDEV
-* http://www.madirish.net/370
+* Guide: http://www.madirish.net/370
+* Exploit Code: https://www.exploit-db.com/exploits/8478
 
 ## Privesc - WINDOWS
 
