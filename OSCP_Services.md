@@ -1,9 +1,5 @@
 # OSCP Services and Things-To-Try
 
-## Enumeration Process
-
-
-
 ## Services
 
 __SSH (22)__
