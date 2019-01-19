@@ -44,6 +44,9 @@ $ gobuster -u http://10.11.1.71/cgi-bin/ \				  # 2nd directory brute-force
 	   -s '200,204,403,500' -e
 ```
 
+Denied from accessing /robots.txt?
+* Try change the user agent i.e. `curl -v http://10.11.1.39/robots.txt -H "User-Agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)"`
+
 ### FIND VULNS + EXPLOIT CODE
 
 Tools:
