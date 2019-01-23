@@ -116,7 +116,6 @@ Windows privesc:
 * http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/ (manual)
 * http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
 * https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
-* Accesschk.exe: http://www.fuzzysecurity.com/tutorials/16.html
 * https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
 
 Quick Wins:
