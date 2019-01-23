@@ -98,3 +98,12 @@ If reverse shell hangs / dies, try a different port.
 * A firewall may be blocking / disconnecting you on the port.
 * E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
 
+
+## Metasploit
+
+Msfvenom commands:
+* https://netsec.ws/?p=331
+
+
+
+
