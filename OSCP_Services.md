@@ -87,7 +87,17 @@ UDEV
 
 Accesschk.exe:
 * http://www.fuzzysecurity.com/tutorials/16.html
+```
+accesschk.exe -uwdqs Users c:\ /accepteula
+accesschk.exe -uwcqv "Authenticated Users" * /accepteula
+```
 
+Psexec.exe:
+* https://pinkysplanet.net/escalating-privileges-in-windows-with-psexec-and-netcat/
+* https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
+
+Net Use:
+* https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
 
 
 ## Reverse Shell Tips
