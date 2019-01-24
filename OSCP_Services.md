@@ -28,6 +28,7 @@ $ enum4linux target
 Exploits:
 * [MS08-067] NetAPI module in Windows SMB
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
+* [MS17-010 ALTERNATIVE METHOD]: Adding new admin account https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
 
 __SMBD / SAMBA (139)__
 * SMBD/Sambda is a server to provide SMB service to clients
