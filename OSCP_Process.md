@@ -44,9 +44,14 @@ __Step 7__
 
 ## Entry Point
 
-__Step 1__
+__#1 RECON__
 
-__Step 2__
+```bash
+            # scan ports
+            # scan ALL ports
+```
+
+__#2 __
 
 __Step 3__
 
