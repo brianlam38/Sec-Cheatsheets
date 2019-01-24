@@ -46,10 +46,8 @@ __Step 7__
 
 __#1 RECON__
 
-```bash
-            # scan ports
-            # scan ALL ports
-```
+* Scan ports
+* Scan ALL ports
 
 __#2 __
 
