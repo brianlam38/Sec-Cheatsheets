@@ -7,17 +7,25 @@ __SSH (22)__
 Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
+
+
 __HTTP (80|8080|443|8443 etc.)__
 
 See section "WEB" for juicy web stuff.
+
+
 
 __Telnet (23)__
 
 Stuff
 
+
+
 __SMTP (25)__
 
 Stuff
+
+
 
 __SMB / NETBIOS / SMBD (135-139 - 445)__
 
@@ -53,6 +61,8 @@ Working exploits:
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
 * [MS17-010 ALTERNATIVE METHOD]: Adding new admin account https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
 
+
+
 __SMBD / SAMBA (139)__
 
 SMBD/Sambda is a server to provide SMB service to clients
@@ -60,8 +70,12 @@ SMBD/Sambda is a server to provide SMB service to clients
 Working exploits:
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
 
+
+
 __MSRPC (135)__
 * Stuff
+
+
 
 ## Web
 
