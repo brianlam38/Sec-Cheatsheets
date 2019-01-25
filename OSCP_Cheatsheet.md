@@ -113,9 +113,8 @@ Linux privesc:
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum (automated)
 * https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
-* http://www.exumbraops.com/penetration-testing-102-windows-privilege-escalation-cheatsheet/ (manual)
+* https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
 * http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
-* https://github.com/netbiosX/Checklists/blob/master/Windows-Privilege-Escalation.md
 * https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
 
 Quick Wins:
