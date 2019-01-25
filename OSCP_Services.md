@@ -23,6 +23,9 @@ $ nmblookup -A target
 $ smbclient //MOUNT/share -I target -N
 $ rpcclient -U "" target
 $ enum4linux target        // enum info from Windows and Samba hosts 
+
+# Find named pipes
+`msfconsole> use auxiliary/scanner/smb/pipe_auditor`
 ```
 
 Things to try:
