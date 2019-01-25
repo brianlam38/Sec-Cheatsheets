@@ -22,7 +22,7 @@ SMB enumeration
 $ nmblookup -A target
 $ smbclient //MOUNT/share -I target -N
 $ rpcclient -U "" target
-$ enum4linux target
+$ enum4linux target        // enum info from Windows and Samba hosts 
 ```
 
 Exploits:
