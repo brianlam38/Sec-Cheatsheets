@@ -108,13 +108,10 @@ __MSRPC (135)__
 
 ## Web
 
-```
-# Follow re-directs
-$ curl -i -L 10.11.1.71 
-
-# Directory brute-force
+```bash
+$ curl -i -L 10.11.1.71    # Follow re-directs
 $ gobuster -u http://10.11.1.71 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e
-
+```
 
 Denied from accessing /robots.txt?
 * Try change the user agent i.e. `curl -v http://10.11.1.39/robots.txt -H "User-Agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)"`
