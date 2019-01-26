@@ -79,6 +79,9 @@ __MSRPC (135)__
 
 ## Web
 
+Exploit code not working? Try:
+* Full directory paths to binaries and your files e.g. `/usr/bin/wget http:example.com -o /full/path/to/file.txt`
+
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
 * https://www.absolomb.com/2017-12-29-HackTheBox-Arctic-Writeup/
