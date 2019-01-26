@@ -108,6 +108,9 @@ __MSRPC (135)__
 
 ## Web
 
+Denied from accessing /robots.txt?
+* Try change the user agent i.e. `curl -v http://10.11.1.39/robots.txt -H "User-Agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)"`
+
 Exploit code not working? Try:
 * Full directory paths to binaries and your files e.g. `/usr/bin/wget http:example.com -o /full/path/to/file.txt`
 
@@ -154,18 +157,31 @@ PHP
 * Check `phpinfo()`
 * RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
 
+## Initial Exploitation
+
+Reverse shell cheatsheet:
+* http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
+
+
 ## Kernel Exploits
 
 FreeBSD 9.0
 * FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
 
-## Privesc - LINUX
+## Privilege Escalation
+
+TTY spawn cheatsheet: https://netsec.ws/?p=337
+
+__LINUX PRIVESC__
+
+Spawn TTY for linux:
+* `python -c 'import pty; pty.spawn("/bin/sh")'`
 
 UDEV
 * Guide: http://www.madirish.net/370
 * Exploit Code: https://www.exploit-db.com/exploits/8478
 
-## Privesc - WINDOWS
+__WINDOWS PRIVESC__
 
 Accesschk.exe:
 * http://www.fuzzysecurity.com/tutorials/16.html
