@@ -1,6 +1,6 @@
 # OSCP Services and Things-To-Try
 
-## Recon
+## RECON
 
 Enumeration Mindmap: https://github.com/DigitalAftermath/EnumerationVisualized/wiki
 
@@ -18,7 +18,7 @@ $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11
 
 
 
-## Services
+## SERVICES
 
 __FTP (21)__
 
@@ -106,7 +106,7 @@ __MSRPC (135)__
 
 
 
-## Web
+## WEB
 
 ```bash
 $ curl -i -L 10.11.1.71    # Follow re-directs
@@ -162,7 +162,7 @@ PHP
 * Check `phpinfo()`
 * RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
 
-## Initial Exploitation
+## INITIAL EXPLOITATION
 
 Reverse shell cheatsheet:
 * http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
@@ -175,12 +175,12 @@ If reverse shell hangs / dies:
 * A firewall may be blocking / disconnecting you on the port.
 * Try a bind shell instead of reverse shell.
 
-## Kernel Exploits
+## KERNEL EXPLOITS
 
 FreeBSD 9.0
 * FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
 
-## Privilege Escalation
+## PRIVILEGE ESCALATION
 
 Quick Wins:
 ```bash
@@ -250,13 +250,13 @@ sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" sta
 net start <vulnerable-service>
 ```
 
-## Msfvenom payloads
+## MSFVENOM PAYLOADS
 
 Msfvenom commands:
 * https://netsec.ws/?p=331
 
 
-### Compiling exploit code
+### COMPILING EXPLOIT CODE
 
 Compilation tips:
 * `./exploit` results in errors: compile in the host itself, Kali box or another machine.
