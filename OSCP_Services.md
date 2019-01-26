@@ -4,6 +4,20 @@
 
 Enumeration Mindmap: https://github.com/DigitalAftermath/EnumerationVisualized/wiki
 
+Port Scans:
+(NOTE: Heavy scanning may result in ports being filtered/closed - wait <15 minutes to be unbanned)
+```bash
+# PORT SCANS
+$ nmap 10.11.1.71 --top-ports 20 --open
+$ nmap 10.11.1.71 -p- -sV
+
+# NSE
+$ ls -l /usr/share/nmap/scripts/*ssh*
+$ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
+```
+
+
+
 ## Services
 
 __FTP (21)__
@@ -45,10 +59,10 @@ __SMB / NETBIOS / SMBD (135-139 - 445)__
 
 SMB enumeration
 ```bash
-$ nmblookup -A target
-$ smbclient //MOUNT/share -I target -N
-$ rpcclient -U "" target
-$ enum4linux target        // enum info from Windows and Samba hosts 
+$ nmblookup -A 10.11.1.XXX
+$ smbclient //MOUNT/share -I 10.11.1.XXX -N
+$ rpcclient -U "" 10.11.1.XXX
+$ enum4linux 10.11.1.XXX        // enum info from Windows and Samba hosts 
 
 # Find named pipes
 `msfconsole> use auxiliary/scanner/smb/pipe_auditor`
