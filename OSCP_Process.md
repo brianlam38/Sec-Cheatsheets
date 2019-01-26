@@ -19,10 +19,17 @@ Approaches - there are a number of ways to get the passing 70 points:
 
 Tips:
 * !! STICK TO PROCESS !!
+* Keep notes on steps that you have taken + info gathered so far on machines. It helps you keep track of where you are.
+* Enumerate ALL services even if you think you see an attack vector:
+    * Build a prioritised list of of attack vectors, spanning all ports then proceed to attack.
 * Take 10-15 minute breaks every 3 hours
 * Have pre-compiled exploits
 * Have pre-formatted exam report (with steps etc.)
 
+If you can't get low-level priv:
+* Enumerate more / Google a way to enumerate the service differently.
+* Think of what has been enumerated and how you can chain to get shell or sesnsitive info.
+* Read the exploit you're sending and see if it needs to be edited.
 
 ## Buffer Overflow
 
