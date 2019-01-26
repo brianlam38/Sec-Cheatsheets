@@ -2,6 +2,16 @@
 
 ## Services
 
+__FTP (21)__
+
+Fingerprint FTP server:
+* `nc 10.11.1.125 21`
+* telnet 10.11.1.125
+
+Access Telnet via. URL:
+* ftp://10.11.1.125
+
+
 __SSH (22)__
 
 Fingerprint server/OS, SSH key.
