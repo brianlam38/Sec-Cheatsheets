@@ -50,7 +50,8 @@ $ enum4linux target        // enum info from Windows and Samba hosts
 `msfconsole> use auxiliary/scanner/smb/pipe_auditor`
 ```
 
-Accessing shared dirs: `smbclient \\\\10.11.1.75\\Users`
+Accessing shared dirs:
+* `smbclient \\\\10.11.1.75\\Users` or just `smbclient \\\\10.11.1.75\\{SHARE_NAMES}`
 * `smb:\> put src_file remote_file`
 * `smb:\> get remote_file`
 * Put nc.exe => reverse shell
