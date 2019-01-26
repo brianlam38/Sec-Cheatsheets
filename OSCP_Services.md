@@ -1,5 +1,9 @@
 # OSCP Services and Things-To-Try
 
+## Recon
+
+Enumeration Mindmap: https://github.com/DigitalAftermath/EnumerationVisualized/wiki
+
 ## Services
 
 __FTP (21)__
