@@ -105,6 +105,41 @@ __MSRPC (135)__
 * Stuff
 
 
+__RDP (3389)__
+
+If you have credentials, you can enable the RDP service:
+```
+# METHOD 1
+$ netsh firewall set service RemoteDesktop enable
+
+# METHOD 2
+$ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+# METHOD 3
+$ reg add "hklm\system\currentControlSet\Control\Terminal Server" /v "AllowTSConnections" /t REG_DWORD /d 0x1 /f
+
+# METHOD 4
+$ sc config TermService start= auto
+$ net start Termservice
+$ netsh.exe
+
+# 
+firewall
+add portopening TCP 3389 "Remote Desktop"
+OR: 
+netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (TCP-In)" dir=in action=allow 
+program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
+Remote Desktop service to allow RDP traffic. [TCP 3389] added by LogicDaemon's script" enable=yes 
+profile=private,domain localport=3389 protocol=tcp
+netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (UDP-In)" dir=in action=allow 
+program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
+Remote Desktop service to allow RDP traffic. [UDP 3389] added by LogicDaemon's script" enable=yes 
+profile=private,domain localport=3389 protocol=udp
+```
+
+
+
+
 
 ## WEB
 
@@ -200,6 +235,7 @@ Linux privesc:
 
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum (automated)
+* http://www.fuzzysecurity.com/tutorials/16.html
 * https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
 * https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
 * https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
