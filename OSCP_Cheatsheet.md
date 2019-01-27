@@ -1,4 +1,4 @@
-# OSCP Services and Things-To-Try
+# OSCP Cheatsheet
 
 ## RECON
 
@@ -16,7 +16,8 @@ $ ls -l /usr/share/nmap/scripts/*ssh*
 $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
 ```
 
-
+Apache server not working properly? Try use:
+`$ python -m SimpleHTTPServer 8080`
 
 ## SERVICES
 
