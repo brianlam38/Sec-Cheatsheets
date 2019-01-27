@@ -215,7 +215,13 @@ If reverse shell hangs / dies:
 FreeBSD 9.0
 * FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
 
-## PRIVILEGE ESCALATION
+## LINUX PRIVESC
+
+General privesc guide:
+* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
+
+TTY spawn cheatsheet: https://netsec.ws/?p=337
+* `python -c 'import pty; pty.spawn("/bin/sh")'`
 
 Quick Wins:
 ```bash
@@ -224,14 +230,17 @@ $ sudo su	# execute su as root
 $ su root	# become root
 ```
 
-General privesc guide:
-* https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
-
 Linux privesc:
 * https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
 * https://github.com/rebootuser/LinEnum (automated)
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
+
+UDEV
+* Guide: http://www.madirish.net/370
+* Exploit Code: https://www.exploit-db.com/exploits/8478
+
+## WINDOWS PRIVESC
 
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum (automated)
@@ -240,20 +249,6 @@ Windows privesc:
 * https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
 * https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
 * http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
-
-
-TTY spawn cheatsheet: https://netsec.ws/?p=337
-
-__LINUX PRIVESC__
-
-Spawn TTY for linux:
-* `python -c 'import pty; pty.spawn("/bin/sh")'`
-
-UDEV
-* Guide: http://www.madirish.net/370
-* Exploit Code: https://www.exploit-db.com/exploits/8478
-
-__WINDOWS PRIVESC__
 
 !! If a service is running as SYSTEM, you can try to replace the executable with a reverse shell exe !!
 * Requires restarting service for system to rerun as your exe.
