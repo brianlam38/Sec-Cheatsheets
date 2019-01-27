@@ -36,13 +36,13 @@ If you can't get low-level priv:
 Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
+__Fuzzing__
 
+__Determine exact offset__
 
-__Step 1__
+__Controlling EIP__
 
-__Step 2__
-
-__Step 3__
+EIP always contains the address of the next instruction to be executed i.e. controls execution flow.
 
 __Step 4__
 
