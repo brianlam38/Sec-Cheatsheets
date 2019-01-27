@@ -52,8 +52,7 @@ Stuff
 
 __SMTP (25)__
 
-Stuff
-
+`$ snmp-check [ target ]`
 
 
 __SMB / NETBIOS / SMBD (135-139 - 445)__
