@@ -1,5 +1,14 @@
 # OSCP Exam Process
 
+## OpenVPN issues
+
+Issues usually occur if you connect to OSCP network using different devices / network connections i.e. mobile hotspot + home wireless.
+
+Reset all connections with OpenVPN:
+```bash
+$ sudo killall openvpn
+```
+
 ## Exam Approach
 
 Overview:
