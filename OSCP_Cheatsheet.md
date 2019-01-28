@@ -309,10 +309,10 @@ Compilation tips:
 
 Compilation commands:
 ```bash
-# Linux
+# Compile Linux (cross architecture)
 $ gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
 
-# Windows (cross-compile) and run
+# Compile to Windows .exe from Linux Windows
 $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
 ```
