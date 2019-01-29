@@ -244,11 +244,10 @@ UDEV
 
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum (automated)
+* https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
+* https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
 * http://www.fuzzysecurity.com/tutorials/16.html
 * https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
-* https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
-* https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
-* http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
 
 !! If a service is running as SYSTEM, you can try to replace the executable with a malicious exe !!
 * Malicious exe: Add local user to Admin group | reverse shell
