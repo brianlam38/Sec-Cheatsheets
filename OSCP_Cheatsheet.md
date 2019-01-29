@@ -250,7 +250,9 @@ Windows privesc:
 * https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc#Windows%20version%20map
 * http://hackingandsecurity.blogspot.com/2017/09/oscp-windows-priviledge-escalation.html
 
-!! If a service is running as SYSTEM, you can try to replace the executable with a reverse shell exe !!
+!! If a service is running as SYSTEM, you can try to replace the executable with a malicious exe !!
+* Malicious exe: Add local user to Admin group | reverse shell
+* Check for permissions of exe's: `icacls [service.exe]`
 * Requires restarting service for system to rerun as your exe.
 * Restarting might simply mean you have to access the service directly
     * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
