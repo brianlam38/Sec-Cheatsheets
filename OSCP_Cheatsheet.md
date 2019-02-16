@@ -313,7 +313,6 @@ net start <vulnerable-service>
 Msfvenom commands:
 * https://netsec.ws/?p=331
 
-
 ### COMPILING EXPLOIT CODE
 
 Compilation tips:
@@ -329,7 +328,7 @@ $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
 ```
 
-### OTHER THINGS
+## OTHER THINGS
 
 __ZIP Files__
 
