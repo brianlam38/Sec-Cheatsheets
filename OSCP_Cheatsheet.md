@@ -82,7 +82,7 @@ Accessing shared dirs:
 * `smb:\> put src_file remote_file`
 * `smb:\> get remote_file`
 * Put nc.exe => reverse shell
-* Get password files => access via. ssh/ rdp
+* Get password files => access via. ssh/rdp
 
 MS17-010 Code Exec
 * `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
