@@ -24,9 +24,15 @@ Kali Apache server not working properly? Try use:
 __FTP (21)__
 
 Fingerprint / access FTP server:
-* `nc 10.11.1.125 21`
-* telnet 10.11.1.125
-* ftp://10.11.1.125
+```
+# cmdline access
+$ nc 10.11.1.125 21
+$ telnet 10.11.1.125 21
+$ ftp 10.11.1.125
+
+# browser access
+ftp://10.11.1.125
+```
 
 Get / Put files:
 ```
