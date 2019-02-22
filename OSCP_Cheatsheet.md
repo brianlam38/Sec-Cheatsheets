@@ -92,7 +92,7 @@ MS17-010 Code Exec
 * Add new admin account: https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
 
 Privesc
-* Mount shared drives:
+* Mount shared drives:  
           ```bash
           $ net use z: \\10.11.1.49\Users /user:alice aliceishere     // mount with auth
           $ net use z: \\ACCESS\SHARENAME$                            // mount without auth
