@@ -93,10 +93,10 @@ MS17-010 Code Exec
 
 Privesc
 * Mount shared drives:  
-          ```bash
-          $ net use z: \\10.11.1.49\Users /user:alice aliceishere     // mount with auth
-          $ net use z: \\ACCESS\SHARENAME$                            // mount without auth
-          ```
+```bash
+$ net use z: \\10.11.1.49\Users /user:alice aliceishere     // mount with auth
+$ net use z: \\ACCESS\SHARENAME$                            // mount without auth
+```
 
 
 Working exploits:
