@@ -231,8 +231,16 @@ FreeBSD 9.0
 
 ## LINUX PRIVESC
 
-General privesc guide:
+Guides:
+* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
+
+Automated enum / exploit suggestion:
+* https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
+* https://github.com/rebootuser/LinEnum (automated)
+* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
+
 
 TTY spawn cheatsheet: https://netsec.ws/?p=337
 * `python -c 'import pty; pty.spawn("/bin/sh")'`
@@ -245,13 +253,6 @@ Quick Wins:
 $ sudo su	# execute su as root
 $ su root	# become root
 ```
-
-
-Linux privesc:
-* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
-* https://github.com/rebootuser/LinEnum (automated)
-* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
-* https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
 
 UDEV
 * Guide: http://www.madirish.net/370
