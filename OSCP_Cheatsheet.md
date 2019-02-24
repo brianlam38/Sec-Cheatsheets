@@ -254,6 +254,9 @@ UDEV
 * Guide: http://www.madirish.net/370
 * Exploit Code: https://www.exploit-db.com/exploits/8478
 
+Exploiting Crontabs / Cronjobs:
+* Bad permissions /etc/crontab: https://www.hackingarticles.in/linux-privilege-escalation-by-exploiting-cron-jobs/
+
 ## WINDOWS PRIVESC
 
 Windows privesc:
