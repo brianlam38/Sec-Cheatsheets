@@ -238,11 +238,14 @@ TTY spawn cheatsheet: https://netsec.ws/?p=337
 * `python -c 'import pty; pty.spawn("/bin/sh")'`
 
 Quick Wins:
+* Run Linux exploit suggester: https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh
+* Misconfigured /etc/sudoers:
 ```bash
 # THIS HAS WORKED BEFORE: Due to misconfiguration in /etc/sudoers
 $ sudo su	# execute su as root
 $ su root	# become root
 ```
+
 
 Linux privesc:
 * https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
