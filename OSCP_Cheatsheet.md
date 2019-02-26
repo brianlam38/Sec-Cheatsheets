@@ -228,6 +228,9 @@ PHP
 * Check `phpinfo()`
 * RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
 
+Apache
+* Exposed `server-status` page: https://github.com/mazen160/server-status_PWN. Listen in to all requests by clients using this tool, including cookies.
+
 ## INITIAL EXPLOITATION
 
 Reverse shell cheatsheet:
