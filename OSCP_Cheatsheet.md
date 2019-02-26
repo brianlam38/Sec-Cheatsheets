@@ -8,6 +8,7 @@ Port Scans:
 (NOTE: Heavy scanning may result in ports being filtered/closed - wait <15 minutes to be unbanned)
 ```bash
 # PORT SCANS
+$ nmap -sC -sV -oA 10.10.10.29          (IPPSEC)
 $ nmap 10.11.1.71 --top-ports 20 --open
 $ nmap 10.11.1.71 -p- -sV
 
