@@ -67,6 +67,7 @@ __SMTP (25)__
 __DNS (53)__
 
 Zone Transfers
+[ add info here ]
 
 Changing nameserver to target IP, revealing additional domains / directories.
 ```
