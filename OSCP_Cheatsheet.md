@@ -282,15 +282,16 @@ UDEV
 Exploiting Crontabs / Cronjobs:
 * Bad permissions /etc/crontab: https://www.hackingarticles.in/linux-privilege-escalation-by-exploiting-cron-jobs/
 
-Exploitable SUIDs:
+Exploitable SUIDs / SGIDs:
 ```
+/cp
 /nmap
 /vi
 /vim.basic
 /nano
 /less
 /more
-/usr/bin/viewuser
+/usr/bin/viewuser (HackTheBox)
 ```
 
 ## WINDOWS PRIVESC
