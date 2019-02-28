@@ -172,6 +172,12 @@ Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes
 profile=private,domain localport=3389 protocol=udp
 ```
 
+__IRC (6660-6669, 6697, 67000)__
+
+IRC enum:
+* Start `hexchat` in Kali.
+* Add IRC channel `TargetIP/6697` + connect to channel.
+* View output / look for version numbers etc.
 
 ## WEB
 
