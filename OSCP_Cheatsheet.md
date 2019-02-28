@@ -177,7 +177,7 @@ __IRC (6660-6669, 6697, 67000)__
 IRC enum:
 * Start `hexchat` in Kali.
 * Add IRC channel `TargetIP/6697` + connect to channel.
-* View output / look for version numbers etc.
+* View output/look for version numbersc -> searchsploit/Google
 
 ## WEB
 
