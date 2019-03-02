@@ -82,22 +82,12 @@ root@kali#  nslookup
 Zone Transfers to reveal subdomains
 ```
 root@kali# dig axfr friendzoneportal.red @10.10.10.123
-
 ; <<>> DiG 9.10.3-P4-Debian <<>> axfr friendzoneportal.red @10.10.10.123
-;; global options: +cmd
-friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
-friendzoneportal.red.	604800	IN	AAAA	::1
-friendzoneportal.red.	604800	IN	NS	localhost.
-friendzoneportal.red.	604800	IN	A	127.0.0.1
 admin.friendzoneportal.red. 604800 IN	A	127.0.0.1
 files.friendzoneportal.red. 604800 IN	A	127.0.0.1
 imports.friendzoneportal.red. 604800 IN	A	127.0.0.1
 vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
-;; Query time: 218 msec
-;; SERVER: 10.10.10.123#53(10.10.10.123)
-;; WHEN: Tue Feb 26 16:42:40 AEDT 2019
-;; XFR size: 9 records (messages 1, bytes 281)
 ```
 
 __SMB / NETBIOS / SMBD (135-139 - 445)__
