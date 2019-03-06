@@ -175,6 +175,8 @@ SNMP enumeration:
 ```
 $ snmpwalk -c [community string] -v1 [ target ]
 $ onesixtyone [ target ] -c community.txt
+$ snmpenum
+$ snmpcheck
 ```
 
 Snmpwalk brute-force script:
