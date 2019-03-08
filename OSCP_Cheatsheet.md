@@ -192,7 +192,6 @@ Community string wordlist: https://github.com/danielmiessler/SecLists/blob/maste
 __MySQL (TCP 3306)__
 
 
-
 __RDP (TCP 3389)__
 
 If you have credentials, you can enable the RDP service then log in:
@@ -356,6 +355,10 @@ Exploitable SUIDs / SGIDs:
 /more
 /usr/bin/viewuser (HackTheBox)
 ```
+
+Databases:
+* Check for presence of both MYSQL and MARIADB.
+* They may have two different types of databases to get creds / important info, so check for both.
 
 ## WINDOWS PRIVESC
 
