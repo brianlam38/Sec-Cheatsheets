@@ -1,6 +1,12 @@
 
 ## Buffer Overflow - Windows x86
 
+### Commands Overview
+
+
+
+### Step-By-Step Guide
+
 Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
