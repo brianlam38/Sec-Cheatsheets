@@ -56,7 +56,7 @@ We need to find a module that contains a `JMP ESP` instruction which we can poin
 
 ### Final Payload
 
-```C
+```Python
 #!/usr/bin/python
 #
 #[*] Exact match at offset 2369
