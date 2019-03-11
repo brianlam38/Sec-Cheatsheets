@@ -47,7 +47,6 @@ Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 
-
 __HTTP (TCP 80|8080|443|8443 etc.)__
 
 See section "WEB" for juicy web stuff.
@@ -57,7 +56,6 @@ See section "WEB" for juicy web stuff.
 __Telnet (TCP 23)__
 
 Stuff
-
 
 
 __SMTP (TCP 25)__
@@ -188,6 +186,11 @@ done < community.txt
 Community string wordlist: https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt
 
 __MySQL (TCP 3306)__
+
+Connect:
+```
+$ mysql -u root -p
+```
 
 Drop to a shell:
 ```
