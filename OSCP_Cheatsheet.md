@@ -192,7 +192,7 @@ Connect:
 $ mysql -u root -p
 ```
 
-Drop to a shell:
+Drop to a shell (as the user running MySQL):
 ```
 mysql> \! /bin/bash
 ```
