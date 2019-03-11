@@ -189,6 +189,10 @@ Community string wordlist: https://github.com/danielmiessler/SecLists/blob/maste
 
 __MySQL (TCP 3306)__
 
+Drop to a shell:
+```
+mysql> \! /bin/bash
+```
 
 __RDP (TCP 3389)__
 
