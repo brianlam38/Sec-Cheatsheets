@@ -324,6 +324,12 @@ Automated enum / exploit suggestion:
 * https://github.com/rebootuser/LinEnum (automated)
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
 
+Find hardcoded credentials / interesting items
+```
+# Recursive grep, match regex pattern, ignoring case for all files from the root directory.
+$ grep -Rei 'password|username|[pattern3]|[pattern4]' /
+```
+
 
 TTY spawn cheatsheet: https://netsec.ws/?p=337
 * `python -c 'import pty; pty.spawn("/bin/sh")'`
