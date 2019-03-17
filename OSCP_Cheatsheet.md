@@ -76,6 +76,8 @@ root@kali#  nslookup
 > friendzoneportal.red
 ```
 
+
+
 Zone Transfers to reveal subdomains
 ```bash
 root@kali# dig axfr friendzoneportal.red @10.10.10.123
@@ -319,15 +321,15 @@ FreeBSD 9.0
 
 ## LINUX PRIVESC
 
-Guides:
+Privilege escalation guides:
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
 
-Automated enum / exploit suggestion:
+Automated Linux enumeration scripts:
 * https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh
-* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py (automated - suggests exploits)
-* https://github.com/rebootuser/LinEnum (automated)
-* https://tools.kali.org/vulnerability-analysis/unix-privesc-check (automated - Kali)
+* https://github.com/ankh2054/linux-pentest/blob/master/linuxprivchecker.py
+* https://github.com/rebootuser/LinEnum
+* https://tools.kali.org/vulnerability-analysis/unix-privesc-check
 
 Find hardcoded credentials / interesting items
 ```
