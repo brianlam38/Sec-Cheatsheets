@@ -855,7 +855,7 @@ GET http://example.com
 Referer:localhost
 ```
 
-**SSRF Query Bypass**
+**SSRF Query Bypass**   
 Default State
 ```http
 // ACCEPTED REQUEST
