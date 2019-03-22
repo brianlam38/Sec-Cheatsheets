@@ -499,6 +499,8 @@ Brute-force passworded zips:
 $ fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt' passwords.zip
 ```
 
+__Hexdump investigation__
+
 Microsoft Acccess .mdb files:
 ```
 # Hexdump
@@ -508,3 +510,14 @@ $ mdb-hexdump database.mdb > hexdump.txt
 https://www.onlinehexeditor.com
 https://hexed.it
 ```
+
+__strings__
+
+Strings command finds all printable strings in an object, binary or file.  
+This could reveal credentials or useful information.
+```bash
+$ strings [ filename ]
+```
+
+
+
