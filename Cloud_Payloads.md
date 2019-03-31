@@ -84,7 +84,3 @@ http://192.0.0.192/latest/user-data/
 http://192.0.0.192/latest/meta-data/
 http://192.0.0.192/latest/attributes/
 ```
-
-## GraphQL exploitation
-
-https://blog.doyensec.com/2018/05/17/graphql-security-overview.html
