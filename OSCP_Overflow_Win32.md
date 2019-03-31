@@ -27,7 +27,7 @@ Now we know the exact #bytes needed to reach/control the EIP register so that we
 4. Observe the hex dump and see which character has truncated the rest of the payload that should come after it.
 5. Remove character from buffer + repeat steps until all bad chars have been found.
 
-## Find address of a JMP ESP in a DLL
+### Find address of a JMP ESP in a DLL
 
 We need to find a module that contains a `JMP ESP` instruction which we can point to.
 
