@@ -60,7 +60,15 @@ Stuff
 
 __SMTP (TCP 25)__
 
-`$ snmp-check [ target ]`
+SMTP enum tools
+```bash
+$ snmp-check [ target ]
+```
+
+Manual fingerprinting
+```bash
+$ echo VRFY 'admin' | nc -nv -w 1 $target_ip 25
+```
 
 
 __DNS (TCP 53)__
@@ -114,14 +122,17 @@ $ cat hacker_rsa.pub >> authorized_keys                     # add your public ke
 $ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using your private key
 ```
 
-__SMB / NETBIOS / SMBD (TCP 135-139 - 445)__
+__SMB / NETBIOS / SMBD (TCP 135-139 - 445)__  
+SMB is a communications protocol primarily designed for file sharing and printer sharing. It is not intended as a general networking tool.  
+Netbios is an API for the SMB protocol. A SMB client will interact with a Netbios API to send an SMB command to an SMB server, then listen for replies.
 
-SMB enumeration
+SMB/Netbios enumeration
 ```bash
 $ nmblookup -A 10.11.1.XXX
 $ smbclient //MOUNT/share -I 10.11.1.XXX -N
 $ rpcclient -U "" 10.11.1.XXX
 $ enum4linux 10.11.1.XXX        // enum info from Windows and Samba hosts 
+$ nbtscan 10.11.1.XXX           // Netbios nameserver scanner
 
 # Find named pipes
 `msfconsole> use auxiliary/scanner/smb/pipe_auditor`
