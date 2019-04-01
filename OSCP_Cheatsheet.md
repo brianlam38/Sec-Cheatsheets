@@ -124,6 +124,7 @@ $ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target usin
 
 __SMB / NETBIOS / SMBD (TCP 135-139 - 445)__  
 SMB is a communications protocol primarily designed for file sharing and printer sharing. It is not intended as a general networking tool.  
+
 Netbios is an API for the SMB protocol. A SMB client will interact with a Netbios API to send an SMB command to an SMB server, then listen for replies.
 
 SMB/Netbios enumeration
