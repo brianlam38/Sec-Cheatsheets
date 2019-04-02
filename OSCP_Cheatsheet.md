@@ -531,5 +531,11 @@ This could reveal credentials or useful information.
 $ strings [ filename ]
 ```
 
+__Metadata__
 
+```
+$ exiftools
+$ hexdump
+$ binwalk
+```
 
