@@ -1,6 +1,11 @@
 # OSCP Cheatsheet
 
 [Recon](#RECON)  
+[Services](#SERVICES)  
+[FTP](#FTP-|-TCP-21)  
+[Recon](#RECON)  
+[Recon](#RECON)  
+[Recon](#RECON)  
 
 
 # RECON
@@ -25,7 +30,7 @@ Kali Apache server not working properly? Try use:
 
 # SERVICES
 
-__FTP (TCP 21)__
+### FTP | TCP 21
 
 Fingerprint / access FTP server:
 ```
@@ -44,13 +49,13 @@ ftp> get [ filename ]
 ftp> put reverse-shell.txt
 ```
 
-__SSH (TCP 22)__
+### SSH (TCP 22)
 
 Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 
-__HTTP (TCP 80|8080|443|8443 etc.)__
+### HTTP (TCP 80|8080|443|8443 etc.)
 
 See section "WEB" for juicy web stuff.
 
