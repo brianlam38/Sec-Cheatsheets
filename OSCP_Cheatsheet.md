@@ -3,6 +3,10 @@
 [Recon](#RECON)  
 [Services](#SERVICES)  
 * [FTP](#FTP---TCP-21)  
+* [SSH](#SSH---TCP-22)  
+* [HTTP](#HTTP---TCP080|8080|443|8443)
+* [FTP](#FTP---TCP-21)  
+* [FTP](#FTP---TCP-21)  
 [Recon](#RECON)  
 [Recon](#RECON)  
 [Recon](#RECON)  
@@ -49,13 +53,13 @@ ftp> get [ filename ]
 ftp> put reverse-shell.txt
 ```
 
-### SSH (TCP 22)
+### SSH - TCP 22
 
 Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 
-### HTTP (TCP 80|8080|443|8443 etc.)
+### HTTP - TCP 80|8080|443|8443
 
 See section "WEB" for juicy web stuff.
 
