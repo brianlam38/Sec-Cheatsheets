@@ -2,7 +2,7 @@
 
 [Recon](#RECON)  
 [Services](#SERVICES)  
-[FTP](#FTP-|-TCP-21)  
+* [FTP](#FTP---TCP-21)  
 [Recon](#RECON)  
 [Recon](#RECON)  
 [Recon](#RECON)  
@@ -30,7 +30,7 @@ Kali Apache server not working properly? Try use:
 
 # SERVICES
 
-### FTP | TCP 21
+### FTP - TCP 21
 
 Fingerprint / access FTP server:
 ```
