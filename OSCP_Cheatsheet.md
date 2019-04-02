@@ -17,7 +17,7 @@
 [Initial Exploitation](#INITIAL-EXPLOITATION)  
 [Linux Privilege Escalation](#LINUX-PRIVESC)  
 [Windows Privilege Escalation](#WINDOWS-PRIVESC)  
-[Msfvenom Payloads](#MSFVENOM-PAYLODS)  
+[Msfvenom Payloads](#MSFVENOM-PAYLOADS)  
 [Compiling Exploit Code](#COMPILING-EXPLOIT-CODE)  
 [Other](#OTHER-THINGS)  
 
@@ -69,7 +69,7 @@ Fingerprint server/OS, SSH key.
 Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su root`
 
 
-### HTTP - TCP 80|8080|443|8443
+### HTTP - TCP 80/8080/443/8443
 
 See section "WEB" for juicy web stuff.
 
