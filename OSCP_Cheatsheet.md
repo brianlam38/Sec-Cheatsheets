@@ -1,6 +1,9 @@
 # OSCP Cheatsheet
 
-## RECON
+[Recon](#RECON)  
+
+
+# RECON
 
 Enumeration Mindmap: https://github.com/DigitalAftermath/EnumerationVisualized/wiki
 
@@ -20,7 +23,7 @@ $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11
 Kali Apache server not working properly? Try use:
 `$ python -m SimpleHTTPServer 8080`
 
-## SERVICES
+# SERVICES
 
 __FTP (TCP 21)__
 
@@ -83,8 +86,6 @@ nameserver [ target ip ]
 root@kali#  nslookup
 > friendzoneportal.red
 ```
-
-
 
 Zone Transfers to reveal subdomains
 ```bash
@@ -249,7 +250,7 @@ IRC enum:
 * Add IRC channel `TargetIP/6697` + connect to channel.
 * View output/look for version numbersc -> searchsploit/Google
 
-## WEB
+# WEB
 
 ```bash
 $ curl -i -L 10.11.1.71    # Follow re-directs
