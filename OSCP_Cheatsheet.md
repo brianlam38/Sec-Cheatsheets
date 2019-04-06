@@ -1,7 +1,7 @@
 # OSCP Cheatsheet
 
-[Recon](#RECON)  
-[Services](#SERVICES)  
+### [1. Recon](#RECON)  
+### [2. Services](#SERVICES)  
 * [FTP - TCP 21](#FTP---TCP-21)  
 * [SSH - TCP 22](#SSH---TCP-22)  
 * [HTTP - TCP 80/8080/443/8443](#HTTP---TCP-80/8080/443/8443)
@@ -18,13 +18,13 @@
 * [IRC - TCP 6660-6669,6697,67000](#IRC---TCP-6660-6669,6697,67000)
 * [RDP - TCP 3389](#RDP---TCP-3389)  
 
-[Web](#WEB)  
-[Initial Exploitation](#INITIAL-EXPLOITATION)  
-[Linux Privilege Escalation](#LINUX-PRIVESC)  
-[Windows Privilege Escalation](#WINDOWS-PRIVESC)  
-[Msfvenom Payloads](#MSFVENOM-PAYLOADS)  
-[Compiling Exploit Code](#COMPILING-EXPLOIT-CODE)  
-[Other](#OTHER-THINGS)  
+### [3. Web](#WEB)  
+### [4. Initial Exploitation](#INITIAL-EXPLOITATION)  
+### [5. Linux Privilege Escalation](#LINUX-PRIVESC)  
+### [6. Windows Privilege Escalation](#WINDOWS-PRIVESC)  
+### [7. Msfvenom Payloads](#MSFVENOM-PAYLOADS)  
+### [8. Compiling Exploit Code](#COMPILING-EXPLOIT-CODE)  
+### [9. Other](#OTHER-THINGS)  
 
 
 # RECON
