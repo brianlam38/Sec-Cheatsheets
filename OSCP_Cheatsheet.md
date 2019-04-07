@@ -170,6 +170,7 @@ SMB/Netbios enumeration
 $ nmblookup -A 10.11.1.XXX
 $ smbclient //MOUNT/share -I 10.11.1.XXX -N
 $ rpcclient -U "" 10.11.1.XXX
+^RPCCLIENT ENUM GUIDE: https://github.com/Resilient-Ninja/Infrastructure-PenTest/blob/master/Vulnerability%20Analysis.md
 $ enum4linux 10.11.1.XXX        // enum info from Windows and Samba hosts 
 $ nbtscan 10.11.1.XXX           // Netbios nameserver scanner
 
