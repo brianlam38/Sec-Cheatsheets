@@ -95,11 +95,11 @@ Basic auth-bypass (user=Patrick pass=Patrick) => Privesc `$ sudo su` + `$ su roo
 
 See section "WEB" for juicy web stuff.
 
-### Telnet---TCP-23
+### Telnet - TCP 23
 
 Stuff
 
-### SMTP---TCP-25
+### SMTP - TCP 25
 
 SMTP enum tools
 ```bash
@@ -111,7 +111,7 @@ Manual fingerprinting
 $ echo VRFY 'admin' | nc -nv -w 1 $target_ip 25
 ```
 
-### DNS---TCP-53
+### DNS - TCP 53
 
 Changing nameserver to target IP, revealing additional domains / directories.
 ```bash
