@@ -167,6 +167,7 @@ Netbios is an API for the SMB protocol. A SMB client will interact with a Netbio
 
 SMB/Netbios enumeration
 ```bash
+# Tools
 $ nmblookup -A 10.11.1.XXX
 $ smbclient //MOUNT/share -I 10.11.1.XXX -N
 $ rpcclient -U "" 10.11.1.XXX
@@ -184,6 +185,11 @@ Accessing shared dirs:
 * `smb:\> get remote_file`
 * Put nc.exe => reverse shell
 * Get password files => access via. ssh/rdp
+
+Access SMB shares with spaces in name:
+```bash
+$ smbclient \\\\10.11.1.136\\Bob\ Share
+```
 
 MS17-010 Code Exec
 * `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
