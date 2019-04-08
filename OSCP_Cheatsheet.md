@@ -160,6 +160,13 @@ $ cat hacker_rsa.pub >> authorized_keys                     # add your public ke
 $ ssh -i /root/.ssh/hacker_rsa root@192.168.1.112           # SSH to target using your private key
 ```
 
+### Ident - TCP 113
+
+Ident is a protocol that helps identify the user of a particular TCP connection.
+
+Follow instructions to install ident-enum tool: http://pentestmonkey.net/tools/ident-user-enum
+
+
 ### SMB NETBIOS SMBD - TCP 135-139,445
 SMB is a communications protocol primarily designed for file sharing and printer sharing. It is not intended as a general networking tool.  
 
