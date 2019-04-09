@@ -230,7 +230,7 @@ SMBD/Sambda is a server to provide SMB service to clients
 Working exploits:
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
 
-Samba Symlink Directory Traversal (works on Debian 3.0.20)
+Samba Symlink Directory Traversal (worked before on Debian 3.0.20)
 * See for more info: https://packetstormsecurity.com/files/85957/Samba-Remote-Directory-Traversal.html
 * Automatic: `Metasploit> use auxiliary/admin/smb/samba_symlink_traversal`
 * Manual: `smb> symlink <oldname> <newname>`
