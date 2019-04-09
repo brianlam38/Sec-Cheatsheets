@@ -444,9 +444,9 @@ Exploiting Crontabs / Cronjobs:
 * Bad permissions /etc/crontab: https://www.hackingarticles.in/linux-privilege-escalation-by-exploiting-cron-jobs/
 
 Exploitable SUIDs / SGIDs:
-* Generally, nothing in /bin, /sbin, /usr/bin would be exploitable.
+* Generally, nothing in /bin, /sbin, /usr/bin would be exploitable. You should of course scan through the /bin, /sbin/ and /usr/bin directories to see anything strange.
 * Look for SUID binaries in non-standard folders e.g. /tmp, /home/user, /etc, /opt, /usr/local/bin, which is where 3rd party applications are often stored.
-* You should of course scan through the /bin, /sbin/ and /usr/bin directories to see anything strange.
+* __GOAL: Find the sus binary -> analyse how it works by `./binary` or `strings binary` etc. -> think of ways to replace / write / execute something using the binary that will lead to root privs.__
 ```
 # Example of exploitable SUIDs
 /cp
