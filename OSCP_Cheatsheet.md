@@ -123,7 +123,7 @@ nameserver [ target ip ]
 
 root@kali#  nslookup
 > friendzoneportal.red
-```
+```Generally speaking, nothing in the /bin, /sbin, or /usr/bin
 
 Zone Transfers to reveal subdomains
 ```bash
@@ -444,6 +444,8 @@ Exploiting Crontabs / Cronjobs:
 * Bad permissions /etc/crontab: https://www.hackingarticles.in/linux-privilege-escalation-by-exploiting-cron-jobs/
 
 Exploitable SUIDs / SGIDs:
+* Generally, nothing in /bin, /sbin, /usr/bin would be exploitable.
+* 
 ```
 /cp
 /nmap
@@ -453,6 +455,7 @@ Exploitable SUIDs / SGIDs:
 /less
 /more
 /usr/bin/viewuser (HackTheBox)
+/usr/local/bin/{REDACTED} (OSCP)
 ```
 
 Databases:
