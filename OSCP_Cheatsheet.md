@@ -445,7 +445,8 @@ Exploiting Crontabs / Cronjobs:
 
 Exploitable SUIDs / SGIDs:
 * Generally, nothing in /bin, /sbin, /usr/bin would be exploitable.
-* 
+* Look for SUID binaries in non-standard folders e.g. /tmp, /home/user, /etc, /opt, /usr/local/bin, which is where 3rd party applications are often stored.
+* You should of course scan through the /bin, /sbin/ and /usr/bin directories to see anything strange.
 ```
 /cp
 /nmap
