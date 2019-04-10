@@ -602,7 +602,17 @@ __Cracking Hashes__
 Useful Websites (has worked before):
 * https://hashkiller.co.uk/Cracker/NTLM
 
-Tools:
+John the Ripper (worked in labs):
+```bash
+# This requires you to have an /etc/shadow and /etc/passwd pair.
+# Example:
+#   /etc/paswd  => bob:x:500:500::/home/bob:/bin/bash
+#   /etc/shadow => bob:$1${salt}${pass}:16903:0:99999:7:::
+$ unshadow passwd shadow > hashes.txt
+$ john hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
+```
+
+Hashcat:
 ```
 $ hashcat -h | grep -i [hash you want to crack]     # find hash input number
 $ hashcat -m 5600 /path/to/hash /path/to/wordlist   # 5600 = specify NTLMv2 hash
