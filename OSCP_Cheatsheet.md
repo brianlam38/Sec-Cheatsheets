@@ -439,7 +439,7 @@ $ sudo su	# execute su as root
 $ su root	# become root
 ```
 
-Localhost L=listening ports:
+Localhost listening ports:
 * Look for ports that were not exposed to your initial public nmap scan.
 ```bash
 $ netstat -alntp
