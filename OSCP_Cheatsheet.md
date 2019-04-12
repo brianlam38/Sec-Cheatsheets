@@ -86,6 +86,9 @@ ftp> get ../\../\../\../\boot.ini
 ftp> dir ../\../\../\temp/
 ```
 
+ProFTPD 1.3.3a
+* (Worked) https://github.com/Muhammd/ProFTPD-1.3.3a/blob/master/ProFTPD_exploit.py
+
 ### SSH - TCP 22
 
 Fingerprint server/OS, SSH key.
