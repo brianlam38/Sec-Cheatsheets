@@ -391,6 +391,10 @@ ColdFusion vulns
 MiniShare HTTP Server 1.4.1
 * https://github.com/codingo/OSCP-2/blob/master/Exploits/MS_v1.4.1.py
 
+Tomcat Web Manager (JSP reverse shell upload)
+* Default creds: `tomcat:tomcat`
+* https://www.hackingarticles.in/multiple-ways-to-exploit-tomcat-manager/
+
 # INITIAL EXPLOITATION
 
 Reverse shell tips:
