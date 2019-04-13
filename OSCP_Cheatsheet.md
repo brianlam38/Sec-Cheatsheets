@@ -265,11 +265,11 @@ Community string wordlist: https://github.com/danielmiessler/SecLists/blob/maste
 
 ### Oracle SQL Database Listener - TCP 1521
 
-Look at notes in `10.11.1.202`.
+Look at notes from pwning `10.11.1.202`.
 
 Check connection => enumerate login creds => Sqlplus login => extract data
 ```bash
-$ tnscmd10g status --indent -h [target]                      # check connection to DB
+$ tnscmd10g status --indent -h [target]             # check connection to DB
 $ oscanner -s [target] -P 1521                      # enumerate users / default creds
 $ sqlplus SYS/SYS@10.11.1.202/ACME 'as sysdba'      # login
 ```
