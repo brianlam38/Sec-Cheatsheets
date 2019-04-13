@@ -14,7 +14,7 @@
 * [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
 * [MSRPC - TCP 135](#MSRPC---TCP-135)
 * [SNMP - UDP 161](#SNMP---UDP-161)
-* [Oracle SQL Database Listener - TCP 1521] (#Oracle-SQL-Database-Listener---TCP-1521)
+* [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
 * [MySQL - TCP 3306](#MySQL---TCP-3306)
 * [RDP - TCP 3389](#RDP---TCP-3389)
 * [IRC - TCP 6660-6669,6697,67000](#irc---tcp-6660-6669669767000)
