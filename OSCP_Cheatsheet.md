@@ -14,6 +14,7 @@
 * [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
 * [MSRPC - TCP 135](#MSRPC---TCP-135)
 * [SNMP - UDP 161](#SNMP---UDP-161)
+* [Oracle SQL Database Listener - TCP 1521] (#Oracle-SQL-Database-Listener---TCP-1521)
 * [MySQL - TCP 3306](#MySQL---TCP-3306)
 * [RDP - TCP 3389](#RDP---TCP-3389)
 * [IRC - TCP 6660-6669,6697,67000](#irc---tcp-6660-6669669767000)
@@ -262,6 +263,17 @@ done < community.txt
 
 Community string wordlist: https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt
 
+### Oracle SQL Database Listener - TCP 1521
+
+Look at notes in `10.11.1.202`.
+
+Check connection => enumerate login creds => Sqlplus login => extract data
+```bash
+$ tnscmd10g status --indent -h [target]                      # check connection to DB
+$ oscanner -s [target] -P 1521                      # enumerate users / default creds
+$ sqlplus SYS/SYS@10.11.1.202/ACME 'as sysdba'      # login
+```
+
 ### MySQL - TCP 3306
 
 Connect:
@@ -408,6 +420,9 @@ If reverse shell hangs / dies:
 * A firewall may be blocking / disconnecting you on the port.
 * Try a bind shell instead of reverse shell.
 * Try generate a different payload with `msfvenom -p` or find another payload online.
+
+WINDOWS SERVER:
+* Directory to binaries may use `C:\WINNT\System32` rather than `C:\WINDOWS\System32`
 
 # LINUX PRIVESC
 
