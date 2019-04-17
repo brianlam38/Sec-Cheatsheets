@@ -146,6 +146,7 @@ Open port 88 = machine is likely a Windows Domain Controller.
 
 Privilege escalation vulnerability: MS14-068
 * https://github.com/SecureAuthCorp/impacket/blob/master/examples/goldenPac.py
+* https://www.trustedsec.com/2014/12/ms14-068-full-compromise-step-step/
 
 ### POP3 - TCP 110
 
