@@ -190,7 +190,10 @@ Ident is a protocol that helps identify the user of a particular TCP connection.
 Follow instructions to install ident-enum tool: http://pentestmonkey.net/tools/ident-user-enum
 
 
-### SMB NETBIOS SMBD - TCP 135-139,445
+### MSRPC - TCP 135
+
+
+### SMB NETBIOS SMBD - TCP 139,445
 SMB is a communications protocol primarily designed for file sharing and printer sharing. It is not intended as a general networking tool.  
 
 Netbios is an API for the SMB protocol. A SMB client will interact with a Netbios API to send an SMB command to an SMB server, then listen for replies.
@@ -257,9 +260,6 @@ Samba Symlink Directory Traversal (worked before on Debian 3.0.20)
 * Automatic: `Metasploit> use auxiliary/admin/smb/samba_symlink_traversal`
 * Manual: `smb> symlink <oldname> <newname>`
 
-
-### MSRPC - TCP 135
-* Stuff
 
 ### SNMP - UDP 161
 
