@@ -162,6 +162,7 @@ $ telnet [target]
 Exploit NFS shares
 ```
 $ rpcinfo -p [ target IP ] | grep 'nfs'
+$ rpcbind -p [ target IP ]                        # Look for NFS-shares
 $ showmount -e [ target IP ]                      # show mountable directories
 $ mount -t nfs [target IP]:/ /mnt -o nolock       # mount remote share to your local machine
 $ df -k                                           # show mounted file systems
