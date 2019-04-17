@@ -127,7 +127,7 @@ nameserver [ target ip ]
 
 root@kali#  nslookup
 > friendzoneportal.red
-```Generally speaking, nothing in the /bin, /sbin, or /usr/bin
+```
 
 Zone Transfers to reveal subdomains
 ```bash
@@ -138,6 +138,23 @@ files.friendzoneportal.red. 604800 IN	A	127.0.0.1
 imports.friendzoneportal.red. 604800 IN	A	127.0.0.1
 vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
+```
+
+### Kerberos - TCP 88
+
+Open port 88 = machine is likely a Windows Domain Controller.
+
+Privilege escalation vulnerability: MS14-068
+
+### POP3 - TCP 110
+
+```bash
+$ telnet [target]
+> USER bob@target
+> PASS admin
+
+> list                  # List all emails
+> retr 5                # Retrive email number 5, for example
 ```
 
 ### Remote Procedure Call - TCP 111
