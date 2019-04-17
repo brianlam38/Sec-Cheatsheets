@@ -118,6 +118,11 @@ $ echo VRFY 'admin' | nc -nv -w 1 $target_ip 25
 
 ### DNS - TCP 53
 
+Enumeration
+```bash
+$ nmap -p53 [target] --script=*dns*
+```
+
 Changing nameserver to target IP, revealing additional domains / directories.
 ```bash
 root@kali#  nano /etc/resolv.conf
