@@ -1,5 +1,5 @@
-# WEB SECURITY PAYLOADS  
-Copy pasta these payloads for CTFs, bug bounties, penetration testing etc.
+# WEB SECURITY CHEATSHEET
+Copy pasta these cheats for CTFs, bug bounties, penetration testing etc.
 
 Automate your shit as much as possible because time is important + you dont have time to analyse every single request/response or do repetitive tasks.
 
