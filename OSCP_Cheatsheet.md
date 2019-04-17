@@ -123,6 +123,13 @@ Enumeration
 $ nmap -p53 [target] --script=*dns*
 ```
 
+Zone Transfers
+```bash
+$ host -l <domain name> <dns server>
+$ host -l thinc.local 10.11.1.221               # host zone-transfer
+$ root@kali# dig axfr thinc.local @10.11.1.221  # dig zone-transfer
+```
+
 Changing nameserver to target IP, revealing additional domains / directories.
 ```bash
 root@kali#  nano /etc/resolv.conf
