@@ -145,6 +145,7 @@ friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 24
 Open port 88 = machine is likely a Windows Domain Controller.
 
 Privilege escalation vulnerability: MS14-068
+* https://github.com/SecureAuthCorp/impacket/blob/master/examples/goldenPac.py
 
 ### POP3 - TCP 110
 
