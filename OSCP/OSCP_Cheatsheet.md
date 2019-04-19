@@ -444,7 +444,7 @@ Metasploit reverse shell payloads:
 * http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
 * https://netsec.ws/?p=331
 
-__##WARNING: Meterpreter payloads are restricted to just ONE machine__  
+__##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 Meterpreter reverse-shell + usage:
 ```bash
 # Windows
@@ -469,7 +469,7 @@ meterpreter > migrate 1548
 [*] Migration completed successfully.
 ```
 
-__##WARNING: Meterpreter payloads are restricted to just ONE machine__
+__##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 
 
 If reverse shell hangs / dies:
