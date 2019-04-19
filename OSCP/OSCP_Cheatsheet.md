@@ -53,6 +53,11 @@ Kali Apache server not working properly? Try use:
 
 ### FTP - TCP 21
 
+FTP Recon
+* It is NOT always about extracting info / adding in files for LFI => code exec.
+* Sometimes FTP is there so you can enumerate additional services in the box => find exploits => code exec.
+* __Look at 10.11.1.226 as an example__
+
 Fingerprint / access FTP server:
 ```
 # cmdline access
