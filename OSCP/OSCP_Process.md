@@ -9,6 +9,18 @@ Reset all connections with OpenVPN:
 $ sudo killall openvpn
 ```
 
+## Exam Restrictions
+
+READ THE "METASPLOIT RESTRICTIONS" SECTION CAREFULLY: https://support.offensive-security.com/oscp-exam-guide/
+
+You can use:
+* exploit/multi/handler
+* msfvenom __(excluding meterpreter payload)__
+* pattern_create and pattern_offset on all machines in the exam.
+
+Anything else having to do with msf (meterpreter, auxiliary, post, exploit, scan) is limited to one machine only.
+
+
 ## Exam Approach
 
 Overview:
