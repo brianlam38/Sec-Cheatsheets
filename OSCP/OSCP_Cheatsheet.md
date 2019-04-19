@@ -2,12 +2,13 @@
 
 ### [1. Recon](#RECON)  
 ### [2. Services](#SERVICES)  
-* [FTP - TCP 21](#FTP---TCP-21)  
+* [FTP - TCP 21](#FTP---TCP-21) 
 * [SSH - TCP 22](#SSH---TCP-22)  
 * [HTTP - TCP 80/8080/443/8443](#HTTP---TCP-80/8080/443/8443)
 * [Telnet - TCP 23](#Telnet---TCP-23)  
 * [SMTP - TCP 25](#SMTP---TCP-25)
 * [DNS - TCP 53](#DNS---TCP-53)
+* [TFTP - UDP 69](#TFTP---UDP-69)
 * [Remote Procedure Call - TCP 111](#Remote-Procedure-Call---TCP-111)
 * [Ident - TCP 113](#Ident---TCP-113)
 * [SMB Netbios SMBD - TCP 135-139,445](#SMB-NETBIOS-SMBD---TCP-135-139445)
@@ -161,7 +162,7 @@ vpn.friendzoneportal.red. 604800 IN	A	127.0.0.1
 friendzoneportal.red.	604800	IN	SOA	localhost. root.localhost. 2 604800 86400 2419200 604800
 ```
 
-### TFTP (trivial file transfer protocol) - UDP 69
+### TFTP - UDP 69
 
 Allied Telesyn TFTP Server (AT-TFTP) 1.9 Remote Buffer Overflow
 * Public exploit: https://github.com/shauntdergrigorian/cve-2006-6184
