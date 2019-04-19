@@ -484,6 +484,10 @@ meterpreter > migrate 1548
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 
 
+Payload size is restricted?
+* Look for a payload that has a smaller size than standard e.g. `reverse_nonx_tcp`.
+* Run the script `/usr/share/metasploit-framework/tools/modules/payload_lengths.rb` to check the size of all payloads.
+
 If reverse shell hangs / dies:
 * Try a different port, try a different port. E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
 * A firewall may be blocking / disconnecting you on the port.
