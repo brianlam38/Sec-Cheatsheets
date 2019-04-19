@@ -705,6 +705,7 @@ METHOD: Meterpreter
 1. `meterpreter> ps`: Find all running processes on the box.
 2. `meterpreter> migrate [pid]`: Migrate your unstable shell to another process e.g. `explorer.exe`.
 3. Your shell should be stable now.  
+
 __########### WARNING: METERPRETER IS RESTRICTED IN THE EXAM ###########__
 
 
