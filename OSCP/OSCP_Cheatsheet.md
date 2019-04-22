@@ -295,6 +295,8 @@ Samba Symlink Directory Traversal (worked before on Debian 3.0.20)
 
 ### SNMP - UDP 161
 
+SNMP is an app-layer protocol for collecting and managing information about devices within a network.  
+
 SNMP enumeration:
 ```
 $ snmpwalk -c [community string] -v1 [ target ]
