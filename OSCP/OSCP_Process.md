@@ -54,3 +54,51 @@ If you can't get low-level priv:
 * Enumerate more / Google a way to enumerate the service differently.
 * Think of what has been enumerated and how you can chain to get shell or sesnsitive info.
 * Read the exploit you're sending and see if it needs to be edited.
+
+
+## Exam Machine Approach
+
+STAGE 1: ENUMERATION - MACHINE LEVEL 1
+
+* Nmap -A default TCP ports
+* Nmap -A default UDP ports
+* For each service discovered (from top-to-bottom), Searchsploit/Google the service version for exploits.
+
+STAGE 2: ENUMERATION - SERVICE LEVEL
+
+* Surface-level dive into each service.
+* Don't do a deep-dive / go into a rabbit hole.
+* Make a list of possible attack-vectors from the surface-level dive.
+
+STAGE 3: ENUMERATION - MACHINE LEVEL 2
+
+This is where no possible attack-vectors have been found. Further enumeration may be needed.
+
+* Perform a full Nmap TCP port-scan.
+* Perform a full Nmap UDP port-scan.
+* Make a list of possible attack-vectors from new services un-convered that could not be found with the basic scan.
+
+STAGE 4: EXPLOITATION TO USER
+
+* For each possible attack-vector in the list, run the exploit code.
+* Hopefully you have a shell by now. If not, try alternate exploit code and do further service enumeration.
+
+STAGE 5: ENUMERATION - PRIVILEGE ESCALATION 1
+
+* Navigate around the file-system and try to understand what it contains.
+  * Look for any non-standard / suspicious folders.
+  * Usually the user's folder may contain the path to privesc.
+* Copy Linux/Windows privilege escalation scripts via. file transfer methods into /temp.
+* Run each script and observe output from top-to-bottom.
+* Make a list of possible attack-vectors from the script.
+
+STAGE 6: EXPLOITATION TO ROOT/SYSTEM
+
+* For each possible attack-vector in the list, run exploit code or perform commands outlined in exploit guides.
+* Hopefully you have a shell by now. If not, try alternative exploit code and do further enumeration of the system.
+
+STAGE 7: ENUMERATION - PRIVILEGE ESCALATION 2
+
+* Use a manual privilege escalation guide and follow each step to see if you can get any ideas to privesc.
+
+
