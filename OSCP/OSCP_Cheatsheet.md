@@ -15,6 +15,7 @@
 * [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
 * [MSRPC - TCP 135](#MSRPC---TCP-135)
 * [SNMP - UDP 161](#SNMP---UDP-161)
+* [ISAKMP - UDP 500](#ISAKMP---UDP-500)
 * [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
 * [MySQL - TCP 3306](#MySQL---TCP-3306)
 * [RDP - TCP 3389](#RDP---TCP-3389)
@@ -311,6 +312,14 @@ done < community.txt
 ```
 
 Community string wordlist: https://github.com/danielmiessler/SecLists/blob/master/Discovery/SNMP/common-snmp-community-strings.txt
+
+
+### ISAKMP - UDP 500
+
+```bash
+$ ike-scan -M [ target ]
+```
+
 
 ### Oracle SQL Database Listener - TCP 1521
 
