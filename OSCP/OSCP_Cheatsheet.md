@@ -375,6 +375,18 @@ Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes
 profile=private,domain localport=3389 protocol=udp
 ```
 
+### RealVNC and VNC - TCP 5800, 5900
+
+RealVNC - VNC over HTTP:
+```bash
+$ curl -L 10.11.1.227 http://[target]:5800
+```
+
+VNC login brute-force:
+```bash
+$ hydra -s 5900 -P /usr/share/wordlists/rockyou.txt [target] vnc
+```
+
 ### IRC - TCP 6660-6669,6697,67000
 
 IRC enum:
