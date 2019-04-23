@@ -19,6 +19,7 @@
 * [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
 * [MySQL - TCP 3306](#MySQL---TCP-3306)
 * [RDP - TCP 3389](#RDP---TCP-3389)
+* [VNC - TCP 5800, 5900(#RealVNC-and-VNC---TCP-5800-5900)
 * [IRC - TCP 6660-6669,6697,67000](#irc---tcp-6660-6669669767000)
 * [RDP - TCP 3389](#RDP---TCP-3389)  
 
