@@ -735,6 +735,10 @@ $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
 ```
 
+Exploit is in Python, but Python doesn't exist on the box:
+* Use `pyinstaller` to transform python script -> binary.
+
+
 # OTHER THINGS
 
 __Maintaining access to a box with unstable shell__
