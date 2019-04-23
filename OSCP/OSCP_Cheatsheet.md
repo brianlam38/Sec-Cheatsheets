@@ -788,6 +788,14 @@ $ hashcat -h | grep -i [hash you want to crack]     # find hash input number
 $ hashcat -m 5600 /path/to/hash /path/to/wordlist   # 5600 = specify NTLMv2 hash
 ```
 
+__Password Dumping__
+
+Windows:
+* `pwdump.exe`: dump password hashes.
+  * How to use pwdump: https://xtraweb.wordpress.com/how-to-dump-windows-password-using-pwdump/
+* `fgdump.exe`: dump password hashes and cached credentials.
+
+
 __ZIP Files__
 
 Brute-force passworded zips:
