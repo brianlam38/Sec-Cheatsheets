@@ -523,8 +523,7 @@ Payload size is restricted?
 * Run the script `/usr/share/metasploit-framework/tools/modules/payload_lengths.rb` to check the size of all payloads.
 
 If reverse shell hangs / dies:
-* Try a different port, try a different port. E.g. 443 doesn't work, try 80 or 8080 (see your Nmap results).
-* A firewall may be blocking / disconnecting you on the port.
+* Try a different port. E.g. 4444 doesn't work, try 443, 80 or 8080 (see your Nmap results) because a firewall may be disallowing all ports except certain ones.
 * Try a bind shell instead of reverse shell.
 * Try generate a different payload with `msfvenom -p` or find another payload online.
 
