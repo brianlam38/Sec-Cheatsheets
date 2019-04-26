@@ -400,6 +400,10 @@ https://github.com/arm13/exploits-1/blob/master/vncpwn.py
 msf> use auxiliary/admin/vnc/realvnc_41_bypass
 ```
 
+VNC password cracking:
+* https://www.raymond.cc/blog/crack-or-decrypt-vnc-server-encrypted-password/
+
+
 ### IRC - TCP 6660-6669,6697,67000
 
 IRC enum:
