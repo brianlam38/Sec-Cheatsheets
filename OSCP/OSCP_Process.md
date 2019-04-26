@@ -102,3 +102,6 @@ STAGE 7: ENUMERATION - PRIVILEGE ESCALATION 2
 * Use a manual privilege escalation guide and follow each step to see if you can get any ideas to privesc.
 
 
+## Documenting Properly
+
+"Include full code with comments + screenshots + walk-through explanation how I built the code to fully exploit the machine like it was explained in the course videos."
