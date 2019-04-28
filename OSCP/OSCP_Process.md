@@ -105,3 +105,28 @@ STAGE 7: ENUMERATION - PRIVILEGE ESCALATION 2
 ## Documenting Properly
 
 "Include full code with comments + screenshots + walk-through explanation how I built the code to fully exploit the machine like it was explained in the course videos."
+
+**EXAM PROOFS**
+
+1. Interactive shell
+2. `Type` or `Cat` of the proof.txt file from their __ORIGINAL LOCATION__ / same directory
+3. WINDOWS - must have shell running with permissions of one of the following:
+  * SYSTEM user
+  * Administrator user
+  * User with administrator privileges
+4. LINUX - must have a root shell
+
+**PROOF SCREENSHOT REQUIREMENTS**
+
+A single screenshot must have:
+1. `ipconfig` or `ifconfig` information
+2. Contents of local.txt or proof.txt
+
+**CONTROL PANEL SUBMISSION**
+
+A control panel key submission must have:
+1. Local.txt
+2. Proof.txt
+3. Submitted __BEFORE__ end of the exam
+
+
