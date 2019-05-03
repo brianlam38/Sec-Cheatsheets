@@ -133,8 +133,11 @@ A control panel key submission must have:
 
 [x] Exam and lab report in PDF format.
 * OSCP-OS-XXXXX-Exam-Report.pdf
-* OSCP-OS-XXXXX-Lab-Report.pdf
+* OSCP-OS-XXXXX-Lab-Report.pdf  
+
 [x] PDF has been archived into a password-protected .7z file.
-* `7z a OSCP-OS-XXXXX-Exam-Report.7z -pOS-XXXXX OSCP-OS-XXXXX-Exam-Report.pdf`
-[x] Submit .7z file via. https://upload.offsec.com
+* `7z a OSCP-OS-XXXXX-Exam-Report.7z -pOS-XXXXX OSCP-OS-XXXXX-Exam-Report.pdf` 
+
+[x] Submit .7z file via. https://upload.offsec.com  
+
 [x] Email your upload link along with your OSID to: OSCP@offensive-security.com
