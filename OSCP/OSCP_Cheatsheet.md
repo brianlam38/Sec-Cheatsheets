@@ -14,6 +14,7 @@
 * [SMB Netbios SMBD - TCP 135-139,445](#SMB-NETBIOS-SMBD---TCP-135-139445)
 * [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
 * [RPC/MSRPC - TCP 135](#RPCMSRPC---TCP-135)
+* [IMAP - TCP 143](#IMAP---TCP-143)
 * [SNMP - UDP 161](#SNMP---UDP-161)
 * [ISAKMP - UDP 500](#ISAKMP---UDP-500)
 * [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
@@ -222,6 +223,11 @@ Ident is a protocol that helps identify the user of a particular TCP connection.
 
 Follow instructions to install ident-enum tool: http://pentestmonkey.net/tools/ident-user-enum
 
+
+### IMAP - TCP 143
+
+hMAilServer 4.4.2 - 'PHPWebAdmin' File Inclusion
+* https://www.exploit-db.com/exploits/7012
 
 ### RPC/MSRPC - TCP 135
 
