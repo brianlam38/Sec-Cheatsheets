@@ -13,7 +13,7 @@
 * [Ident - TCP 113](#Ident---TCP-113)
 * [SMB Netbios SMBD - TCP 135-139,445](#SMB-NETBIOS-SMBD---TCP-135-139445)
 * [SMBD Samba - TCP 139](#SMBD-SAMBA---TCP-139)
-* [MSRPC - TCP 135](#MSRPC---TCP-135)
+* [RPC/MSRPC - TCP 135](#RPCMSRPC---TCP-135)
 * [SNMP - UDP 161](#SNMP---UDP-161)
 * [ISAKMP - UDP 500](#ISAKMP---UDP-500)
 * [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
@@ -223,7 +223,25 @@ Ident is a protocol that helps identify the user of a particular TCP connection.
 Follow instructions to install ident-enum tool: http://pentestmonkey.net/tools/ident-user-enum
 
 
-### MSRPC - TCP 135
+### RPC/MSRPC - TCP 135
+
+Rpcclient enumeration:
+```bash
+# Initial enum
+$ rpcclient -U "" -N 10.11.1.136 -c $i
+rpcclient> srvinfo
+rpcclient> enumdomains
+rpcclient> querydominfo
+rpcclient> enumdomusers
+rpcclient> enumdomgroups
+rpcclient> getdompwinfo
+
+# Follow up enum
+rpcclient> querygroup 0x200
+rpcclient> querygroupmem 0x200
+rpcclient> queryuser 0x3601
+rpcclient> getusrdompwinfo 0x3601
+```
 
 
 ### SMB NETBIOS SMBD - TCP 139,445
