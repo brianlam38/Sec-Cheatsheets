@@ -500,6 +500,10 @@ Tomcat Web Manager (JSP reverse shell upload)
 * Default creds: `tomcat:tomcat`
 * https://www.hackingarticles.in/multiple-ways-to-exploit-tomcat-manager/
 
+Microsoft IIS 5.0
+* WebDAV Remote Code Execution (3) (xwdav): https://www.exploit-db.com/exploits/51
+* Microsoft IIS 5.0/6.0 FTP Server (Windows 2000) - Remote Stack Overflow: https://www.exploit-db.com/exploits/9541
+
 # INITIAL EXPLOITATION
 
 Reverse shell tips:
