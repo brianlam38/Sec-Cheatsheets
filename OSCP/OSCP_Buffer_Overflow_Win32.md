@@ -50,7 +50,7 @@ EIP value: '42424242' = 'BBBB'
 
 ### 5. CHECK FOR BAD CHARACTERS
 
-Bad characters (256 in total):
+Characters to test (256 in total):
 ```python
 chars =(
 "\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
@@ -71,6 +71,13 @@ chars =(
 "\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"
 )
 ```
+
+Run code with character list -> 'Follow in dump' / go to memory dump:
+![BOF_STEP5_BADCHAR1](images/BOF_STEP5_BADCHAR1.png)
+
+Memory dump with chars payload -> see which bytes causes the truncation:
+![BOF_STEP5_BADCHAR2](images/BOF_STEP5_BADCHAR2.png)
+
 
 ### 6. FIND ADDRESS OF A JMP-ESP IN A .DLL
 
