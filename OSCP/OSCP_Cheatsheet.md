@@ -17,6 +17,7 @@
 * [IMAP - TCP 143](#IMAP---TCP-143)
 * [SNMP - UDP 161](#SNMP---UDP-161)
 * [ISAKMP - UDP 500](#ISAKMP---UDP-500)
+* [MSSQL Server - TCP/UDP 1433/1434](#MSSQL-Server---TCPUDP-14331434)
 * [Oracle SQL Database Listener - TCP 1521](#Oracle-SQL-Database-Listener---TCP-1521)
 * [MySQL - TCP 3306](#MySQL---TCP-3306)
 * [RDP - TCP 3389](#RDP---TCP-3389)
@@ -117,7 +118,7 @@ Stuff
 
 SMTP enum tools
 ```bash
-$ snmp-check [ target ]
+$ smtp-user-enum -M VRFY -U /usr/share/wordlists/dirb/common.txt -t [target]
 ```
 
 Manual fingerprinting
@@ -327,7 +328,7 @@ SNMP enumeration:
 $ snmpwalk -c [community string] -v1 [ target ]
 $ onesixtyone [ target ] -c community.txt
 $ snmpenum
-$ snmpcheck
+$ snmp-check [ target ]
 ```
 
 Snmpwalk brute-force script:
@@ -347,6 +348,25 @@ Community string wordlist: https://github.com/danielmiessler/SecLists/blob/maste
 $ ike-scan -M [ target ]
 ```
 
+### MSSQL Server - TCP/UDP 1433/1434
+
+Testing SQL Servers: https://pentestlab.blog/2013/03/18/penetration-testing-sql-servers/
+
+Confirm MSSQL Server
+```bash
+# Check either TCP and UDP ports
+$ nmap -sU -p1434 [target]  
+$ nmap -p1433 [target]
+```
+
+Metasploit SQL Server:
+```bash
+msf> use auxiliary/scanner/mssql/mssql_ping     # SQL Server num
+msf> use auxiliary/scanner/mssql/mssql_login    # SQL Server login brute-force
+
+msf> use auxiliary/admin/mssql/mssql_enum       # post-exploit enum
+msf> use auxiliary/admin/mssql/mssql_exec       # if 'xp_cmdshell' is enabled, execute system commands
+```
 
 ### Oracle SQL Database Listener - TCP 1521
 
