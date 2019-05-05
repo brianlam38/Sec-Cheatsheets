@@ -4,7 +4,7 @@ Step-by-step guide to Windows privilege escalation.
 
 ## 1. SYSTEM INFORMATION + ACCOUNTS
 
-```vb
+```bash
 $ systeminfo | findstr /C:"OS Name" /C:"OS Version" /C:"Logon Server"
 $ echo %username%         # current user
 $ whoami                  # current user
