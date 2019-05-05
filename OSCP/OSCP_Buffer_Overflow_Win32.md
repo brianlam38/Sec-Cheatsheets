@@ -9,13 +9,13 @@ Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
 
-### 1. Fuzz application to determine ~bytes to cause a crash
+### 1. FUZZING TO DETERMINE ~BYTES TO CAUSE A CRASH
 
 ![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
 
 
 
-### 2. Generate offset-discovery string
+### 2. GENERATE OFFSET-DISCOVERY STRING
 
 ```bash
 $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
@@ -31,7 +31,7 @@ EIP value: 39694438
 
 
 
-### 3. Calculate offset
+### 3. CALCULATE OFFSET
 
 ```bash
 $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in EIP]
@@ -41,22 +41,22 @@ Offset byte number: '2606'
 ![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
 
-### 4. Confirm offset is correct
+### 4. CONFIRM OFFSET IS CORRECT
 
 Confirm that your offset is correct by placing a unique 4-byte string into the EIP register.
 
 EIP value: '42424242' = 'BBBB'
 ![BOF_STEP3_OFFSET](images/BOF_STEP4_OFFSET3.png)
 
-### 5. Check for bad characters
+### 5. CHECK FOR BAD CHARACTERS
 
 
 
-### 6. Find address of a JMP ESP in a DLL
+### 6. FIND ADDRESS OF A JMP-ESP IN A .DLL
 
-### 7. Generate shellcode
+### 7. GENERATE SHELLCODE
 
-### 8. Final payload + run exploit
+### 8. FINAL PAYLOAD + RUN EXPLOIT TO OBTAIN SHELL
 
 
 ```Python
