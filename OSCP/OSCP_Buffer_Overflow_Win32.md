@@ -19,27 +19,26 @@ Some BO guides:
 $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
 ```
 
+Look at the value in the **EIP** register.
+* It is where we want to store the address of a `JMP ESP` instruction, to re-direct execution flow.
+* Exploit execution flow: EIP -> JMP ESP -> ESP (shellcode location)
+
 ![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET.png)
 
-### 3. Run script with offset-discovery string + look at value in EIP
 
-**EIP** is where we want to store the address of a `JMP ESP` instruction, to re-direct execution flow.
-
-Exploit Execution flow: EIP -> JMP ESP -> ESP (shellcode location)
-
-### 4. Calculate offset
+### 3. Calculate offset
 
 ```bash
 $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in EIP]
 ```
 
-### 5. Check for bad characters
+### 4. Check for bad characters
 
-### 6. Find address of a JMP ESP in a DLL
+### 5. Find address of a JMP ESP in a DLL
 
-### 7. Generate shellcode
+### 6. Generate shellcode
 
-### 8. Final payload + run exploit
+### 7. Final payload + run exploit
 
 
 ```Python
