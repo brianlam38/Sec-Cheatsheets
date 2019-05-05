@@ -40,16 +40,22 @@ Offset byte number: 2606
 ![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
 
+### 4. Confirm offset is correct
 
-### 4. Check for bad characters
+Confirm that your offset is correct by placing a unique 4-byte string into the EIP register.
+
+EIP value:
+![BOF_STEP3_OFFSET](images/BOF_STEP4_OFFSET3.png)
+
+### 5. Check for bad characters
 
 
 
-### 5. Find address of a JMP ESP in a DLL
+### 6. Find address of a JMP ESP in a DLL
 
-### 6. Generate shellcode
+### 7. Generate shellcode
 
-### 7. Final payload + run exploit
+### 8. Final payload + run exploit
 
 
 ```Python
