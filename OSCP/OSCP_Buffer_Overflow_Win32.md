@@ -36,7 +36,7 @@ EIP value: 39694438
 $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in EIP]
 ```
 
-Offset byte number: 2606
+Offset byte number: '2606'
 ![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
 
@@ -44,7 +44,7 @@ Offset byte number: 2606
 
 Confirm that your offset is correct by placing a unique 4-byte string into the EIP register.
 
-EIP value:
+EIP value: '42424242' = 'BBBB'
 ![BOF_STEP3_OFFSET](images/BOF_STEP4_OFFSET3.png)
 
 ### 5. Check for bad characters
