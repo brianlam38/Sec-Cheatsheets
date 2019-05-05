@@ -19,6 +19,8 @@ Some BO guides:
 $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
 ```
 
+![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET.png)
+
 ### 3. Run script with offset-discovery string + look at value in EIP
 
 **EIP** is where we want to store the address of a `JMP ESP` instruction, to re-direct execution flow.
