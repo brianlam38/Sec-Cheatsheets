@@ -118,11 +118,7 @@ Generate shellcode and add it to the BOF exploit code.
 
 Provide the shellcode decoder some stack-space to work with: `"\x90 * 16"` Append NOP instructions to the front of the shellcode.
 
----
-
-### 8. FINAL PAYLOAD + RUN EXPLOIT TO OBTAIN SHELL
-
-
+Final payload:
 ```Python
 #!/usr/bin/python
 #
