@@ -1,6 +1,6 @@
-# Windows Privilege Escalation Guide
+# Windows Privilege Escalation
 
-Step-by-step guide to Windows privilege escalation.
+Windows privilege escalation commands.
 
 ### 1. SYSTEM INFORMATION + ACCOUNTS
 
