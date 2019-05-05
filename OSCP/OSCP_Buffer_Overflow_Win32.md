@@ -8,7 +8,6 @@ In the exam, you are provided with a fuzzing script already.
 Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
-### Fuzzing -> Determine exact offset -> Control EIP register
 
 ### 1. Fuzz application to determine no. bytes to cause a crash
 
@@ -97,6 +96,12 @@ except Exception as e:
 
 
 
+
+
+
+
+
+### Fuzzing -> Determine exact offset -> Control EIP register
 
 1. Fuzz application to determine rough amount of bytes to cause a crash.
 2. Generate offset-discovery string: `/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700`
