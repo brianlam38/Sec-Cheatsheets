@@ -8,12 +8,16 @@ In the exam, you are provided with a fuzzing script already.
 Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
+---
 
 ### 1. FUZZING TO DETERMINE ~BYTES TO CAUSE A CRASH
 
 Guess the number of bytes it takes to crash the application.
 
 ![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
+
+
+---
 
 
 ### 2. GENERATE OFFSET-DISCOVERY STRING
@@ -31,6 +35,8 @@ EIP value: 39694438
 ![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET1.png)
 
 
+---
+
 
 ### 3. CALCULATE OFFSET
 
@@ -41,6 +47,7 @@ $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in E
 Offset byte number: '2606'
 ![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
+---
 
 ### 4. CONFIRM OFFSET IS CORRECT
 
@@ -48,6 +55,8 @@ Confirm that your offset is correct by placing a unique 4-byte string into the E
 
 EIP value: '42424242' = 'BBBB'
 ![BOF_STEP3_OFFSET](images/BOF_STEP4_OFFSET3.png)
+
+---
 
 ### 5. CHECK FOR BAD CHARACTERS
 
@@ -79,6 +88,7 @@ Run code with character list -> 'Follow in dump' / go to memory dump:
 Memory dump with chars payload -> see which bytes causes the truncation:
 ![BOF_STEP5_BADCHAR2](images/BOF_STEP5_BADCHAR2.png)
 
+---
 
 ### 6. FIND ADDRESS OF A JMP-ESP IN A .DLL
 
@@ -93,8 +103,13 @@ Right-click on the instructions windows and select `Search For` ->
 * `Sequence of Commands` -> `PUSH ESP | RETN`  
 ![BOF_STEP6_JMPESP3](images/BOF_STEP6_JMPESP3.png)
 
+---
+
 
 ### 7. GENERATE SHELLCODE
+
+
+---
 
 ### 8. FINAL PAYLOAD + RUN EXPLOIT TO OBTAIN SHELL
 
