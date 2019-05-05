@@ -350,7 +350,9 @@ $ ike-scan -M [ target ]
 
 ### MSSQL Server - TCP/UDP 1433/1434
 
-Testing SQL Servers: https://pentestlab.blog/2013/03/18/penetration-testing-sql-servers/
+Testing SQL Servers:
+* Guide 1: https://pentestlab.blog/2013/03/18/penetration-testing-sql-servers/
+* Guide 2: https://www.cybrary.it/0p3n/exploiting-ms-sql-server-metasploit-fast-track/
 
 Confirm MSSQL Server
 ```bash
