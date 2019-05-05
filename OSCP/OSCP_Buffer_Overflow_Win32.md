@@ -24,7 +24,7 @@ Look at the value in the **EIP** register.
 * Exploit execution flow: EIP -> JMP ESP -> ESP (shellcode location)
 
 EIP value: 39694438
-![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET.png)
+![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET1.png)
 
 
 ### 3. Calculate offset
@@ -32,6 +32,9 @@ EIP value: 39694438
 ```bash
 $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in EIP]
 ```
+
+Offset byte number: 2606
+![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
 ### 4. Check for bad characters
 
