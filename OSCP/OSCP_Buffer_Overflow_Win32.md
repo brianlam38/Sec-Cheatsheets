@@ -13,6 +13,8 @@ Some BO guides:
 
 ![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
 
+
+
 ### 2. Generate offset-discovery string
 
 ```bash
@@ -27,6 +29,7 @@ EIP value: 39694438
 ![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET1.png)
 
 
+
 ### 3. Calculate offset
 
 ```bash
@@ -36,7 +39,11 @@ $ /usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in E
 Offset byte number: 2606
 ![BOF_STEP3_OFFSET](images/BOF_STEP3_OFFSET2.png)
 
+
+
 ### 4. Check for bad characters
+
+
 
 ### 5. Find address of a JMP ESP in a DLL
 
