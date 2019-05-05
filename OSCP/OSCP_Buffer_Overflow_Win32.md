@@ -22,7 +22,8 @@ $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
 ```
 
 Look at the value in the **EIP** register.
-* It is where we want to store the address of a `JMP ESP` instruction, to re-direct execution flow.
+* `EIP` is the register that we want to control.
+* We want to store the address of a `JMP ESP` instruction in EIP, to re-direct execution flow.
 * Exploit execution flow: EIP -> JMP ESP -> ESP (shellcode location)
 
 EIP value: 39694438
