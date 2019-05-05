@@ -92,16 +92,20 @@ Memory dump with chars payload -> see which bytes causes the truncation:
 
 ### 6. FIND ADDRESS OF A JMP-ESP IN A .DLL
 
-Run `!mona modules` to find a suitable .DLL which has no internal security mechanisms and double-click to load it:
+Run `!mona modules` to find a suitable .DLL which has no internal security mechanisms:
 ![BOF_STEP6_JMPESP1](images/BOF_STEP6_JMPESP1.png)
 
-Once a .DLL has been found, click on the `e` to list all executable modules/.DLLs loaded with the application and then double-click on it:
+Once a .DLL has been found, click on the `e` to list all executable modules/.DLLs loaded with the application and then double-click on the .DLL you found:
 ![BOF_STEP6_JMPESP2](images/BOF_STEP6_JMPESP2.png)
 
 Right-click on the instructions windows and select `Search For` ->
 * `Command` -> ` JMP ESP`
 * `Sequence of Commands` -> `PUSH ESP | RETN`  
+
+Alternative, run `!mona find -s "/xFF/xE4" -m slmfc.dll` to find the OPCODE for `jmp esp` in the entire .DLL:
 ![BOF_STEP6_JMPESP3](images/BOF_STEP6_JMPESP3.png)
+
+19 pointers to `JMP ESP` has been found in the .DLL.
 
 ---
 
