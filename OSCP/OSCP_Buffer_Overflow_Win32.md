@@ -11,6 +11,8 @@ Some BO guides:
 
 ### 1. Fuzz application to determine no. bytes to cause a crash
 
+![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
+
 ### 2. Generate offset-discovery string
 
 ```bash
