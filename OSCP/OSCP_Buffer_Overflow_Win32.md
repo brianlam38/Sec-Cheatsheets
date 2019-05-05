@@ -105,7 +105,8 @@ Right-click on the instructions windows and select `Search For` ->
 Alternative, run `!mona find -s "/xFF/xE4" -m slmfc.dll` to find the OPCODE for `jmp esp` in the entire .DLL:
 ![BOF_STEP6_JMPESP3](images/BOF_STEP6_JMPESP3.png)
 
-19 pointers to `JMP ESP` has been found in the .DLL.
+Choose one of the pointers -> copy its address -> click on "Go to address in Disassembler" -> paste address:
+![BOF_STEP6_JMPESP4](images/BOF_STEP6_JMPESP4.png)
 
 ---
 
