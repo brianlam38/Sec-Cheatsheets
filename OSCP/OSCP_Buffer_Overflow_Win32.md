@@ -11,8 +11,9 @@ Some BO guides:
 
 ### 1. FUZZING TO DETERMINE ~BYTES TO CAUSE A CRASH
 
-![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
+Guess the number of bytes it takes to crash the application.
 
+![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
 
 
 ### 2. GENERATE OFFSET-DISCOVERY STRING
