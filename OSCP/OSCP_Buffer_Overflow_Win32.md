@@ -23,6 +23,7 @@ Look at the value in the **EIP** register.
 * It is where we want to store the address of a `JMP ESP` instruction, to re-direct execution flow.
 * Exploit execution flow: EIP -> JMP ESP -> ESP (shellcode location)
 
+EIP value: 39694438
 ![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET.png)
 
 
