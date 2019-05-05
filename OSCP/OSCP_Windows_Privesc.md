@@ -2,7 +2,7 @@
 
 Step-by-step guide to Windows privilege escalation.
 
-## 1. SYSTEM INFORMATION + ACCOUNTS
+### 1. SYSTEM INFORMATION + ACCOUNTS
 
 ```bash
 $ systeminfo | findstr /C:"OS Name" /C:"OS Version" /C:"Logon Server"
@@ -13,7 +13,7 @@ $ net users               # return a list of all user accounts on the system
 $ net user [user]         # return detailed info about a user
 ```
 
-## 2. NETWORKING
+### 2. NETWORKING
 
 ```vb
 $ ipconfig /all           # show details for all network interfaces, physical and logical
@@ -23,11 +23,11 @@ $ arp -A                  # show the ARP cache table - a cache of IP / unique MA
 $ netstat -ano        
 ```
 
-## 3. WINDOWS TASKS
+### 3. WINDOWS TASKS
 
-## 4. QUICK WINS
+### 4. QUICK WINS
 
-## 5. WINDOWS SERVICES, FILE/FOLDER PERMISSIONS
+### 5. WINDOWS SERVICES, FILE/FOLDER PERMISSIONS
 
 echo ################################################################ 
 echo PART 2: ENUMERATE NETWORKING
