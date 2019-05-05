@@ -9,7 +9,7 @@ Some BO guides:
 * https://www.nccgroup.trust/au/about-us/newsroom-and-events/blogs/2016/june/writing-exploits-for-win32-systems-from-scratch/
 
 
-### 1. Fuzz application to determine no. bytes to cause a crash
+### 1. Fuzz application to determine ~bytes to cause a crash
 
 ![BOF_STEP1_FUZZ](images/BOF_STEP1_FUZZ.png)
 
@@ -18,6 +18,8 @@ Some BO guides:
 ```bash
 $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
 ```
+
+![BOF_STEP2_OFFSET](images/BOF_STEP2_OFFSET.png)
 
 ### 3. Run script with offset-discovery string + look at value in EIP
 
