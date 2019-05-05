@@ -82,6 +82,18 @@ Memory dump with chars payload -> see which bytes causes the truncation:
 
 ### 6. FIND ADDRESS OF A JMP-ESP IN A .DLL
 
+Run `!mona modules` to find a suitable .DLL which has no internal security mechanisms:
+![BOF_STEP6_JMPESP1](images/OF_STEP6_JMPESP1.png)
+
+Once a .DLL has been found, click on the `e` to list all executable modules/.DLLs loaded with the application and then double-click on it:
+![BOF_STEP6_JMPESP2](images/OF_STEP6_JMPESP2.png)
+
+Right-click on the instructions windows and select `Search For` ->
+* `Command` -> ` JMP ESP`
+* `Sequence of Commands` -> `PUSH ESP | RETN`  
+![BOF_STEP6_JMPESP3](images/OF_STEP6_JMPESP3.png)
+
+
 ### 7. GENERATE SHELLCODE
 
 ### 8. FINAL PAYLOAD + RUN EXPLOIT TO OBTAIN SHELL
