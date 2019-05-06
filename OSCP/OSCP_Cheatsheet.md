@@ -97,6 +97,9 @@ ftp> get ../\../\../\../\boot.ini
 ftp> dir ../\../\../\temp/
 ```
 
+CompleteFTP Server - Directory Traversal
+* https://www.exploit-db.com/exploits/11973
+
 ProFTPD 1.3.3a
 * (Worked) https://github.com/Muhammd/ProFTPD-1.3.3a/blob/master/ProFTPD_exploit.py
 
