@@ -636,6 +636,11 @@ Localhost listening ports:
 $ netstat -alntp
 ```
 
+/etc/fstab `cat /etc/fstab`:
+* Look for un-mounted file-systems
+* Look for file-systems with vulnerabilities e.g. ReiserFS privesc
+
+
 UDEV
 * Guide: http://www.madirish.net/370
 * Exploit Code: https://www.exploit-db.com/exploits/8478
