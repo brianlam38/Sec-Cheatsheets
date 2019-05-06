@@ -373,6 +373,11 @@ msf> use auxiliary/admin/mssql/mssql_enum       # post-exploit enum
 msf> use auxiliary/admin/mssql/mssql_exec       # if 'xp_cmdshell' is enabled, execute system commands
 ```
 
+MSSQL Server - default credentials:
+* http://support.webecs.com/kb/a867/what-is-the-default-password-for-the-sa-login.aspx
+* https://support.microsoft.com/en-au/help/321081/installation-of-msde-creates-an-sa-account-with-a-blank-password-in-vi
+
+
 ### Oracle SQL Database Listener - TCP 1521
 
 Look at notes from pwning `10.11.1.202`.
