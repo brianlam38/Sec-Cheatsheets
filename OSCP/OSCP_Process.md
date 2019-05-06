@@ -1,5 +1,12 @@
 # OSCP Process
 
+## STAGE 0: INITIAL RECON
+
+Full Nmap TCP and UDP port-scans during the BOF box.
+```bash
+$ nmap 
+```
+
 ## STAGE 1: ENUMERATION - MACHINE LEVEL 1
 
 * Nmap -A default TCP ports
