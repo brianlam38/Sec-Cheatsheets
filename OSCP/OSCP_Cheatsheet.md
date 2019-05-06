@@ -51,6 +51,11 @@ $ ls -l /usr/share/nmap/scripts/*ssh*
 $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
 ```
 
+OS Fingerprinting:
+```bash
+$ xprobe2 -v -p tcp:80:open 192.168.6.66
+```
+
 Kali Apache server not working properly? Try use:
 `$ python -m SimpleHTTPServer 8080`
 
