@@ -694,6 +694,7 @@ Dump passwords:
 $ reg.exe save hklm\sam c:\sam_backup
 $ reg.exe save hklm\security c:\security_backup
 $ reg.exe save hklm\system c:\system
+$ type C:\Users\[username]\NTUSER.dat
 ```
     
 Cached Credentials:
