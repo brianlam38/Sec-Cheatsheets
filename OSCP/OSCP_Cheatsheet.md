@@ -354,7 +354,8 @@ Samba Symlink Directory Traversal (Samba 3.0.x)
 
 SNMP is an app-layer protocol for collecting and managing information about devices within a network.  
 
-SNMP enumeration:
+SNMP enumeration:  
+(find further info about devices/software with vulns to gain a shell)
 ```
 $ snmpwalk -c [community string] -v1 [ target ]
 $ onesixtyone [ target ] -c community.txt
