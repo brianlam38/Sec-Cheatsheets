@@ -670,7 +670,7 @@ Localhost listening ports:
 $ netstat -alntp
 ```
 
-Exploit NFS shares for privesc (check `cat /etc/exports`):
+Exploit NFS shares for privesc (check `cat /etc/exports`):  
 (/etc/exports is table of local physical file systems on an NFS server that are accessible to NFS clients)
 ```bash
 $ showmount -e 192.168.xx.53                               # check for writable shares
