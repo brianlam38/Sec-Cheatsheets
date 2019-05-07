@@ -692,16 +692,6 @@ Automated Linux enumeration scripts:
 TTY spawn cheatsheet: https://netsec.ws/?p=337
 * `python -c 'import pty; pty.spawn("/bin/sh")'`
 
-
-Hardcoded credentials, backup ssh keys, interesting files
-```
-# Recursive grep, match regex pattern, ignoring case for all files from the root directory.
-$ grep -Rei 'password|username|[pattern3]|[pattern4]' /
-
-# Backups (Debian)
-$ ls -l /var/backups
-```
-
 Quick Wins:
 * Run Linux exploit suggester: https://github.com/mzet-/linux-exploit-suggester/blob/master/linux-exploit-suggester.sh
 * Misconfigured /etc/sudoers:
@@ -721,6 +711,22 @@ $ sudo -l
     !/usr/bin/su *root*  
     (root) NOPASSWD: /usr/bin/cat  
 $ /usr/bin/cat 'brian::0:0::/root:/bin/bash >> /etc/passwd
+```
+
+Re-configure Linux firewall -> enable access to a previously filtered port/service -> privesc:
+```bash
+$ /sbin/iptables -L        # list firewall rules
+$ /sbin/iptables --flush   # delete all firewall rules
+```
+
+
+Hardcoded credentials, backup ssh keys, interesting files
+```
+# Recursive grep, match regex pattern, ignoring case for all files from the root directory.
+$ grep -Rei 'password|username|[pattern3]|[pattern4]' /
+
+# Backups (Debian)
+$ ls -l /var/backups
 ```
 
 Localhost listening ports:
