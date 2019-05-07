@@ -421,8 +421,19 @@ $ sqlplus SYS/SYS@10.11.1.202/ACME 'as sysdba'      # login
 ### MySQL - TCP 3306
 
 Connect:
+```bash
+$ mysql -u root -p -h [target]
 ```
-$ mysql -u root -p
+
+Useful commands:
+```SQL
+SHOW GRANTS FOR 'user'@'%';           -- Show current permissions
+
+GRANT FILE ON . to 'user'@'%';        -- Set privileges for file access
+FLUSH PRIVILEGES;
+
+SELECT 'content' INTO outfile 'path'; -- Write to file
+SELECT load_file('path_to_file');     -- Read file
 ```
 
 Drop to a shell (as the user running MySQL):
