@@ -956,7 +956,7 @@ Encoders:
 ```bash
 $ [msfvenom commands] -e x86/shikata_ga_nai
 $ [msfvenom commands] -e x86/alpha_mixed
-``
+```
 
 # COMPILING EXPLOIT CODE
 
@@ -965,16 +965,16 @@ Compilation tips:
 
 Compilation commands:
 ```bash
-# Compile Linux (cross architecture)
+# Compile Linux cross-architecture ELF (both 32/64bit)
 $ gcc -m32 -Wl,--hash-style=both exploit.c -o exploit
 
-# Compile to Windows .exe from Linux Windows
+# Compile to Windows .exe from Linux
 $ i686-w64-mingw32-gcc 25912.c -o exploit.exe -lws2_32
 $ wine exploit.exe
-```
 
-Exploit is in Python, but Python doesn't exist on the box:
-* Use `pyinstaller` to transform python script -> binary.
+# Generate .exe from Python file in Windows
+$ python pyinstaller.py --onefile <pythonscript>
+```
 
 
 # OTHER THINGS
@@ -1030,12 +1030,14 @@ $ hashcat -h | grep -i [hash you want to crack]     # find hash input number
 $ hashcat -m 5600 /path/to/hash /path/to/wordlist   # 5600 = specify NTLMv2 hash
 ```
 
-__Password Dumping__
+__Password dumping / Pass the hash (Windows only)__
 
-Windows:
-* `pwdump.exe`: dump password hashes.
-  * How to use pwdump: https://xtraweb.wordpress.com/how-to-dump-windows-password-using-pwdump/
+Dump password hashes:
+* `pwdump.exe`: https://xtraweb.wordpress.com/how-to-dump-windows-password-using-pwdump/ (how to use pwdump.exe)
 * `fgdump.exe`: dump password hashes and cached credentials.
+
+Pass-the-hash:
+
 
 
 __ZIP Files__
@@ -1057,7 +1059,7 @@ https://www.onlinehexeditor.com
 https://hexed.it
 ```
 
-__strings__
+__Strings__
 
 Strings command finds all printable strings in an object, binary or file.  
 This could reveal credentials or useful information.
