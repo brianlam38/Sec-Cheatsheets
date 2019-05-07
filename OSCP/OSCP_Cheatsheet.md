@@ -671,7 +671,7 @@ $ su root	# become root
 ```
 
 Sudo misconfiguration:
-
+* https://www.securusglobal.com/community/2014/03/17/how-i-got-root-with-sudo/
 
 Localhost listening ports:
 * Look for ports that were not exposed to your initial public nmap scan.
