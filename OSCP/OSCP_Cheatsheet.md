@@ -672,6 +672,13 @@ $ su root	# become root
 
 Sudo misconfiguration:
 * https://www.securusglobal.com/community/2014/03/17/how-i-got-root-with-sudo/
+* Look for root permissions on certain tools that allow writing.
+```bash
+$ sudo -l
+    (root) NOEXEC: /bin/ls, (root) /usr/bin/cat, (root) /usr/bin/more, (root)  
+    !/usr/bin/su *root*  
+    (root) NOPASSWD: /usr/bin/cat  
+```
 
 Localhost listening ports:
 * Look for ports that were not exposed to your initial public nmap scan.
