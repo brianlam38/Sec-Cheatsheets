@@ -3,21 +3,23 @@
 ## STAGE 0: INITIAL RECON
 
 Full Nmap TCP and UDP port-scans during the BOF box.
-```bash
-$ nmap 
-```
+- [ ] `$ nmap -sV [target] -p-`
+- [ ] `$ nmap -sU [target] -p-`
 
 ## STAGE 1: ENUMERATION - MACHINE LEVEL 1
 
-* Nmap -A default TCP ports
-* Nmap -A default UDP ports
-* For each service discovered (from top-to-bottom), Searchsploit/Google the service version for exploits.
+Nmap -A default ports
+- [ ] `$ nmap -A [target]`
+- [ ] `$ nmap -A -sU [target]`
+
+For each service discovered:
+- [ ] Make a list of potential vectors
 
 ## STAGE 2: ENUMERATION - SERVICE LEVEL
 
-* Surface-level dive into each service.
-* Don't do a deep-dive / go into a rabbit hole.
-* Make a list of possible attack-vectors from the surface-level dive.
+- [ ] Surface-level dive into each service - Searchsploit/Google the service version for exploits.
+- [ ] Don't do a deep-dive / go into a rabbit hole.
+- [ ] Make a list of possible attack-vectors from the surface-level dive.
 
 ## STAGE 3: ENUMERATION - MACHINE LEVEL 2
 
@@ -41,7 +43,7 @@ This is where no possible attack-vectors have been found. Further enumeration ma
 * Run each script and observe output from top-to-bottom.
 * Make a list of possible attack-vectors from the script.
 
-STAGE 6: EXPLOITATION TO ROOT/SYSTEM
+## STAGE 6: EXPLOITATION TO ROOT/SYSTEM
 
 * For each possible attack-vector in the list, run exploit code or perform commands outlined in exploit guides.
 * Hopefully you have a shell by now. If not, try alternative exploit code and do further enumeration of the system.
