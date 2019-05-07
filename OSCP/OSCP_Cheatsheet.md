@@ -680,6 +680,7 @@ WINDOWS SERVER:
 
 Privilege escalation guides:
 * https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/ (manual)
+* https://exploitedbunker.com/articles/pentest-cheatsheet/
 * https://www.reddit.com/r/oscp/comments/9ystub/i_absolutely_suck_at_privilege_escalation/?st=JOQAMPYP&sh=8899be73
 
 Automated Linux enumeration scripts:
@@ -837,6 +838,9 @@ $ type C:\Users\[username]\NTUSER.dat
 
 # WebDAV passwords
 $ /xampp/security/webdav.htpasswd
+
+# Windows hashes
+C:\\Windows\SYSTEM32\CONFIG
 ```
     
 Cached Credentials:
