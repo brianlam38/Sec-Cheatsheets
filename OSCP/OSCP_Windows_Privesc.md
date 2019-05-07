@@ -102,7 +102,8 @@ $ net start upnphost
 
 File and folder permissions:
 * Look for weak permissions such as "NT AUTHORITY\AUTHENTICATED USERS: <I> <M>"
-* For binaries that load with SYSTEM privileges, replace with your own binary.  
+* For binaries that load with SYSTEM privileges, replace with your own binary.
+
 ```powershell
 $ icacls [file or folder path]
 $ cacls [file or folder path]
