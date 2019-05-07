@@ -3,14 +3,18 @@
 ## STAGE 0: INITIAL RECON
 
 Full Nmap TCP and UDP port-scans during the BOF box.
-* `$ nmap -sV [target] -p-`
-* `$ nmap -sU [target] -p-`
+```bash
+$ nmap -sV [target] -p-
+$ nmap -sU [target] -p-
+```
 
 ## STAGE 1: ENUMERATION - MACHINE LEVEL 1
 
-Nmap -A default ports
-* `$ nmap -A [target]`
-* `$ nmap -A -sU [target]`
+Nmap -A default ports:
+```bash
+$ nmap -A [target]
+$ nmap -A -sU [target]
+```
 
 For each service discovered:
 * Make a list of potential vectors
