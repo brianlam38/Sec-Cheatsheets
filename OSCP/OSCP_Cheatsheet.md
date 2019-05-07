@@ -542,6 +542,7 @@ $ curl -v -X MOVE -H 'Destination: http://10.11.1.13/[new]' 'http://10.11.1.13/[
 
 Apache
 * Log paths: https://wiki.apache.org/httpd/DistrosDefaultLayout
+* User agent possibly blocked? Check `httpd.config` -> change user agent to accepted one.
 
 phpLiteAdmin 1.9.3 Remote PHP Code Injection:
 * https://v3ded.github.io/ctf/zico2.html
