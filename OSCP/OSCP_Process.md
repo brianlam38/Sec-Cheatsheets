@@ -4,7 +4,7 @@
 
 Full Nmap TCP and UDP port-scans during the BOF box / while working on other machines.
 ```bash
-$ nmap -sV [target] -p-
+$ nmap [target] -p-       # do nmap -sV on the individual ports later
 $ nmap -sU [target] -p-
 ```
 
