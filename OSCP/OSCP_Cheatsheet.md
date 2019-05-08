@@ -789,6 +789,7 @@ Exploitable SUIDs / SGIDs:
 /more
 /usr/bin/viewuser (HackTheBox)
 /usr/local/bin/{REDACTED} (OSCP)
+/proc/pid/mem    # see https://git.zx2c4.com/CVE-2012-0056/about/
 ```
 
 SUID: Exploit unquoted / non-fullpath binaries:
