@@ -523,7 +523,8 @@ IRC enum:
 # WEB
 
 ```bash
-$ curl -i -L 10.11.1.71    # Follow re-directs
+$ wget https://example.com --no-check-certificate   # Wget from HTTPS sites
+$ curl -i -L 10.11.1.71                             # Follow re-directs
 $ gobuster -u http://10.11.1.71 -w /usr/share/seclists/Discovery/Web_Content/common.txt -s '200,204,301,302,307,403,500' -e
 ```
 
