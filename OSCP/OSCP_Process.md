@@ -16,8 +16,7 @@ $ nmap -A [target]
 $ nmap -A -sU [target]
 ```
 
-For each service discovered:
-* Make a list of potential vectors
+For each service discovered, make a list of potential vectors.
 
 ## STAGE 2: ENUMERATION - SERVICE LEVEL
 
