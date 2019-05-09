@@ -901,7 +901,8 @@ accesschk.exe -uwdqs Users c:\ /accepteula
 accesschk.exe -uwcqv "Authenticated Users" * /accepteula
 ```
 
-Badly configured services:
+Weak service permissions:  
+__TRY TO REBOOT THE SYSTEM ITSELF VIA. CMD IF SERVICE RESTARTS DONT TRIGGER YOUR PAYLOAD__
 ```powershell
 # Vulnerable services
 sc qc <vulnerable service name>
