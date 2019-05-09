@@ -529,6 +529,7 @@ http://example.com/><.ajr2438
 http://example.com/path?param=asdfasdf
 ```
 
+Helpful commands / flags
 ```bash
 $ wget https://example.com --no-check-certificate   # Wget from HTTPS sites
 $ curl -i -L 10.11.1.71                             # Follow re-directs
