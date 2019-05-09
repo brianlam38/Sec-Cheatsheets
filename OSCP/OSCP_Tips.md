@@ -33,10 +33,7 @@ Approaches - there are a number of ways to get the passing 70 points:
 1. Buffer Overflow box
 2. Metasploit box
 3. WITHOUT LABS:
-    * 35pts + (1 x root) + (1 x low_priv) + (1 x low_priv)
-    * 35pts + (2 x root)
-    * After 35pts: You need to get root on a 20pt box
-    * After 55pts: You need to get 2 x low_priv shells || 1 x root shells
+    * 25pts (bof) + 25pts (hard) + 1 x root || 2 x low_priv
  4. WITH LABS
     * 35pts + (1 x root) + (1 x low_priv) + 5pts LAB
     * 35pts + (3 x low_priv) + 5pts LAB
