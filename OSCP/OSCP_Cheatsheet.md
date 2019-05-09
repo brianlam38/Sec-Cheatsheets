@@ -522,6 +522,13 @@ IRC enum:
 
 # WEB
 
+__TRY TO FUZZ WEB APPLICATIONS, ESPECIALLY IF THEYRE CUSTOM ONES__
+* Fuzz URL params, directories etc. to produce unintended error messages that might reveal the service
+```html
+http://example.com/><.ajr2438
+http://example.com/path?param=asdfasdf
+```
+
 ```bash
 $ wget https://example.com --no-check-certificate   # Wget from HTTPS sites
 $ curl -i -L 10.11.1.71                             # Follow re-directs
