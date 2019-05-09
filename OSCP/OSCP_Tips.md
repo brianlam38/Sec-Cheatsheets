@@ -29,11 +29,12 @@ Overview:
 * 2 x 20 points
 * 1 x 25 points
 
+__POSSIBLY ENUMERATE ALL BOXES FIRST AND THEN DETERMINE IF ITS BETTER TO TAKE THE 25PT BOX FIRST__
 Approaches - there are a number of ways to get the passing 70 points:
 1. Buffer Overflow box
 2. Metasploit box
 3. WITHOUT LABS:
-    * 25pts (bof) + 25pts (hard) + 1 x root || 2 x low_priv
+    * 25pts (bof) + 25pts (hard) + 10pts (metasploit) + 1 low_priv (med)
  4. WITH LABS
     * 35pts + (1 x root) + (1 x low_priv) + 5pts LAB
     * 35pts + (3 x low_priv) + 5pts LAB
