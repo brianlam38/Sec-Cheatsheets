@@ -84,11 +84,12 @@ $ reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElev
 
 ### 5. WINDOWS SERVICES, FILE/FOLDER PERMISSIONS
 
-For restarting services or binaries, try various methods to restart:
+For restarting services or binaries, try various methods to restart:  
+__TRY TO REBOOT THE SYSTEM ITSELF VIA. CMD IF SERVICE RESTARTS DONT TRIGGER YOUR PAYLOAD__
 ```powershell
 $ net start
 $ sc start
-$mysql> RESTART;    # using service commands itself to restart
+$ mysql> RESTART;    # using service commands itself to restart
 ```
 
 Unquoted service paths:  
