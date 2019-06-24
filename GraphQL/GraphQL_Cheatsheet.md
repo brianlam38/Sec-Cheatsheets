@@ -7,10 +7,16 @@ GraphQL guides
 GraphQL security toolkit
 * https://github.com/doyensec/graph-ql
 
-
-More to come.
-
 Test for introspection:
 ```
 GET /graphql?query={__schema{types{name}}}
+```
+
+Other GraphQL endpoints:
+```
+/graphql/
+/graphql/console/
+/graphql.php
+/graphiql/
+/graphiql.php
 ```
