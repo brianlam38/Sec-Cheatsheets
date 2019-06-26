@@ -20,3 +20,6 @@ GET /graphql?query={__schema{types{name}}}
 /graphiql/
 /graphiql.php
 ```
+
+GraphQL SQLi writeups
+* https://hackerone.com/reports/435066
