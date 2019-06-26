@@ -12,7 +12,7 @@ Test for introspection:
 GET /graphql?query={__schema{types{name}}}
 ```
 
-Other GraphQL endpoints:
+/graphql not working? Try the following:
 ```
 /graphql/
 /graphql/console/
