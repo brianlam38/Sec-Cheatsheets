@@ -6,8 +6,9 @@ AWS
 
 ## AWS exploitation tools
 
-**weirdAAL (AWS Attack Library)**
-https://github.com/carnal0wnage/weirdAAL
+* https://blyx.com/2018/07/18/my-arsenal-of-aws-security-tools/
+* weirdAAL (AWS Attack Library): https://github.com/carnal0wnage/weirdAAL
+
 
 ## Metadata endpoints
 ```
