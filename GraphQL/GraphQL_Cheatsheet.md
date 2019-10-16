@@ -24,3 +24,6 @@ GET /graphql?query={__schema{types{name}}}
 
 GraphQL SQLi writeups
 * https://hackerone.com/reports/435066
+
+GraphQL API hacking
+* http://ghostlulz.com/api-hacking-graphql/
