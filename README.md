@@ -6,7 +6,7 @@ Security cheatsheets.
 * `/Cloud`
 * `/Web`
 
-Security testing tools.
+Security testing tools and exploit binaries.
 * `/Tools`
 
 Useful for bug bounties, CTF-style challenges, penetration testing.
